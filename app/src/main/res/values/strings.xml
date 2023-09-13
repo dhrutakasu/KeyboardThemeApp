@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">Hindi Keyboard</string>
+
+    <string name="stepOne">Step 1: Enable Hindi Keyboard</string>
+    <string name="stepTwo">Step 2: Activate Hindi Keyboard</string>
+    <string name="MSG_ASK_PERMISSION">This app needs permissions to use this feature. You can grant them in app settings.</string>
+    <string name="subtype_en_US">English (US)</string>
+    <string name="txt_permission_content">Give permission to draw over the application to disable statusbar\10Do you want to give permission?</string>
+    <string name="main_text1">Choose Background</string>
+    <string name="main_text10">Art</string>
+    <string name="main_text11">Fancy Text</string>
+    <string name="main_text12">Share</string>
+    <string name="main_text13">More</string>
+    <string name="main_text14">Privacy</string>
+    <string name="main_text15">Quotes</string>
+    <string name="main_text16">Jock</string>
+    <string name="main_text17">GIF</string>
+    <string name="main_text2">Theme</string>
+    <string name="main_text3">Language</string>
+    <string name="main_text4">Font</string>
+    <string name="main_text5">Dictionary</string>
+    <string name="main_text6">Setting</string>
+    <string name="main_text7">Rate Us!</string>
+    <string name="main_text8">Tell Friends</string>
+    <string name="main_text9">Translator</string>
+    <string name="sub_text1">Change your Keyboard Background</string>
+    <string name="sub_text10">Explore with Art.</string>
+    <string name="sub_text11">Type Fancy text.</string>
+    <string name="sub_text13">More Application From Developer.</string>
+    <string name="sub_text14">Read Privacy Policy</string>
+    <string name="sub_text15">Explore Beautiful Quotes.</string>
+    <string name="sub_text16">Explore Funny Jock.</string>
+    <string name="sub_text17">Set Animated gif background!</string>
+    <string name="sub_text2">Select Keyboard Theme</string>
+    <string name="sub_text3">Enable English,Hindi,Gujarati,Oriya...</string>
+    <string name="sub_text4">Choose Stylish font</string>
+    <string name="sub_text5">Download Dictionary</string>
+    <string name="sub_text6">Your Setting Keyboard</string>
+    <string name="sub_text7">Give your feedback</string>
+    <string name="sub_text8">Share with friends</string>
+    <string name="sub_text9">Translate your message.</string>
+    <string name="share_message">Hey! Frnds Use Language keyboard to custmize your Keyboard ..\10\10 Its Free. Download and enjoy it. \10\10 https://play.google.com/store/apps/details?id=</string>
+</resources>
