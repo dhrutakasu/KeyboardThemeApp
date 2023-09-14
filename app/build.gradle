@@ -50,4 +50,8 @@ dependencies {
     //todo dexter dependency
     implementation 'com.karumi:dexter:6.2.3'
 
+    //todo retrofit dependancy
+    implementation 'com.squareup.retrofit2:retrofit:2.6.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
 }

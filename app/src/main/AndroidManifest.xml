@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KeyboardThemeApp">
         <activity
+            android:name=".UI.Activities.QuotesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.Activities.ViewJokeQuoteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.Activities.JokesActivity"
+            android:exported="false" />
+        <activity
             android:name=".UI.Activities.PrivacyPolicyActivity"
             android:exported="false" />
         <activity
@@ -33,6 +42,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".UI.Activities.MainActivity"
+            android:exported="false" />
 
         <service
             android:name=".KeyboardService.HindiKeypad"
@@ -49,6 +61,15 @@
         </service>
     </application>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACTION_MANAGE_OVERLAY_PERMISSION" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
 

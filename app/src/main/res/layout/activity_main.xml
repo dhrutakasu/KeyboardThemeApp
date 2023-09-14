@@ -168,7 +168,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:fontFamily="@font/avenirltstdmedium"
-                            android:text="@string/main_text3"
+                            android:text="@string/main_text17"
                             android:textColor="@color/main_text_color"
                             android:textSize="@dimen/_14ssp"
                             android:textStyle="bold" />
@@ -178,7 +178,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:fontFamily="@font/avenirltstdmedium"
-                            android:text="@string/sub_text3"
+                            android:text="@string/sub_text17"
                             android:textColor="@color/sub_text_color"
                             android:textSize="@dimen/_12ssp" />
                     </LinearLayout>
@@ -604,5 +604,4 @@
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,7 +32,7 @@ public class OverlayPermissionDialog extends Dialog {
         ImageView IvPermissionCancel = (ImageView) findViewById(R.id.IvPermissionCancel);
         ImageView IvPermissionOk = (ImageView) findViewById(R.id.IvPermissionOk);
 
-        IvPermissionCancel.setOnClickListener(view -> {
+        IvPermissionOk.setOnClickListener(view -> {
             permissionListener.onPermission(this);
         });
         IvPermissionCancel.setOnClickListener(view -> {

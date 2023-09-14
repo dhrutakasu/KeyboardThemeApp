@@ -1,6 +1,7 @@
 package com.theme.keyboardthemeapp.UI.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.Manifest;
 import android.app.Dialog;
@@ -29,11 +30,12 @@ import com.theme.keyboardthemeapp.R;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Context context;
     private boolean isEnableKeyboard;
     private boolean isActivateKeyboard;
     private ImageView ImgMore;
+    private CardView CardBackground, CardTheme, CardGif, CardFont, CardSetting, CardDictionary, CardTranslator, CardArt, CardQuotes, CardFancyText, CardJokes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +49,32 @@ public class MainActivity extends AppCompatActivity {
     private void initViews() {
         context = this;
         ImgMore = (ImageView) findViewById(R.id.ImgMore);
+        CardBackground = (CardView) findViewById(R.id.CardBackground);
+        CardTheme = (CardView) findViewById(R.id.CardTheme);
+        CardGif = (CardView) findViewById(R.id.CardGif);
+        CardFont = (CardView) findViewById(R.id.CardFont);
+        CardSetting = (CardView) findViewById(R.id.CardSetting);
+        CardDictionary = (CardView) findViewById(R.id.CardDictionary);
+        CardTranslator = (CardView) findViewById(R.id.CardTranslator);
+        CardArt = (CardView) findViewById(R.id.CardArt);
+        CardQuotes = (CardView) findViewById(R.id.CardQuotes);
+        CardFancyText = (CardView) findViewById(R.id.CardFancyText);
+        CardJokes = (CardView) findViewById(R.id.CardJokes);
     }
 
     private void initListeners() {
-
+        ImgMore.setOnClickListener(this);
+        CardBackground.setOnClickListener(this);
+        CardTheme.setOnClickListener(this);
+        CardGif.setOnClickListener(this);
+        CardFont.setOnClickListener(this);
+        CardSetting.setOnClickListener(this);
+        CardDictionary.setOnClickListener(this);
+        CardTranslator.setOnClickListener(this);
+        CardArt.setOnClickListener(this);
+        CardQuotes.setOnClickListener(this);
+        CardFancyText.setOnClickListener(this);
+        CardJokes.setOnClickListener(this);
     }
 
     private void initActions() {
@@ -129,4 +153,45 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.ImgMore:
+                startActivity(new Intent(context, MoreSettingsActivity.class));
+                break;
+            case R.id.CardBackground:
+                startActivity(new Intent(context, MoreSettingsActivity.class));
+                break;
+            case R.id.CardTheme:
+                startActivity(new Intent(context, MoreSettingsActivity.class));
+                break;
+            case R.id.CardGif:
+                startActivity(new Intent(context, MoreSettingsActivity.class));
+                break;
+            case R.id.CardFont:
+                startActivity(new Intent(context, MoreSettingsActivity.class));
+                break;
+            case R.id.CardSetting:
+                startActivity(new Intent(context, MoreSettingsActivity.class));
+                break;
+            case R.id.CardDictionary:
+                startActivity(new Intent(context, MoreSettingsActivity.class));
+                break;
+            case R.id.CardTranslator:
+                startActivity(new Intent(context, MoreSettingsActivity.class));
+                break;
+            case R.id.CardArt:
+                startActivity(new Intent(context, MoreSettingsActivity.class));
+                break;
+            case R.id.CardQuotes:
+                startActivity(new Intent(context, MoreSettingsActivity.class));
+                break;
+            case R.id.CardFancyText:
+                startActivity(new Intent(context, MoreSettingsActivity.class));
+                break;
+            case R.id.CardJokes:
+                startActivity(new Intent(context, JokesActivity.class));
+                break;
+        }
+    }
 }
