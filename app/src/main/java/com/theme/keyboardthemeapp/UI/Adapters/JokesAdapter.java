@@ -37,6 +37,7 @@ public class JokesAdapter extends RecyclerView.Adapter<JokesAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        System.out.println("---- --- -- Stataty : " + statusItems.get(position).getStatus());
         holder.TxtJokeQuote.setText(statusItems.get(position).getStatus());
         holder.TxtJokeQuote.setTypeface(txtTypeface);
         holder.itemView.setOnClickListener(new View.OnClickListener() {

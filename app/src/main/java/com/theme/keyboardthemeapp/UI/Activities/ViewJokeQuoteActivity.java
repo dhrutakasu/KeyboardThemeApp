@@ -33,7 +33,9 @@ public class ViewJokeQuoteActivity extends AppCompatActivity implements View.OnC
     private ViewPager PagerQuote;
     private ImageView ImgWhatsapp, ImgFacebook, ImgShare, ImgCopy;
     private ClipboardManager manager;
+    private String QuoteTitle;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,10 +59,9 @@ public class ViewJokeQuoteActivity extends AppCompatActivity implements View.OnC
 
     private void initIntents() {
         Intent intent = getIntent();
-//        Bundle args = intent.getBundleExtra(Constants.BUNDLE_LIST);
         QuotePos = intent.getIntExtra(Constants.QUOTE_POS, 0);
-//        statusItemArrayList = (ArrayList<StatusItem>) args.getSerializable(Constants.ARRAY_LIST_QUOTE);
-        statusItemArrayList = JokesActivity.statusItems;
+        QuoteTitle = intent.getStringExtra(Constants.TITLES);
+        statusItemArrayList = Constants.statusItems;
     }
 
     private void initListeners() {
@@ -74,7 +75,7 @@ public class ViewJokeQuoteActivity extends AppCompatActivity implements View.OnC
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void initActions() {
         ImgBack.setVisibility(View.VISIBLE);
-        TxtTitle.setText(getString(R.string.Jockes));
+        TxtTitle.setText(QuoteTitle);
         PageAdapter pageAdapter = new PageAdapter(context, getSupportFragmentManager(), statusItemArrayList);
         PagerQuote.setAdapter(pageAdapter);
         PagerQuote.setCurrentItem(QuotePos);

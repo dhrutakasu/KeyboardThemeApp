@@ -604,4 +604,8 @@
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+    <include
+        android:id="@+id/LayoutProgress"
+        layout="@layout/layout_progress"
+        android:visibility="gone"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

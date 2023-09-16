@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.Activities.QuotesActivity">
+    tools:context=".UI.Activities.FancyTextActivity">
 
     <RelativeLayout
         android:id="@+id/RlHeaderBar"
@@ -26,27 +26,28 @@
         app:layout_constraintTop_toBottomOf="@id/RlHeaderBar">
 
         <androidx.viewpager.widget.ViewPager
-            android:id="@+id/PagerQuote"
+            android:id="@+id/PagerFancyTxt"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/TabQuote" />
+            app:layout_constraintTop_toBottomOf="@id/TabFancyTxt"
+            app:layout_constraintVertical_bias="0.0" />
 
         <com.google.android.material.tabs.TabLayout
-            android:id="@+id/TabQuote"
+            android:id="@+id/TabFancyTxt"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"
-            android:background="@color/purple_200"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:tabGravity="fill"
-            app:tabTextColor="@color/sub_text_color"
-            app:tabIndicatorColor="@color/white"
+            app:tabIndicatorColor="@color/purple_500"
             app:tabIndicatorHeight="@dimen/_3ssp"
-            app:tabMode="scrollable"
-            app:tabSelectedTextColor="@color/white" />
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/purple_500"
+            app:tabTextColor="@color/sub_text_color" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

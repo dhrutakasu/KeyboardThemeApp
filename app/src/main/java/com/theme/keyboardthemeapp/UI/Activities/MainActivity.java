@@ -2,6 +2,9 @@ package com.theme.keyboardthemeapp.UI.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import android.Manifest;
 import android.app.Dialog;
@@ -11,6 +14,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -25,9 +29,16 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.Dialogs.KeyboardPermissionDialog;
 import com.theme.keyboardthemeapp.Dialogs.OverlayPermissionDialog;
+import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
+import com.theme.keyboardthemeapp.ModelClass.QuoteCategoryModel;
 import com.theme.keyboardthemeapp.MySharePref;
 import com.theme.keyboardthemeapp.R;
+import com.theme.keyboardthemeapp.Retrofit.RetrofitInstance;
+import com.theme.keyboardthemeapp.Retrofit.RetrofitInterface;
+import com.theme.keyboardthemeapp.UI.Adapters.QuotePagerAdapter;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -35,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean isEnableKeyboard;
     private boolean isActivateKeyboard;
     private ImageView ImgMore;
+    private View LayoutProgress;
     private CardView CardBackground, CardTheme, CardGif, CardFont, CardSetting, CardDictionary, CardTranslator, CardArt, CardQuotes, CardFancyText, CardJokes;
 
     @Override
@@ -49,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initViews() {
         context = this;
         ImgMore = (ImageView) findViewById(R.id.ImgMore);
+        LayoutProgress = (View) findViewById(R.id.LayoutProgress);
         CardBackground = (CardView) findViewById(R.id.CardBackground);
         CardTheme = (CardView) findViewById(R.id.CardTheme);
         CardGif = (CardView) findViewById(R.id.CardGif);
@@ -80,6 +93,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initActions() {
         isEnableKeyboard = Constants.IsEnableKeyboard(context);
         isActivateKeyboard = Constants.IsActivateKeyboard(context);
+        GetQuoteResponse();
+    }
+
+    private void GotoPermission() {
         if (!isEnableKeyboard || !isActivateKeyboard) {
             startActivity(new Intent(context, SetDefaultKeyboardActivity.class));
         }
@@ -153,6 +170,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    private void GetQuoteResponse() {
+        if (Constants.isNetworkAvailable(context)) {
+            LayoutProgress.setVisibility(View.VISIBLE);
+            RetrofitInterface downloadService = RetrofitInstance.createService(RetrofitInterface.class, "http://technoappsolution.com/app/");
+            Call<QuoteCategoryModel> call = downloadService.getQuoteCategoryData("assets/android/hindikeyboard/get_categories.json");
+            call.enqueue(new Callback<QuoteCategoryModel>() {
+                @Override
+                public void onResponse(Call<QuoteCategoryModel> call, Response<QuoteCategoryModel> response) {
+                    if (response.isSuccessful()) {
+                        System.out.println("---- --- -- JokeBody : " + response.body().toString());
+                        Constants.categoriesItems = new ArrayList<>();
+                        Constants.categoriesItems = (ArrayList<CategoriesItem>) response.body().getCategories();
+                        System.out.println("---- --- -- Size : " + Arrays.toString(Constants.categoriesItems.toArray()));
+                        LayoutProgress.setVisibility(View.GONE);
+                        GotoPermission();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<QuoteCategoryModel> call, Throwable t) {
+                    LayoutProgress.setVisibility(View.GONE);
+                    Log.e("error", "onFailure: ", t);
+                }
+            });
+        } else {
+            Constants.NoInternetConnection(MainActivity.this);
+        }
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -184,10 +230,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(context, MoreSettingsActivity.class));
                 break;
             case R.id.CardQuotes:
-                startActivity(new Intent(context, MoreSettingsActivity.class));
+                startActivity(new Intent(context, QuotesActivity.class));
                 break;
             case R.id.CardFancyText:
-                startActivity(new Intent(context, MoreSettingsActivity.class));
+                startActivity(new Intent(context, FancyTextActivity.class));
                 break;
             case R.id.CardJokes:
                 startActivity(new Intent(context, JokesActivity.class));

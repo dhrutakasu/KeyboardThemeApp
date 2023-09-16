@@ -33,7 +33,6 @@ public class JokesActivity extends AppCompatActivity implements View.OnClickList
     private TextView TxtTitle;
     private RecyclerView RecyclerJoke;
     private View LayoutProgress;
-    public static ArrayList<StatusItem> statusItems = new ArrayList<>();
     private JokesAdapter jokesAdapter;
 
     @Override
@@ -75,15 +74,13 @@ public class JokesActivity extends AppCompatActivity implements View.OnClickList
                     if (response.isSuccessful()) {
                         LayoutProgress.setVisibility(View.GONE);
                         System.out.println("---- --- -- JokeBody : " + response.body().toString());
-                        statusItems = new ArrayList<>();
-                        statusItems = (ArrayList<StatusItem>) response.body().getStatus();
-                        System.out.println("---- --- -- Size : " + statusItems.size());
-                        jokesAdapter = new JokesAdapter(context, statusItems, pos -> {
+                        Constants.statusItems = new ArrayList<>();
+                        Constants.statusItems = (ArrayList<StatusItem>) response.body().getStatus();
+                        System.out.println("---- --- -- Size : " + Constants.statusItems.size());
+                        jokesAdapter = new JokesAdapter(context, Constants.statusItems, pos -> {
                             Intent intent = new Intent(context, ViewJokeQuoteActivity.class);
-                            Bundle quote_bundle = new Bundle();
-//                            quote_bundle.putSerializable(Constants.ARRAY_LIST_QUOTE, (Serializable) statusItems);
-//                            intent.putExtra(Constants.BUNDLE_LIST, quote_bundle);
                             intent.putExtra(Constants.QUOTE_POS, pos);
+                            intent.putExtra(Constants.TITLES, "Jokes");
                             startActivity(intent);
                         });
                         RecyclerJoke.setAdapter(jokesAdapter);

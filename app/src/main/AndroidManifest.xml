@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KeyboardThemeApp">
         <activity
+            android:name=".UI.Activities.FancyTextActivity"
+            android:exported="false" />
+        <activity
             android:name=".UI.Activities.QuotesActivity"
             android:exported="false" />
         <activity
