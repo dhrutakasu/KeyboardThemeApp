@@ -50,8 +50,11 @@ dependencies {
     //todo dexter dependency
     implementation 'com.karumi:dexter:6.2.3'
 
-    //todo retrofit dependancy
+    //todo retrofit dependency
     implementation 'com.squareup.retrofit2:retrofit:2.6.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
+
+    //todo Translator dependency
+    implementation 'com.google.mlkit:translate:17.0.1'
 }

@@ -26,11 +26,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/_10sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 android:padding="@dimen/_2sdp"
+                android:src="@drawable/ic_back_arrow"
                 android:visibility="invisible"
-                android:src="@drawable/ic_back_arrow" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
@@ -64,11 +64,49 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:padding="@dimen/_2sdp"
-                android:visibility="invisible"
                 android:src="@drawable/ic_more_dot"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ImgSave"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:padding="@dimen/_2sdp"
+                android:src="@drawable/ic_save"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/ImgHistory"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ImgHistory"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:padding="@dimen/_2sdp"
+                android:src="@drawable/ic_history"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/ImgShare"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ImgShare"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:padding="@dimen/_2sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:src="@drawable/ic_share"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/white" />
 
             <ImageView
                 android:id="@+id/ImgHome"
@@ -77,8 +115,8 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:padding="@dimen/_2sdp"
-                android:visibility="invisible"
                 android:src="@drawable/ic_home"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

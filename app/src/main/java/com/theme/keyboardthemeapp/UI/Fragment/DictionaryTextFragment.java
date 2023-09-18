@@ -16,7 +16,6 @@ import com.theme.keyboardthemeapp.R;
 import com.theme.keyboardthemeapp.UI.Adapters.ASCIIArtAdapter;
 import com.theme.keyboardthemeapp.UI.Adapters.DecorativeAdapter;
 import com.theme.keyboardthemeapp.UI.Adapters.FancyAdapter;
-import com.theme.keyboardthemeapp.UI.Adapters.FancyTextPagerAdapter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -30,9 +29,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class FancyTextFragment extends Fragment implements View.OnClickListener {
-    private String Fancy_Str;
-    private View FancyView;
+public class DictionaryTextFragment extends Fragment implements View.OnClickListener {
+    private String Dictionary_Str;
+    private View DictionaryView;
     private RecyclerView RvFancyTxt;
     private CardView CardEdtFancyText;
     private EditText EdtFancyTxt;
@@ -45,7 +44,7 @@ public class FancyTextFragment extends Fragment implements View.OnClickListener 
     private View LayoutProgress;
 
     public static Fragment newInstance(String status) {
-        FancyTextFragment fragment = new FancyTextFragment();
+        DictionaryTextFragment fragment = new DictionaryTextFragment();
         Bundle args = new Bundle();
         args.putString("FRAG_STR", status);
         fragment.setArguments(args);
@@ -55,26 +54,26 @@ public class FancyTextFragment extends Fragment implements View.OnClickListener 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            Fancy_Str = getArguments().getString("FRAG_STR");
+            Dictionary_Str = getArguments().getString("FRAG_STR");
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        FancyView = inflater.inflate(R.layout.fragment_fancy, container, false);
-        if (FancyView != null) {
+        DictionaryView = inflater.inflate(R.layout.fragment_fancy, container, false);
+        if (DictionaryView != null) {
             initViews();
         }
 
-        return FancyView;
+        return DictionaryView;
     }
 
     private void initViews() {
-        RvFancyTxt = (RecyclerView) FancyView.findViewById(R.id.RvFancyTxt);
-        CardEdtFancyText = (CardView) FancyView.findViewById(R.id.CardEdtFancyText);
-        EdtFancyTxt = (EditText) FancyView.findViewById(R.id.EdtFancyTxt);
-        ImgCancelFancyTxt = (ImageView) FancyView.findViewById(R.id.ImgCancelFancyTxt);
-        LayoutProgress = (View) FancyView.findViewById(R.id.LayoutProgress);
+        RvFancyTxt = (RecyclerView) DictionaryView.findViewById(R.id.RvFancyTxt);
+        CardEdtFancyText = (CardView) DictionaryView.findViewById(R.id.CardEdtFancyText);
+        EdtFancyTxt = (EditText) DictionaryView.findViewById(R.id.EdtFancyTxt);
+        ImgCancelFancyTxt = (ImageView) DictionaryView.findViewById(R.id.ImgCancelFancyTxt);
+        LayoutProgress = (View) DictionaryView.findViewById(R.id.LayoutProgress);
         CardEdtFancyText.setVisibility(View.VISIBLE);
         EdtFancyTxt.clearFocus();
         ImgCancelFancyTxt.setOnClickListener(this);
@@ -94,13 +93,13 @@ public class FancyTextFragment extends Fragment implements View.OnClickListener 
                 } else {
                     EdtFancyStr = charSequence.toString();
                 }
-                if (Fancy_Str.equalsIgnoreCase("Fancy")) {
+                if (Dictionary_Str.equalsIgnoreCase("Fancy")) {
                     fancyAdapter = new FancyAdapter(getContext(), Constants.nameStyle, EdtFancyStr);
                     RvFancyTxt.setAdapter(fancyAdapter);
-                } else if (Fancy_Str.equalsIgnoreCase("Decorative")) {
+                } else if (Dictionary_Str.equalsIgnoreCase("Decorative")) {
                     decorativeAdapter = new DecorativeAdapter(getContext(), Constants.decorative, EdtFancyStr);
                     RvFancyTxt.setAdapter(decorativeAdapter);
-                } else if (Fancy_Str.equalsIgnoreCase("ASCII art")) {
+                } else if (Dictionary_Str.equalsIgnoreCase("ASCII art")) {
                     asciiArtAdapter = new ASCIIArtAdapter(getContext(), ASCIIArray, EdtFancyStr);
                     RvFancyTxt.setAdapter(asciiArtAdapter);
                 }
@@ -112,13 +111,13 @@ public class FancyTextFragment extends Fragment implements View.OnClickListener 
             }
         });
 
-        if (Fancy_Str.equalsIgnoreCase("Fancy")) {
+        if (Dictionary_Str.equalsIgnoreCase("Fancy")) {
             fancyAdapter = new FancyAdapter(getContext(), Constants.nameStyle, EdtFancyStr);
             RvFancyTxt.setAdapter(fancyAdapter);
-        } else if (Fancy_Str.equalsIgnoreCase("Decorative")) {
+        } else if (Dictionary_Str.equalsIgnoreCase("Decorative")) {
             decorativeAdapter = new DecorativeAdapter(getContext(), Constants.decorative, EdtFancyStr);
             RvFancyTxt.setAdapter(decorativeAdapter);
-        } else if (Fancy_Str.equalsIgnoreCase("ASCII art")) {
+        } else if (Dictionary_Str.equalsIgnoreCase("ASCII art")) {
             LayoutProgress.setVisibility(View.VISIBLE);
             new AsyncTask<Void, Void, Void>() {
 
@@ -156,13 +155,13 @@ public class FancyTextFragment extends Fragment implements View.OnClickListener 
     private void GotoCancelFancyText() {
         EdtFancyTxt.setText("");
         EdtFancyStr = "Font Style";
-        if (Fancy_Str.equalsIgnoreCase("Fancy")) {
+        if (Dictionary_Str.equalsIgnoreCase("Fancy")) {
             fancyAdapter = new FancyAdapter(getContext(), Constants.nameStyle, EdtFancyStr);
             RvFancyTxt.setAdapter(fancyAdapter);
-        } else if (Fancy_Str.equalsIgnoreCase("Decorative")) {
+        } else if (Dictionary_Str.equalsIgnoreCase("Decorative")) {
             decorativeAdapter = new DecorativeAdapter(getContext(), Constants.decorative, EdtFancyStr);
             RvFancyTxt.setAdapter(decorativeAdapter);
-        } else if (Fancy_Str.equalsIgnoreCase("ASCII art")) {
+        } else if (Dictionary_Str.equalsIgnoreCase("ASCII art")) {
             asciiArtAdapter = new ASCIIArtAdapter(getContext(), ASCIIArray, EdtFancyStr);
             RvFancyTxt.setAdapter(asciiArtAdapter);
         }

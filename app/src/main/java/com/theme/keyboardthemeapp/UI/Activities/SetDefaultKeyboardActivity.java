@@ -106,6 +106,9 @@ public class SetDefaultKeyboardActivity extends AppCompatActivity implements Vie
             KeyboardPermissionDialog keyboardPermissionDialog = new KeyboardPermissionDialog(SetDefaultKeyboardActivity.this, context, (KeyboardPermissionDialog permissionDialog) -> {
                 permissionDialog.dismiss();
                 new MySharePref(context).putPrefBoolean(MySharePref.ENABLE_KEYBOARD, false);
+                Intent enableIntent = new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS);
+                enableIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(enableIntent);
             });
             keyboardPermissionDialog.show();
             WindowManager.LayoutParams attributes = keyboardPermissionDialog.getWindow().getAttributes();
@@ -142,6 +145,7 @@ public class SetDefaultKeyboardActivity extends AppCompatActivity implements Vie
             KeyboardPermissionDialog keyboardPermissionDialog = new KeyboardPermissionDialog(SetDefaultKeyboardActivity.this, context, (KeyboardPermissionDialog permissionDialog) -> {
                 permissionDialog.dismiss();
                 new MySharePref(context).putPrefBoolean(MySharePref.ACTIVATE_KEYBOARD, false);
+                imeManager.showInputMethodPicker();
             });
             keyboardPermissionDialog.show();
             WindowManager.LayoutParams attributes = keyboardPermissionDialog.getWindow().getAttributes();

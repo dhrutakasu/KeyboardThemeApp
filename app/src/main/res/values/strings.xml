@@ -43,4 +43,8 @@
     <string name="Jockes">Jokes</string>
     <string name="Fancy_Txt">Fancy Text</string>
     <string name="Quote_text">Quote</string>
+    <string name="Text_art">Text Art</string>
+    <string name="Translator">English Translator</string>
+    <string name="hindi">Hindi</string>
+    <string name="Search_Words">Search Words</string>
 </resources>

@@ -14,40 +14,38 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.theme.keyboardthemeapp.Dialogs.FancyTextDialog;
-import com.theme.keyboardthemeapp.R;
-
-import java.util.ArrayList;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ASCIIArtAdapter extends RecyclerView.Adapter<ASCIIArtAdapter.MyViewHolder> {
-    private final Context context;
-    private final ArrayList<String> nameStyle;
-    private final String text;
+import com.theme.keyboardthemeapp.Constants;
+import com.theme.keyboardthemeapp.Dialogs.FancyTextDialog;
+import com.theme.keyboardthemeapp.R;
 
-    public ASCIIArtAdapter(Context context, ArrayList<String> nameStyle, String text) {
+public class ArtAdapter extends RecyclerView.Adapter<ArtAdapter.MyViewHolder> {
+    private final Context context;
+    private final String[] nameStyle;
+
+    public ArtAdapter(Context context, String[] nameStyle) {
         this.context = context;
         this.nameStyle = nameStyle;
-        this.text = text;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(context).inflate(R.layout.layout_item_ascii, parent, false);
+        View itemView = LayoutInflater.from(context).inflate(R.layout.layout_item_art, parent, false);
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        System.out.println("--- - - - &&&& decorative-- -::: " + nameStyle.get(position).replace("abcdef", text));
-        holder.TxtASCIIQuote.setTextColor(context.getResources().getColor(R.color.black));
-        holder.TxtASCIIQuote.setGravity(Gravity.CENTER);
-        holder.TxtASCIIQuote.setPadding((int) context.getResources().getDimension(com.intuit.sdp.R.dimen._8sdp), (int) context.getResources().getDimension(com.intuit.sdp.R.dimen._8sdp), (int) context.getResources().getDimension(com.intuit.sdp.R.dimen._8sdp), (int) context.getResources().getDimension(com.intuit.sdp.R.dimen._8sdp));
-
-        holder.TxtASCIIQuote.setText(nameStyle.get(position).replace("abcdef", text));
+        holder.TxtArt.setTextColor(context.getResources().getColor(R.color.black));
+        holder.TxtArt.setGravity(Gravity.TOP);
+        holder.TxtArt.setPadding((int) context.getResources().getDimension(com.intuit.sdp.R.dimen._8sdp),
+                (int) context.getResources().getDimension(com.intuit.sdp.R.dimen._8sdp),
+                (int) context.getResources().getDimension(com.intuit.sdp.R.dimen._8sdp),
+                (int) context.getResources().getDimension(com.intuit.sdp.R.dimen._8sdp));
+        holder.TxtArt.setText(nameStyle[position]);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,7 +54,7 @@ public class ASCIIArtAdapter extends RecyclerView.Adapter<ASCIIArtAdapter.MyView
                     public void onCopy(FancyTextDialog fancyTextDialog) {
                         fancyTextDialog.dismiss();
                         ClipboardManager manager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-                        manager.setPrimaryClip(ClipData.newPlainText("simple text", holder.TxtASCIIQuote.getText().toString()));
+                        manager.setPrimaryClip(ClipData.newPlainText("simple text", holder.TxtArt.getText().toString()));
                         Toast.makeText(context, "copy successfully", Toast.LENGTH_SHORT).show();
                     }
 
@@ -66,14 +64,14 @@ public class ASCIIArtAdapter extends RecyclerView.Adapter<ASCIIArtAdapter.MyView
                         Intent intentQuoteShare = new Intent(Intent.ACTION_SEND);
                         intentQuoteShare.setType("text/plain");
                         intentQuoteShare.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
-                        intentQuoteShare.putExtra(Intent.EXTRA_TEXT, holder.TxtASCIIQuote.getText().toString());
+                        intentQuoteShare.putExtra(Intent.EXTRA_TEXT, holder.TxtArt.getText().toString());
                         context.startActivity(intentQuoteShare);
                     }
 
                     @Override
                     public void onWhastapp(FancyTextDialog fancyTextDialog) {
                         fancyTextDialog.dismiss();
-                        GotoSharePackage(context, "com.whatsapp", holder.TxtASCIIQuote.getText().toString());
+                        GotoSharePackage(context, "com.whatsapp", holder.TxtArt.getText().toString());
                     }
                 });
                 fancyTextDialog.show();
@@ -104,15 +102,15 @@ public class ASCIIArtAdapter extends RecyclerView.Adapter<ASCIIArtAdapter.MyView
 
     @Override
     public int getItemCount() {
-        return nameStyle.size();
+        return nameStyle.length;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        private final TextView TxtASCIIQuote;
+        private final TextView TxtArt;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            TxtASCIIQuote = itemView.findViewById(R.id.TxtASCIIQuote);
+            TxtArt = itemView.findViewById(R.id.TxtArt);
         }
     }
 }
