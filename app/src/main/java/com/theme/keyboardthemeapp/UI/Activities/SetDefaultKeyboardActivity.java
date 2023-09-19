@@ -2,7 +2,6 @@ package com.theme.keyboardthemeapp.UI.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -20,7 +19,6 @@ import android.widget.Toast;
 
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.Dialogs.KeyboardPermissionDialog;
-import com.theme.keyboardthemeapp.KeyboardService.HindiKeypad;
 import com.theme.keyboardthemeapp.MySharePref;
 import com.theme.keyboardthemeapp.R;
 
@@ -58,9 +56,9 @@ public class SetDefaultKeyboardActivity extends AppCompatActivity implements Vie
 
     private void initActions() {
 //        imchange = new InputMethodChangedReceiver(getApplicationContext(), true);
-        Typeface createFromAsset = Typeface.createFromAsset(getAssets(), "book.otf");
-        Typeface createFromAsset2 = Typeface.createFromAsset(getAssets(), "heavy.otf");
-        Typeface createFromAsset3 = Typeface.createFromAsset(getAssets(), "AvenirLTStd-Medium.otf");
+        Typeface createFromAsset = Typeface.createFromAsset(getAssets(), "FontSec.otf");
+        Typeface createFromAsset2 = Typeface.createFromAsset(getAssets(), "Artheavy.otf");
+        Typeface createFromAsset3 = Typeface.createFromAsset(getAssets(), "FontMedium.otf");
         TxtTitle.setTypeface(createFromAsset);
         TxtMainBottom.setTypeface(createFromAsset2);
         TxtEnableKeyboard.setTypeface(createFromAsset3);

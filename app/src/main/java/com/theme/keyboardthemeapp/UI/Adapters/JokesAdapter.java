@@ -25,7 +25,7 @@ public class JokesAdapter extends RecyclerView.Adapter<JokesAdapter.MyViewHolder
         this.context = context;
         this.statusItems = statusItems;
         this.quoteListener = quoteListener;
-        txtTypeface = Typeface.createFromAsset(context.getAssets(), "AvenirLTStd-Medium.otf");
+        txtTypeface = Typeface.createFromAsset(context.getAssets(), "FontMedium.otf");
     }
 
     @NonNull

@@ -71,32 +71,32 @@ public class TextArtFragment extends Fragment {
         String[] strings = new String[0];
         switch (art_str) {
             case "Nature":
-                strings = Constants.Nature_art;
+                strings = Constants.ArtNature;
                 break;
             case "Mood":
-                strings = Constants.Mood_art;
+                strings = Constants.ArtMood;
                 break;
             case "Love":
-                strings = Constants.Love_art;
+                strings = Constants.ArtLove;
                 break;
             case "Fun":
-                strings = Constants.Fun_art;
+                strings = Constants.ArtFun;
                 break;
             case "Food":
-                strings = Constants.Food_art;
+                strings = Constants.ArtFood;
                 break;
             case "Celebration":
-                strings = Constants.Celebration_art;
+                strings = Constants.ArtCelebration;
                 break;
             case "Eraster":
-                strings = Constants.Easter_art;
+                strings = Constants.ArtEaster;
                 break;
             case "Christmas":
-                strings = Constants.Christmas;
+                strings = Constants.ArtChristmas;
                 break;
             case "emojiart1":
                 try {
-                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(),"emojiart1.json")).getJSONArray("artInfo");
+                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(), "ArtEmojiart1.json")).getJSONArray("artInfo");
                     strings = new String[jSONArray.length()];
                     for (int i = 0; i < jSONArray.length(); i++) {
                         JSONObject jSONObject = jSONArray.getJSONObject(i);
@@ -109,7 +109,7 @@ public class TextArtFragment extends Fragment {
                 break;
             case "emojiart2":
                 try {
-                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(),"emojiart2.json")).getJSONArray("artInfo");
+                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(), "ArtEmojiart2.json")).getJSONArray("artInfo");
                     strings = new String[jSONArray.length()];
                     for (int i = 0; i < jSONArray.length(); i++) {
                         JSONObject jSONObject = jSONArray.getJSONObject(i);
@@ -122,7 +122,7 @@ public class TextArtFragment extends Fragment {
                 break;
             case "Flowers":
                 try {
-                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(),"Flowers.json")).getJSONArray("artInfo");
+                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(), "ArtFlowers.json")).getJSONArray("artInfo");
                     strings = new String[jSONArray.length()];
                     for (int i = 0; i < jSONArray.length(); i++) {
                         JSONObject jSONObject = jSONArray.getJSONObject(i);
@@ -135,7 +135,7 @@ public class TextArtFragment extends Fragment {
                 break;
             case "Gesture":
                 try {
-                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(),"Gesture.json")).getJSONArray("artInfo");
+                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(), "ArtGesture.json")).getJSONArray("artInfo");
                     strings = new String[jSONArray.length()];
                     for (int i = 0; i < jSONArray.length(); i++) {
                         JSONObject jSONObject = jSONArray.getJSONObject(i);
@@ -148,7 +148,7 @@ public class TextArtFragment extends Fragment {
                 break;
             case "Greetings":
                 try {
-                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(),"Greetings.json")).getJSONArray("artInfo");
+                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(), "ArtGreetings.json")).getJSONArray("artInfo");
                     strings = new String[jSONArray.length()];
                     for (int i = 0; i < jSONArray.length(); i++) {
                         JSONObject jSONObject = jSONArray.getJSONObject(i);
@@ -161,7 +161,7 @@ public class TextArtFragment extends Fragment {
                 break;
             case "Heart":
                 try {
-                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(),"Heart.json")).getJSONArray("artInfo");
+                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(), "ArtHeart.json")).getJSONArray("artInfo");
                     strings = new String[jSONArray.length()];
                     for (int i = 0; i < jSONArray.length(); i++) {
                         JSONObject jSONObject = jSONArray.getJSONObject(i);
@@ -174,7 +174,7 @@ public class TextArtFragment extends Fragment {
                 break;
             case "Kiss":
                 try {
-                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(),"Kiss.json")).getJSONArray("artInfo");
+                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(), "ArtKiss.json")).getJSONArray("artInfo");
                     strings = new String[jSONArray.length()];
                     for (int i = 0; i < jSONArray.length(); i++) {
                         JSONObject jSONObject = jSONArray.getJSONObject(i);
@@ -187,7 +187,7 @@ public class TextArtFragment extends Fragment {
                 break;
             case "Life":
                 try {
-                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(),"Life.json")).getJSONArray("artInfo");
+                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(), "ArtLife.json")).getJSONArray("artInfo");
                     strings = new String[jSONArray.length()];
                     for (int i = 0; i < jSONArray.length(); i++) {
                         JSONObject jSONObject = jSONArray.getJSONObject(i);
@@ -200,7 +200,7 @@ public class TextArtFragment extends Fragment {
                 break;
             case "Newyear":
                 try {
-                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(),"Newyear.json")).getJSONArray("artInfo");
+                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(), "ArtNewyear.json")).getJSONArray("artInfo");
                     strings = new String[jSONArray.length()];
                     for (int i = 0; i < jSONArray.length(); i++) {
                         JSONObject jSONObject = jSONArray.getJSONObject(i);
@@ -213,7 +213,7 @@ public class TextArtFragment extends Fragment {
                 break;
             case "Pet":
                 try {
-                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(),"Pet.json")).getJSONArray("artInfo");
+                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(), "ArtPet.json")).getJSONArray("artInfo");
                     strings = new String[jSONArray.length()];
                     for (int i = 0; i < jSONArray.length(); i++) {
                         JSONObject jSONObject = jSONArray.getJSONObject(i);
@@ -226,7 +226,7 @@ public class TextArtFragment extends Fragment {
                 break;
             case "Valentine":
                 try {
-                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(),"Valentine.json")).getJSONArray("artInfo");
+                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(), "ArtValentine.json")).getJSONArray("artInfo");
                     strings = new String[jSONArray.length()];
                     for (int i = 0; i < jSONArray.length(); i++) {
                         JSONObject jSONObject = jSONArray.getJSONObject(i);
@@ -239,7 +239,7 @@ public class TextArtFragment extends Fragment {
                 break;
             case "Weather":
                 try {
-                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(),"Weather.json")).getJSONArray("artInfo");
+                    JSONArray jSONArray = new JSONObject(Constants.loadJSONFromAsset(getContext(), "ArtWeather.json")).getJSONArray("artInfo");
                     strings = new String[jSONArray.length()];
                     for (int i = 0; i < jSONArray.length(); i++) {
                         JSONObject jSONObject = jSONArray.getJSONObject(i);
@@ -260,7 +260,7 @@ public class TextArtFragment extends Fragment {
 
         try {
             // Replace "your_file.txt" with the actual filename of your text file
-            InputStream inputStream = assetManager.open("emojiart1.json");
+            InputStream inputStream = assetManager.open("ArtEmojiart1.json");
 
             // Read the content of the file into a string
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));

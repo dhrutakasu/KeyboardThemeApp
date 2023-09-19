@@ -41,7 +41,7 @@ public class PrivacyPolicyActivity extends AppCompatActivity implements View.OnC
         WebSettings webPrivacySettings = WebPrivacy.getSettings();
         webPrivacySettings.setJavaScriptEnabled(true);
         webPrivacySettings.setTextZoom(webPrivacySettings.getTextZoom() + 70);
-        WebPrivacy.loadUrl("file:///android_asset/privay-policy1.html");
+        WebPrivacy.loadUrl("file:///android_asset/PrivayPolicy.html");
     }
 
     @Override

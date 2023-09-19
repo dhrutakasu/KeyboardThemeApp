@@ -215,13 +215,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(context, MoreSettingsActivity.class));
                 break;
             case R.id.CardFont:
-                startActivity(new Intent(context, MoreSettingsActivity.class));
+                startActivity(new Intent(context, FontActivity.class));
                 break;
             case R.id.CardSetting:
                 startActivity(new Intent(context, MoreSettingsActivity.class));
                 break;
             case R.id.CardDictionary:
-                startActivity(new Intent(context, MoreSettingsActivity.class));
+                startActivity(new Intent(context, DictionaryActivity.class));
                 break;
             case R.id.CardTranslator:
                 startActivity(new Intent(context, TranslatorActivity.class));

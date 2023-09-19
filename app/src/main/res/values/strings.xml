@@ -47,4 +47,7 @@
     <string name="Translator">English Translator</string>
     <string name="hindi">Hindi</string>
     <string name="Search_Words">Search Words</string>
+    <string name="my_translated_words">My Translated Words</string>
+    <string name="my_saved_data">My Saved Data</string>
+    <string name="font_style">Font Style</string>
 </resources>

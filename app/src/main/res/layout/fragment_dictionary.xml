@@ -21,12 +21,12 @@
             android:layout_height="match_parent">
 
             <AutoCompleteTextView
-                android:id="@+id/txtWord"
+                android:id="@+id/AutoTxtWord"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_weight="1"
-                android:background="@color/transparent"
+                android:background="@android:color/transparent"
                 android:completionThreshold="1"
                 android:cursorVisible="true"
                 android:dropDownAnchor="@+id/main"
@@ -37,15 +37,14 @@
                 android:inputType="textCapSentences"
                 android:textColor="#000000"
                 android:textColorHint="#aaa"
-                android:textCursorDrawable="@drawable/cursor"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/btnClear"
-                app:layout_constraintStart_toEndOf="@id/BtnBack"
+                app:layout_constraintEnd_toStartOf="@id/ImgClear"
+                app:layout_constraintStart_toEndOf="@id/ImgBackDic"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/BtnSearch"
+                android:id="@+id/ImgSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center_vertical|center_horizontal|center"
@@ -58,7 +57,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/btnClear"
+                android:id="@+id/ImgClear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|center_vertical|center_horizontal|center"
@@ -70,7 +69,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/BtnBack"
+                android:id="@+id/ImgBackDic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center_vertical|center_horizontal|center"
@@ -102,44 +101,78 @@
             android:layout_height="match_parent">
 
             <LinearLayout
+                android:id="@+id/LlButtons"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="bottom"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:gravity="bottom"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
+                app:layout_constraintStart_toStartOf="parent">
 
                 <ImageView
-                    android:id="@+id/btnAddFavourite"
+                    android:id="@+id/ImgAddFavourite"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:src="@drawable/favorite_selector" />
 
                 <ImageView
-                    android:id="@+id/btnshare"
+                    android:id="@+id/ImgShare"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:src="@drawable/share" />
 
                 <ImageView
-                    android:id="@+id/btnSpeak"
+                    android:id="@+id/ImgSpeak"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:src="@drawable/speak_selector" />
 
                 <ImageView
-                    android:id="@+id/btnrate"
+                    android:id="@+id/ImgRate"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:src="@drawable/rate_selector" />
             </LinearLayout>
+
+            <ScrollView
+                android:id="@+id/ScrollWord"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/LlButtons"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TxtWordEnglish">
+
+                <TextView
+                    android:id="@+id/TxtWordHindi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:lineSpacingExtra="@dimen/_5sdp"
+                    android:textColor="#4c4c4c"
+                    android:textColorHint="@color/autotext"
+                    android:textSize="@dimen/_16ssp"
+                    android:textStyle="bold" />
+            </ScrollView>
+
+            <TextView
+                android:id="@+id/TxtWordEnglish"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textColorHint="@color/autotext"
+                android:textSize="@dimen/_20ssp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

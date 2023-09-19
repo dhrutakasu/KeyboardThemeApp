@@ -16,7 +16,6 @@ import com.theme.keyboardthemeapp.R;
 import com.theme.keyboardthemeapp.UI.Adapters.ASCIIArtAdapter;
 import com.theme.keyboardthemeapp.UI.Adapters.DecorativeAdapter;
 import com.theme.keyboardthemeapp.UI.Adapters.FancyAdapter;
-import com.theme.keyboardthemeapp.UI.Adapters.FancyTextPagerAdapter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -95,10 +94,10 @@ public class FancyTextFragment extends Fragment implements View.OnClickListener 
                     EdtFancyStr = charSequence.toString();
                 }
                 if (Fancy_Str.equalsIgnoreCase("Fancy")) {
-                    fancyAdapter = new FancyAdapter(getContext(), Constants.nameStyle, EdtFancyStr);
+                    fancyAdapter = new FancyAdapter(getContext(), Constants.FancyNameStyle, EdtFancyStr);
                     RvFancyTxt.setAdapter(fancyAdapter);
                 } else if (Fancy_Str.equalsIgnoreCase("Decorative")) {
-                    decorativeAdapter = new DecorativeAdapter(getContext(), Constants.decorative, EdtFancyStr);
+                    decorativeAdapter = new DecorativeAdapter(getContext(), Constants.FancyDecorative, EdtFancyStr);
                     RvFancyTxt.setAdapter(decorativeAdapter);
                 } else if (Fancy_Str.equalsIgnoreCase("ASCII art")) {
                     asciiArtAdapter = new ASCIIArtAdapter(getContext(), ASCIIArray, EdtFancyStr);
@@ -113,10 +112,10 @@ public class FancyTextFragment extends Fragment implements View.OnClickListener 
         });
 
         if (Fancy_Str.equalsIgnoreCase("Fancy")) {
-            fancyAdapter = new FancyAdapter(getContext(), Constants.nameStyle, EdtFancyStr);
+            fancyAdapter = new FancyAdapter(getContext(), Constants.FancyNameStyle, EdtFancyStr);
             RvFancyTxt.setAdapter(fancyAdapter);
         } else if (Fancy_Str.equalsIgnoreCase("Decorative")) {
-            decorativeAdapter = new DecorativeAdapter(getContext(), Constants.decorative, EdtFancyStr);
+            decorativeAdapter = new DecorativeAdapter(getContext(), Constants.FancyDecorative, EdtFancyStr);
             RvFancyTxt.setAdapter(decorativeAdapter);
         } else if (Fancy_Str.equalsIgnoreCase("ASCII art")) {
             LayoutProgress.setVisibility(View.VISIBLE);
@@ -157,10 +156,10 @@ public class FancyTextFragment extends Fragment implements View.OnClickListener 
         EdtFancyTxt.setText("");
         EdtFancyStr = "Font Style";
         if (Fancy_Str.equalsIgnoreCase("Fancy")) {
-            fancyAdapter = new FancyAdapter(getContext(), Constants.nameStyle, EdtFancyStr);
+            fancyAdapter = new FancyAdapter(getContext(), Constants.FancyNameStyle, EdtFancyStr);
             RvFancyTxt.setAdapter(fancyAdapter);
         } else if (Fancy_Str.equalsIgnoreCase("Decorative")) {
-            decorativeAdapter = new DecorativeAdapter(getContext(), Constants.decorative, EdtFancyStr);
+            decorativeAdapter = new DecorativeAdapter(getContext(), Constants.FancyDecorative, EdtFancyStr);
             RvFancyTxt.setAdapter(decorativeAdapter);
         } else if (Fancy_Str.equalsIgnoreCase("ASCII art")) {
             asciiArtAdapter = new ASCIIArtAdapter(getContext(), ASCIIArray, EdtFancyStr);
@@ -172,7 +171,7 @@ public class FancyTextFragment extends Fragment implements View.OnClickListener 
         AssetManager assetManager = getActivity().getAssets();
 
         try {
-            InputStream inputStream = assetManager.open("ascii.txt");
+            InputStream inputStream = assetManager.open("FancyASCII.txt");
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             StringBuilder content = new StringBuilder();
             String line;

@@ -119,7 +119,7 @@ public class ViewJokeQuoteActivity extends AppCompatActivity implements View.OnC
     private void GotoShare() {
         Intent intentQuoteShare = new Intent(Intent.ACTION_SEND);
         intentQuoteShare.setType("text/plain");
-        intentQuoteShare.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
+        intentQuoteShare.putExtra(Intent.EXTRA_SUBJECT, "Share with");
         intentQuoteShare.putExtra(Intent.EXTRA_TEXT, statusItemArrayList.get(QuotePos).getStatus());
         startActivity(intentQuoteShare);
     }
