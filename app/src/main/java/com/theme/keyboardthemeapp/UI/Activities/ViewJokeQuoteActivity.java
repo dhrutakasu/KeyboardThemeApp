@@ -111,7 +111,6 @@ public class ViewJokeQuoteActivity extends AppCompatActivity implements View.OnC
             intent.putExtra(Intent.EXTRA_TEXT, statusTxt);
             startActivity(Intent.createChooser(intent, "Share with"));
         } catch (Exception e) {
-            Log.e("Error on sharing", e + " ");
             Toast.makeText(context, "App not Installed", Toast.LENGTH_SHORT).show();
         }
     }

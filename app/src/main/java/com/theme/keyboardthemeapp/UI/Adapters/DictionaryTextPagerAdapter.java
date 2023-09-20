@@ -2,6 +2,7 @@ package com.theme.keyboardthemeapp.UI.Adapters;
 
 import android.content.Context;
 
+import com.theme.keyboardthemeapp.UI.Activities.DictionaryActivity;
 import com.theme.keyboardthemeapp.UI.Fragment.DictionaryTextFragment;
 
 import java.util.ArrayList;
@@ -15,9 +16,14 @@ import androidx.fragment.app.FragmentPagerAdapter;
 public class DictionaryTextPagerAdapter extends FragmentPagerAdapter {
     private final ArrayList<String> items;
 
-    public DictionaryTextPagerAdapter(Context context, FragmentManager supportFragmentManager, ArrayList<String> strings) {
+    public DictionaryTextPagerAdapter(FragmentManager supportFragmentManager, ArrayList<String> strings) {
         super(supportFragmentManager);
         this.items = strings;
+    }
+
+    @Override
+    public int getItemPosition(@NonNull Object object) {
+        return POSITION_NONE;
     }
 
     @Nullable

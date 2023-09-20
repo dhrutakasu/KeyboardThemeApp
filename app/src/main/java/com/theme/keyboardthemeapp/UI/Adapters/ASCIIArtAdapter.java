@@ -42,7 +42,6 @@ public class ASCIIArtAdapter extends RecyclerView.Adapter<ASCIIArtAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        System.out.println("--- - - - &&&& decorative-- -::: " + nameStyle.get(position).replace("abcdef", text));
         holder.TxtASCIIQuote.setTextColor(context.getResources().getColor(R.color.black));
         holder.TxtASCIIQuote.setGravity(Gravity.CENTER);
         holder.TxtASCIIQuote.setPadding((int) context.getResources().getDimension(com.intuit.sdp.R.dimen._8sdp), (int) context.getResources().getDimension(com.intuit.sdp.R.dimen._8sdp), (int) context.getResources().getDimension(com.intuit.sdp.R.dimen._8sdp), (int) context.getResources().getDimension(com.intuit.sdp.R.dimen._8sdp));
@@ -97,7 +96,6 @@ public class ASCIIArtAdapter extends RecyclerView.Adapter<ASCIIArtAdapter.MyView
             intent.putExtra(Intent.EXTRA_TEXT, statusTxt);
             context.startActivity(Intent.createChooser(intent, "Share with"));
         } catch (Exception e) {
-            Log.e("Error on sharing", e + " ");
             Toast.makeText(this.context, "App not Installed", Toast.LENGTH_SHORT).show();
         }
     }

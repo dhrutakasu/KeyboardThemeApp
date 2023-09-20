@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.Fragment.FontSettingFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConsKeyTextColor"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/IvKeyTextColor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/icon_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.12" />
+
+        <TextView
+            android:id="@+id/TxtKeyTextColor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:fontFamily="@font/avenirltstdmedium"
+            android:text="@string/key_text_color"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ViewTextColor"
+            app:layout_constraintStart_toEndOf="@id/IvKeyTextColor"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/ViewTextColor"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/_14sdp"
+            android:background="#fcfcfc"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/IvKeyTextPin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.1" />
+
+        <ImageView
+            android:id="@+id/IvKeyTextPin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/changepressxml"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConsKeyPreviewColor"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ConsKeyTextColor">
+
+        <ImageView
+            android:id="@+id/IvKeyPreviewColor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/icon_11"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.12" />
+
+        <TextView
+            android:id="@+id/TxtKeyPreviewColor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:fontFamily="@font/avenirltstdmedium"
+            android:text="@string/preview_text_color"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ViewPreviewColor"
+            app:layout_constraintStart_toEndOf="@id/IvKeyPreviewColor"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/ViewPreviewColor"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/_14sdp"
+            android:background="#fcfcfc"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/IvPreviewPin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.1" />
+
+        <ImageView
+            android:id="@+id/IvPreviewPin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/changepressxml"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

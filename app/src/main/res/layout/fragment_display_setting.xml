@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".UI.Fragment.DisplaySettingFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConsPHeight"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/IvPHeight"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/icon_08"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.12" />
+
+        <TextView
+            android:id="@+id/TxtPHeight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:fontFamily="@font/avenirltstdmedium"
+            android:text="@string/portrait_key_height"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/SeekPHeight"
+            app:layout_constraintStart_toEndOf="@id/IvPHeight"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <SeekBar
+            android:id="@+id/SeekPHeight"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.45"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:indeterminate="false"
+            android:max="100"
+            android:maxHeight="2dp"
+            android:minHeight="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:progressDrawable="@drawable/seek_progress"
+            android:thumb="@drawable/seekbar_point"
+            android:thumbOffset="1dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConsLHeight"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ConsPHeight">
+
+        <ImageView
+            android:id="@+id/IvLHeight"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/icon_09"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.12" />
+
+        <TextView
+            android:id="@+id/TxtLHeight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:fontFamily="@font/avenirltstdmedium"
+            android:text="@string/landscape_key_height"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/SeekLHeight"
+            app:layout_constraintStart_toEndOf="@id/IvLHeight"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <SeekBar
+            android:id="@+id/SeekLHeight"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.45"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:indeterminate="false"
+            android:max="100"
+            android:maxHeight="2dp"
+            android:minHeight="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:progressDrawable="@drawable/seek_progress"
+            android:thumb="@drawable/seekbar_point"
+            android:thumbOffset="1dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConsSuggestionText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ConsLHeight">
+
+        <ImageView
+            android:id="@+id/IvSuggestionText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/icon_12"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.12" />
+
+        <TextView
+            android:id="@+id/TxtSuggestionText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:fontFamily="@font/avenirltstdmedium"
+            android:text="@string/suggestion_text_size"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/SeekSuggestionText"
+            app:layout_constraintStart_toEndOf="@id/IvSuggestionText"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <SeekBar
+            android:id="@+id/SeekSuggestionText"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.45"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:indeterminate="false"
+            android:max="100"
+            android:maxHeight="2dp"
+            android:minHeight="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:progressDrawable="@drawable/seek_progress"
+            android:thumb="@drawable/seekbar_point"
+            android:thumbOffset="1dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

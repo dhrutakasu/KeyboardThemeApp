@@ -128,48 +128,6 @@ public class TranslatorActivity extends AppCompatActivity implements View.OnClic
         if (!Constants.isNetworkAvailable(context)) {
             Toast.makeText(getApplicationContext(), "Please Connect Internet...!", Toast.LENGTH_LONG).show();
         }
-       /* TranslatorOptions options =
-                new TranslatorOptions.Builder()
-                        .setSourceLanguage(TranslateLanguage.ENGLISH)
-                        .setTargetLanguage(TranslateLanguage.HINDI)
-                        .build();
-        englishHindiTranslator =
-                Translation.getClient(options);
-        englishHindiTranslator.downloadModelIfNeeded().addOnSuccessListener(
-                        new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void v) {
-                                System.out.println("Failed to translate DDD sss eee: ");
-                                TranslatorOptions options =
-                                        new TranslatorOptions.Builder()
-                                                .setSourceLanguage(TranslateLanguage.HINDI)
-                                                .setTargetLanguage(TranslateLanguage.ENGLISH)
-                                                .build();
-                                englishHindiTranslator =
-                                        Translation.getClient(options);
-                                englishHindiTranslator.downloadModelIfNeeded().addOnSuccessListener(
-                                                new OnSuccessListener<Void>() {
-                                                    @Override
-                                                    public void onSuccess(Void v) {
-                                                        System.out.println("Failed to translate DDD sss hhhh: ");
-                                                    }
-                                                })
-                                        .addOnFailureListener(
-                                                new OnFailureListener() {
-                                                    @Override
-                                                    public void onFailure(@NonNull Exception e) {
-                                                        System.out.println("Failed to translate DDD hhh: " + e.getMessage());
-                                                    }
-                                                });
-                            }
-                        })
-                .addOnFailureListener(
-                        new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                System.out.println("Failed to translate DDD eee: " + e.getMessage());
-                            }
-                        });*/
     }
 
     @Override
@@ -288,14 +246,12 @@ public class TranslatorActivity extends AppCompatActivity implements View.OnClic
                                                     LayoutProgress.setVisibility(View.GONE);
                                                 }).addOnFailureListener(
                                                 e -> {
-                                                    System.out.println("Failed to translate eee: " + e.getMessage());
                                                     EdtOutputValue.setText(e.getMessage());
                                                     LayoutProgress.setVisibility(View.GONE);
                                                 });
                                     }
                                 });
                             } catch (Exception e) {
-                                System.out.println("Failed to translate 122: " + e.getMessage());
                                 LayoutProgress.setVisibility(View.GONE);
                                 Toast.makeText(context, "" + e, Toast.LENGTH_LONG).show();
                                 EdtOutputValue.setText("Something Went Wrong.. Plaese Try again!!");
@@ -323,14 +279,12 @@ public class TranslatorActivity extends AppCompatActivity implements View.OnClic
                                                 LayoutProgress.setVisibility(View.GONE);
                                             }).addOnFailureListener(
                                             e -> {
-                                                System.out.println("Failed to translate hhhh: " + e.getMessage());
                                                 EdtOutputValue.setText(e.getMessage());
                                                 LayoutProgress.setVisibility(View.GONE);
                                             });
                                 }
                             });
                         } catch (Exception e2) {
-                            System.out.println("Failed to translate 22: " + e2.getMessage());
                             Toast.makeText(context, "" + e2, Toast.LENGTH_LONG).show();
                             EdtOutputValue.setText("Something Went Wrong.. Plaese Try again!!");
                             LayoutProgress.setVisibility(View.GONE);

@@ -95,7 +95,6 @@ public class ArtAdapter extends RecyclerView.Adapter<ArtAdapter.MyViewHolder> {
             intent.putExtra(Intent.EXTRA_TEXT, statusTxt);
             context.startActivity(Intent.createChooser(intent, "Share with"));
         } catch (Exception e) {
-            Log.e("Error on sharing", e + " ");
             Toast.makeText(this.context, "App not Installed", Toast.LENGTH_SHORT).show();
         }
     }

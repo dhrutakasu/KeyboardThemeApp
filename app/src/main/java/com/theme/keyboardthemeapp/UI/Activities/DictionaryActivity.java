@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
+import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.R;
 import com.theme.keyboardthemeapp.UI.Adapters.DictionaryTextPagerAdapter;
 
@@ -55,7 +56,8 @@ public class DictionaryActivity extends AppCompatActivity implements View.OnClic
         for (int i = 0; i < strings.size(); i++) {
             TabDictionaryTxt.addTab(TabDictionaryTxt.newTab().setText(strings.get(i).toString()));
         }
-        dictionaryTextPagerAdapter = new DictionaryTextPagerAdapter(context, getSupportFragmentManager(), strings);
+        Constants.PagerDictionary = PagerDictionaryTxt;
+        dictionaryTextPagerAdapter = new DictionaryTextPagerAdapter(getSupportFragmentManager(), strings);
         PagerDictionaryTxt.setAdapter(dictionaryTextPagerAdapter);
         TabDictionaryTxt.setupWithViewPager(PagerDictionaryTxt);
     }

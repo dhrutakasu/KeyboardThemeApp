@@ -100,7 +100,6 @@ public class TextArtFragment extends Fragment {
                     strings = new String[jSONArray.length()];
                     for (int i = 0; i < jSONArray.length(); i++) {
                         JSONObject jSONObject = jSONArray.getJSONObject(i);
-                        Log.d("Details-->", jSONObject.getString("artid"));
                         strings[i] = jSONObject.getString("artid");
                     }
                 } catch (JSONException e) {
@@ -113,7 +112,6 @@ public class TextArtFragment extends Fragment {
                     strings = new String[jSONArray.length()];
                     for (int i = 0; i < jSONArray.length(); i++) {
                         JSONObject jSONObject = jSONArray.getJSONObject(i);
-                        Log.d("Details-->", jSONObject.getString("artid"));
                         strings[i] = jSONObject.getString("artid");
                     }
                 } catch (JSONException e) {
@@ -126,7 +124,6 @@ public class TextArtFragment extends Fragment {
                     strings = new String[jSONArray.length()];
                     for (int i = 0; i < jSONArray.length(); i++) {
                         JSONObject jSONObject = jSONArray.getJSONObject(i);
-                        Log.d("Details-->", jSONObject.getString("artid"));
                         strings[i] = jSONObject.getString("artid");
                     }
                 } catch (JSONException e) {
@@ -139,7 +136,6 @@ public class TextArtFragment extends Fragment {
                     strings = new String[jSONArray.length()];
                     for (int i = 0; i < jSONArray.length(); i++) {
                         JSONObject jSONObject = jSONArray.getJSONObject(i);
-                        Log.d("Details-->", jSONObject.getString("artid"));
                         strings[i] = jSONObject.getString("artid");
                     }
                 } catch (JSONException e) {
@@ -152,7 +148,6 @@ public class TextArtFragment extends Fragment {
                     strings = new String[jSONArray.length()];
                     for (int i = 0; i < jSONArray.length(); i++) {
                         JSONObject jSONObject = jSONArray.getJSONObject(i);
-                        Log.d("Details-->", jSONObject.getString("artid"));
                         strings[i] = jSONObject.getString("artid");
                     }
                 } catch (JSONException e) {
@@ -252,45 +247,5 @@ public class TextArtFragment extends Fragment {
                 break;
         }
         return strings;
-    }
-
-    private void getAssests() {
-        // Assuming you're inside an Activity or a Context-aware class
-        AssetManager assetManager = getActivity().getAssets();
-
-        try {
-            // Replace "your_file.txt" with the actual filename of your text file
-            InputStream inputStream = assetManager.open("ArtEmojiart1.json");
-
-            // Read the content of the file into a string
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-            StringBuilder content = new StringBuilder();
-            String line;
-
-            while ((line = reader.readLine()) != null) {
-
-                content.append(line);
-                content.append('\n');
-                System.out.println("--- -- - -- - linnneee  :: " + content.toString());
-            }
-
-            // Now, 'content' contains the content of your text file
-            String fileContent = content.toString();
-
-            System.out.println("--- -- - -- - fileContent  :: " + fileContent);
-            // Split the fileContent using "----" as the delimiter
-            String[] splitArray = fileContent.replace("----abcdef-----", "----abcdef").split("----");
-
-            // Convert the array to an ArrayList if needed
-//            ASCIIArray = new ArrayList<>(Arrays.asList(splitArray));
-//            ASCIIArray.remove(0);
-//            System.out.println("--- -- - -- - splitArrayList  :: " + Arrays.toString(ASCIIArray.toArray()));
-//            System.out.println("--- -- - -- - splitArrayList  :: " + Arrays.toString(ASCIIArray.toArray()));
-            inputStream.close();
-        } catch (IOException e) {
-            // Handle exceptions, e.g., file not found or IO errors
-            System.out.println("----- exxexex ::: " + e.getMessage());
-            e.printStackTrace();
-        }
     }
 }

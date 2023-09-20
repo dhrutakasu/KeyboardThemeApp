@@ -6,6 +6,32 @@ import android.content.SharedPreferences;
 public class MySharePref {
     public static final String ENABLE_KEYBOARD = "ENABLE_KEYBOARD";
     public static final String ACTIVATE_KEYBOARD = "ACTIVATE_KEYBOARD";
+    public static final String AUTO_CAPITALIZE = "AUTO_CAPITALIZE";
+    public static final String SUGGESTION = "SUGGESTION";
+    public static final String POPUP = "POPUP";
+    public static final String TYPING = "TYPING";
+    public static final String PORTRAIT_HEIGHT = "PORTRAIT_HEIGHT";
+    public static final String LANDSCAPE_HEIGHT = "LANDSCAPE_HEIGHT";
+    public static final String SUGGESTION_TEXT = "SUGGESTION_TEXT";
+    public static final String TEXT_COLOR = "TEXT_COLOR";
+    public static final String PERVIEW_COLOR = "PERVIEW_COLOR";
+    public static final String SOUND_GENERAL = "SOUND_GENERAL";
+    public static final String VIBRATION = "VIBRATION";
+    public static final String PERVIEW_GENERAL = "PERVIEW_GENERAL";
+    public static final String KEYBOARD_POTRAIT_HEIGHT = "KEYBOARD_POTRAIT_HEIGHT";
+    public static final String KEYBOARD_LANDSCAP_HEIGHT = "KEYBOARD_LANDSCAP_HEIGHT";
+    public static final String PROGRESS_DEFAULT = "PROGRESS_DEFAULT";
+    public static final String PROGRESS_DEFAULT_LANDSCAP = "PROGRESS_DEFAULT_LANDSCAP";
+    public static final String SUGGESTION_TEXT_SIZE = "SUGGESTION_TEXT_SIZE";
+    public static final String SOUND_PROGRESS = "SOUND_PROGRESS";
+    public static final String SOUND_ENABLE= "SOUND_ENABLE";
+    public static final String COPY_SERVICE = "COPY_SERVICE";
+    public static final String ISTEXT_COLOR = "ISTEXT_COLOR";
+    public static final String  ISTEXT_COLOR_CODE = "ISTEXT_COLOR_CODE";
+    public static final String  ISPREVIEW_COLOR_CODE = "ISPREVIEW_COLOR_CODE";
+    public static final String IS_COLOR_CODE = "IS_COLOR_CODE";
+
+
     private SharedPreferences sharedPreferences;
     static final String MySharePref = "MySharePref";
 

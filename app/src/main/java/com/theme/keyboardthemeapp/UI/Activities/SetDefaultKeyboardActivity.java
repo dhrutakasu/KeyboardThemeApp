@@ -114,7 +114,7 @@ public class SetDefaultKeyboardActivity extends AppCompatActivity implements Vie
             attributes.copyFrom(exitDialogWindow.getAttributes());
             attributes.width = WindowManager.LayoutParams.MATCH_PARENT;
             attributes.height = WindowManager.LayoutParams.WRAP_CONTENT;
-            attributes.gravity = Gravity.BOTTOM;
+            attributes.gravity = Gravity.CENTER;
             exitDialogWindow.setAttributes(attributes);
         } else {
             Intent enableIntent = new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS);
@@ -151,7 +151,7 @@ public class SetDefaultKeyboardActivity extends AppCompatActivity implements Vie
             attributes.copyFrom(exitDialogWindow.getAttributes());
             attributes.width = WindowManager.LayoutParams.MATCH_PARENT;
             attributes.height = WindowManager.LayoutParams.WRAP_CONTENT;
-            attributes.gravity = Gravity.BOTTOM;
+            attributes.gravity = Gravity.CENTER;
             exitDialogWindow.setAttributes(attributes);
         } else {
             imeManager.showInputMethodPicker();

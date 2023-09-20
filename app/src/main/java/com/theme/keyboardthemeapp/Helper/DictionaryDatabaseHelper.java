@@ -114,37 +114,30 @@ public class DictionaryDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor;
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         try {
-                cursor = sqLiteDatabase.query(RECENT_TABLE_NAME, new String[]{RECENT_ID, RECENT_UPDATE_TIME}, RECENT_ID+" = ?", new String[]{recentWord}, null, null, null);
+            cursor = sqLiteDatabase.query(RECENT_TABLE_NAME, new String[]{RECENT_ID, RECENT_UPDATE_TIME}, RECENT_ID + " = ?", new String[]{recentWord}, null, null, null);
         } catch (Exception unused) {
-            Log.e("Error", "Null Pointer Exception");
             cursor = null;
         }
         cursor.moveToFirst();
         if (cursor.getCount() > 0) {
-            UpdateRecent(Integer.parseInt(toString()));
+            UpdateRecent(toString());
         } else {
-            InsertRecent(Integer.parseInt(recentWord));
+            InsertRecent(recentWord);
         }
     }
 
-    public void UpdateRecent(int id) {
+    public void UpdateRecent(String id) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         ContentValues values = new ContentValues();
         values.put(RECENT_UPDATE_TIME, getUpdateDateTime());
-        sqLiteDatabase.update(RECENT_TABLE_NAME, values, RECENT_ID+" = ?", new String[]{String.valueOf(id)});
-        Log.d("dt", getUpdateDateTime());
+        sqLiteDatabase.update(RECENT_TABLE_NAME, values, RECENT_ID + " = ?", new String[]{id});
     }
 
-    public void InsertRecent(int id) {
+    public void InsertRecent(String id) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         ContentValues values = new ContentValues();
-        values.put(RECENT_ID, Integer.valueOf(id));
+        values.put(RECENT_ID, id);
         values.put(RECENT_UPDATE_TIME, getUpdateDateTime());
-        if (sqLiteDatabase.insert(RECENT_TABLE_NAME, null, values) != -1) {
-            Log.d(getUpdateDateTime(), "record is inserted");
-        } else {
-            Log.d(getUpdateDateTime(), "record is Not inserted");
-        }
     }
 
     private String getUpdateDateTime() {
@@ -154,7 +147,7 @@ public class DictionaryDatabaseHelper extends SQLiteOpenHelper {
     @SuppressLint("Range")
     public int getWordLastId() {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        Cursor rawQuery = sqLiteDatabase.rawQuery("SELECT  * FROM "+ENGLISH_TO_HINDI_TABLE_NAME, null);
+        Cursor rawQuery = sqLiteDatabase.rawQuery("SELECT  * FROM " + ENGLISH_TO_HINDI_TABLE_NAME, null);
         if (rawQuery.moveToLast()) {
             return rawQuery.getInt(rawQuery.getColumnIndex(ENGLISH_TO_HINDI_ID));
         }
@@ -168,7 +161,7 @@ public class DictionaryDatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(ENGLISH_TO_HINDI_ENGLISH, dictionaryModel.getEnglishWord());
         contentValues.put(ENGLISH_TO_HINDI_HINDI, dictionaryModel.getHindiWord());
         contentValues.put(ENGLISH_TO_HINDI_FAVORITE, Integer.valueOf(isFavorite ? 1 : 0));
-        sqLiteDatabase.insert(ENGLISH_TO_HINDI_TABLE_NAME, (String) null, contentValues);
+        sqLiteDatabase.insert(ENGLISH_TO_HINDI_TABLE_NAME, null, contentValues);
     }
 
     public void UpdateDictionaryWord(DictionaryModel dictionaryModel) {
@@ -178,25 +171,60 @@ public class DictionaryDatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(ENGLISH_TO_HINDI_ENGLISH, dictionaryModel.getEnglishWord());
         contentValues.put(ENGLISH_TO_HINDI_HINDI, dictionaryModel.getHindiWord());
         contentValues.put(ENGLISH_TO_HINDI_FAVORITE, Integer.valueOf(isFavorite ? 1 : 0));
-        sqLiteDatabase.update(ENGLISH_TO_HINDI_TABLE_NAME, contentValues, ENGLISH_TO_HINDI_ID+" = ? ", new String[]{String.valueOf(dictionaryModel.getWId())});
+        sqLiteDatabase.update(ENGLISH_TO_HINDI_TABLE_NAME, contentValues, ENGLISH_TO_HINDI_ID + " = ? ", new String[]{String.valueOf(dictionaryModel.getWId())});
     }
 
     public void DeleteDictionaryWord(int id) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        sqLiteDatabase.delete(ENGLISH_TO_HINDI_TABLE_NAME, ENGLISH_TO_HINDI_ID+" = ? ", new String[]{String.valueOf(id)});
+        sqLiteDatabase.delete(ENGLISH_TO_HINDI_TABLE_NAME, ENGLISH_TO_HINDI_ID + " = ? ", new String[]{String.valueOf(id)});
     }
 
     public void AddFavorite(int id) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(ENGLISH_TO_HINDI_FAVORITE, 1);
-        sqLiteDatabase.update(ENGLISH_TO_HINDI_TABLE_NAME, contentValues, ENGLISH_TO_HINDI_ID+" = ?", new String[]{String.valueOf(id)});
+        sqLiteDatabase.update(ENGLISH_TO_HINDI_TABLE_NAME, contentValues, ENGLISH_TO_HINDI_ID + " = ?", new String[]{String.valueOf(id)});
     }
 
     public void RemoveFavorite(int id) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(ENGLISH_TO_HINDI_FAVORITE, 0);
-        sqLiteDatabase.update(ENGLISH_TO_HINDI_TABLE_NAME, contentValues, ENGLISH_TO_HINDI_ID+" = ?", new String[]{String.valueOf(id)});
+        sqLiteDatabase.update(ENGLISH_TO_HINDI_TABLE_NAME, contentValues, ENGLISH_TO_HINDI_ID + " = ?", new String[]{String.valueOf(id)});
+    }
+
+    @SuppressLint("Range")
+    public ArrayList<DictionaryModel> getDictionaryFavorite() {
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        Cursor query = sqLiteDatabase.query(ENGLISH_TO_HINDI_TABLE_NAME, new String[]{ENGLISH_TO_HINDI_ID, ENGLISH_TO_HINDI_ENGLISH, ENGLISH_TO_HINDI_HINDI}, ENGLISH_TO_HINDI_FAVORITE + " = ?", new String[]{String.valueOf(1)}, null, null, ENGLISH_TO_HINDI_ENGLISH, String.valueOf(5000));
+        ArrayList arrayList = new ArrayList();
+        while (query.moveToNext()) {
+            arrayList.add(new DictionaryModel(query.getString(query.getColumnIndex(ENGLISH_TO_HINDI_ENGLISH)), true, query.getString(query.getColumnIndex(ENGLISH_TO_HINDI_HINDI)), query.getInt(query.getColumnIndex(ENGLISH_TO_HINDI_ID))));
+        }
+        return arrayList;
+    }
+
+    public void deleteFavourite(int wId) {
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ENGLISH_TO_HINDI_FAVORITE, 0);
+        sqLiteDatabase.update(ENGLISH_TO_HINDI_TABLE_NAME, contentValues, ENGLISH_TO_HINDI_ID + " = ?", new String[]{String.valueOf(wId)});
+    }
+
+    @SuppressLint("Range")
+    public ArrayList<DictionaryModel> getDictionaryRecent() {
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        String str = "SELECT * FROM " + ENGLISH_TO_HINDI_TABLE_NAME + " t1 INNER JOIN " + RECENT_TABLE_NAME + " t2 ON t1." + ENGLISH_TO_HINDI_ID + "=t2." + RECENT_ID + " WHERE t2." + RECENT_UPDATE_TIME + "<=\"" + getUpdateDateTime() + "\" ORDER BY t2." + RECENT_UPDATE_TIME + " DESC LIMIT 25";
+        Cursor rawQuery = sqLiteDatabase.rawQuery(str, null);
+        ArrayList arrayList = new ArrayList();
+        while (rawQuery.moveToNext()) {
+            arrayList.add(new DictionaryModel(rawQuery.getString(rawQuery.getColumnIndex(ENGLISH_TO_HINDI_ENGLISH)), true, rawQuery.getString(rawQuery.getColumnIndex(ENGLISH_TO_HINDI_HINDI)), rawQuery.getInt(rawQuery.getColumnIndex(ENGLISH_TO_HINDI_ID))));
+        }
+        return arrayList;
+    }
+
+    public void deleteDictionaryRecent(int i) {
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        sqLiteDatabase.delete(RECENT_TABLE_NAME, RECENT_ID + " = ?", new String[]{String.valueOf(i)});
     }
 }

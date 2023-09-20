@@ -73,10 +73,8 @@ public class JokesActivity extends AppCompatActivity implements View.OnClickList
                 public void onResponse(Call<JokeModel> call, Response<JokeModel> response) {
                     if (response.isSuccessful()) {
                         LayoutProgress.setVisibility(View.GONE);
-                        System.out.println("---- --- -- JokeBody : " + response.body().toString());
                         Constants.statusItems = new ArrayList<>();
                         Constants.statusItems = (ArrayList<StatusItem>) response.body().getStatus();
-                        System.out.println("---- --- -- Size : " + Constants.statusItems.size());
                         jokesAdapter = new JokesAdapter(context, Constants.statusItems, pos -> {
                             Intent intent = new Intent(context, ViewJokeQuoteActivity.class);
                             intent.putExtra(Constants.QUOTE_POS, pos);
@@ -90,7 +88,6 @@ public class JokesActivity extends AppCompatActivity implements View.OnClickList
                 @Override
                 public void onFailure(Call<JokeModel> call, Throwable t) {
                     LayoutProgress.setVisibility(View.GONE);
-                    Log.e("error", "onFailure: ", t);
                 }
             });
         } else {

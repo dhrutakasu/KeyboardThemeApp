@@ -87,7 +87,7 @@ public class FancyAdapter extends RecyclerView.Adapter<FancyAdapter.MyViewHolder
                 attributes.copyFrom(DialogWindow.getAttributes());
                 attributes.width = WindowManager.LayoutParams.MATCH_PARENT;
                 attributes.height = WindowManager.LayoutParams.WRAP_CONTENT;
-                attributes.gravity = Gravity.BOTTOM;
+                attributes.gravity = Gravity.CENTER;
                 DialogWindow.setAttributes(attributes);
             }
         });
@@ -102,8 +102,7 @@ public class FancyAdapter extends RecyclerView.Adapter<FancyAdapter.MyViewHolder
             intent.putExtra(Intent.EXTRA_TEXT, statusTxt);
             context.startActivity(Intent.createChooser(intent, "Share with"));
         } catch (Exception e) {
-            Log.e("Error on sharing", e + " ");
-            Toast.makeText(this.context, "App not Installed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "App not Installed", Toast.LENGTH_SHORT).show();
         }
     }
 

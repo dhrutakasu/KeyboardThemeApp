@@ -9,6 +9,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.provider.Settings;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -22,6 +23,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.viewpager.widget.ViewPager;
 
 public class Constants {
     public static final int OVERLAY_REQUEST_CODE = 101;
@@ -47,6 +49,27 @@ public class Constants {
     public static boolean EngBool;
     public static String EngWord;
     public static String HindiWord;
+    public static ViewPager PagerDictionary;
+    public static boolean CheckLan = true;
+    public static boolean IsPreview = true;
+    public static boolean IsVibrate = false;
+    public static boolean IsSuggest = true;
+    public static boolean IsCaps = true;
+    public static int KeyboardPHeight = -1;
+    public static int KeyboardLHeight = -1;
+    public static int ProgressSound = 10;
+    public static int ProgressPotraitDefault = 0;
+    public static int ProgressLandscapDefault = 0;
+    public static int SuggestionText = 16;
+    public static boolean IsSound = true;
+    public static float SoundVolume = 0.3f;
+    public static boolean IsCopyService = true;
+    public static int SelectTheme = 0;
+    public static String[] ThemePreviewTextColor = {"#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"};
+    public static String[] ThemeTextColor = {"#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"};
+    public static boolean IsTextColor =false;
+    public static int TextColorCode =-1;
+    public static boolean IsColorCodeChange = false;
 
     static {
         String[][] strArr = new String[24][];
@@ -253,5 +276,13 @@ public class Constants {
         if (currentFocus != null) {
             ((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(currentFocus.getWindowToken(), 2);
         }
+    }
+
+    public static int DpToPx(Context context, int i) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, (float) i, context.getResources().getDisplayMetrics());
+    }
+
+    public static int pxFromDp(Context context, float f) {
+        return (int) (f * context.getResources().getDisplayMetrics().density);
     }
 }

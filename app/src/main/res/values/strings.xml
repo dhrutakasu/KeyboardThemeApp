@@ -50,4 +50,19 @@
     <string name="my_translated_words">My Translated Words</string>
     <string name="my_saved_data">My Saved Data</string>
     <string name="font_style">Font Style</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="auto_capitalization">Auto-capitalization</string>
+    <string name="capitalize_the_first_word_of_10each_sentence">Capitalize the first word of each sentence</string>
+    <string name="popup_on_keypress">Popup on keypress</string>
+    <string name="vibrate_on_keypress">Vibrate on keypress</string>
+    <string name="suggestion_on_keypress">Suggestion on keypress</string>
+    <string name="typing_hindi_or_not">Typing hindi or Not</string>
+    <string name="portrait_key_height">Portrait Key Height</string>
+    <string name="landscape_key_height">Landscape Key Height</string>
+    <string name="suggestion_text_size">Suggestion Text Size</string>
+    <string name="key_text_color">Key text Color</string>
+    <string name="preview_text_color">Preview Text Color</string>
+    <string name="sound_on_keypress">Sound on keypress</string>
+    <string name="copy_to_translate">Copy to Translate</string>
 </resources>

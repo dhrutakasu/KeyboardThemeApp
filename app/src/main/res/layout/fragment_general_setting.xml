@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.Fragment.GeneralSettingFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConsAutoCapitalization"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/IvAutoCapitalize"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/icon_02"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.12" />
+
+        <TextView
+            android:id="@+id/TxtAutoCapitalize"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:fontFamily="@font/avenirltstdmedium"
+            android:text="@string/auto_capitalization"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toTopOf="@id/TxtSubAutoCapitalize"
+            app:layout_constraintEnd_toStartOf="@id/CheckAutoCapitalize"
+            app:layout_constraintStart_toEndOf="@id/IvAutoCapitalize"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/TxtSubAutoCapitalize"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TxtAutoCapitalize"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:fontFamily="@font/avenirltstdmedium"
+            android:singleLine="true"
+            android:text="@string/capitalize_the_first_word_of_10each_sentence"
+            android:textColor="@color/purple_200"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/CheckAutoCapitalize"
+            app:layout_constraintStart_toEndOf="@id/IvAutoCapitalize"
+            app:layout_constraintTop_toBottomOf="@id/TxtAutoCapitalize" />
+
+        <CheckBox
+            android:id="@+id/CheckAutoCapitalize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/checkedpressxml"
+            android:layout_marginEnd="@dimen/_5sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConsPopup"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ConsAutoCapitalization">
+
+        <ImageView
+            android:id="@+id/IvPopup"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/icon_03"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.12" />
+
+        <TextView
+            android:id="@+id/TxtPopup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:fontFamily="@font/avenirltstdmedium"
+            android:text="@string/popup_on_keypress"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/CheckPopup"
+            app:layout_constraintStart_toEndOf="@id/IvPopup"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/CheckPopup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/checkedpressxml"
+            android:layout_marginEnd="@dimen/_5sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConsVibrate"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ConsPopup">
+
+        <ImageView
+            android:id="@+id/IvVibrate"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/icon_04"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.12" />
+
+        <TextView
+            android:id="@+id/TxtVibrate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:fontFamily="@font/avenirltstdmedium"
+            android:text="@string/vibrate_on_keypress"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/CheckVibrate"
+            app:layout_constraintStart_toEndOf="@id/IvVibrate"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/CheckVibrate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/checkedpressxml"
+            android:layout_marginEnd="@dimen/_5sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConsSuggestion"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ConsVibrate">
+
+        <ImageView
+            android:id="@+id/IvSuggestion"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/icon_06"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.12" />
+
+        <TextView
+            android:id="@+id/TxtSuggestion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:fontFamily="@font/avenirltstdmedium"
+            android:text="@string/suggestion_on_keypress"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/CheckSuggestion"
+            app:layout_constraintStart_toEndOf="@id/IvSuggestion"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/CheckSuggestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/checkedpressxml"
+            android:layout_marginEnd="@dimen/_5sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConsTyping"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ConsSuggestion">
+
+        <ImageView
+            android:id="@+id/IvTyping"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/icon_14"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.12" />
+
+        <TextView
+            android:id="@+id/TxtTyping"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:fontFamily="@font/avenirltstdmedium"
+            android:text="@string/typing_hindi_or_not"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/CheckTyping"
+            app:layout_constraintStart_toEndOf="@id/IvTyping"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/CheckTyping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:button="@drawable/mainalltoggalebtnxml"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

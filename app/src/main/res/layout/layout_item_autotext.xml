@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/_10sdp"
     android:layout_marginBottom="@dimen/_10sdp"
-    android:background="@color/autotext"
+    android:background="@color/gray"
     android:drawableLeft="@drawable/search_presed"
     android:drawablePadding="@dimen/_10sdp"
     android:gravity="center_vertical"

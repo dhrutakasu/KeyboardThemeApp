@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 attributes.copyFrom(exitDialogWindow.getAttributes());
                 attributes.width = WindowManager.LayoutParams.MATCH_PARENT;
                 attributes.height = WindowManager.LayoutParams.WRAP_CONTENT;
-                attributes.gravity = Gravity.BOTTOM;
+                attributes.gravity = Gravity.CENTER;
                 exitDialogWindow.setAttributes(attributes);
                 return;
             }
@@ -179,10 +179,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 @Override
                 public void onResponse(Call<QuoteCategoryModel> call, Response<QuoteCategoryModel> response) {
                     if (response.isSuccessful()) {
-                        System.out.println("---- --- -- JokeBody : " + response.body().toString());
                         Constants.categoriesItems = new ArrayList<>();
                         Constants.categoriesItems = (ArrayList<CategoriesItem>) response.body().getCategories();
-                        System.out.println("---- --- -- Size : " + Arrays.toString(Constants.categoriesItems.toArray()));
                         LayoutProgress.setVisibility(View.GONE);
                         GotoPermission();
                     }
@@ -191,7 +189,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 @Override
                 public void onFailure(Call<QuoteCategoryModel> call, Throwable t) {
                     LayoutProgress.setVisibility(View.GONE);
-                    Log.e("error", "onFailure: ", t);
                 }
             });
         } else {
@@ -218,7 +215,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(context, FontActivity.class));
                 break;
             case R.id.CardSetting:
-                startActivity(new Intent(context, MoreSettingsActivity.class));
+                startActivity(new Intent(context, SettingActivity.class));
                 break;
             case R.id.CardDictionary:
                 startActivity(new Intent(context, DictionaryActivity.class));
