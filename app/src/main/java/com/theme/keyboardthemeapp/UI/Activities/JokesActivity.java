@@ -66,8 +66,8 @@ public class JokesActivity extends AppCompatActivity implements View.OnClickList
     private void GetJokeResponse() {
         if (Constants.isNetworkAvailable(context)) {
             LayoutProgress.setVisibility(View.VISIBLE);
-            RetrofitInterface downloadService = RetrofitInstance.createService(RetrofitInterface.class, "http://technoappsolution.com/app/");
-            Call<JokeModel> call = downloadService.getJokeData("assets/android/hindikeyboard/hindijokes.json");
+            RetrofitInterface downloadService = RetrofitInstance.createService(RetrofitInterface.class, Constants.BASE_URL);
+            Call<JokeModel> call = downloadService.getJokeData(Constants.JOKE_CATEGORY_URL);
             call.enqueue(new Callback<JokeModel>() {
                 @Override
                 public void onResponse(Call<JokeModel> call, Response<JokeModel> response) {

@@ -24,12 +24,15 @@ public class MySharePref {
     public static final String PROGRESS_DEFAULT_LANDSCAP = "PROGRESS_DEFAULT_LANDSCAP";
     public static final String SUGGESTION_TEXT_SIZE = "SUGGESTION_TEXT_SIZE";
     public static final String SOUND_PROGRESS = "SOUND_PROGRESS";
-    public static final String SOUND_ENABLE= "SOUND_ENABLE";
+    public static final String SOUND_ENABLE = "SOUND_ENABLE";
     public static final String COPY_SERVICE = "COPY_SERVICE";
     public static final String ISTEXT_COLOR = "ISTEXT_COLOR";
-    public static final String  ISTEXT_COLOR_CODE = "ISTEXT_COLOR_CODE";
-    public static final String  ISPREVIEW_COLOR_CODE = "ISPREVIEW_COLOR_CODE";
-    public static final String IS_COLOR_CODE = "IS_COLOR_CODE";
+    public static final String ISCOLOR_CODE_CHANGE = "ISCOLOR_CODE_CHANGE";
+    public static final String ISTEXT_COLOR_CODE = "ISTEXT_COLOR_CODE";
+    public static final String ISPREVIEW_COLOR_CODE = "ISPREVIEW_COLOR_CODE";
+    public static final String TEXT_IS_COLOR_CODE = "TEXT_IS_COLOR_CODE";
+    public static final String PREVIEW_IS_COLOR_CODE = "PREVIEW_IS_COLOR_CODE";
+    public static final String FONT_STYLE = "FONT_STYLE";
 
 
     private SharedPreferences sharedPreferences;

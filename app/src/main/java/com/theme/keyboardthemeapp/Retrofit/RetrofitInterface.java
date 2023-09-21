@@ -1,5 +1,6 @@
 package com.theme.keyboardthemeapp.Retrofit;
 
+import com.theme.keyboardthemeapp.ModelClass.GifModel;
 import com.theme.keyboardthemeapp.ModelClass.JokeModel;
 import com.theme.keyboardthemeapp.ModelClass.QuoteCategoryModel;
 import com.theme.keyboardthemeapp.ModelClass.QuoteModel;
@@ -21,4 +22,7 @@ public interface RetrofitInterface {
     @Streaming
     @GET
     Call<QuoteModel> getQuotesData(@Url String Url);
+    @Streaming
+    @GET
+    Call<GifModel> getGifsData(@Url String Url);
 }

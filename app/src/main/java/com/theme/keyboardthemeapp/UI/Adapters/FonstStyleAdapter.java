@@ -14,6 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.theme.keyboardthemeapp.Constants;
+import com.theme.keyboardthemeapp.MySharePref;
 import com.theme.keyboardthemeapp.R;
 
 import java.io.IOException;
@@ -36,19 +38,28 @@ public class FonstStyleAdapter extends RecyclerView.Adapter<FonstStyleAdapter.My
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.TxtFontStyle.setTextColor(context.getResources().getColor(R.color.black));
-        holder.TxtFontStyle.setGravity(Gravity.CENTER_VERTICAL);
-        holder.TxtFontStyle.setPadding((int) context.getResources().getDimension(com.intuit.sdp.R.dimen._8sdp),
-                (int) context.getResources().getDimension(com.intuit.sdp.R.dimen._8sdp),
-                (int) context.getResources().getDimension(com.intuit.sdp.R.dimen._8sdp),
-                (int) context.getResources().getDimension(com.intuit.sdp.R.dimen._8sdp));
         AssetManager assets = context.getAssets();
         Typeface typeface = Typeface.createFromAsset(assets, "font/style" + (position + 1) + ".ttf");
         holder.TxtFontStyle.setTypeface(typeface);
         holder.TxtFontStyle.setText(fontname);
+        Constants.FontStyle = new MySharePref(context).getPrefInt(MySharePref.FONT_STYLE, 0);
+        if (Constants.FontStyle == position) {
+            holder.CheckFontStyle.setChecked(true);
+        } else {
+            holder.CheckFontStyle.setChecked(false);
+        }
+        holder.CheckFontStyle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Constants.FontStyle = position;
+                new MySharePref(context).putPrefInt(MySharePref.FONT_STYLE, Constants.FontStyle);
+            }
+        });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Constants.FontStyle = position;
+                new MySharePref(context).putPrefInt(MySharePref.FONT_STYLE, Constants.FontStyle);
             }
         });
     }

@@ -70,8 +70,8 @@ public class QuoteListFragment extends Fragment {
     private void GetQuotesList() {
         if (Constants.isNetworkAvailable(context)) {
             LayoutProgress.setVisibility(View.VISIBLE);
-            RetrofitInterface downloadService = RetrofitInstance.createService(RetrofitInterface.class, "http://technoappsolution.com/app/");
-            Call<QuoteModel> call = downloadService.getQuotesData("assets/android/hindikeyboard/" + Status_Id + ".json");
+            RetrofitInterface downloadService = RetrofitInstance.createService(RetrofitInterface.class, Constants.BASE_URL);
+            Call<QuoteModel> call = downloadService.getQuotesData(Constants.QUOTE_BASE_URL + Status_Id + ".json");
             call.enqueue(new Callback<QuoteModel>() {
                 @Override
                 public void onResponse(Call<QuoteModel> call, Response<QuoteModel> response) {

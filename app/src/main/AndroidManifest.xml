@@ -25,6 +25,9 @@
         android:theme="@style/Theme.KeyboardThemeApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".UI.Activities.GIFActivity"
+            android:exported="false" />
+        <activity
             android:name=".UI.Activities.SettingActivity"
             android:exported="false" />
         <activity

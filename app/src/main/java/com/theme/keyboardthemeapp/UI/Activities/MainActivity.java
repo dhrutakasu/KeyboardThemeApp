@@ -173,8 +173,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void GetQuoteResponse() {
         if (Constants.isNetworkAvailable(context)) {
             LayoutProgress.setVisibility(View.VISIBLE);
-            RetrofitInterface downloadService = RetrofitInstance.createService(RetrofitInterface.class, "http://technoappsolution.com/app/");
-            Call<QuoteCategoryModel> call = downloadService.getQuoteCategoryData("assets/android/hindikeyboard/get_categories.json");
+            RetrofitInterface downloadService = RetrofitInstance.createService(RetrofitInterface.class, Constants.BASE_URL);
+            Call<QuoteCategoryModel> call = downloadService.getQuoteCategoryData(Constants.QUOTES_CATEGORY_URL);
             call.enqueue(new Callback<QuoteCategoryModel>() {
                 @Override
                 public void onResponse(Call<QuoteCategoryModel> call, Response<QuoteCategoryModel> response) {
@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(context, MoreSettingsActivity.class));
                 break;
             case R.id.CardGif:
-                startActivity(new Intent(context, MoreSettingsActivity.class));
+                startActivity(new Intent(context, GIFActivity.class));
                 break;
             case R.id.CardFont:
                 startActivity(new Intent(context, FontActivity.class));

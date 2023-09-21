@@ -126,7 +126,7 @@ public class TranslatorActivity extends AppCompatActivity implements View.OnClic
             }
         });
         if (!Constants.isNetworkAvailable(context)) {
-            Toast.makeText(getApplicationContext(), "Please Connect Internet...!", Toast.LENGTH_LONG).show();
+            Constants.NoInternetConnection(TranslatorActivity.this);
         }
     }
 
@@ -259,6 +259,7 @@ public class TranslatorActivity extends AppCompatActivity implements View.OnClic
                         } else {
                             LayoutProgress.setVisibility(View.GONE);
                             EdtOutputValue.setText("Please Check Your Internet Connection...");
+                            Constants.NoInternetConnection(TranslatorActivity.this);
                         }
                     }
                 } else if (TxtEnglish.getText().toString().equals(getResources().getString(R.string.hindi)) || TxtHindi.getText().toString().equals("English")) {
@@ -292,6 +293,7 @@ public class TranslatorActivity extends AppCompatActivity implements View.OnClic
                     } else {
                         EdtOutputValue.setText("Please Check Your Internet Connection...");
                         LayoutProgress.setVisibility(View.GONE);
+                        Constants.NoInternetConnection(TranslatorActivity.this);
                     }
                 }
             } catch (Exception e3) {

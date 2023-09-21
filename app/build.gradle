@@ -60,4 +60,6 @@ dependencies {
     //todo Translator dependency
     implementation 'com.google.mlkit:translate:17.0.1'
 
+    //todo download file dependency
+    implementation 'com.mindorks.android:prdownloader:0.6.0'
 }

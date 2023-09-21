@@ -39,6 +39,7 @@ public class FontActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initListeners() {
         ImgBack.setOnClickListener(this);
+        ImgMore.setOnClickListener(this);
     }
 
     private void initActions() {

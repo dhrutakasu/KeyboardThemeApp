@@ -50,7 +50,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     private void initActions() {
         ImgBack.setVisibility(View.VISIBLE);
         ImgMore.setVisibility(View.VISIBLE);
-        TxtTitle.setText(getString(R.string.Text_art));
+        TxtTitle.setText(getString(R.string.Setting));
         strings = new ArrayList<>();
         strings.add("General");
         strings.add("Display");

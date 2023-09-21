@@ -25,4 +25,13 @@ public class CategoriesItem{
 	public String getId(){
 		return id;
 	}
+
+	@Override
+ 	public String toString(){
+		return 
+			"CategoriesItem{" + 
+			"name = '" + name + '\'' + 
+			",id = '" + id + '\'' + 
+			"}";
+		}
 }

@@ -65,4 +65,6 @@
     <string name="preview_text_color">Preview Text Color</string>
     <string name="sound_on_keypress">Sound on keypress</string>
     <string name="copy_to_translate">Copy to Translate</string>
+    <string name="Setting">Setting</string>
+    <string name="Gif_style">Keyborad Gif</string>
 </resources>
