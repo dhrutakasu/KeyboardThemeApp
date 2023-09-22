@@ -27,6 +27,7 @@
 //import android.inputmethodservice.Keyboard;
 //import android.inputmethodservice.KeyboardView;
 //import android.media.AudioManager;
+//import android.media.tv.AdRequest;
 //import android.net.ConnectivityManager;
 //import android.net.NetworkInfo;
 //import android.net.Uri;
@@ -34,6 +35,7 @@
 //import android.os.Build;
 //import android.os.Bundle;
 //import android.os.CountDownTimer;
+//import android.os.FileUtils;
 //import android.os.Handler;
 //import android.os.Parcelable;
 //import android.os.Vibrator;
@@ -69,30 +71,34 @@
 //
 //import com.bumptech.glide.Glide;
 //import com.bumptech.glide.load.engine.DiskCacheStrategy;
-//import com.common.Common_Preferences;
-//import com.common.Common_Resource;
-//import com.google.android.gms.ads.AdRequest;
-//import com.google.android.gms.ads.AdView;
-//import com.koushikdutta.async.http.AsyncHttpGet;
-//import com.my.stylsihtext.fencyart.fencyfont.fencytext.SessionManager;
-//import com.ngonngu.NgonNguIn;
-//import com.tech.lang.keyboard.hindikeyboard.adapter.EmojiAdapter;
-//import com.tech.lang.keyboard.hindikeyboard.adapter.FarsiEmojiAdapter;
-//import com.tech.lang.keyboard.hindikeyboard.adapter.StickerAdapter;
-//import com.tech.lang.keyboard.hindikeyboard.adapter.StickerListAdapter;
-//import com.tech.lang.keyboard.hindikeyboard.adapter.StickerModel;
-//import com.vanniktech.emoji.EmojiPopup;
-//import com.vanniktech.emoji.emoji.Cars;
-//import com.vanniktech.emoji.emoji.Electronics;
-//import com.vanniktech.emoji.emoji.Food;
-//import com.vanniktech.emoji.emoji.Nature;
-//import com.vanniktech.emoji.emoji.People;
-//import com.vanniktech.emoji.emoji.Sport;
-//import com.vanniktech.emoji.emoji.Symbols;
-//
-//import org.apache.commons.io.FileUtils;
-//import org.apache.http.HttpHost;
-//import org.apache.http.HttpStatus;
+//import com.theme.keyboardthemeapp.Constants;
+//import com.theme.keyboardthemeapp.R;
+////import com.common.Common_Preferences;
+////import com.common.Common_Resource;
+////import com.google.android.gms.ads.AdRequest;
+////import com.google.android.gms.ads.AdView;
+////import com.koushikdutta.async.http.AsyncHttpGet;
+////import com.my.stylsihtext.fencyart.fencyfont.fencytext.SessionManager;
+////import com.ngonngu.NgonNguIn;
+////import com.tech.lang.keyboard.hindikeyboard.adapter.EmojiAdapter;
+////import com.tech.lang.keyboard.hindikeyboard.adapter.FarsiEmojiAdapter;
+////import com.tech.lang.keyboard.hindikeyboard.adapter.StickerAdapter;
+////import com.tech.lang.keyboard.hindikeyboard.adapter.StickerListAdapter;
+////import com.tech.lang.keyboard.hindikeyboard.adapter.StickerModel;
+////import com.theme.keyboardthemeapp.Constants;
+////import com.theme.keyboardthemeapp.R;
+////import com.vanniktech.emoji.EmojiPopup;
+////import com.vanniktech.emoji.emoji.Cars;
+////import com.vanniktech.emoji.emoji.Electronics;
+////import com.vanniktech.emoji.emoji.Food;
+////import com.vanniktech.emoji.emoji.Nature;
+////import com.vanniktech.emoji.emoji.People;
+////import com.vanniktech.emoji.emoji.Sport;
+////import com.vanniktech.emoji.emoji.Symbols;
+////
+////import org.apache.commons.io.FileUtils;
+////import org.apache.http.HttpHost;
+////import org.apache.http.HttpStatus;
 //
 //import java.io.BufferedReader;
 //import java.io.File;
@@ -126,7 +132,6 @@
 //    public static boolean checkLanguage;
 //    public static InputMethodService ims;
 //    static TextView speakstring;
-//    /* access modifiers changed from: private */
 //    public static int toLevel = 0;
 //    View.OnClickListener ChangeSpeakLang = new View.OnClickListener() {
 //        public void onClick(View view) {
@@ -151,8 +156,8 @@
 //    };
 //    View.OnClickListener CloseDialog = new View.OnClickListener() {
 //        public void onClick(View view) {
-//            HindiKeypad.this.speak_lay.setVisibility(8);
-//            HindiKeypad.this.bottomlay.setVisibility(0);
+//            HindiKeypad.this.speak_lay.setVisibility(View.GONE);
+//            HindiKeypad.this.bottomlay.setVisibility(View.VISIBLE);
 //        }
 //    };
 //    String ContryNameIn;
@@ -164,75 +169,75 @@
 //    LinearLayout LangChange;
 //    View.OnClickListener OnClickTheme = new View.OnClickListener() {
 //        public void onClick(View view) {
-//            try {
-//                if (!HindiUtils.previewActivityisOpen) {
-//                    HindiUtils.wordExist = true;
-//                    Intent intent = new Intent(HindiKeypad.this.getApplicationContext(), ApplyKeypadTheme.class);
-//                    intent.addFlags(268435456);
-//                    intent.putExtra("flgbool", true);
-//                    HindiKeypad.this.startActivity(intent);
-//                } else if (PreviewActivity.act == null) {
-//                    HindiUtils.wordExist = true;
-//                    Intent intent2 = new Intent(HindiKeypad.this.getApplicationContext(), ApplyKeypadTheme.class);
-//                    intent2.addFlags(268435456);
-//                    intent2.putExtra("flgbool", false);
-//                    HindiKeypad.this.startActivity(intent2);
-//                }
-//            } catch (Exception unused) {
-//            }
+////            try {
+////                if (!HindiUtils.previewActivityisOpen) {
+////                    HindiUtils.wordExist = true;
+////                    Intent intent = new Intent(HindiKeypad.this.getApplicationContext(), ApplyKeypadTheme.class);
+////                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+////                    intent.putExtra("flgbool", true);
+////                    HindiKeypad.this.startActivity(intent);
+////                } else if (PreviewActivity.act == null) {
+////                    HindiUtils.wordExist = true;
+////                    Intent intent2 = new Intent(HindiKeypad.this.getApplicationContext(), ApplyKeypadTheme.class);
+////                    intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+////                    intent2.putExtra("flgbool", false);
+////                    HindiKeypad.this.startActivity(intent2);
+////                }
+////            } catch (Exception unused) {
+////            }
 //        }
 //    };
 //    ListView SelectedLanglist;
 //    Drawable Speak_btn_drawable;
 //    View.OnClickListener SpeakbtnDialog = new View.OnClickListener() {
 //        public void onClick(View view) {
-//            HindiKeypad.this.speak_lay.setLayoutParams(new FrameLayout.LayoutParams(-1, HindiKeypad.this.speaklayheight));
-//            HindiKeypad.speakstring.setText("Tap to Speak!!");
-//            HindiKeypad.this.speaktotextbtn.setVisibility(8);
-//            HindiKeypad.this.speak_lay.setVisibility(0);
-//            HindiKeypad.this.bottomlay.setVisibility(8);
-//            if (HindiKeypad.this.Timercounter != null) {
-//                HindiKeypad.this.Timercounter.cancel();
-//            }
-//            HindiKeypad.this.Timercounter = new CountDownTimer(14000, 1000) {
-//                public void onTick(long j) {
-//                    TextView textView = HindiKeypad.Timer;
-//                    textView.setText("00:" + (j / 1000));
-//                }
-//
-//                public void onFinish() {
-//                    HindiKeypad.Timer.setText("done!");
-//                    HindiKeypad.this.speak_lay.setVisibility(8);
-//                    HindiKeypad.this.bottomlay.setVisibility(0);
-//                }
-//            }.start();
-//            if (!HindiKeypad.this.isSpeechRecoAvalable) {
-//                HindiKeypad.this.dialogAskInstallSTT().show();
-//            } else if (!HindiKeypad.this.isOnline()) {
-//                HindiKeypad.this.showToast("Opps! No Internet Access, Please Try Again", 1);
-//            } else if (Arrays.asList(HindiKeypad.this.commonResource.getNovoice()).contains(HindiKeypad.this.commonResource.getContriesin()[HindiKeypad.this.mNgonNguIn.getmPosition()])) {
-//                HindiKeypad hindiKeypad = HindiKeypad.this;
-//                hindiKeypad.showToast("Opps! " + HindiKeypad.this.mNgonNguIn.getmLanguageName() + " language was not supported Speech to Text", 1);
-//            } else {
-//                try {
-//                    if (!HindiKeypad.this.vib.hasVibrator()) {
-//                        HindiKeypad.this.vib.vibrate(40);
-//                    }
-//                    int unused = HindiKeypad.this.thoiGianCho = 100;
-//                    Intent intent = new Intent("android.speech.action.RECOGNIZE_SPEECH");
-//                    intent.putExtra("android.speech.extra.LANGUAGE_MODEL", "web_search");
-//                    intent.putExtra("calling_package", HindiKeypad.this.getApplicationContext().getPackageName());
-//                    intent.putExtra("android.speech.extra.MAX_RESULTS", 5);
-//                    intent.putExtra("android.speech.extras.SPEECH_INPUT_MINIMUM_LENGTH_MILLIS", PathInterpolatorCompat.MAX_NUM_POINTS);
-//                    intent.putExtra("android.speech.extra.LANGUAGE", HindiUtils.speakLangName);
-//                    Intent unused2 = HindiKeypad.this.recognizerIntent = intent;
-//                    HindiKeypad.this.mSpeechReco.setRecognitionListener(HindiKeypad.this.mRecoListener);
-//                    HindiKeypad.this.mSpeechReco.startListening(intent);
-//                } catch (Exception e) {
-//                    HindiKeypad.this.showToast(e.getMessage(), 1);
-//                }
-//            }
-//            Log.d("mToggleSpeech", "onTrue");
+////            HindiKeypad.this.speak_lay.setLayoutParams(new FrameLayout.LayoutParams(-1, HindiKeypad.this.speaklayheight));
+////            HindiKeypad.speakstring.setText("Tap to Speak!!");
+////            HindiKeypad.this.speaktotextbtn.setVisibility(8);
+////            HindiKeypad.this.speak_lay.setVisibility(0);
+////            HindiKeypad.this.bottomlay.setVisibility(8);
+////            if (HindiKeypad.this.Timercounter != null) {
+////                HindiKeypad.this.Timercounter.cancel();
+////            }
+////            HindiKeypad.this.Timercounter = new CountDownTimer(14000, 1000) {
+////                public void onTick(long j) {
+////                    TextView textView = HindiKeypad.Timer;
+////                    textView.setText("00:" + (j / 1000));
+////                }
+////
+////                public void onFinish() {
+////                    HindiKeypad.Timer.setText("done!");
+////                    HindiKeypad.this.speak_lay.setVisibility(8);
+////                    HindiKeypad.this.bottomlay.setVisibility(0);
+////                }
+////            }.start();
+////            if (!HindiKeypad.this.isSpeechRecoAvalable) {
+////                HindiKeypad.this.dialogAskInstallSTT().show();
+////            } else if (!HindiKeypad.this.isOnline()) {
+////                HindiKeypad.this.showToast("Opps! No Internet Access, Please Try Again", 1);
+////            } else if (Arrays.asList(HindiKeypad.this.commonResource.getNovoice()).contains(HindiKeypad.this.commonResource.getContriesin()[HindiKeypad.this.mNgonNguIn.getmPosition()])) {
+////                HindiKeypad hindiKeypad = HindiKeypad.this;
+////                hindiKeypad.showToast("Opps! " + HindiKeypad.this.mNgonNguIn.getmLanguageName() + " language was not supported Speech to Text", 1);
+////            } else {
+////                try {
+////                    if (!HindiKeypad.this.vib.hasVibrator()) {
+////                        HindiKeypad.this.vib.vibrate(40);
+////                    }
+////                    int unused = HindiKeypad.this.thoiGianCho = 100;
+////                    Intent intent = new Intent("android.speech.action.RECOGNIZE_SPEECH");
+////                    intent.putExtra("android.speech.extra.LANGUAGE_MODEL", "web_search");
+////                    intent.putExtra("calling_package", HindiKeypad.this.getApplicationContext().getPackageName());
+////                    intent.putExtra("android.speech.extra.MAX_RESULTS", 5);
+////                    intent.putExtra("android.speech.extras.SPEECH_INPUT_MINIMUM_LENGTH_MILLIS", PathInterpolatorCompat.MAX_NUM_POINTS);
+////                    intent.putExtra("android.speech.extra.LANGUAGE", HindiUtils.speakLangName);
+////                    Intent unused2 = HindiKeypad.this.recognizerIntent = intent;
+////                    HindiKeypad.this.mSpeechReco.setRecognitionListener(HindiKeypad.this.mRecoListener);
+////                    HindiKeypad.this.mSpeechReco.startListening(intent);
+////                } catch (Exception e) {
+////                    HindiKeypad.this.showToast(e.getMessage(), 1);
+////                }
+////            }
+////            Log.d("mToggleSpeech", "onTrue");
 //        }
 //    };
 //    AdapterView.OnItemClickListener SuggectionItemClickEvent = new AdapterView.OnItemClickListener() {
@@ -263,7 +268,7 @@
 //                    } else {
 //                        charSequence = "";
 //                    }
-//                    charSequence + "";
+//                    String s = charSequence + "";
 //                    HindiKeypad.this.getCurrentInputConnection().deleteSurroundingText(charSequence2.toString().length(), 0);
 //                    if (charSequence.toString().contains(" ")) {
 //                        int lastIndexOf = charSequence.toString().lastIndexOf(" ");
@@ -274,17 +279,17 @@
 //                    HindiKeypad hindiKeypad3 = HindiKeypad.this;
 //                    hindiKeypad3.getGujarati(hindiKeypad3.word);
 //                }
-//                HindiKeypad.this.hintword.setVisibility(8);
-//                HindiKeypad.this.result = null;
-//                HindiKeypad.this.result = new ArrayList<>();
-//                HindiKeypad.this.hlist.setAdapter((ListAdapter) new ArrayAdapter(HindiKeypad.this.getApplicationContext(), R.layout.hint_item_view, HindiKeypad.this.result));
-//                HindiKeypad.this.mainMenu.setVisibility(0);
+////                HindiKeypad.this.hintword.setVisibility(View.GONE);
+////                HindiKeypad.this.result = null;
+////                HindiKeypad.this.result = new ArrayList<>();
+////                HindiKeypad.this.hlist.setAdapter((ListAdapter) new ArrayAdapter(HindiKeypad.this.getApplicationContext(), R.layout.hint_item_view, HindiKeypad.this.result));
+////                HindiKeypad.this.mainMenu.setVisibility(View.VISIBLE);
 //            }
 //        }
 //    };
 //    CountDownTimer Timercounter;
-//    AdRequest adRequest;
-//    AdView adView;
+////    AdRequest adRequest;
+////    AdView adView;
 //    FarsiEmojiAdapter adapter = null;
 //    /* access modifiers changed from: private */
 //    public Runnable animateDownImage = new C03922();
@@ -363,12 +368,9 @@
 //    private int mLevel = 0;
 //    NgonNguIn mNgonNguIn;
 //    private boolean mPredictionOn;
-//    /* access modifiers changed from: private */
 //    public RecognitionListener mRecoListener;
-//    /* access modifiers changed from: private */
 //    public SpeechRecognizer mSpeechReco;
 //    private Toast mThongBao;
-//    /* access modifiers changed from: private */
 //    public Handler mUpHandler = new Handler();
 //    private SetVibrateCompact mVibrator;
 //    LinearLayout mainMenu;
@@ -389,11 +391,9 @@
 //    ListView popupLanglist;
 //    int position;
 //    SharedPreferences prefs;
-//    /* access modifiers changed from: private */
 //    public ProgressBar proTalk;
 //    private ProgressDialog progressDialog;
 //    private RelativeLayout r2;
-//    /* access modifiers changed from: private */
 //    public Intent recognizerIntent;
 //    String replaceStr = "";
 //    private int[] resid = {R.drawable.emoji_presedtheme0, R.drawable.flower_presed0, R.drawable.food_presed0, R.drawable.sport_presed0, R.drawable.car_presed0, R.drawable.electronic_presed0, R.drawable.sign_presed0};
@@ -426,7 +426,6 @@
 //    CharSequence textdatas = "";
 //    LinearLayout texthintlayout;
 //    Drawable themeDrawable;
-//    /* access modifiers changed from: private */
 //    public int thoiGianCho;
 //    int tmpHieght;
 //    int tmpHieght1;
@@ -436,7 +435,6 @@
 //    ArrayList<String> unicodearray = new ArrayList<>();
 //    String urlString = "";
 //    View v;
-//    /* access modifiers changed from: private */
 //    public Vibrator vib;
 //    String word = "";
 //    ArrayList<String> wordarray = new ArrayList<>();
@@ -555,7 +553,7 @@
 //        SelectQuery();
 //        int i = this.prefs.getInt("theme_no", 0);
 //        this.selectedTheme = i;
-//        HindiUtils.selectThemeNo = i;
+//        Constants.SelectTheme = i;
 //        this.shiftOffDrawable = getResources().getDrawable(this.shiftOffKeys[0]);
 //        this.checkflg = false;
 //        this.textColorCode = char_colorCodes[0];
@@ -2281,15 +2279,12 @@
 //                        this.lastWord = substring;
 //                        currentInputConnection.deleteSurroundingText(substring.length() + 1, 0);
 //                        new AsyncTask<Void, Void, Void>() {
-//                            /* access modifiers changed from: protected */
 //                            public void onPreExecute() {
 //                            }
 //
-//                            /* access modifiers changed from: protected */
 //                            public void onProgressUpdate(Void... voidArr) {
 //                            }
 //
-//                            /* access modifiers changed from: protected */
 //                            public Void doInBackground(Void... voidArr) {
 //                                try {
 //                                    HindiKeypad.this.httpURLConnection = null;
@@ -2316,7 +2311,6 @@
 //                                return null;
 //                            }
 //
-//                            /* access modifiers changed from: protected */
 //                            public void onPostExecute(Void voidR) {
 //                                Pattern compile = Pattern.compile("\"([^\"]*)\"");
 //                                Matcher matcher = compile.matcher("" + HindiKeypad.this.stringBuilder2);

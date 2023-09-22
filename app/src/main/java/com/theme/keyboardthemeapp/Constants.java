@@ -32,9 +32,9 @@ public class Constants {
     public static final String QUOTE_POS = "QUOTE_POS";
     public static final String TITLES = "TITLES";
     public static final String BASE_URL = "http://technoappsolution.com/app/";
-    public static final String GIF_THUMB_URL = "assets/android/hindikeyboard/thumb/";
     public static final String QUOTE_BASE_URL = "assets/android/hindikeyboard/";
     public static final String GIF_URL = "assets/android/hindikeyboard/hindithemekeyboard.json";
+    public static final String THEME_URL = "assets/android/keyboard/keyboard.json";
     public static final String QUOTES_CATEGORY_URL = "assets/android/hindikeyboard/get_categories.json";
     public static final String JOKE_CATEGORY_URL = "assets/android/hindikeyboard/hindijokes.json";
     public static ArrayList<StatusItem> statusItems = new ArrayList<>();
@@ -78,11 +78,6 @@ public class Constants {
     public static int PreviewColorCode = -1;
     public static boolean IsColorCodeChange = false;
     public static int FontStyle = 0;
-//    public static ArrayList<String> GIfThumbName = new ArrayList<>();
-//    public static ArrayList<String> GifThumbid = new ArrayList<>();
-//    public static ArrayList<String> GifFileName = new ArrayList<>();
-    public static String GifName="name";
-    public static String GifId="id";
 
     static {
         String[][] strArr = new String[24][];

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="activity_vertical_margin">8dp</dimen>
+    <dimen name="activity_vertical_margin_top">0dp</dimen>
+    <dimen name="emoji_height">125.5dp</dimen>
+    <dimen name="key123_text_size">25px</dimen>
+    <dimen name="key_height">36dp</dimen>
+    <dimen name="keyboard_height">150dp</dimen>
+    <dimen name="keysym_text_size">20px</dimen>
+    <dimen name="land_keyboard_height">170dp</dimen>
+    <dimen name="set_height">166.5dp</dimen>
+    <dimen name="show_preview_height">80px</dimen>
+    <dimen name="show_preview_width">90px</dimen>
+    <dimen name="show_preview_x">0px</dimen>
+    <dimen name="show_preview_y">90px</dimen>
+    <dimen name="thai_key_height">28dp</dimen>
+</resources>

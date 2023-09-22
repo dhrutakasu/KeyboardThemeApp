@@ -33,6 +33,10 @@ public class MySharePref {
     public static final String TEXT_IS_COLOR_CODE = "TEXT_IS_COLOR_CODE";
     public static final String PREVIEW_IS_COLOR_CODE = "PREVIEW_IS_COLOR_CODE";
     public static final String FONT_STYLE = "FONT_STYLE";
+    public static final String SELECT_GIF_THEME_GIF = "SELECT_GIF_THEME_GIF";
+    public static final String SELECT_GIF_THEME_THUMB = "SELECT_GIF_THEME_THUMB";
+    public static final String SELECT_THEME_THUMB = "SELECT_THEME_THUMB";
+    public static final String SELECT_THEME = "SELECT_THEME";
 
 
     private SharedPreferences sharedPreferences;

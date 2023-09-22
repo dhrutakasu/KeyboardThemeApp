@@ -203,10 +203,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(context, MoreSettingsActivity.class));
                 break;
             case R.id.CardBackground:
-                startActivity(new Intent(context, MoreSettingsActivity.class));
+                startActivity(new Intent(context, BackgroundActivity.class));
                 break;
             case R.id.CardTheme:
-                startActivity(new Intent(context, MoreSettingsActivity.class));
+                startActivity(new Intent(context, ThemeActivity.class));
                 break;
             case R.id.CardGif:
                 startActivity(new Intent(context, GIFActivity.class));

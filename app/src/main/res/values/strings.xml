@@ -66,5 +66,20 @@
     <string name="sound_on_keypress">Sound on keypress</string>
     <string name="copy_to_translate">Copy to Translate</string>
     <string name="Setting">Setting</string>
-    <string name="Gif_style">Keyborad Gif</string>
+    <string name="Gif_style">Keyboard Gif</string>
+    <string name="Alert_string">Do you want to set default theme background?</string>
+
+    <string name="error_text1">नेटवर्क का समय समाप्त !</string>
+    <string name="error_text10">कृपया बोलना शुरू कीजिये..</string>
+    <string name="error_text2">नेटवर्क एरर कृपया अपने इंटरनेट की जाँच करे !</string>
+    <string name="error_text3">ऑडियो एरर कृपया फिर से प्रयास करे !</string>
+    <string name="error_text4">में सर्वर से कनेक्ट नहीं कर सकता !</string>
+    <string name="error_text5">में तुम्हे नहीं सुन सकता,कृपया फिर से कोशिश करे !</string>
+    <string name="error_text6">बोलने का समय समाप्त ,कृपया पुनः प्रयास करे !</string>
+    <string name="error_text7">मुझे समज नहीं आ रहा हे,कृपया फिर से प्रयास करे !</string>
+    <string name="error_text8">रेकोगनाइजर व्यस्त हे ,कृपया बाद में प्रयास करे !</string>
+    <string name="error_text9">कोई पहुंच नहीं है!!</string>
+    <string name="isSupportLang">فارسی</string>
+    <string name="speak_lang_2">hi</string>
+    <string name="Theme_style">Keyboard Theme</string>
 </resources>

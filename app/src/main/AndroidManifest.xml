@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -24,6 +25,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KeyboardThemeApp"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".UI.Activities.BackgroundActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.Activities.ThemeActivity"
+            android:exported="false" />
         <activity
             android:name=".UI.Activities.GIFActivity"
             android:exported="false" />

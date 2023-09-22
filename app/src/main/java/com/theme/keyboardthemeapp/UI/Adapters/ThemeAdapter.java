@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
 import com.theme.keyboardthemeapp.MySharePref;
 import com.theme.keyboardthemeapp.R;
@@ -19,13 +20,13 @@ import com.theme.keyboardthemeapp.R;
 import java.io.File;
 import java.util.ArrayList;
 
-public class GifAdapter extends RecyclerView.Adapter<GifAdapter.MyViewHolder> {
+public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.MyViewHolder> {
     private final Context context;
     private final ArrayList<CategoriesItem> gifArray;
     private final GifClick gifClick;
-    private final String thumbUrl,gifUrl;
+    private final String thumbUrl, gifUrl;
 
-    public GifAdapter(Context context,String thumbUrl,String gifUrl, ArrayList<CategoriesItem> gifArray,GifClick gifClick) {
+    public ThemeAdapter(Context context, String thumbUrl, String gifUrl, ArrayList<CategoriesItem> gifArray, GifClick gifClick) {
         this.context = context;
         this.gifArray = gifArray;
         this.thumbUrl = thumbUrl;
@@ -42,37 +43,51 @@ public class GifAdapter extends RecyclerView.Adapter<GifAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        File GifFolder = new File(context.getFilesDir(), "Gif/"+gifArray.get(position).getId() + ".png");
-        File GIF = new File(context.getFilesDir(), "Gif/" + gifArray.get(position).getId() + ".gif");
         holder.IvGif.setScaleType(ImageView.ScaleType.FIT_XY);
-        if (GifFolder.exists()){
-            Glide.with(context).load(GIF)
+        if (gifArray.get(position).getName().contains("android_asset")) {
+            Glide.with(context).load(gifArray.get(position).getName())
                     .placeholder(R.drawable.place_holder).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(holder.IvGif);
             holder.IvDownloadGif.setVisibility(View.GONE);
-        }else {
-            Glide.with(context).load(thumbUrl + gifArray.get(position).getId() + ".png")
+            File ThemeFolder = new File(context.getFilesDir(), "Theme/" + gifArray.get(position).getName().substring(gifArray.get(position).getName().lastIndexOf("/") + 1));
+            File Theme = new File(context.getFilesDir(), "Theme/" + gifArray.get(position).getName().substring(gifArray.get(position).getName().lastIndexOf("/") + 1));
+            String PrefThumb = new MySharePref(context).getPrefString(MySharePref.SELECT_THEME_THUMB, "");
+            if (PrefThumb.equalsIgnoreCase(ThemeFolder.getAbsolutePath())) {
+                holder.IvCheckGif.setVisibility(View.VISIBLE);
+            } else {
+                holder.IvCheckGif.setVisibility(View.GONE);
+            }
+        } else {
+            Glide.with(context).load(thumbUrl + gifArray.get(position).getName())
                     .placeholder(R.drawable.place_holder).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(holder.IvGif);
-            holder.IvDownloadGif.setVisibility(View.VISIBLE);
+            File ThemeFolder = new File(context.getFilesDir(), "Theme/" + gifArray.get(position).getName());
+            File Theme = new File(context.getFilesDir(), "Theme/" + gifArray.get(position).getName());
+            if (ThemeFolder.exists()){
+                holder.IvDownloadGif.setVisibility(View.GONE);
+            }else {
+                holder.IvDownloadGif.setVisibility(View.VISIBLE);
+            }
+            String PrefThumb = new MySharePref(context).getPrefString(MySharePref.SELECT_THEME_THUMB, "");
+            if (PrefThumb.equalsIgnoreCase(ThemeFolder.getAbsolutePath())) {
+                holder.IvCheckGif.setVisibility(View.VISIBLE);
+            } else {
+                holder.IvCheckGif.setVisibility(View.GONE);
+            }
         }
-        String PrefThumb = new MySharePref(context).getPrefString(MySharePref.SELECT_GIF_THEME_THUMB, "");
-        if (PrefThumb.equalsIgnoreCase(GifFolder.getAbsolutePath())){
-            holder.IvCheckGif.setVisibility(View.VISIBLE);
-        }else {
-            holder.IvCheckGif.setVisibility(View.GONE);
-        }
-        if (holder.IvCheckGif.getVisibility()==View.VISIBLE||holder.IvDownloadGif.getVisibility()==View.VISIBLE){
+
+        if (holder.IvCheckGif.getVisibility() == View.VISIBLE || holder.IvDownloadGif.getVisibility() == View.VISIBLE) {
             holder.ConsIcon.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             holder.ConsIcon.setVisibility(View.GONE);
         }
         holder.itemView.setOnClickListener(view -> {
-            gifClick.GifListeners(position, gifArray,holder.IvGif, holder.IvDownloadGif, holder.IvCheckGif);
+            gifClick.GifListeners(position, gifArray, holder.IvGif, holder.IvDownloadGif, holder.IvCheckGif);
         });
     }
 
-    public interface GifClick{
+    public interface GifClick {
         void GifListeners(int pos, ArrayList<CategoriesItem> gifArray, ImageView ivGif, ImageView ivDownloadGif, ImageView ivCheckGif);
     }
+
     @Override
     public int getItemCount() {
         return gifArray.size();
@@ -80,7 +95,6 @@ public class GifAdapter extends RecyclerView.Adapter<GifAdapter.MyViewHolder> {
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private final ImageView IvGif, IvCheckGif, IvDownloadGif;
-
         private final ConstraintLayout ConsIcon;
 
         public MyViewHolder(@NonNull View itemView) {
