@@ -1,10 +1,8 @@
 package com.theme.keyboardthemeapp.UI.Adapters;
 
 import android.content.Context;
-import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +29,7 @@ public class FonstStyleAdapter extends RecyclerView.Adapter<FonstStyleAdapter.My
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(context).inflate(R.layout.layout_item_font, parent, false);
+        View itemView = LayoutInflater.from(context).inflate(R.layout.layout_item_font_style, parent, false);
         return new MyViewHolder(itemView);
     }
 

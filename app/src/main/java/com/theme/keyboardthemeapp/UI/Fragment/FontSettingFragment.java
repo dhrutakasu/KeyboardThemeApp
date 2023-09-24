@@ -118,7 +118,7 @@ public class FontSettingFragment extends Fragment implements View.OnClickListene
         ColorPickerDialogBuilder
                 .with(getContext())
                 .setTitle("Choose color")
-                .initialColor(-1)
+                .initialColor(getResources().getColor(R.color.white))
                 .wheelType(ColorPickerView.WHEEL_TYPE.FLOWER)
                 .density(12)
                 .setOnColorSelectedListener(selectedColor -> {
@@ -173,7 +173,7 @@ public class FontSettingFragment extends Fragment implements View.OnClickListene
         ColorPickerDialogBuilder
                 .with(getContext())
                 .setTitle("Choose color")
-                .initialColor(-1)
+                .initialColor(getResources().getColor(R.color.white))
                 .wheelType(ColorPickerView.WHEEL_TYPE.FLOWER)
                 .density(12)
                 .setOnColorSelectedListener(selectedColor -> {

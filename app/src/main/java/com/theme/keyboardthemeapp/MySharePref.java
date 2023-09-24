@@ -37,6 +37,13 @@ public class MySharePref {
     public static final String SELECT_GIF_THEME_THUMB = "SELECT_GIF_THEME_THUMB";
     public static final String SELECT_THEME_THUMB = "SELECT_THEME_THUMB";
     public static final String SELECT_THEME = "SELECT_THEME";
+    public static final String BACKGROUND_FONT_STYLE = "BACKGROUND_FONT_STYLE";
+    public static final String FLAG_CHANGE_LANGUAGE = "FLAG_CHANGE_LANGUAGE";
+    public static final String CHANGE_LANGUAGE = "CHANGE_LANGUAGE";
+    public static final String DEFAULT_BG_COLOR = "DEFAULT_BG_COLOR";
+    public static final String TRANSPARENT = "TRANSPARENT";
+    public static final String TRANSPARENT_BLACK_BG = "TRANSPARENT_BLACK_BG";
+    public static final String TRANSPARENT_TOP_BG = "TRANSPARENT_TOP_BG";
 
 
     private SharedPreferences sharedPreferences;

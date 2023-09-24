@@ -1,5 +1,6 @@
 package com.theme.keyboardthemeapp.UI.Activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import retrofit2.Call;
@@ -9,7 +10,9 @@ import retrofit2.Response;
 import android.Manifest;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -111,7 +114,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     .withListener(new MultiplePermissionsListener() {
                         public void onPermissionsChecked(MultiplePermissionsReport report) {
                             if (report.areAllPermissionsGranted()) {
-                                checkDrawOverlayPermission();
+                                if (checkLocation()) {
+                                    checkDrawOverlayPermission();
+                                }
                             }
                             if (report.isAnyPermissionPermanentlyDenied()) {
                                 Constants.showSettingsDialog(MainActivity.this);
@@ -119,6 +124,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
 
                         public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken permissionToken) {
+                            System.out.println("---- -- - - permi :: " + Arrays.toString(permissions.toArray()));
                             Constants.showPermissionDialog(MainActivity.this, permissionToken);
                         }
                     })
@@ -134,7 +140,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     .withListener(new MultiplePermissionsListener() {
                         public void onPermissionsChecked(MultiplePermissionsReport report) {
                             if (report.areAllPermissionsGranted()) {
-                                checkDrawOverlayPermission();
+                                if (checkLocation()) {
+                                    checkDrawOverlayPermission();
+                                }
                             }
                             if (report.isAnyPermissionPermanentlyDenied()) {
                                 Constants.showSettingsDialog(MainActivity.this);
@@ -148,6 +156,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     .onSameThread()
                     .check();
         }
+    }
+
+
+    private boolean checkLocation() {
+        if (!isLocationEnabled())
+            showAlert();
+        return isLocationEnabled();
+    }
+
+    private void showAlert() {
+        final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("Enable Location")
+                .setMessage("Your Locations Settings is set to 'Off'.\nPlease Enable Location to " +
+                        "use this app")
+                .setPositiveButton("Location Settings", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                        Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                        startActivity(myIntent);
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                        finish();
+                    }
+                });
+        dialog.show();
+    }
+
+    private boolean isLocationEnabled() {
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
+                locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
 
     public void checkDrawOverlayPermission() {

@@ -58,7 +58,7 @@
 //    public static int DynamicKeyboardHeight = -1;
 //    public static int DynamicKeyboardHeightLandScape = -1;
 //    public static int EnglishCurrentFontStyle = 0;
-//    public static String[] EnglishfontCollectionFromAsset = {"efont/style7.ttf", "efont/style9.ttf", "efont/style10.ttf", "efont/style12.ttf", "efont/style14.ttf", "efont/style15.ttf", "efont/style16.ttf", "efont/style17.ttf", "efont/style18.ttf", "efont/style19.otf", "efont/style20.ttf", "efont/style21.ttf", "efont/style23.ttf", "efont/style25.ttf", "efont/style26.otf", "efont/style27.otf", "efont/style28.ttf", "efont/style29.ttf", "efont/style30.ttf", "efont/style31.ttf", "efont/style32.ttf"};
+//    public static String[] EnglishfontCollectionFromAsset = {"fontList/font7.ttf", "fontList/font9.ttf", "fontList/font10.ttf", "fontList/font12.ttf", "fontList/font14.ttf", "fontList/font15.ttf", "fontList/font16.ttf", "fontList/font17.ttf", "fontList/font18.ttf", "fontList/font19.otf", "fontList/font20.ttf", "fontList/font21.ttf", "fontList/font23.ttf", "fontList/font25.ttf", "fontList/font26.otf", "fontList/font27.otf", "fontList/font28.ttf", "fontList/font29.ttf", "fontList/font30.ttf", "fontList/font31.ttf", "fontList/font32.ttf"};
 //    public static File Gifdestfilepath = null;
 //    public static int HourNotification = 20;
 //    public static final int KEYCODE_ALPHABETS = -2830;
@@ -127,7 +127,7 @@
 //    public static String e9 = "";
 //    public static String enableActivate = "";
 //    public static int flg_lang_change = 0;
-//    public static String[] fontCollectionFromAsset = {"font/style1.ttf", "font/style2.ttf", "font/style3.ttf", "font/style4.ttf", "font/style5.ttf", "font/style6.ttf", "font/style7.ttf", "font/style8.ttf", "font/style9.ttf", "font/style10.ttf"};
+//    public static String[] fontCollectionFromAsset = {"font/style1.ttf", "font/style2.ttf", "font/style3.ttf", "font/style4.ttf", "font/style5.ttf", "font/style6.ttf", "font/font7.ttf", "font/style8.ttf", "font/font9.ttf", "font/font10.ttf"};
 //    public static String fontname = "हिन्दी फ़ॉन्ट शैली";
 //    public static int h = 0;
 //    public static int hintColorCode = -1;

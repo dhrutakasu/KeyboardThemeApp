@@ -10,8 +10,8 @@
         android:id="@+id/RlHeaderBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <include layout="@layout/layout_header" />
@@ -51,892 +51,893 @@
                     android:layout_height="match_parent"
                     android:layout_marginBottom="10dp">
 
-                    <RelativeLayout
+                    <ImageView
+                        android:id="@+id/IvBackgroundImg"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_margin="0dp">
+                        android:scaleType="fitXY" />
 
-                        <ImageView
-                            android:id="@+id/IvBackgroundImg"
+                    <ImageView
+                        android:id="@+id/IvBlackCover"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#99000000"
+                        android:scaleType="fitXY" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:scaleType="fitXY" />
+                            android:orientation="vertical"
+                            android:weightSum="5">
 
-                        <ImageView
-                            android:id="@+id/IvBlackCover"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#99000000"
-                            android:scaleType="fitXY" />
+                            <LinearLayout
+                                android:id="@+id/RvEmojiSearchMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.8"
+                                android:background="@drawable/top_bg10"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:weightSum="10">
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="left|center_vertical|center_horizontal|center">
+
+                                    <ImageView
+                                        android:id="@+id/IvMenuKeyboard"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/menu_unpresed10" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="8"
+                                    android:gravity="left|center_vertical|center_horizontal|center">
+
+                                    <ImageView
+                                        android:id="@+id/IvEmojiKeyboard"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentRight="true"
+                                        android:src="@drawable/emoji_unpresed10" />
+
+                                    <ImageView
+                                        android:id="@+id/IvSearchKeyboard"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/search_unpresed10" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="right|center_vertical|center_horizontal|center">
+
+                                    <ImageView
+                                        android:id="@+id/IvClearText"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/close_unpresed10" />
+                                </LinearLayout>
+                            </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_margin="2dp"
+                                android:layout_weight="4.2"
                                 android:orientation="vertical"
-                                android:weightSum="5">
+                                android:weightSum="4">
 
                                 <LinearLayout
-                                    android:id="@+id/RvEmojiSearchMenu"
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
-                                    android:layout_weight="0.8"
-                                    android:background="@drawable/top_bg10"
+                                    android:layout_marginTop="1dp"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:orientation="horizontal"
+                                    android:weightSum="10">
+
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttonq"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <TextView
+                                            android:id="@+id/TxtQ"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="Q"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttonw"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <TextView
+                                            android:id="@+id/TxtW"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="W"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttone"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <TextView
+                                            android:id="@+id/TxtE"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="E"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttonr"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <TextView
+                                            android:id="@+id/TxtR"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="R"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttont"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <TextView
+                                            android:id="@+id/TxtT"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="T"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttony"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <TextView
+                                            android:id="@+id/TxtY"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="Y"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttonu"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <TextView
+                                            android:id="@+id/TxtU"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="U"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttoni"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <TextView
+                                            android:id="@+id/TxtI"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="I"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttono"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <TextView
+                                            android:id="@+id/TxtO"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="O"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttonp"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <TextView
+                                            android:id="@+id/TxtP"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="P"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_marginTop="1dp"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
                                     android:gravity="center"
                                     android:orientation="horizontal"
                                     android:weightSum="10">
 
-                                    <LinearLayout
+                                    <RelativeLayout
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
+                                        android:layout_marginStart="1dp"
                                         android:layout_weight="1"
-                                        android:gravity="left|center_vertical|center_horizontal|center">
+                                        android:gravity="center">
 
-                                        <ImageView
-                                            android:id="@+id/IvMenuKeyboard"
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttona"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <TextView
+                                            android:id="@+id/TxtA"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:src="@drawable/menu_unpresed10" />
-                                    </LinearLayout>
+                                            android:layout_gravity="center"
+                                            android:text="A"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
 
-                                    <LinearLayout
+                                    <RelativeLayout
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
-                                        android:layout_weight="8"
-                                        android:gravity="left|center_vertical|center_horizontal|center">
-
-                                        <ImageView
-                                            android:id="@+id/IvEmojiKeyboard"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_alignParentRight="true"
-                                            android:src="@drawable/emoji_unpresed10" />
-
-                                        <ImageView
-                                            android:id="@+id/IvSearchKeyboard"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:src="@drawable/search_unpresed10" />
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="0dp"
-                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
                                         android:layout_weight="1"
-                                        android:gravity="right|center_vertical|center_horizontal|center">
+                                        android:gravity="center">
 
-                                        <ImageView
-                                            android:id="@+id/IvClearText"
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttons"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <TextView
+                                            android:id="@+id/TxtS"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:src="@drawable/close_unpresed10" />
-                                    </LinearLayout>
+                                            android:layout_gravity="center"
+                                            android:text="S"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttond"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <TextView
+                                            android:id="@+id/TxtD"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="D"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttonf"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <TextView
+                                            android:id="@+id/TxtF"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="F"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttong"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <TextView
+                                            android:id="@+id/TxtG"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="G"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttonh"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <TextView
+                                            android:id="@+id/TxtH"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="H"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttonj"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <TextView
+                                            android:id="@+id/TxtJ"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="J"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttonk"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <TextView
+                                            android:id="@+id/TxtK"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="K"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttonl"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <TextView
+                                            android:id="@+id/TxtL"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="L"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
                                 </LinearLayout>
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
-                                    android:layout_margin="2dp"
-                                    android:layout_weight="4.2"
-                                    android:orientation="vertical"
-                                    android:weightSum="4">
+                                    android:layout_marginTop="1dp"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="horizontal"
+                                    android:weightSum="10">
 
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_marginTop="1dp"
-                                        android:layout_marginBottom="1dp"
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1.5"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttonshift"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <ImageView
+                                            android:id="@+id/IvShift"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/btn_shift_off"
+                                            app:tint="@color/black" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
                                         android:layout_weight="1"
-                                        android:orientation="horizontal"
-                                        android:weightSum="10">
+                                        android:gravity="center">
 
-                                        <FrameLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttonz"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttonr"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
+                                        <TextView
+                                            android:id="@+id/TxtZ"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="Z"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
 
-                                            <TextView
-                                                android:id="@+id/textViewr"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="R"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </FrameLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttonq"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViewq"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="Q"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttonw"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textVieww"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="W"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttone"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViewe"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="E"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginLeft="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttont"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViewt"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="T"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttony"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViewy"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="Y"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttonu"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViewu"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="U"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttoni"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViewi"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="I"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttono"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViewo"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="O"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttonp"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViewp"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="P"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_marginTop="1dp"
-                                        android:layout_marginBottom="1dp"
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
                                         android:layout_weight="1"
-                                        android:gravity="center"
-                                        android:orientation="horizontal"
-                                        android:weightSum="10">
+                                        android:gravity="center">
 
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="1dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttonx"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttona"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
+                                        <TextView
+                                            android:id="@+id/TxtX"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="X"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
 
-                                            <TextView
-                                                android:id="@+id/textViewa"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="A"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginLeft="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttons"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViews"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="S"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttond"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViewd"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="D"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttonf"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViewf"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="F"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttong"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViewg"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="G"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttonh"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViewh"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="H"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttonj"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViewj"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="J"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttonk"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViewk"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="K"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttonl"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViewl"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="L"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_marginTop="1dp"
-                                        android:layout_marginBottom="1dp"
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
                                         android:layout_weight="1"
-                                        android:gravity="center"
-                                        android:orientation="horizontal"
-                                        android:weightSum="10">
+                                        android:gravity="center">
 
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_weight="1.5"
-                                            android:gravity="center">
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttonc"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttonshift"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
+                                        <TextView
+                                            android:id="@+id/TxtC"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="C"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
 
-                                            <ImageView
-                                                android:id="@+id/shiftIcon"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:background="@drawable/btn_shift_off" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttonz"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViewz"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="Z"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttonx"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViewx"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="X"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttonc"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViewc"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="C"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttonv"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViewv"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="V"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttonb"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViewb"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="B"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttonn"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViewn"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="N"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttonm"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <TextView
-                                                android:id="@+id/textViewm"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="M"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
-
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1.5"
-                                            android:gravity="center">
-
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttonDel"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
-
-                                            <ImageView
-                                                android:id="@+id/delIcon"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:background="@drawable/ic_back_arrow" />
-                                        </RelativeLayout>
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_marginTop="1dp"
-                                        android:layout_marginBottom="1dp"
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
                                         android:layout_weight="1"
-                                        android:gravity="center"
-                                        android:orientation="horizontal"
-                                        android:weightSum="10">
+                                        android:gravity="center">
 
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_weight="1.5"
-                                            android:gravity="center">
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttonv"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttonnum"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
+                                        <TextView
+                                            android:id="@+id/TxtV"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="V"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
 
-                                            <TextView
-                                                android:id="@+id/textViewnum"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="123"
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="@dimen/_14sdp" />
-                                        </RelativeLayout>
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
 
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttonb"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttondot"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
+                                        <TextView
+                                            android:id="@+id/TxtB"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="B"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
 
-                                            <TextView
-                                                android:id="@+id/textViewdot"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text="."
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="25dp" />
-                                        </RelativeLayout>
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
 
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="1dp"
-                                            android:layout_weight="5"
-                                            android:gravity="center">
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttonn"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttonSpace1"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
+                                        <TextView
+                                            android:id="@+id/TxtN"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="N"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
 
-                                            <ImageView
-                                                android:id="@+id/spaceIcon"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:background="@drawable/btn_space" />
-                                        </RelativeLayout>
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
 
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="1dp"
-                                            android:layout_weight="1"
-                                            android:gravity="center">
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttonm"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttoncomma"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
+                                        <TextView
+                                            android:id="@+id/TxtM"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="M"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
 
-                                            <TextView
-                                                android:id="@+id/textViewcomma"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:text=","
-                                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                                android:textSize="25dp" />
-                                        </RelativeLayout>
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_weight="1.5"
+                                        android:gravity="center">
 
-                                        <RelativeLayout
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginStart="2dp"
-                                            android:layout_weight="1.5"
-                                            android:gravity="center">
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttonDel"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
-                                            <!--                                                <ImageButton-->
-                                            <!--                                                    android:id="@+id/buttonENter"-->
-                                            <!--                                                    android:layout_width="match_parent"-->
-                                            <!--                                                    android:layout_height="match_parent"-->
-                                            <!--                                                    android:background="@drawable/key_unpresed" />-->
+                                        <ImageView
+                                            android:id="@+id/IvDelete"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentTop="true"
+                                            android:layout_alignParentEnd="true"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="13dp"
+                                            android:layout_marginEnd="14dp"
+                                            android:src="@drawable/ic_back_arrow"
+                                            app:tint="@color/black" />
+                                    </RelativeLayout>
+                                </LinearLayout>
 
-                                            <ImageView
-                                                android:id="@+id/enterIcon"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_gravity="center"
-                                                android:background="@drawable/btn_enter" />
-                                        </RelativeLayout>
-                                    </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_marginTop="1dp"
+                                    android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="horizontal"
+                                    android:weightSum="10">
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1.5"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttonnum"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <TextView
+                                            android:id="@+id/Txt123"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="123"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/_14sdp" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttondot"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <TextView
+                                            android:id="@+id/TxtDot"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="."
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="25dp" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="1dp"
+                                        android:layout_weight="5"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttonSpace1"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <ImageView
+                                            android:id="@+id/IvSpace"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/btn_space" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="1dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttoncomma"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <TextView
+                                            android:id="@+id/TxtComma"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text=","
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="25dp" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="2dp"
+                                        android:layout_weight="1.5"
+                                        android:gravity="center">
+
+                                        <!--                                                <ImageButton-->
+                                        <!--                                                    android:id="@+id/buttonENter"-->
+                                        <!--                                                    android:layout_width="match_parent"-->
+                                        <!--                                                    android:layout_height="match_parent"-->
+                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
+
+                                        <ImageView
+                                            android:id="@+id/IvEnter"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/btn_enter" />
+                                    </RelativeLayout>
                                 </LinearLayout>
                             </LinearLayout>
-                        </RelativeLayout>
+                        </LinearLayout>
                     </RelativeLayout>
                 </RelativeLayout>
             </LinearLayout>
@@ -952,14 +953,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_above="@+id/RlBottomPanel"
-                    android:layout_alignParentLeft="true">
+                    android:layout_alignParentStart="true">
 
                     <RelativeLayout
                         android:id="@+id/RlImage"
                         android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_above="@+id/RlFontColor"
-                        android:layout_alignParentTop="true"
-                        android:layout_height="match_parent">
+                        android:layout_alignParentTop="true">
 
                         <RelativeLayout
                             android:id="@+id/RlColorView"
@@ -976,14 +977,19 @@
                                 <RelativeLayout
                                     android:id="@+id/RlChooseBackground"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content">
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_alignParentBottom="true">
 
                                     <ImageView
                                         android:id="@+id/IvChooseBackground"
-                                        android:layout_width="55dp"
-                                        android:layout_height="55dp"
+                                        android:layout_width="58dp"
+                                        android:layout_height="58dp"
                                         android:layout_alignParentStart="true"
-                                        android:paddingBottom="10dp"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:padding="2dp"
                                         android:src="@drawable/choose_myphoto_xml" />
                                 </RelativeLayout>
 
@@ -991,7 +997,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
-                                    android:layout_toRightOf="@+id/RlChooseBackground">
+                                    android:layout_toEndOf="@+id/RlChooseBackground">
 
                                     <androidx.recyclerview.widget.RecyclerView
                                         android:id="@+id/RvBackgroundList"
@@ -1012,10 +1018,10 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
-                                    android:layout_marginLeft="-15dp"
-                                    android:layout_marginRight="-10dp"
-                                    android:layout_toLeftOf="@+id/TxtTotalPercentage"
-                                    android:layout_toRightOf="@+id/TxtPercentage"
+                                    android:layout_marginStart="-15dp"
+                                    android:layout_marginEnd="-10dp"
+                                    android:layout_toStartOf="@+id/TxtTotalPercentage"
+                                    android:layout_toEndOf="@+id/TxtPercentage"
                                     android:max="255"
                                     android:maxHeight="2dp"
                                     android:minHeight="2dp"
@@ -1027,9 +1033,9 @@
                                     android:id="@+id/TxtPercentage"
                                     android:layout_width="35dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_alignParentLeft="true"
+                                    android:layout_alignParentStart="true"
                                     android:layout_centerVertical="true"
-                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginStart="5dp"
                                     android:text="0%"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
                                     android:textColor="@color/gray"
@@ -1039,7 +1045,7 @@
                                     android:id="@+id/TxtTotalPercentage"
                                     android:layout_width="35dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_alignParentRight="true"
+                                    android:layout_alignParentEnd="true"
                                     android:layout_centerVertical="true"
                                     android:text="100%"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -1049,6 +1055,7 @@
                         </RelativeLayout>
 
                         <RelativeLayout
+                            android:id="@+id/RlOptions"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_above="@+id/RlColorView"
@@ -1070,16 +1077,16 @@
                                     android:id="@+id/IvOpacityView"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginRight="5dp"
-                                    android:layout_toRightOf="@+id/IvClearBackground"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_toEndOf="@+id/IvClearBackground"
                                     android:src="@drawable/opacity_unpresed" />
 
                                 <ImageView
                                     android:id="@+id/IvBackground"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_toRightOf="@+id/IvOpacityView"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_toEndOf="@+id/IvOpacityView"
                                     android:src="@drawable/backgroundchage_presed" />
                             </RelativeLayout>
                         </RelativeLayout>
@@ -1172,22 +1179,22 @@
                         android:id="@+id/IvChangeBg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/bgcolor_presed" />
+                        android:src="@drawable/bgpressxml" />
 
                     <ImageView
                         android:id="@+id/IvFontChange"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
-                        android:layout_marginRight="50dp"
-                        android:layout_toRightOf="@+id/IvChangeBg"
+                        android:layout_marginStart="50dp"
+                        android:layout_marginEnd="50dp"
+                        android:layout_toEndOf="@+id/IvChangeBg"
                         android:src="@drawable/previewfontpressxml" />
 
                     <ImageView
-                        android:id="@+id/buttonColor"
+                        android:id="@+id/IvFontColor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/IvFontChange"
+                        android:layout_toEndOf="@+id/IvFontChange"
                         android:src="@drawable/previewcolorpressxml" />
                 </RelativeLayout>
             </RelativeLayout>

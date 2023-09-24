@@ -78,6 +78,8 @@ public class Constants {
     public static int PreviewColorCode = -1;
     public static boolean IsColorCodeChange = false;
     public static int FontStyle = 0;
+    public static final int[] ColorsList = {0, -14521120, -1092784, -1294214, -5552196, -12627531, -14575885, -10011977, -14273992, -8825528, -16611119, -16742021, -16757440, -13154481, -10453621, -16728876, -12434878, -10354454, -11922292, -6381922, -8825528, -2937041, -12756226, -12232092, -14983648, -37120, -10011977, -8708190, -16725933, -16540699, -720809, -769226, -16742021, -2818048, -16752540, -14606047, -16728155};
+    public static String[] FontList = {"fontList/font7.ttf", "fontList/font9.ttf", "fontList/font10.ttf", "fontList/font12.ttf", "fontList/font14.ttf", "fontList/font15.ttf", "fontList/font16.ttf", "fontList/font17.ttf", "fontList/font18.ttf", "fontList/font19.otf", "fontList/font20.ttf", "fontList/font21.ttf", "fontList/font23.ttf", "fontList/font25.ttf", "fontList/font26.otf", "fontList/font27.otf", "fontList/font28.ttf", "fontList/font29.ttf", "fontList/font30.ttf", "fontList/font31.ttf", "fontList/font32.ttf"};
 
     static {
         String[][] strArr = new String[24][];
