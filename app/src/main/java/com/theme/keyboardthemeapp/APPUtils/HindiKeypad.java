@@ -72,7 +72,9 @@
 //import com.bumptech.glide.Glide;
 //import com.bumptech.glide.load.engine.DiskCacheStrategy;
 //import com.theme.keyboardthemeapp.Constants;
+//import com.theme.keyboardthemeapp.MySharePref;
 //import com.theme.keyboardthemeapp.R;
+//import com.theme.keyboardthemeapp.UI.Activities.ImagePreviewActivity;
 ////import com.common.Common_Preferences;
 ////import com.common.Common_Resource;
 ////import com.google.android.gms.ads.AdRequest;
@@ -135,23 +137,12 @@
 //    public static int toLevel = 0;
 //    View.OnClickListener ChangeSpeakLang = new View.OnClickListener() {
 //        public void onClick(View view) {
-//            if (HindiUtils.speakLangName.equals(HindiKeypad.this.getResources().getString(R.string.speak_lang_2))) {
-//                HindiUtils.speakLangName = "en";
+//            if (new MySharePref(ctx).getPrefString(MySharePref.LANGUAGE_NAME,"hi").equals(HindiKeypad.this.getResources().getString(R.string.speak_lang_2))) {
+//                new MySharePref(ctx).putPrefString(MySharePref.LANGUAGE_NAME,"en"); ;
 //            } else {
-//                HindiUtils.speakLangName = HindiKeypad.this.getResources().getString(R.string.speak_lang_2);
+//                new MySharePref(ctx).putPrefString(MySharePref.LANGUAGE_NAME,getResources().getString(R.string.speak_lang_2)); ;
 //            }
-//            HindiKeypad.this.btnspeaklang.setText(HindiUtils.speakLangName);
-//            HindiKeypad hindiKeypad = HindiKeypad.this;
-//            hindiKeypad.edit = hindiKeypad.prefs.edit();
-//            HindiKeypad.this.edit.putString("speakLangName", HindiUtils.speakLangName);
-//            if (Build.VERSION.SDK_INT >= 11) {
-//                HindiUtils.isUpHoneycomb = true;
-//            }
-//            if (HindiUtils.isUpHoneycomb) {
-//                HindiKeypad.this.edit.apply();
-//            } else {
-//                HindiKeypad.this.edit.commit();
-//            }
+//            HindiKeypad.this.btnspeaklang.setText(new MySharePref(ctx).getPrefString(MySharePref.LANGUAGE_NAME,"hi"));
 //        }
 //    };
 //    View.OnClickListener CloseDialog = new View.OnClickListener() {
@@ -169,22 +160,22 @@
 //    LinearLayout LangChange;
 //    View.OnClickListener OnClickTheme = new View.OnClickListener() {
 //        public void onClick(View view) {
-////            try {
-////                if (!HindiUtils.previewActivityisOpen) {
-////                    HindiUtils.wordExist = true;
-////                    Intent intent = new Intent(HindiKeypad.this.getApplicationContext(), ApplyKeypadTheme.class);
-////                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-////                    intent.putExtra("flgbool", true);
-////                    HindiKeypad.this.startActivity(intent);
-////                } else if (PreviewActivity.act == null) {
-////                    HindiUtils.wordExist = true;
-////                    Intent intent2 = new Intent(HindiKeypad.this.getApplicationContext(), ApplyKeypadTheme.class);
-////                    intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-////                    intent2.putExtra("flgbool", false);
-////                    HindiKeypad.this.startActivity(intent2);
-////                }
-////            } catch (Exception unused) {
-////            }
+//            try {
+//                if (!Constants.previewActivityisOpen) {
+//                    Constants.wordExist = true;
+//                    Intent intent = new Intent(HindiKeypad.this.getApplicationContext(), ApplyKeypadTheme.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    intent.putExtra("flgbool", true);
+//                    HindiKeypad.this.startActivity(intent);
+//                } else if (ImagePreviewActivity.act == null) {
+//                    Constants.wordExist = true;
+//                    Intent intent2 = new Intent(HindiKeypad.this.getApplicationContext(), ApplyKeypadTheme.class);
+//                    intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    intent2.putExtra("flgbool", false);
+//                    HindiKeypad.this.startActivity(intent2);
+//                }
+//            } catch (Exception unused) {
+//            }
 //        }
 //    };
 //    ListView SelectedLanglist;
@@ -593,9 +584,9 @@
 //                LinearLayout linearLayout = (LinearLayout) this.v.findViewById(R.id.btnTheme);
 //                this.LangChange = (LinearLayout) this.v.findViewById(R.id.changeLang);
 //                if (HindiUtils.CurrentLang == 1) {
-//                    this.LangChange.setVisibility(0);
+//                    this.LangChange.setVisibility(View.VISIBLE);
 //                } else {
-//                    this.LangChange.setVisibility(8);
+//                    this.LangChange.setVisibility(View.GONE);
 //                }
 //                if (HindiUtils.checkLanguage) {
 //                    this.LangChange.setBackgroundResource(R.drawable.enable);
@@ -2709,7 +2700,7 @@
 //        this.mainMenu = (LinearLayout) this.v.findViewById(R.id.main_patti);
 //        this.mVibrator = SetVibrateCompact.getInstance(this);
 //        this.otherContents = (RelativeLayout) this.v.findViewById(R.id.otherContents);
-//        this.mAudioManager = (AudioManager) getSystemService("audio");
+//        this.mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 //        this.otherContentLay = (RelativeLayout) this.v.findViewById(R.id.otherContents);
 //        this.btnSpeak = (LinearLayout) this.v.findViewById(R.id.btnmic);
 //        ((LinearLayout) this.v.findViewById(R.id.btn_setting)).setOnClickListener(new View.OnClickListener() {

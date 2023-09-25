@@ -44,6 +44,8 @@ public class MySharePref {
     public static final String TRANSPARENT = "TRANSPARENT";
     public static final String TRANSPARENT_BLACK_BG = "TRANSPARENT_BLACK_BG";
     public static final String TRANSPARENT_TOP_BG = "TRANSPARENT_TOP_BG";
+    public static final String LANGUAGE_NAME = "LANGUAGE_NAME";
+    public static final String PREVIEW_IS_OPEN = "PREVIEW_IS_OPEN";
 
 
     private SharedPreferences sharedPreferences;

@@ -26,21 +26,24 @@
         android:theme="@style/Theme.KeyboardThemeApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".UI.Activities.ImagePreviewActivity"
+            android:exported="false" />
+        <activity
             android:name=".UI.Activities.BackgroundActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activities.ThemeActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activities.GIFActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activities.SettingActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activities.FontActivity"
             android:exported="false"
@@ -64,11 +67,11 @@
         <activity
             android:name=".UI.Activities.TextArtActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activities.FancyTextActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activities.QuotesActivity"
             android:exported="false"
@@ -76,19 +79,19 @@
         <activity
             android:name=".UI.Activities.ViewJokeQuoteActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activities.JokesActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activities.PrivacyPolicyActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activities.MoreSettingsActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activities.SplashScreen"
             android:exported="true"
@@ -112,7 +115,7 @@
         <activity
             android:name=".UI.Activities.MainActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <service
             android:name=".KeyboardService.HindiKeypad"
