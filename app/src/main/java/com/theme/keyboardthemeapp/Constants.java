@@ -5,25 +5,40 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.graphics.Rect;
+import android.media.ExifInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.provider.Settings;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-
-import com.karumi.dexter.PermissionToken;
-import com.theme.keyboardthemeapp.KeyboardService.HindiKeypad;
-import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
-import com.theme.keyboardthemeapp.ModelClass.StatusItem;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.viewpager.widget.ViewPager;
+
+import com.karumi.dexter.PermissionToken;
+import com.theme.keyboardthemeapp.APPUtils.HindiKeypad;
+import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
+import com.theme.keyboardthemeapp.ModelClass.StatusItem;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
 
 public class Constants {
     public static final int OVERLAY_REQUEST_CODE = 101;
@@ -37,6 +52,7 @@ public class Constants {
     public static final String THEME_URL = "assets/android/keyboard/keyboard.json";
     public static final String QUOTES_CATEGORY_URL = "assets/android/hindikeyboard/get_categories.json";
     public static final String JOKE_CATEGORY_URL = "assets/android/hindikeyboard/hindijokes.json";
+    public static final String FILE_PATH = "FILE_PATH";
     public static ArrayList<StatusItem> statusItems = new ArrayList<>();
     public static ArrayList<CategoriesItem> categoriesItems = new ArrayList<>();
     public static boolean enableKeyboard = true;
@@ -80,8 +96,13 @@ public class Constants {
     public static int FontStyle = 0;
     public static final int[] ColorsList = {0, -14521120, -1092784, -1294214, -5552196, -12627531, -14575885, -10011977, -14273992, -8825528, -16611119, -16742021, -16757440, -13154481, -10453621, -16728876, -12434878, -10354454, -11922292, -6381922, -8825528, -2937041, -12756226, -12232092, -14983648, -37120, -10011977, -8708190, -16725933, -16540699, -720809, -769226, -16742021, -2818048, -16752540, -14606047, -16728155};
     public static String[] FontList = {"fontList/font7.ttf", "fontList/font9.ttf", "fontList/font10.ttf", "fontList/font12.ttf", "fontList/font14.ttf", "fontList/font15.ttf", "fontList/font16.ttf", "fontList/font17.ttf", "fontList/font18.ttf", "fontList/font19.otf", "fontList/font20.ttf", "fontList/font21.ttf", "fontList/font23.ttf", "fontList/font25.ttf", "fontList/font26.otf", "fontList/font27.otf", "fontList/font28.ttf", "fontList/font29.ttf", "fontList/font30.ttf", "fontList/font31.ttf", "fontList/font32.ttf"};
+    public static String[] HindiFontList = {"font/style1.ttf", "font/style2.ttf", "font/style3.ttf", "font/style4.ttf", "font/style5.ttf", "font/style6.ttf", "font/style7.ttf", "font/style8.ttf", "font/style9.ttf", "font/style10.ttf"};
     public static boolean wordExist = true;
-    public static boolean previewActivityisOpen=false;
+    public static boolean previewActivityisOpen = false;
+    public static int width = 0;
+    public static int height = 0;
+    public static int KeyboardHeight = -1;
+    public static String dictionaryword="";
 
     static {
         String[][] strArr = new String[24][];
@@ -296,5 +317,120 @@ public class Constants {
 
     public static int pxFromDp(Context context, float f) {
         return (int) (f * context.getResources().getDisplayMetrics().density);
+    }
+
+    public static int calculateInSampleSize(BitmapFactory.Options options, int width, int height) {
+        int outHeight = options.outHeight;
+        int outWidth = options.outWidth;
+        int val = 1;
+        if (outHeight > height || outWidth > width) {
+            int ValHeight = outHeight / 2;
+            int i7 = outWidth / 2;
+            while (ValHeight / val > height && i7 / val > width) {
+                val *= 2;
+            }
+        }
+        return val;
+    }
+
+    public static Bitmap adjustImage(String file, Bitmap bitmapAdujust) {
+        try {
+            int orientation = new ExifInterface(file).getAttributeInt("Orientation", 1);
+            int degree = 0;
+            if (orientation == 3) {
+                degree = 180;
+            } else if (orientation == 6) {
+                degree = 90;
+            } else if (orientation == 8) {
+                degree = 270;
+            }
+            if (degree != 0) {
+                int bitmapWidth = bitmapAdujust.getWidth();
+                int bitmapHeight = bitmapAdujust.getHeight();
+                Matrix matrix = new Matrix();
+                matrix.preRotate(degree);
+                bitmapAdujust = Bitmap.createBitmap(bitmapAdujust, 0, 0, bitmapWidth, bitmapHeight, matrix, false);
+            }
+            return bitmapAdujust.copy(Bitmap.Config.ARGB_8888, true);
+        } catch (IOException unused) {
+            return null;
+        }
+    }
+
+    public static File getBackground(Context context, int pos) {
+        File file2 = new File(context.getFilesDir() + "/photo_save.jpeg");
+        if (!file2.exists()) {
+            try {
+                AssetManager assets = context.getAssets();
+                assets.open("background/" + context.getAssets().list("background")[pos]);
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inJustDecodeBounds = true;
+                AssetManager contextAssets = context.getAssets();
+                BitmapFactory.decodeStream(contextAssets.open("background/" + context.getAssets().list("background")[pos]), new Rect(0, 0, 0, 0), options);
+                options.inSampleSize = Constants.calculateInSampleSize(options, Constants.width, (int) context.getResources().getDimension(R.dimen.keyboard_height));
+                options.inJustDecodeBounds = false;
+                AssetManager assetManager = context.getAssets();
+//                Bitmap.createScaledBitmap(BitmapFactory.decodeStream(assets3.open("background/" + context.getAssets().list("background")[0]), new Rect(0, 0, 0, 0), options), HindiUtils.w, (int) getResources().getDimension(R.dimen.keyboard_height), false).compress(Bitmap.CompressFormat.PNG, 100, new FileOutputStream(file2));
+                Bitmap.createScaledBitmap(BitmapFactory.decodeStream(assetManager.open("background/" + context.getAssets().list("background")[pos]), new Rect(0, 0, 0, 0), options), Constants.width, (int) context.getResources().getDimension(R.dimen.keyboard_height), false).compress(Bitmap.CompressFormat.PNG, 100, new FileOutputStream(file2));
+            } catch (IOException unused) {
+                Toast.makeText(context, "Exception", Toast.LENGTH_LONG).show();
+            }
+        }
+        return file2;
+    }
+
+    public static String getRealPathFromURI(Context context, Uri uri) {
+        Cursor cursor = null;
+        try {
+            String[] proj = {MediaStore.Images.Media.DATA};
+            cursor = context.getContentResolver().query(uri, proj, null, null, null);
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+    }
+
+    public static String getPathFromUriLolipop(Context context, Uri uri) {
+        Cursor query = context.getContentResolver().query(uri, new String[]{"_data"}, null, null, null);
+        int columnIndexOrThrow = query.getColumnIndexOrThrow("_data");
+        query.moveToFirst();
+        String string = query.getString(columnIndexOrThrow);
+        query.close();
+        return string;
+    }
+
+    public static void copyFile(File file2, File file3) {
+
+        InputStream in = null;
+        OutputStream out = null;
+        try {
+
+            in = new FileInputStream(file2);
+            out = new FileOutputStream(file3);
+
+            byte[] buffer = new byte[1024];
+            int read;
+            while ((read = in.read(buffer)) != -1) {
+                out.write(buffer, 0, read);
+            }
+            in.close();
+            in = null;
+
+            // write the output file (You have now copied the file)
+            out.flush();
+            out.close();
+            out = null;
+
+        } catch (FileNotFoundException fnfe1) {
+            Log.e("tag", fnfe1.getMessage());
+        } catch (Exception e) {
+            Log.e("tag", e.getMessage());
+        }
+
+
     }
 }

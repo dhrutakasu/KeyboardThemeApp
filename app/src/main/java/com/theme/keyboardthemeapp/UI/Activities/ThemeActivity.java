@@ -103,11 +103,15 @@ public class ThemeActivity extends AppCompatActivity implements View.OnClickList
                         if (THUMB.exists()) {
                             new MySharePref(context).putPrefString(MySharePref.SELECT_THEME, Theme.getAbsolutePath());
                             new MySharePref(context).putPrefString(MySharePref.SELECT_THEME_THUMB, THUMB.getAbsolutePath());
+                            //todo check
+                            Constants.copyFile(Theme,new File(getFilesDir().getAbsolutePath() + "/photo_save.jpeg"));
+                            new MySharePref(context).putPrefInt(MySharePref.DEFAULT_THEME, pos);
+                            new MySharePref(context).putPrefBoolean(MySharePref.DEFAULT_GIF, false);
                             onBackPressed();
                         } else {
-                            if (ThemeArray.get(pos).getName().equalsIgnoreCase("android_asset")) {
-                                new ThemeDownloader(context, LayoutProgress, ThemeArray, pos, ivDownloadTheme, ivCheckTheme, adapter, ThemeActivity.this).execute(response.body().getThumburl() + "/" + ThemeArray.get(pos).getId() + ".png", response.body().getUrl() + "/");
-                            } else {
+//                            if (ThemeArray.get(pos).getName().equalsIgnoreCase("android_asset")) {
+//                                new ThemeDownloader(context, LayoutProgress, ThemeArray, pos, ivDownloadTheme, ivCheckTheme, adapter, ThemeActivity.this).execute(response.body().getThumburl() + "/" + ThemeArray.get(pos).getId() + ".png", response.body().getUrl() + "/");
+//                            } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                                 builder.setCancelable(false);
                                 builder.setMessage(R.string.Alert_string)
@@ -115,7 +119,7 @@ public class ThemeActivity extends AppCompatActivity implements View.OnClickList
                                             dialogInterface.dismiss();
                                             new ThemeDownloader(context, LayoutProgress, ThemeArray, pos, ivDownloadTheme, ivCheckTheme, adapter, ThemeActivity.this).execute(response.body().getThumburl() + "/" + ThemeArray.get(pos).getName(), response.body().getUrl() + "/");
                                         }).setNegativeButton("No", (dialog, which) -> dialog.dismiss()).show();
-                            }
+//                            }
                         }
                     });
                     RvThemeList.setAdapter(adapter);

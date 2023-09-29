@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
 import com.theme.keyboardthemeapp.MySharePref;
 import com.theme.keyboardthemeapp.UI.Activities.ThemeActivity;
@@ -165,10 +166,14 @@ public class ThemeDownloader extends AsyncTask<String, Void, Void> {
     @Override
     protected void onPostExecute(Void result) {
         if (ThemeArray.get(Pos).getName().contains("android_asset")) {
-            File Theme = new File(context.getFilesDir(), "Theme/" + ThemeArray.get(Pos).getName().substring(ThemeArray.get(Pos).getName().lastIndexOf("/") + 1));
-            File THUMB = new File(context.getFilesDir(), "Theme/" + "bg_" + ThemeArray.get(Pos).getName().substring(ThemeArray.get(Pos).getName().lastIndexOf("/") + 1));
-            new MySharePref(context).putPrefString(MySharePref.SELECT_THEME, Theme.getAbsolutePath());
+            File THUMB = new File(context.getFilesDir(), "Theme/" + ThemeArray.get(Pos).getName().substring(ThemeArray.get(Pos).getName().lastIndexOf("/") + 1));
+            File Theme = new File(context.getFilesDir(), "Theme/" + "bg_" + ThemeArray.get(Pos).getName().substring(ThemeArray.get(Pos).getName().lastIndexOf("/") + 1));
             new MySharePref(context).putPrefString(MySharePref.SELECT_THEME_THUMB, THUMB.getAbsolutePath());
+            new MySharePref(context).putPrefString(MySharePref.SELECT_THEME, Theme.getAbsolutePath());
+            Constants.copyFile(Theme,new File(context.getFilesDir().getAbsolutePath() + "/photo_save.jpeg"));
+            //todo check
+            new MySharePref(context).putPrefInt(MySharePref.DEFAULT_THEME, Pos);
+            new MySharePref(context).putPrefBoolean(MySharePref.DEFAULT_GIF, false);
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -184,6 +189,10 @@ public class ThemeDownloader extends AsyncTask<String, Void, Void> {
             File THUMB = new File(context.getFilesDir(), "Theme/" + ThemeArray.get(Pos).getName());
             new MySharePref(context).putPrefString(MySharePref.SELECT_THEME, Theme.getAbsolutePath());
             new MySharePref(context).putPrefString(MySharePref.SELECT_THEME_THUMB, THUMB.getAbsolutePath());
+            //todo check 
+            Constants.copyFile(Theme,new File(context.getFilesDir().getAbsolutePath() + "/photo_save.jpeg"));
+            new MySharePref(context).putPrefInt(MySharePref.DEFAULT_THEME, Pos);
+            new MySharePref(context).putPrefBoolean(MySharePref.DEFAULT_GIF, false);
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {

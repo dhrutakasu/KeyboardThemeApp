@@ -3,6 +3,7 @@ package com.theme.keyboardthemeapp.UI.Activities;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -12,11 +13,13 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -40,6 +43,7 @@ import com.theme.keyboardthemeapp.Retrofit.RetrofitInstance;
 import com.theme.keyboardthemeapp.Retrofit.RetrofitInterface;
 import com.theme.keyboardthemeapp.UI.Adapters.QuotePagerAdapter;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -96,7 +100,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initActions() {
         isEnableKeyboard = Constants.IsEnableKeyboard(context);
         isActivateKeyboard = Constants.IsActivateKeyboard(context);
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        Constants.height = displayMetrics.heightPixels;
+        Constants.width = displayMetrics.widthPixels;
         GetQuoteResponse();
+        if (new File(getFilesDir().getAbsolutePath() + "/photo_save.jpeg").exists()) {
+            new File(getFilesDir().getAbsolutePath() + "/photo_save.jpeg").delete();
+        }
+        Constants.getBackground(context, new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0)).getAbsolutePath();
     }
 
     private void GotoPermission() {

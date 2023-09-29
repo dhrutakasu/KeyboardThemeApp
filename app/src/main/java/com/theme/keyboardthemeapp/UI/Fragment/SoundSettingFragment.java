@@ -52,6 +52,7 @@ public class SoundSettingFragment extends Fragment implements CompoundButton.OnC
         }
         SeekSound.setMax(100);
         Constants.ProgressSound = new MySharePref(getContext()).getPrefInt(MySharePref.SOUND_PROGRESS, 10);
+        Constants.SoundVolume = new MySharePref(getContext()).getPrefFloat(MySharePref.SOUND_PROGRESS_FLOAT, 0.3f);
         SeekSound.setProgress(Constants.ProgressSound);
     }
 
@@ -77,5 +78,6 @@ public class SoundSettingFragment extends Fragment implements CompoundButton.OnC
         float val = ((float) Constants.ProgressSound) / 100.0f;
         Constants.SoundVolume = val;
         new MySharePref(getContext()).putPrefInt(MySharePref.SOUND_PROGRESS, Constants.ProgressSound);
+        new MySharePref(getContext()).putPrefFloat(MySharePref.SOUND_PROGRESS_FLOAT, Constants.SoundVolume);
     }
 }

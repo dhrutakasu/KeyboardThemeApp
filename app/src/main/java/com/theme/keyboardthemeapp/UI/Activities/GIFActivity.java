@@ -2,12 +2,16 @@ package com.theme.keyboardthemeapp.UI.Activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.theme.keyboardthemeapp.APPUtils.GifThemeDownloader;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
@@ -19,8 +23,13 @@ import com.theme.keyboardthemeapp.Retrofit.RetrofitInterface;
 import com.theme.keyboardthemeapp.UI.Adapters.GifAdapter;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -91,11 +100,28 @@ public class GIFActivity extends AppCompatActivity implements View.OnClickListen
                         if (THUMB.exists()) {
                             new MySharePref(context).putPrefString(MySharePref.SELECT_GIF_THEME_GIF, GIF.getAbsolutePath());
                             new MySharePref(context).putPrefString(MySharePref.SELECT_GIF_THEME_THUMB, THUMB.getAbsolutePath());
-                            Toast.makeText(context,"Background set successfully", Toast.LENGTH_SHORT).show();
+                            Glide.with(context).asFile().load(GIF).into(new CustomTarget<File>() {
+                                @Override
+                                public void onResourceReady(@NonNull File resource, @Nullable Transition<? super File> transition) {
+                                    try {
+                                        copyFile(resource, new File(context.getFilesDir(), "Gif_save.gif"));
+                                        new MySharePref(context).putPrefInt(MySharePref.DEFAULT_THEME, pos);
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+
+                                @Override
+                                public void onLoadCleared(@Nullable Drawable placeholder) {
+                                }
+                            });
+                            new MySharePref(context).putPrefBoolean(MySharePref.DEFAULT_GIF, true);
+                            adapter.notifyDataSetChanged();
+                            Toast.makeText(context, "Background set successfully", Toast.LENGTH_SHORT).show();
                         } else {
                             AlertDialog.Builder builder = new AlertDialog.Builder(context);
                             builder.setCancelable(false);
-                            builder.setMessage(R.string.Alert_string)
+                            builder.setMessage(R.string.Alert_gif_string)
                                     .setPositiveButton("Yes", (dialogInterface, i) -> {
                                         dialogInterface.dismiss();
                                         new GifThemeDownloader(context, LayoutProgress, gifArray, pos, ivDownloadGif, ivCheckGif, adapter).execute(response.body().getThumburl() + "/" + gifArray.get(pos).getId() + ".png", response.body().getUrl() + "/");
@@ -107,6 +133,17 @@ public class GIFActivity extends AppCompatActivity implements View.OnClickListen
                 }
             }
 
+            private void copyFile(File sourceFile, File destFile) throws IOException {
+                FileInputStream fis = new FileInputStream(sourceFile);
+                FileOutputStream fos = new FileOutputStream(destFile);
+                byte[] buffer = new byte[1024];
+                int length;
+                while ((length = fis.read(buffer)) > 0) {
+                    fos.write(buffer, 0, length);
+                }
+                fis.close();
+                fos.close();
+            }
             @Override
             public void onFailure(Call<GifModel> call, Throwable t) {
                 LayoutProgress.setVisibility(View.GONE);

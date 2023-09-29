@@ -33,7 +33,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation project(path: ':library')
-    implementation project(path: ':library')
+//    implementation project(path: ':supernova-emoji-library')
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
@@ -60,6 +60,12 @@ dependencies {
     //todo Translator dependency
     implementation 'com.google.mlkit:translate:17.0.1'
 
-//    //todo download file dependency
-//    implementation 'com.mindorks.android:prdownloader:0.6.0'
+    //todo emoji dependency
+    implementation 'com.koushikdutta.ion:ion:3.0.8'
+    /*implementation "com.vanniktech:emoji-ios:0.14.0-SNAPSHOT"
+    implementation "com.vanniktech:emoji-google:0.14.0-SNAPSHOT"
+    implementation "com.vanniktech:emoji-google-compat:0.14.0-SNAPSHOT"
+    implementation "com.vanniktech:emoji-twitter:0.14.0-SNAPSHOT"
+    implementation "com.vanniktech:emoji-facebook:0.14.0-SNAPSHOT"
+    implementation "com.vanniktech:emoji-material:0.14.0-SNAPSHOT"*/
 }

@@ -51,6 +51,7 @@ public class FonstStyleAdapter extends RecyclerView.Adapter<FonstStyleAdapter.My
             public void onClick(View v) {
                 Constants.FontStyle = position;
                 new MySharePref(context).putPrefInt(MySharePref.FONT_STYLE, Constants.FontStyle);
+                notifyDataSetChanged();
             }
         });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +59,7 @@ public class FonstStyleAdapter extends RecyclerView.Adapter<FonstStyleAdapter.My
             public void onClick(View view) {
                 Constants.FontStyle = position;
                 new MySharePref(context).putPrefInt(MySharePref.FONT_STYLE, Constants.FontStyle);
+                notifyDataSetChanged();
             }
         });
     }

@@ -1003,6 +1003,10 @@
                                         android:id="@+id/RvBackgroundList"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
+                                        tools:itemCount="5"
+                                        android:orientation="horizontal"
+                                        tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                        tools:listitem="@layout/layout_item_color"
                                         android:layout_centerVertical="true" />
                                 </RelativeLayout>
                             </RelativeLayout>
@@ -1126,7 +1130,7 @@
                                 android:layout_marginBottom="3dp"
                                 android:text="Choose Font Color"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textColor="@color/gray" />
+                                android:textColor="@color/purple_200" />
                         </RelativeLayout>
                     </RelativeLayout>
 
@@ -1163,7 +1167,7 @@
                                 android:layout_marginBottom="3dp"
                                 android:text="Select Font"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textColor="@color/gray" />
+                                android:textColor="@color/purple_200" />
                         </RelativeLayout>
                     </RelativeLayout>
                 </RelativeLayout>

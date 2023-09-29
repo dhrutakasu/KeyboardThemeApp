@@ -8,6 +8,7 @@
     <dimen name="key_height">36dp</dimen>
     <dimen name="keyboard_height">150dp</dimen>
     <dimen name="keysym_text_size">20px</dimen>
+    <dimen name="key_text_size">20px</dimen>
     <dimen name="land_keyboard_height">170dp</dimen>
     <dimen name="set_height">166.5dp</dimen>
     <dimen name="show_preview_height">80px</dimen>

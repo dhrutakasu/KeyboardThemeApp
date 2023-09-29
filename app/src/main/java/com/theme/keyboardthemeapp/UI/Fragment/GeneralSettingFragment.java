@@ -49,7 +49,7 @@ public class GeneralSettingFragment extends Fragment implements CompoundButton.O
     private void initActions() {
         boolean IsCapitalize = new MySharePref(getContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true);
         boolean IsPopup = new MySharePref(getContext()).getPrefBoolean(MySharePref.POPUP, true);
-        boolean IsVibration = new MySharePref(getContext()).getPrefBoolean(MySharePref.VIBRATION, false);
+        boolean IsVibration = new MySharePref(getContext()).getPrefBoolean(MySharePref. VIBRATION, false);
         boolean IsSuggest = new MySharePref(getContext()).getPrefBoolean(MySharePref.SUGGESTION, true);
         boolean IsTyping = new MySharePref(getContext()).getPrefBoolean(MySharePref.TYPING, true);
 

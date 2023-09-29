@@ -68,6 +68,7 @@
     <string name="Setting">Setting</string>
     <string name="Gif_style">Keyboard Gif</string>
     <string name="Alert_string">Do you want to set default theme background?</string>
+    <string name="Alert_gif_string">Do you want to set default theme gif?</string>
 
     <string name="error_text1">नेटवर्क का समय समाप्त !</string>
     <string name="error_text10">कृपया बोलना शुरू कीजिये..</string>
@@ -82,4 +83,20 @@
     <string name="isSupportLang">فارسی</string>
     <string name="speak_lang_2">hi</string>
     <string name="Theme_style">Keyboard Theme</string>
+    <string name="crop">Crop</string>
+    <string name="crop_image_activity_title"></string>
+    <string name="crop_image_menu_rotate_left">Rotate counter clockwise</string>
+    <string name="crop_image_menu_rotate_right">Rotate</string>
+    <string name="crop_image_menu_crop">Crop</string>
+    <string name="crop_image_menu_flip">Flip</string>
+    <string name="crop_image_menu_flip_horizontally">Flip horizontally</string>
+    <string name="crop_image_menu_flip_vertically">Flip vertically</string>
+
+    <string name="pick_image_intent_chooser_title">Select source</string>
+
+    <string name="crop_image_activity_no_permissions">Cancelling, required permissions are not granted</string>
+    <string name="dict_name1">englishdictionary.txt</string>
+    <string name="dict_name2">hindidictionary.txt</string>
+    <string name="dictonary_name">Hindi Dictionary</string>
+
 </resources>

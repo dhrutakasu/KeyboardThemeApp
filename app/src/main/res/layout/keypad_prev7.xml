@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android" android:textSize="30dp" android:textStyle="bold" android:textColor="#ffffff" android:gravity="top|center_horizontal" android:background="@drawable/preview_bg7" android:paddingTop="5dp" android:layout_width="match_parent" android:layout_height="match_parent" android:shadowColor="#ffffff" android:shadowDx="1" android:shadowDy="1" android:shadowRadius="1"/>

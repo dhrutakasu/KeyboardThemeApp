@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Widget.KeyboardView" parent="@android:style/Widget.KeyboardView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:shadowColor">#00000000</item>
+        <item name="android:keyBackground">@drawable/key_bg_xml</item>
+        <item name="android:keyTextSize">23dp</item>
+        <item name="android:keyTextColor">@android:color/transparent</item>
+        <item name="android:keyPreviewLayout">@layout/keypad_prev</item>
+        <item name="android:keyPreviewOffset">0dp</item>
+        <item name="android:keyPreviewHeight">60dp</item>
+    </style>
+    <style name="Widget.KeyboardView1" parent="@android:style/Widget.KeyboardView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:shadowColor">#00000000</item>
+        <item name="android:keyBackground">@drawable/key_bg_xml1</item>
+        <item name="android:keyTextSize">23dp</item>
+        <item name="android:keyTextColor">@android:color/transparent</item>
+        <item name="android:keyPreviewLayout">@layout/keypad_prev1</item>
+        <item name="android:keyPreviewOffset">-5dp</item>
+        <item name="android:keyPreviewHeight">60dp</item>
+    </style>
+    <style name="Widget.KeyboardView2" parent="@android:style/Widget.KeyboardView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:shadowColor">#00000000</item>
+        <item name="android:keyBackground">@drawable/key_bg_xml2</item>
+        <item name="android:keyTextSize">22dp</item>
+        <item name="android:keyTextColor">@android:color/transparent</item>
+        <item name="android:keyPreviewLayout">@layout/keypad_prev2</item>
+        <item name="android:keyPreviewOffset">-5dp</item>
+        <item name="android:keyPreviewHeight">60dp</item>
+    </style>
+    <style name="Widget.KeyboardView3" parent="@android:style/Widget.KeyboardView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:shadowColor">#00000000</item>
+        <item name="android:keyBackground">@drawable/key_bg_xml3</item>
+        <item name="android:keyTextSize">22dp</item>
+        <item name="android:keyTextColor">@android:color/transparent</item>
+        <item name="android:keyPreviewLayout">@layout/keypad_prev3</item>
+        <item name="android:keyPreviewOffset">-5dp</item>
+        <item name="android:keyPreviewHeight">60dp</item>
+    </style>
+    <style name="Widget.KeyboardView4" parent="@android:style/Widget.KeyboardView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:shadowColor">#00000000</item>
+        <item name="android:keyBackground">@drawable/key_bg_xml4</item>
+        <item name="android:keyTextSize">22dp</item>
+        <item name="android:keyTextColor">@android:color/transparent</item>
+        <item name="android:keyPreviewLayout">@layout/keypad_prev4</item>
+        <item name="android:keyPreviewOffset">-5dp</item>
+        <item name="android:keyPreviewHeight">60dp</item>
+    </style>
+    <style name="Widget.KeyboardView5" parent="@android:style/Widget.KeyboardView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:shadowColor">#00000000</item>
+        <item name="android:keyBackground">@drawable/key_bg_xml5</item>
+        <item name="android:keyTextSize">22dp</item>
+        <item name="android:keyTextColor">@android:color/transparent</item>
+        <item name="android:keyPreviewLayout">@layout/keypad_prev5</item>
+        <item name="android:keyPreviewOffset">-5dp</item>
+        <item name="android:keyPreviewHeight">60dp</item>
+    </style>
+    <style name="Widget.KeyboardView6" parent="@android:style/Widget.KeyboardView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:shadowColor">#00000000</item>
+        <item name="android:keyBackground">@drawable/key_bg_xml6</item>
+        <item name="android:keyTextSize">22dp</item>
+        <item name="android:keyTextColor">@android:color/transparent</item>
+        <item name="android:keyPreviewLayout">@layout/keypad_prev6</item>
+        <item name="android:keyPreviewOffset">-5dp</item>
+        <item name="android:keyPreviewHeight">60dp</item>
+    </style>
+    <style name="Widget.KeyboardView7" parent="@android:style/Widget.KeyboardView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:shadowColor">#00000000</item>
+        <item name="android:keyBackground">@drawable/key_bg_xml7</item>
+        <item name="android:keyTextSize">22dp</item>
+        <item name="android:keyTextColor">@android:color/transparent</item>
+        <item name="android:keyPreviewLayout">@layout/keypad_prev7</item>
+        <item name="android:keyPreviewOffset">-5dp</item>
+        <item name="android:keyPreviewHeight">60dp</item>
+    </style>
+    <style name="Widget.KeyboardView8" parent="@android:style/Widget.KeyboardView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:shadowColor">#00000000</item>
+        <item name="android:keyBackground">@drawable/key_bg_xml8</item>
+        <item name="android:keyTextSize">20dp</item>
+        <item name="android:keyTextColor">@android:color/transparent</item>
+        <item name="android:keyPreviewLayout">@layout/keypad_prev8</item>
+        <item name="android:keyPreviewOffset">-5dp</item>
+        <item name="android:keyPreviewHeight">60dp</item>
+    </style>
+    <style name="Widget.KeyboardView9" parent="@android:style/Widget.KeyboardView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:shadowColor">#00000000</item>
+        <item name="android:keyBackground">@drawable/key_bg_xml9</item>
+        <item name="android:keyTextSize">22dp</item>
+        <item name="android:keyTextColor">@android:color/transparent</item>
+        <item name="android:keyPreviewLayout">@layout/keypad_prev9</item>
+        <item name="android:keyPreviewOffset">-5dp</item>
+        <item name="android:keyPreviewHeight">60dp</item>
+    </style>
+
+    <style name="PreviewPopupAnimation">
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+</resources>

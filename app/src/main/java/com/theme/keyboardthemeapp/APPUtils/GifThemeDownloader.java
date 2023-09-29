@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
 import com.theme.keyboardthemeapp.MySharePref;
 import com.theme.keyboardthemeapp.UI.Adapters.GifAdapter;
@@ -91,6 +92,7 @@ public class GifThemeDownloader extends AsyncTask<String, Void, Void> {
                     File destinationFile = new File(newFolder, fileName + ".gif");
                     try {
                         copyFile(resource, destinationFile);
+                        copyFile(resource, new File(context.getFilesDir(), "Gif_save.gif"));
                     } catch (IOException e) {
                         e.printStackTrace();
                         Tostmsg = "Failed to save image.";
@@ -133,9 +135,12 @@ public class GifThemeDownloader extends AsyncTask<String, Void, Void> {
                 ivCheckGif.setVisibility(View.VISIBLE);
                 adapter.notifyDataSetChanged();
                 layoutProgress.setVisibility(View.GONE);
-                Toast.makeText(context,"Background set successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Background set successfully", Toast.LENGTH_SHORT).show();
             }
         }, 1000);
+//        Constants.copyFile(GIF,new File(context.getFilesDir(), "Gif_save.gif"));
+        new MySharePref(context).putPrefBoolean(MySharePref.DEFAULT_GIF, true);
+        new MySharePref(context).putPrefInt(MySharePref.DEFAULT_THEME, Pos);
         MediaScannerConnection.scanFile(context, new String[]{Environment.getExternalStorageDirectory().getAbsolutePath()}, null, (path, uri) -> {
             // TODO Auto-generated method stub
 

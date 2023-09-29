@@ -24,6 +24,7 @@ public class MySharePref {
     public static final String PROGRESS_DEFAULT_LANDSCAP = "PROGRESS_DEFAULT_LANDSCAP";
     public static final String SUGGESTION_TEXT_SIZE = "SUGGESTION_TEXT_SIZE";
     public static final String SOUND_PROGRESS = "SOUND_PROGRESS";
+    public static final String SOUND_PROGRESS_FLOAT = "SOUND_PROGRESS_FLOAT";
     public static final String SOUND_ENABLE = "SOUND_ENABLE";
     public static final String COPY_SERVICE = "COPY_SERVICE";
     public static final String ISTEXT_COLOR = "ISTEXT_COLOR";
@@ -41,11 +42,13 @@ public class MySharePref {
     public static final String FLAG_CHANGE_LANGUAGE = "FLAG_CHANGE_LANGUAGE";
     public static final String CHANGE_LANGUAGE = "CHANGE_LANGUAGE";
     public static final String DEFAULT_BG_COLOR = "DEFAULT_BG_COLOR";
+    public static final String DEFAULT_THEME = "DEFAULT_THEME";
     public static final String TRANSPARENT = "TRANSPARENT";
     public static final String TRANSPARENT_BLACK_BG = "TRANSPARENT_BLACK_BG";
     public static final String TRANSPARENT_TOP_BG = "TRANSPARENT_TOP_BG";
     public static final String LANGUAGE_NAME = "LANGUAGE_NAME";
     public static final String PREVIEW_IS_OPEN = "PREVIEW_IS_OPEN";
+    public static final String DEFAULT_GIF = "DEFAULT_GIF";
 
 
     private SharedPreferences sharedPreferences;
@@ -85,5 +88,13 @@ public class MySharePref {
 
     public long getPrefLong(String key, long i) {
         return sharedPreferences.getLong(key, i);
+    }
+
+    public void putPrefFloat(String key, float value) {
+        sharedPreferences.edit().putFloat(key, value).commit();
+    }
+
+    public float getPrefFloat(String key, float i) {
+        return sharedPreferences.getFloat(key, i);
     }
 }

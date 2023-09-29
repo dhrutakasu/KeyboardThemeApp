@@ -1,12 +1,16 @@
 package com.theme.keyboardthemeapp.UI.Fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.SeekBar;
 
 import com.theme.keyboardthemeapp.Constants;
@@ -47,8 +51,13 @@ public class DisplaySettingFragment extends Fragment implements SeekBar.OnSeekBa
         SeekPHeight.setMax(100);
         SeekLHeight.setMax(100);
         SeekSuggestionText.setMax(9);
-        Constants.ProgressPotraitDefault = new MySharePref(getContext()).getPrefInt(MySharePref.KEYBOARD_POTRAIT_HEIGHT, 2);
-        Constants.ProgressLandscapDefault = new MySharePref(getContext()).getPrefInt(MySharePref.KEYBOARD_LANDSCAP_HEIGHT, 2);
+        Display defaultDisplay = ((WindowManager) getActivity().getApplicationContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        defaultDisplay.getMetrics(displayMetrics);
+        KeyboardPotraitHeight = displayMetrics.heightPixels / 3;
+        KeyboardLandHeight = displayMetrics.widthPixels / 2;
+        Constants.ProgressPotraitDefault = new MySharePref(getContext()).getPrefInt(MySharePref.PROGRESS_DEFAULT, 2);
+        Constants.ProgressLandscapDefault = new MySharePref(getContext()).getPrefInt(MySharePref.PROGRESS_DEFAULT_LANDSCAP, 2);
         Constants.SuggestionText = new MySharePref(getContext()).getPrefInt(MySharePref.SUGGESTION_TEXT_SIZE, 16);
         if (Constants.KeyboardPHeight == -1) {
             Constants.KeyboardPHeight = KeyboardPotraitHeight;
@@ -84,21 +93,21 @@ public class DisplaySettingFragment extends Fragment implements SeekBar.OnSeekBa
                 int progress = SeekPHeight.getProgress();
                 int i = getProgress(progress);
                 if (i == 0) {
-                    KeyboardPotraitHeight = KeyboardPotraitHeight - Constants.pxFromDp(getContext(), 20.0f);
+                    Constants.KeyboardPHeight = KeyboardPotraitHeight - Constants.pxFromDp(getContext(), 20.0f);
                 } else if (i == 1) {
-                    KeyboardPotraitHeight = KeyboardPotraitHeight;
+                    Constants.KeyboardPHeight = KeyboardPotraitHeight;
                 } else if (i == 2) {
-                    KeyboardPotraitHeight = KeyboardPotraitHeight + Constants.pxFromDp(getContext(), 60.0f);
+                    Constants.KeyboardPHeight = KeyboardPotraitHeight + Constants.pxFromDp(getContext(), 60.0f);
                 } else if (i == 3) {
-                    KeyboardPotraitHeight = KeyboardPotraitHeight + Constants.pxFromDp(getContext(), 110.0f);
+                    Constants.KeyboardPHeight = KeyboardPotraitHeight + Constants.pxFromDp(getContext(), 110.0f);
                 } else if (i != 4) {
-                    KeyboardPotraitHeight = KeyboardPotraitHeight;
+                    Constants.KeyboardPHeight = KeyboardPotraitHeight;
                 } else {
-                    KeyboardPotraitHeight = KeyboardPotraitHeight + Constants.pxFromDp(getContext(), 160.0f);
+                    Constants.KeyboardPHeight = KeyboardPotraitHeight + Constants.pxFromDp(getContext(), 160.0f);
                 }
                 Constants.ProgressPotraitDefault = progress;
                 new MySharePref(getContext()).putPrefInt(MySharePref.KEYBOARD_POTRAIT_HEIGHT, Constants.KeyboardPHeight);
-                new MySharePref(getContext()).putPrefInt(MySharePref.PROGRESS_DEFAULT, progress);
+                new MySharePref(getContext()).putPrefInt(MySharePref.PROGRESS_DEFAULT, Constants.ProgressPotraitDefault);
                 break;
             case R.id.SeekLHeight:
                 int progressLand = SeekLHeight.getProgress();
@@ -119,8 +128,8 @@ public class DisplaySettingFragment extends Fragment implements SeekBar.OnSeekBa
                 }
                 Constants.ProgressLandscapDefault = progressLand;
 
-                new MySharePref(getContext()).putPrefInt(MySharePref.KEYBOARD_LANDSCAP_HEIGHT, Constants.KeyboardPHeight);
-                new MySharePref(getContext()).putPrefInt(MySharePref.PROGRESS_DEFAULT_LANDSCAP, progressLand);
+                new MySharePref(getContext()).putPrefInt(MySharePref.KEYBOARD_LANDSCAP_HEIGHT, Constants.KeyboardLHeight);
+                new MySharePref(getContext()).putPrefInt(MySharePref.PROGRESS_DEFAULT_LANDSCAP, Constants.ProgressLandscapDefault);
                 break;
             case R.id.SeekSuggestionText:
                 Constants.SuggestionText = SeekSuggestionText.getProgress() + 10;

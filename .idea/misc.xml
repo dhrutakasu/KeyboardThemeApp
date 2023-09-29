@@ -3,34 +3,50 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable-hdpi/tryxml.xml" value="0.121" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/back_selector.xml" value="0.121" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/bgpressxml.xml" value="0.121" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/cancel11.xml" value="0.121" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/choose_myphoto_xml.xml" value="0.121" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/clear_xml.xml" value="0.121" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/copy_quotes_selector.xml" value="0.121" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/copy_selector.xml" value="0.121" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/custome_selector.xml" value="0.121" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/emojipressxmlblack.xml" value="0.1" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/emojipressxmlwhite.xml" value="0.1" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/enable_keyboard.xml" value="0.121" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/exitxml.xml" value="0.121" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/homexml.xml" value="0.121" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/ic_back_arrow.xml" value="0.121" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/ic_cancel_icon.xml" value="0.121" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/ic_emoji_delete_light.xml" value="0.121" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/mic_selector.xml" value="0.121" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/morepoppressxml.xml" value="0.121" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/notnowxml.xml" value="0.121" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/previewcolorpressxml.xml" value="0.121" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/previewfontpressxml.xml" value="0.1805" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/rate_selector.xml" value="0.121" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/search_selector.xml" value="0.121" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/settingpressxmlwhite.xml" value="0.121" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/share.xml" value="0.121" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/share_quotes_selector.xml" value="0.121" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/share_selector.xml" value="0.121" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/speak_selector.xml" value="0.121" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/stickerpressxmlwhite.xml" value="0.1" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/switch_keyboard.xml" value="0.121" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/themepressxmlwhite.xml" value="0.1" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/togglebuttonbg.xml" value="0.1" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/toggleselector.xml" value="0.1" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/tryxml.xml" value="0.121" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/drawable/whatsapp_selector.xml" value="0.121" />
-        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/activity_background.xml" value="0.25" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/activity_background.xml" value="0.18" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/activity_dictionary.xml" value="0.2" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/activity_fancy_text.xml" value="0.2" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/activity_gif_activity.xml" value="0.1814814814814815" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/activity_jokes.xml" value="0.2" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/activity_more_settings.xml" value="0.2" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/activity_photo_crop.xml" value="0.1814814814814815" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/activity_privacy_policy.xml" value="0.1859375" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/activity_quotes.xml" value="0.2" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/activity_set_default_keyborad.xml" value="0.18164967562557924" />
@@ -38,28 +54,38 @@
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/activity_translator.xml" value="0.18" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/activity_view_quote.xml" value="0.2" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/app_layout_header.xml" value="0.2" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/crop_image_activity.xml" value="0.1" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/crop_image_view.xml" value="0.1" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/dialog_fancytext_share.xml" value="0.1814814814814815" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/dialog_main_exit.xml" value="0.22" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/dialog_overlay_permission.xml" value="0.1814814814814815" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/dialog_permission.xml" value="0.1814814814814815" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/fragment_dictionary.xml" value="0.18" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/fragment_display_setting.xml" value="0.1814814814814815" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/fragment_fancy.xml" value="0.1814814814814815" />
-        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/fragment_font_setting.xml" value="0.1814814814814815" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/fragment_font_setting.xml" value="0.33" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/fragment_general_setting.xml" value="0.1814814814814815" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/fragment_quote.xml" value="0.2" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/fragment_quote_list.xml" value="0.2" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/fragment_sound_setting.xml" value="0.1814814814814815" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/fragment_translate_setting.xml" value="0.1814814814814815" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/keyboard_lang_item.xml" value="0.2" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/keypad.xml" value="0.1814814814814815" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/keypad1.xml" value="0.1" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/keypad_prev.xml" value="0.1" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/keypad_prev1.xml" value="0.2" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/langlist_popup.xml" value="0.67" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/layout_header.xml" value="0.24019607843137256" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/layout_item_art.xml" value="0.2" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/layout_item_ascii.xml" value="0.2" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/layout_item_autotext.xml" value="0.2" />
-        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/layout_item_color.xml" value="0.33" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/layout_item_color.xml" value="0.75" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/layout_item_font.xml" value="0.22" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/layout_item_gif.xml" value="0.33" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/layout_item_joke.xml" value="0.25" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/layout_progress.xml" value="0.1814814814814815" />
         <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/layout/overlay_dialog.xml" value="0.1814814814814815" />
+        <entry key="..\:/Dhruta/Dhruta project/Client/Hiren Mavani/keyboard app/KeyboardThemeApp/app/src/main/res/menu/crop_image_menu.xml" value="0.1" />
       </map>
     </option>
   </component>
