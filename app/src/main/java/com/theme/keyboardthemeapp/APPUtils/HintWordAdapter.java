@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class HintWordAdapter extends BaseAdapter {
-    /* access modifiers changed from: private */
     public ArrayList<String> filteredDataArrayList = new ArrayList<>();
     Typeface fontstyle;
     HintFilter hintFilter;
@@ -38,7 +37,7 @@ public class HintWordAdapter extends BaseAdapter {
         this.langNameArrayList = arrayList;
         this.themeNo = i;
         this.textwid = i2 / 3;
-        if (HindiUtils.CurrentLang == 0) {
+        if (Constants.ChangeLanguage == 0) {
             this.fontstyle = Typeface.createFromAsset(context.getAssets(), Constants.HindiFontList[new MySharePref(mContext).getPrefInt(MySharePref.FONT_STYLE, Constants.FontStyle)]);
         }
         this.infalter = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -58,7 +57,7 @@ public class HintWordAdapter extends BaseAdapter {
             ViewHolder viewHolder = new ViewHolder();
             viewHolder.Mediumtext = (TextView) view.findViewById(R.id.hint_item);
             viewHolder.Mediumtext.setTextSize((float) new MySharePref(mContext.getApplicationContext()).getPrefInt(MySharePref.SUGGESTION_TEXT_SIZE, 16));
-            if (HindiUtils.CurrentLang == 0) {
+            if (Constants.ChangeLanguage == 0) {
                 viewHolder.Mediumtext.setTypeface(this.fontstyle);
             } else {
                 viewHolder.Mediumtext.setTypeface(Typeface.DEFAULT);
@@ -112,7 +111,6 @@ public class HintWordAdapter extends BaseAdapter {
         private HintFilter() {
         }
 
-        /* access modifiers changed from: protected */
         public FilterResults performFiltering(CharSequence charSequence) {
             String lowerCase = charSequence.toString().toLowerCase(Locale.US);
             if (lowerCase.startsWith(" ")) {
@@ -134,7 +132,6 @@ public class HintWordAdapter extends BaseAdapter {
             return filterResults;
         }
 
-        /* access modifiers changed from: protected */
         public void publishResults(CharSequence charSequence, FilterResults filterResults) {
             ArrayList unused = HintWordAdapter.this.filteredDataArrayList = (ArrayList) filterResults.values;
             HintWordAdapter.this.notifyDataSetChanged();

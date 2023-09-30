@@ -49,6 +49,7 @@ public class MySharePref {
     public static final String LANGUAGE_NAME = "LANGUAGE_NAME";
     public static final String PREVIEW_IS_OPEN = "PREVIEW_IS_OPEN";
     public static final String DEFAULT_GIF = "DEFAULT_GIF";
+    public static final String DEFULT_LANGUAGE = "DEFULT_LANGUAGE";
 
 
     private SharedPreferences sharedPreferences;

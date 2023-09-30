@@ -151,10 +151,8 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         public void onClick(View view) {
             if (new MySharePref(ctx).getPrefString(MySharePref.LANGUAGE_NAME, "hi").equals(HindiKeypad.this.getResources().getString(R.string.speak_lang_2))) {
                 new MySharePref(ctx).putPrefString(MySharePref.LANGUAGE_NAME, "en");
-                ;
             } else {
                 new MySharePref(ctx).putPrefString(MySharePref.LANGUAGE_NAME, getResources().getString(R.string.speak_lang_2));
-                ;
             }
             HindiKeypad.this.btnspeaklang.setText(new MySharePref(ctx).getPrefString(MySharePref.LANGUAGE_NAME, "hi"));
         }
@@ -179,12 +177,14 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                     Constants.wordExist = true;
                     Intent intent = new Intent(HindiKeypad.this.getApplicationContext(), ThemeActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     intent.putExtra("flgbool", true);
                     HindiKeypad.this.startActivity(intent);
                 } else if (ImagePreviewActivity.act == null) {
                     Constants.wordExist = true;
                     Intent intent2 = new Intent(HindiKeypad.this.getApplicationContext(), ThemeActivity.class);
                     intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     intent2.putExtra("flgbool", false);
                     HindiKeypad.this.startActivity(intent2);
                 }
@@ -257,15 +257,15 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
             String str = (String) adapterView.getItemAtPosition(i);
             if (!HindiKeypad.this.word.equals("")) {
                 if (str.equals("Touch to add")) {
-                    if (!HindiUtils.SuggestionWords.contains(HindiKeypad.this.word.toLowerCase())) {
-                        HindiUtils.SuggestionWords.add(HindiKeypad.this.word.toLowerCase());
+                    if (!Constants.SuggestionWordsList.contains(HindiKeypad.this.word.toLowerCase())) {
+                        Constants.SuggestionWordsList.add(HindiKeypad.this.word.toLowerCase());
                     }
                     Toast.makeText(HindiKeypad.this.getApplicationContext(), "Word Added Successfully", Toast.LENGTH_LONG).show();
                     HindiKeypad.this.word = "";
                     HindiKeypad hindiKeypad = HindiKeypad.this;
                     hindiKeypad.getGujarati(hindiKeypad.word);
                 } else if (HindiKeypad.this.result.contains("Touch to add")) {
-                    if (!HindiUtils.SuggestionWords.contains(HindiKeypad.this.word.toLowerCase())) {
+                    if (!Constants.SuggestionWordsList.contains(HindiKeypad.this.word.toLowerCase())) {
                         HindiUtils.SuggestionWords.add(HindiKeypad.this.word.toLowerCase());
                     }
                     Toast.makeText(HindiKeypad.this.getApplicationContext(), "Word Added Successfully", Toast.LENGTH_LONG).show();
@@ -305,13 +305,10 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
     //    AdRequest adRequest;
 //    AdView adView;
     FarsiEmojiAdapter adapter = null;
-    /* access modifiers changed from: private */
     public Runnable animateDownImage = new C03922();
-    /* access modifiers changed from: private */
     public Runnable animateUpImage = new C03911();
     ImageView blackTransparentview;
     private RelativeLayout black_translay;
-    /* access modifiers changed from: private */
     public RelativeLayout bottomlay;
     ArrayList<ImageButton> btnArray = new ArrayList<>();
     LinearLayout btnSpeak;
@@ -341,7 +338,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
     Drawable enterDrawable;
     private int[] enterKeys = {R.drawable.btn_enter, R.drawable.btn_enter, R.drawable.btn_enter, R.drawable.btn_enter, R.drawable.btn_enter, R.drawable.btn_enter, R.drawable.btn_enter, R.drawable.btn_enter, R.drawable.btn_enter, R.drawable.btn_enter};
     String finalstr = "";
-    /* access modifiers changed from: private */
     public int fromLevel = 0;
     //    GujaratiEditBoxSupport g;
     private int[] generalKeys_presed = {R.drawable.key_unpresed, R.drawable.key_unpresed, R.drawable.key_unpresed, R.drawable.key_unpresed, R.drawable.key_unpresed, R.drawable.key_unpresed, R.drawable.key_unpresed, R.drawable.key_unpresed, R.drawable.key_unpresed, R.drawable.key_unpresed};
@@ -356,13 +352,10 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
     ImageView img;
     boolean isLandscape;
     boolean isPopup;
-    /* access modifiers changed from: private */
     public boolean isSpeechRecoAvalable = false;
-    /* access modifiers changed from: private */
     public boolean isSpeeching = false;
     private MyKeypadDataView keyboard;
     int keybpardHeight = 0;
-    /* access modifiers changed from: private */
     public HindiKeyboardView kv;
     LinearLayout langClick;
     String lastString = "";
@@ -375,7 +368,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
     private CompletionInfo[] mCompletions;
     private StringBuilder mComposing = new StringBuilder();
     Context mContext;
-    /* access modifiers changed from: private */
     public Handler mDownHandler = new Handler();
     private ClipDrawable mImageDrawable;
     private long mKeypressVibrationDuration = -1;
@@ -544,6 +536,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         this.Inputlang_off_drawable = getResources().getDrawable(R.drawable.disable);
         this.Speak_btn_drawable = getResources().getDrawable(R.drawable.mic_unpresed);
         this.drop_arrow_drawable = getResources().getDrawable(R.drawable.drop_down);
+        this.shiftOffDrawable = getResources().getDrawable(this.shiftOffKeys[0]);
         this.manageClick = false;
         initilizeHeight();
 //        this.g = new GujaratiEditBoxSupport();
@@ -552,6 +545,12 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         if (((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo() == null) {
             Toast.makeText(getApplicationContext(), "Please Connect To Internet for Phonetic Keyboard", Toast.LENGTH_SHORT).show();
         }
+
+        Constants.languegesArray = new ArrayList<>();
+        Constants.languegesArray = Constants.getDefaultLanguageArray();
+        Constants.FlagChangeLanguage = new MySharePref(getApplicationContext()).getPrefInt(MySharePref.FLAG_CHANGE_LANGUAGE, 0);
+        Constants.ChangeLanguage = new MySharePref(getApplicationContext()).getPrefInt(MySharePref.FLAG_CHANGE_LANGUAGE, 0);
+
         HindiUtils.setStaticVariable(getApplicationContext());
         boolean isRecognitionAvailable = SpeechRecognizer.isRecognitionAvailable(getBaseContext());
         this.isSpeechRecoAvalable = isRecognitionAvailable;
@@ -563,7 +562,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         this.mRecoListener = new C03953();
         this.commonResource = new Common_Resource(this);
         this.tmpShowSuggestion = true;
-        HindiUtils.wordExist = true;
+        Constants.wordExist = true;
         SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         this.prefs = defaultSharedPreferences;
         this.edit = defaultSharedPreferences.edit();
@@ -571,7 +570,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         int i = new MySharePref(getApplicationContext()).getPrefInt(MySharePref.DEFAULT_THEME, 0);
         this.selectedTheme = i;
         Constants.SelectTheme = i;
-        this.shiftOffDrawable = getResources().getDrawable(this.shiftOffKeys[0]);
         this.checkflg = false;
         this.textColorCode = char_colorCodes[0];
         this.npd = (NinePatchDrawable) getResources().getDrawable(this.generalKeys_unpresed[0]);
@@ -582,7 +580,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         this.npdDelete = (NinePatchDrawable) getResources().getDrawable(this.deleteKeys[0]);
         this.npdDone = (NinePatchDrawable) getResources().getDrawable(this.enterKeys[0]);
         this.popupDrawable = getResources().getDrawable(this.popUpDrawables[0]);
-        if (HindiUtils.isColorCodeChange) {
+        if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.ISCOLOR_CODE_CHANGE, false)) {
             this.shiftOffDrawable.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
             this.shiftOnDrawable.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
             this.enterDrawable.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
@@ -597,6 +595,12 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
             this.Speak_btn_drawable.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
             this.drop_arrow_drawable.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
         }
+        DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
+        if (HindiUtils.isUpHoneycomb) {
+            dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
+        } else {
+            dictionaryLoadTask.execute(new String[0]);
+        }
         switch (i) {
             case 0:
                 caps = false;
@@ -609,7 +613,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 this.kv = (HindiKeyboardView) this.v.findViewById(R.id.keyboard);
                 LinearLayout linearLayout = (LinearLayout) this.v.findViewById(R.id.btnTheme);
                 this.LangChange = (LinearLayout) this.v.findViewById(R.id.changeLang);
-                if (HindiUtils.CurrentLang == 1) {
+                if (Constants.ChangeLanguage == 1) {
                     this.LangChange.setVisibility(View.VISIBLE);
                 } else {
                     this.LangChange.setVisibility(View.GONE);
@@ -619,10 +623,11 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 } else {
                     this.LangChange.setBackgroundResource(R.drawable.disable);
                 }
+
                 this.LangChange.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), HindiUtils.flg_lang_change);
+                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
                             if (HindiUtils.isUpHoneycomb) {
                                 dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                             } else {
@@ -641,7 +646,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                             HindiKeypad.this.LangChange.setBackgroundResource(R.drawable.disable);
                             return;
                         }
-                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), HindiUtils.flg_lang_change);
+                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
                         if (HindiUtils.isUpHoneycomb) {
                             dictionaryLoadTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                         } else {
@@ -710,7 +715,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 this.kv = (HindiKeyboardView) this.v.findViewById(R.id.keyboard);
                 ((LinearLayout) this.v.findViewById(R.id.btnTheme)).setOnClickListener(this.OnClickTheme);
                 this.LangChange = (LinearLayout) this.v.findViewById(R.id.changeLang);
-                if (HindiUtils.CurrentLang == 1) {
+                if (Constants.ChangeLanguage == 1) {
                     this.LangChange.setVisibility(View.VISIBLE);
                 } else {
                     this.LangChange.setVisibility(View.GONE);
@@ -723,7 +728,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 this.LangChange.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), HindiUtils.flg_lang_change);
+                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
                             if (HindiUtils.isUpHoneycomb) {
                                 dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                             } else {
@@ -742,7 +747,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                             HindiKeypad.this.LangChange.setBackgroundResource(R.drawable.disable);
                             return;
                         }
-                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), HindiUtils.flg_lang_change);
+                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
                         if (HindiUtils.isUpHoneycomb) {
                             dictionaryLoadTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                         } else {
@@ -810,7 +815,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 this.r2 = (RelativeLayout) this.v.findViewById(R.id.contents1);
                 ((LinearLayout) this.v.findViewById(R.id.btnTheme)).setOnClickListener(this.OnClickTheme);
                 this.LangChange = (LinearLayout) this.v.findViewById(R.id.changeLang);
-                if (HindiUtils.CurrentLang == 1) {
+                if (Constants.ChangeLanguage == 1) {
                     this.LangChange.setVisibility(View.VISIBLE);
                 } else {
                     this.LangChange.setVisibility(View.GONE);
@@ -823,7 +828,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 this.LangChange.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), HindiUtils.flg_lang_change);
+                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
                             if (HindiUtils.isUpHoneycomb) {
                                 dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                             } else {
@@ -842,7 +847,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                             HindiKeypad.this.LangChange.setBackgroundResource(R.drawable.disable);
                             return;
                         }
-                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), HindiUtils.flg_lang_change);
+                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
                         if (HindiUtils.isUpHoneycomb) {
                             dictionaryLoadTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                         } else {
@@ -911,7 +916,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 this.r2 = (RelativeLayout) this.v.findViewById(R.id.contents1);
                 ((LinearLayout) this.v.findViewById(R.id.btnTheme)).setOnClickListener(this.OnClickTheme);
                 this.LangChange = (LinearLayout) this.v.findViewById(R.id.changeLang);
-                if (HindiUtils.CurrentLang == 1) {
+                if (Constants.ChangeLanguage == 1) {
                     this.LangChange.setVisibility(View.VISIBLE);
                 } else {
                     this.LangChange.setVisibility(View.GONE);
@@ -924,7 +929,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 this.LangChange.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), HindiUtils.flg_lang_change);
+                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
                             if (HindiUtils.isUpHoneycomb) {
                                 dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                             } else {
@@ -943,7 +948,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                             HindiKeypad.this.LangChange.setBackgroundResource(R.drawable.disable);
                             return;
                         }
-                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), HindiUtils.flg_lang_change);
+                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
                         if (HindiUtils.isUpHoneycomb) {
                             dictionaryLoadTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                         } else {
@@ -1012,7 +1017,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 this.r2 = (RelativeLayout) this.v.findViewById(R.id.contents1);
                 ((LinearLayout) this.v.findViewById(R.id.btnTheme)).setOnClickListener(this.OnClickTheme);
                 this.LangChange = (LinearLayout) this.v.findViewById(R.id.changeLang);
-                if (HindiUtils.CurrentLang == 1) {
+                if (Constants.ChangeLanguage == 1) {
                     this.LangChange.setVisibility(View.VISIBLE);
                 } else {
                     this.LangChange.setVisibility(View.GONE);
@@ -1025,7 +1030,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 this.LangChange.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), HindiUtils.flg_lang_change);
+                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
                             if (HindiUtils.isUpHoneycomb) {
                                 dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                             } else {
@@ -1044,7 +1049,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                             HindiKeypad.this.LangChange.setBackgroundResource(R.drawable.disable);
                             return;
                         }
-                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), HindiUtils.flg_lang_change);
+                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
                         if (HindiUtils.isUpHoneycomb) {
                             dictionaryLoadTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                         } else {
@@ -1113,7 +1118,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 this.r2 = (RelativeLayout) this.v.findViewById(R.id.contents1);
                 ((LinearLayout) this.v.findViewById(R.id.btnTheme)).setOnClickListener(this.OnClickTheme);
                 this.LangChange = (LinearLayout) this.v.findViewById(R.id.changeLang);
-                if (HindiUtils.CurrentLang == 1) {
+                if (Constants.ChangeLanguage == 1) {
                     this.LangChange.setVisibility(View.VISIBLE);
                 } else {
                     this.LangChange.setVisibility(View.GONE);
@@ -1126,7 +1131,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 this.LangChange.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), HindiUtils.flg_lang_change);
+                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
                             if (HindiUtils.isUpHoneycomb) {
                                 dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                             } else {
@@ -1145,7 +1150,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                             HindiKeypad.this.LangChange.setBackgroundResource(R.drawable.disable);
                             return;
                         }
-                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), HindiUtils.flg_lang_change);
+                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
                         if (HindiUtils.isUpHoneycomb) {
                             dictionaryLoadTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                         } else {
@@ -1214,7 +1219,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 this.r2 = (RelativeLayout) this.v.findViewById(R.id.contents1);
                 ((LinearLayout) this.v.findViewById(R.id.btnTheme)).setOnClickListener(this.OnClickTheme);
                 this.LangChange = (LinearLayout) this.v.findViewById(R.id.changeLang);
-                if (HindiUtils.CurrentLang == 1) {
+                if (Constants.ChangeLanguage == 1) {
                     this.LangChange.setVisibility(View.VISIBLE);
                 } else {
                     this.LangChange.setVisibility(View.GONE);
@@ -1227,7 +1232,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 this.LangChange.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), HindiUtils.flg_lang_change);
+                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
                             if (HindiUtils.isUpHoneycomb) {
                                 dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                             } else {
@@ -1246,7 +1251,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                             HindiKeypad.this.LangChange.setBackgroundResource(R.drawable.disable);
                             return;
                         }
-                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), HindiUtils.flg_lang_change);
+                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
                         if (HindiUtils.isUpHoneycomb) {
                             dictionaryLoadTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                         } else {
@@ -1316,7 +1321,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 this.kv = (HindiKeyboardView) this.v.findViewById(R.id.keyboard);
                 LinearLayout linearLayout2 = (LinearLayout) this.v.findViewById(R.id.btnTheme);
                 this.LangChange = (LinearLayout) this.v.findViewById(R.id.changeLang);
-                if (HindiUtils.CurrentLang == 1) {
+                if (Constants.ChangeLanguage == 1) {
                     this.LangChange.setVisibility(View.VISIBLE);
                 } else {
                     this.LangChange.setVisibility(View.GONE);
@@ -1329,7 +1334,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 this.LangChange.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), HindiUtils.flg_lang_change);
+                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
                             if (HindiUtils.isUpHoneycomb) {
                                 dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                             } else {
@@ -1348,7 +1353,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                             HindiKeypad.this.LangChange.setBackgroundResource(R.drawable.disable);
                             return;
                         }
-                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), HindiUtils.flg_lang_change);
+                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
                         if (HindiUtils.isUpHoneycomb) {
                             dictionaryLoadTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                         } else {
@@ -1418,7 +1423,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 this.kv = (HindiKeyboardView) this.v.findViewById(R.id.keyboard);
                 LinearLayout linearLayout3 = (LinearLayout) this.v.findViewById(R.id.btnTheme);
                 this.LangChange = (LinearLayout) this.v.findViewById(R.id.changeLang);
-                if (HindiUtils.CurrentLang == 1) {
+                if (Constants.ChangeLanguage == 1) {
                     this.LangChange.setVisibility(View.VISIBLE);
                 } else {
                     this.LangChange.setVisibility(View.GONE);
@@ -1431,7 +1436,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 this.LangChange.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), HindiUtils.flg_lang_change);
+                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
                             if (HindiUtils.isUpHoneycomb) {
                                 dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                             } else {
@@ -1451,7 +1456,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                             HindiKeypad.this.LangChange.setBackgroundResource(R.drawable.disable);
                             return;
                         }
-                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), HindiUtils.flg_lang_change);
+                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
                         if (HindiUtils.isUpHoneycomb) {
                             dictionaryLoadTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                         } else {
@@ -1521,7 +1526,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 this.kv = (HindiKeyboardView) this.v.findViewById(R.id.keyboard);
                 LinearLayout linearLayout4 = (LinearLayout) this.v.findViewById(R.id.btnTheme);
                 this.LangChange = (LinearLayout) this.v.findViewById(R.id.changeLang);
-                if (HindiUtils.CurrentLang == 1) {
+                if (Constants.ChangeLanguage == 1) {
                     this.LangChange.setVisibility(View.VISIBLE);
                 } else {
                     this.LangChange.setVisibility(View.GONE);
@@ -1534,7 +1539,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 this.LangChange.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), HindiUtils.flg_lang_change);
+                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
                             if (HindiUtils.isUpHoneycomb) {
                                 dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                             } else {
@@ -1553,7 +1558,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                             HindiKeypad.this.LangChange.setBackgroundResource(R.drawable.disable);
                             return;
                         }
-                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), HindiUtils.flg_lang_change);
+                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
                         if (HindiUtils.isUpHoneycomb) {
                             dictionaryLoadTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                         } else {
@@ -1625,7 +1630,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
             this.kv = (HindiKeyboardView) this.v.findViewById(R.id.keyboard);
             LinearLayout linearLayout5 = (LinearLayout) this.v.findViewById(R.id.btnTheme);
             this.LangChange = (LinearLayout) this.v.findViewById(R.id.changeLang);
-            if (HindiUtils.CurrentLang == 1) {
+            if (Constants.ChangeLanguage == 1) {
                 this.LangChange.setVisibility(View.VISIBLE);
             } else {
                 this.LangChange.setVisibility(View.GONE);
@@ -1638,7 +1643,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
             this.LangChange.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                        DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), HindiUtils.flg_lang_change);
+                        DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
                         if (HindiUtils.isUpHoneycomb) {
                             dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                         } else {
@@ -1657,7 +1662,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                         HindiKeypad.this.LangChange.setBackgroundResource(R.drawable.disable);
                         return;
                     }
-                    DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), HindiUtils.flg_lang_change);
+                    DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(HindiKeypad.this.getApplicationContext(), Constants.FlagChangeLanguage);
                     if (HindiUtils.isUpHoneycomb) {
                         dictionaryLoadTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                     } else {
@@ -1755,7 +1760,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
             try {
                 getCurrentInputConnection().getTextBeforeCursor(1, 0).charAt(0);
             } catch (Exception unused) {
-                if (HindiUtils.CurrentLang == 1 && new MySharePref(mContext).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
+                if (Constants.ChangeLanguage == 1 && new MySharePref(mContext).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
                     this.capsonoffflg = false;
                     caps = false;
                     onKey(-1, new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1});
@@ -1803,7 +1808,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
     private void allClickEvent(final int i) {
         this.v.findViewById(R.id.btn_emoji).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                HindiKeypad.this.onKey(HindiUtils.KEYCODE_EMOJI, new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1});
+                HindiKeypad.this.onKey(Constants.CODE_EMOJI, new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1});
                 HindiKeypad.this.setTabBg(0, i);
                 HindiKeypad.caps = false;
             }
@@ -1859,7 +1864,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 HindiKeypad.this.otherContentLay.addView(HindiKeypad.this.emojigrid);
             }
         });
-        if (HindiUtils.isColorCodeChange) {
+        if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.ISCOLOR_CODE_CHANGE, false)) {
             this.shiftOnDrawable.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
             this.shiftOffDrawable.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
             this.spaceDrawable.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
@@ -1952,13 +1957,14 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
 //                        this.isLandscape = false;
 //                        if (!HindiUtils.ispotraitbgcolorchange) {
                         Glide.with(this).clear(gifimage);
-                        if (HindiUtils.SelectedGifPath.substring(0, 8).equals("/storage")) {
-                            Glide.with((Context) this).asGif().load(HindiUtils.SelectedGifPath).placeholder((int) R.drawable.rain).diskCacheStrategy(DiskCacheStrategy.NONE).into(this.gifimage);
-                        } else if (HindiUtils.SelectedGifPath.substring(0, 4).equals("http")) {
-                            Glide.with((Context) this).asGif().load(HindiUtils.SelectedGifPath).placeholder((int) R.drawable.rain).diskCacheStrategy(DiskCacheStrategy.NONE).into(this.gifimage);
-                        } else {
-                            Glide.with((Context) this).asGif().load(Uri.parse(HindiUtils.SelectedGifPath)).placeholder((int) R.drawable.rain).diskCacheStrategy(DiskCacheStrategy.NONE).into(this.gifimage);
-                        }
+                        Glide.with((Context) this).asGif().load(new File(getApplicationContext().getFilesDir(), "Gif_save.gif").getAbsolutePath()).placeholder((int) R.drawable.rain).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).into(this.gifimage);
+//                        if (HindiUtils.SelectedGifPath.substring(0, 8).equals("/storage")) {
+//                            Glide.with((Context) this).asGif().load(HindiUtils.SelectedGifPath).placeholder((int) R.drawable.rain).diskCacheStrategy(DiskCacheStrategy.NONE).into(this.gifimage);
+//                        } else if (HindiUtils.SelectedGifPath.substring(0, 4).equals("http")) {
+//                            Glide.with((Context) this).asGif().load(HindiUtils.SelectedGifPath).placeholder((int) R.drawable.rain).diskCacheStrategy(DiskCacheStrategy.NONE).into(this.gifimage);
+//                        } else {
+//                            Glide.with((Context) this).asGif().load(Uri.parse(HindiUtils.SelectedGifPath)).placeholder((int) R.drawable.rain).diskCacheStrategy(DiskCacheStrategy.NONE).into(this.gifimage);
+//                        }
                     } else {
                         this.rl.setBackgroundColor(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.DEFAULT_BG_COLOR, 0));
                     }
@@ -2013,9 +2019,10 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
     @SuppressLint("ResourceType")
     public void onKey(int i, int[] iArr) {
         final int i2 = i;
+        System.out.println("----- - - -i2i2i2i2 : " + i2);
         final int[] iArr2 = iArr;
         final InputConnection currentInputConnection = getCurrentInputConnection();
-        if (HindiUtils.CurrentLang == 1) {
+        if (Constants.ChangeLanguage == 1) {
             this.LangChange.setVisibility(View.VISIBLE);
         } else {
             this.LangChange.setVisibility(View.GONE);
@@ -2033,15 +2040,15 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
             this.kv.invalidateAllKeys();
             HindiUtils.deleteFlg = false;
         } else if (i2 == -978903) {
-            HindiUtils.wordExist = true;
+            Constants.wordExist = true;
             CapsOn();
             caps = true;
             this.capsonoffflg = true;
             this.newcapital = true;
         } else if (i2 == -6003) {
-            HindiUtils.wordExist = true;
+            Constants.wordExist = true;
             this.checkflg = true;
-            MyKeypadDataView myKeypadDataView = new MyKeypadDataView(this, allNumericQuerty[HindiUtils.CurrentLang], this.keybpardHeight, 1);
+            MyKeypadDataView myKeypadDataView = new MyKeypadDataView(this, allNumericQuerty[Constants.ChangeLanguage], this.keybpardHeight, 1);
             this.keyboard = myKeypadDataView;
             this.kv.setKeyboard(myKeypadDataView);
             for (Keyboard.Key key : this.keyboard.getKeys()) {
@@ -2073,7 +2080,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 this.kv.dismissPreviewPopup();
             }
             if (!this.manageClick) {
-                HindiUtils.wordExist = true;
+                Constants.wordExist = true;
                 if (this.mainMenu.getVisibility() == View.GONE) {
                     this.hintword.setVisibility(View.GONE);
                     this.result = null;
@@ -2082,7 +2089,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                     this.mainMenu.setVisibility(View.VISIBLE);
                 }
                 this.headertext.setVisibility(View.VISIBLE);
-                HindiUtils.tmp_flg = 1;
+                Constants.temp_flag = 1;
                 initEmojiAdapter();
                 this.kv.setVisibility(View.GONE);
                 this.otherContentLay.setVisibility(View.VISIBLE);
@@ -2096,7 +2103,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
             }
             this.manageClick = !this.manageClick;
         } else if (i2 == -1763) {
-            HindiUtils.wordExist = true;
+            Constants.wordExist = true;
             this.checkflg = true;
             MyKeypadDataView myKeypadDataView2 = new MyKeypadDataView(this, R.xml.numeric_shift_querty, this.keybpardHeight, 1);
             this.keyboard = myKeypadDataView2;
@@ -2124,10 +2131,10 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
             this.kv.invalidateAllKeys();
             caps = false;
         } else if (i2 == -1) {
-            HindiUtils.wordExist = true;
+            Constants.wordExist = true;
             this.newcapital = false;
             caps = !caps;
-            if (HindiUtils.flg_lang_change == 1) {
+            if (Constants.FlagChangeLanguage == 1) {
                 if (!new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
                     if (caps) {
                         this.capsonoffflg = false;
@@ -2160,12 +2167,12 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         } else if (i2 == 66) {
         } else {
             if (i2 == -2831) {
-                HindiUtils.wordExist = true;
+                Constants.wordExist = true;
                 setKeyboardData();
             } else if (i2 == -2830) {
-                HindiUtils.wordExist = true;
+                Constants.wordExist = true;
                 this.checkflg = false;
-                MyKeypadDataView myKeypadDataView3 = new MyKeypadDataView(this, this.defaultquerty[HindiUtils.CurrentLang], this.keybpardHeight, 0);
+                MyKeypadDataView myKeypadDataView3 = new MyKeypadDataView(this, this.defaultquerty[Constants.ChangeLanguage], this.keybpardHeight, 0);
                 this.keyboard = myKeypadDataView3;
                 this.kv.setKeyboard(myKeypadDataView3);
                 for (Keyboard.Key key3 : this.keyboard.getKeys()) {
@@ -2196,13 +2203,13 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                         caps = true;
                     }
                     char charAt = getCurrentInputConnection().getTextBeforeCursor(1, 0).charAt(0);
-                    if (Character.isLetter(charAt) && Character.isUpperCase(charAt) && !this.newcapital && HindiUtils.CurrentLang == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
+                    if (Character.isLetter(charAt) && Character.isUpperCase(charAt) && !this.newcapital && Constants.ChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
                         this.capsonoffflg = false;
                         caps = false;
                         onKey(-1, new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1});
                     }
                 } catch (Exception unused) {
-                    if (!this.newcapital && HindiUtils.CurrentLang == 1) {
+                    if (!this.newcapital && Constants.ChangeLanguage == 1) {
                         caps = true;
                         this.capsonoffflg = false;
                         SelectQuertyShiftOn();
@@ -2220,7 +2227,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                     this.hlist.setAdapter((ListAdapter) new ArrayAdapter(getApplicationContext(), R.layout.hint_item_view, this.result));
                     this.mainMenu.setVisibility(View.VISIBLE);
                 }
-                HindiUtils.wordExist = true;
+                Constants.wordExist = true;
                 try {
                     char charAt2 = currentInputConnection.getTextBeforeCursor(1, 0).charAt(0);
                     if (Character.isLetter(charAt2)) {
@@ -2241,15 +2248,20 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                     }
                     currentInputConnection.deleteSurroundingText(1, 0);
                     int i3 = getCurrentInputEditorInfo().imeOptions & 1073742079;
-                    if (i3 != 2 && i3 != 3 && i3 != 4 && i3 != 5 && i3 != 6 && !this.newcapital && !this.checkflg && HindiUtils.CurrentLang == 1) {
+                    if (i3 != 2 && i3 != 3 && i3 != 4 && i3 != 5 && i3 != 6 && !this.newcapital && !this.checkflg && Constants.ChangeLanguage == 1) {
                         deleteText(currentInputConnection.getExtractedText(new ExtractedTextRequest(), 0).text.toString(), charAt2);
                     }
+                    new Handler().postDelayed(new Runnable() {
+                        public void run() {
+                            HindiKeypad.this.showSuggestion(currentInputConnection, i2, iArr2);
+                        }
+                    }, 500);
                 } catch (Exception e) {
                     HindiUtils.deleteFlg = false;
                     int i4 = getCurrentInputEditorInfo().imeOptions & 1073742079;
                     if (i4 != 2 && i4 != 3 && i4 != 4 && i4 != 5 && i4 != 6) {
                         Log.d("main", "Exception deleting no char " + e);
-                        if (HindiUtils.flg_lang_change != 0) {
+                        if (Constants.FlagChangeLanguage != 0) {
                             this.capsonoffflg = false;
                             this.kv.setShifted(true);
                             this.kv.invalidate();
@@ -2258,8 +2270,9 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                         }
                     }
                 }
+
             } else if (i2 == -4) {
-                HindiUtils.wordExist = true;
+                Constants.wordExist = true;
                 if (this.mainMenu.getVisibility() == View.GONE) {
                     this.hintword.setVisibility(View.GONE);
                     this.result = null;
@@ -2290,7 +2303,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                 }
             } else if (i2 != -97886) {
                 char c = (char) i2;
-                if (HindiUtils.CurrentLang == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
+                if (Constants.ChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
                     if (this.counter == 0 && i2 == 32) {
                         String str = "" + currentInputConnection.getTextBeforeCursor(Integer.MAX_VALUE, 0);
                         this.FinalWord = str;
@@ -2356,13 +2369,14 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                                 HindiKeypad.this.showSuggestion(currentInputConnection, i2, iArr2);
                             }
                         }, 500);
-                    } else {
+                    }
+                    else {
                         this.counter = 0;
                     }
                 }
                 if (!Character.isLetter(c) || !caps) {
                     currentInputConnection.commitText(String.valueOf(c), 1);
-                    if (i2 == 46 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true) && this.tmpShowSuggestion && HindiUtils.flg_lang_change == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
+                    if (i2 == 46 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true) && this.tmpShowSuggestion && Constants.FlagChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
                         caps = true;
                         this.capsonoffflg = false;
                         this.kv.setShifted(true);
@@ -2377,7 +2391,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                     return;
                 }
                 currentInputConnection.commitText(String.valueOf(Character.toUpperCase(c)), 1);
-                if (!this.capsonoffflg && HindiUtils.CurrentLang == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
+                if (!this.capsonoffflg && Constants.ChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
                     this.capsonoffflg = true;
                     onKey(-1, new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1});
                 }
@@ -2388,7 +2402,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         }
     }
 
-    /* access modifiers changed from: package-private */
     public void showSuggestion(InputConnection inputConnection, int i, int[] iArr) {
         try {
             this.word = "";
@@ -2410,15 +2423,15 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                             break;
                         } else if (charAt != ' ') {
                             this.word += this.textdatas.toString().charAt(i2);
-                            if (HindiUtils.SuggestionView) {
+                            if (Constants.SuggestedView) {
                                 this.hintword.setVisibility(View.VISIBLE);
                                 this.mainMenu.setVisibility(View.GONE);
                                 z = true;
                             }
                             length--;
                         } else {
-                            HindiUtils.wordExist = true;
-                            if (HindiUtils.SuggestionView && !z) {
+                            Constants.wordExist = true;
+                            if (Constants.SuggestedView && !z) {
                                 this.hintword.setVisibility(View.GONE);
                                 this.result = null;
                                 this.result = new ArrayList<>();
@@ -2430,8 +2443,8 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                         break;
                     }
                 }
-                HindiUtils.wordExist = true;
-                if (HindiUtils.SuggestionView && !z) {
+                Constants.wordExist = true;
+                if (Constants.SuggestedView && !z) {
                     this.hintword.setVisibility(View.GONE);
                     this.result = null;
                     this.result = new ArrayList<>();
@@ -2451,7 +2464,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         }
     }
 
-    /* access modifiers changed from: private */
     public void getGujarati(String str) {
         if (!str.equals("")) {
             ArrayList<String> suggestion = HindiUtils.getSuggestion(str);
@@ -2462,22 +2474,19 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                         return str.compareToIgnoreCase(str2);
                     }
                 });
-                HorizontalListView horizontalListView = this.hlist;
-                horizontalListView.setAdapter((ListAdapter) HindiUtils.setSuggestionAdapter(this, this.result, this.selectedTheme, horizontalListView.getWidth()));
+                hlist.setAdapter((ListAdapter) HindiUtils.setSuggestionAdapter(this, this.result, this.selectedTheme, hlist.getWidth()));
             } else if (this.result.size() <= 0) {
                 this.result = null;
                 ArrayList<String> arrayList = new ArrayList<>();
                 this.result = arrayList;
                 arrayList.add(str);
                 this.result.add("Touch to add");
-                HorizontalListView horizontalListView2 = this.hlist;
-                horizontalListView2.setAdapter((ListAdapter) HindiUtils.setSuggestionAdapter(this, this.result, this.selectedTheme, horizontalListView2.getWidth()));
+                hlist.setAdapter((ListAdapter) HindiUtils.setSuggestionAdapter(this, this.result, this.selectedTheme, hlist.getWidth()));
             }
         } else {
             ArrayList arrayList2 = new ArrayList();
             arrayList2.add("");
-            HorizontalListView horizontalListView3 = this.hlist;
-            horizontalListView3.setAdapter((ListAdapter) HindiUtils.setSuggestionAdapter(this, arrayList2, this.selectedTheme, horizontalListView3.getWidth()));
+            hlist.setAdapter((ListAdapter) HindiUtils.setSuggestionAdapter(this, arrayList2, this.selectedTheme, hlist.getWidth()));
         }
     }
 
@@ -2536,7 +2545,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         }, 100);
     }
 
-    /* access modifiers changed from: private */
     public void initEmojiAdapter() {
         this.otherContentLay.removeAllViews();
         this.icons = null;
@@ -2566,7 +2574,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         getCurrentInputConnection().commitText(Nature.DATA[i].getEmoji(), 1);
     }
 
-    /* access modifiers changed from: private */
     public void getFlower() {
         this.otherContentLay.removeAllViews();
         this.icons = null;
@@ -2584,7 +2591,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         this.otherContentLay.addView(this.emojigrid);
     }
 
-    /* access modifiers changed from: private */
     public void getElectronics() {
         this.otherContentLay.removeAllViews();
         this.icons = null;
@@ -2601,8 +2607,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         this.emojigrid.setAdapter(new EmojiAdapter(getApplicationContext(), Electr.DATA, 6));
         this.otherContentLay.addView(this.emojigrid);
     }
-
-    /* access modifiers changed from: private */
     public void getBell() {
         this.otherContentLay.removeAllViews();
         this.icons = null;
@@ -2620,7 +2624,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         this.otherContentLay.addView(this.emojigrid);
     }
 
-    /* access modifiers changed from: private */
     public void getcar() {
         this.otherContentLay.removeAllViews();
         this.icons = null;
@@ -2638,7 +2641,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         this.otherContentLay.addView(this.emojigrid);
     }
 
-    /* access modifiers changed from: private */
     public void getFood() {
         this.otherContentLay.removeAllViews();
         this.icons = null;
@@ -2656,7 +2658,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         this.otherContentLay.addView(this.emojigrid);
     }
 
-    /* access modifiers changed from: private */
     public void getSymbols() {
         this.otherContentLay.removeAllViews();
         this.icons = null;
@@ -2674,7 +2675,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         this.otherContentLay.addView(this.emojigrid);
     }
 
-    /* access modifiers changed from: private */
     public void deleteemoji() {
         try {
             char charAt = getCurrentInputConnection().getTextBeforeCursor(1, 0).charAt(0);
@@ -2700,7 +2700,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         }
     }
 
-    /* access modifiers changed from: private */
     public void setTabBg(int i, int i2) {
         Iterator<ImageButton> it2 = this.btnArray.iterator();
         while (it2.hasNext()) {
@@ -2769,10 +2768,10 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
 
     public void SetKeyBoardLayout1() {
         this.newcapital = false;
-        onKey(HindiUtils.KEYCODE_ALPHABETS, new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1});
+        onKey(Constants.CODE_ALPHABETS, new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1});
         this.headertext.setVisibility(View.GONE);
         this.kv.setVisibility(View.VISIBLE);
-        if (!this.newcapital && HindiUtils.CurrentLang == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
+        if (!this.newcapital && Constants.ChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
             this.capsonoffflg = false;
             caps = false;
             onKey(-1, new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1});
@@ -2780,11 +2779,11 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
     }
 
     private void SelectQuery() {
-        this.keyboard = new MyKeypadDataView(this, this.defaultquerty[HindiUtils.CurrentLang], this.keybpardHeight, 0);
+        this.keyboard = new MyKeypadDataView(this, this.defaultquerty[Constants.ChangeLanguage], this.keybpardHeight, 0);
     }
 
     private void SelectQuertyShiftOn() {
-        MyKeypadDataView myKeypadDataView = new MyKeypadDataView(this, this.capsquerty[HindiUtils.CurrentLang], this.keybpardHeight, 0);
+        MyKeypadDataView myKeypadDataView = new MyKeypadDataView(this, this.capsquerty[Constants.ChangeLanguage], this.keybpardHeight, 0);
         this.keyboard = myKeypadDataView;
         this.kv.setKeyboard(myKeypadDataView);
         for (Keyboard.Key key : this.keyboard.getKeys()) {
@@ -2812,7 +2811,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
     }
 
     private void SelectQuertyShiftOff() {
-        MyKeypadDataView myKeypadDataView = new MyKeypadDataView(this, this.defaultquerty[HindiUtils.CurrentLang], this.keybpardHeight, 0);
+        MyKeypadDataView myKeypadDataView = new MyKeypadDataView(this, this.defaultquerty[Constants.ChangeLanguage], this.keybpardHeight, 0);
         this.keyboard = myKeypadDataView;
         this.kv.setKeyboard(myKeypadDataView);
         for (Keyboard.Key key : this.keyboard.getKeys()) {
@@ -2841,7 +2840,7 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
 
     public void CapsOn() {
         caps = false;
-        MyKeypadDataView myKeypadDataView = new MyKeypadDataView(this, this.capsOnquerty[HindiUtils.CurrentLang], this.keybpardHeight, 0);
+        MyKeypadDataView myKeypadDataView = new MyKeypadDataView(this, this.capsOnquerty[Constants.ChangeLanguage], this.keybpardHeight, 0);
         this.keyboard = myKeypadDataView;
         this.kv.setKeyboard(myKeypadDataView);
         for (Keyboard.Key key : this.keyboard.getKeys()) {
@@ -2882,8 +2881,8 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
     }
 
     public void setKeyboardData() {
-        if (HindiUtils.tmp_flg == 1) {
-            HindiUtils.tmp_flg = 0;
+        if (Constants.temp_flag == 1) {
+            Constants.temp_flag = 0;
             this.headertext.setVisibility(View.GONE);
             this.capsonoffflg = false;
             caps = true;
@@ -2893,15 +2892,15 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         try {
             this.headertext.setVisibility(View.GONE);
             this.kv.init();
-            int i = HindiUtils.flg_lang_change;
+            int i = Constants.FlagChangeLanguage;
             if (i == 0) {
-                HindiUtils.CurrentLang = 0;
+                Constants.ChangeLanguage = 0;
                 SetKeyBoardLayout1();
-                HindiUtils.selectedLangName = "Bengali";
+                Constants.selectedLanguageName = "Hindi";
             } else if (i == 1) {
-                HindiUtils.CurrentLang = 1;
+                Constants.ChangeLanguage = 1;
                 SetKeyBoardLayout1();
-                HindiUtils.selectedLangName = "English";
+                Constants.selectedLanguageName = "English";
                 if (new MySharePref(mContext).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
                     caps = true;
                     this.capsonoffflg = false;
@@ -2911,28 +2910,30 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
                     this.tmpshiftonoff = false;
                 }
             }
-            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(getApplicationContext(), HindiUtils.flg_lang_change);
+            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
             if (HindiUtils.isUpHoneycomb) {
                 dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
             } else {
                 dictionaryLoadTask.execute(new String[0]);
             }
-            SharedPreferences.Editor edit2 = this.prefs.edit();
-            this.edit = edit2;
-            edit2.putString("SelectedLangName", HindiUtils.selectedLangName);
-            this.edit.putInt("lang_flg", HindiUtils.flg_lang_change);
-            if (Build.VERSION.SDK_INT >= 11) {
-                HindiUtils.isUpHoneycomb = true;
-            }
-            if (HindiUtils.isUpHoneycomb) {
-                this.edit.apply();
-            } else {
-                this.edit.commit();
-            }
-            HindiUtils.tmp_flg = 0;
-            HindiUtils.tmp_flg = 0;
+//            SharedPreferences.Editor edit2 = this.prefs.edit();
+//            this.edit = edit2;
+//            edit2.putString("SelectedLangName", HindiUtils.selectedLangName);
+//            this.edit.putInt("lang_flg", Constants.FlagChangeLanguage);
+            new MySharePref(getApplicationContext()).putPrefInt(MySharePref.FLAG_CHANGE_LANGUAGE, Constants.FlagChangeLanguage);
+            new MySharePref(ctx).putPrefString(MySharePref.LANGUAGE_NAME, Constants.selectedLanguageName);
+//            if (Build.VERSION.SDK_INT >= 11) {
+//                HindiUtils.isUpHoneycomb = true;
+//            }
+//            if (HindiUtils.isUpHoneycomb) {
+//                this.edit.apply();
+//            } else {
+//                this.edit.commit();
+//            }
+            Constants.temp_flag = 0;
             this.kv.init();
         } catch (Exception unused) {
+            unused.getMessage();
         }
     }
 
@@ -2940,12 +2941,12 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         this.hintword = (LinearLayout) this.v.findViewById(R.id.hintword);
         HorizontalListView horizontalListView = (HorizontalListView) this.v.findViewById(R.id.horizontalListView1);
         this.hlist = horizontalListView;
-        horizontalListView.setVisibility(View.VISIBLE);
+        hlist.setVisibility(View.VISIBLE);
         this.hlist.setOnItemClickListener(this.SuggectionItemClickEvent);
     }
 
     public void showdeletehint() {
-        if (HindiUtils.SuggestionView) {
+        if (Constants.SuggestedView) {
             this.word = "";
             CharSequence textBeforeCursor = getCurrentInputConnection().getTextBeforeCursor(999999, 0);
             String replaceAll = textBeforeCursor.toString().replaceAll("\\s", ",").replaceAll("[0-9]+", ",");
@@ -2984,20 +2985,20 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         DisplayMetrics displayMetrics = new DisplayMetrics();
         defaultDisplay.getMetrics(displayMetrics);
         if (getResources().getConfiguration().orientation == 1) {
-            if (new MySharePref(getApplicationContext()).getPrefInt(MySharePref.KEYBOARD_POTRAIT_HEIGHT, 2) == -1) {
+            if (new MySharePref(getApplicationContext()).getPrefInt(MySharePref.KEYBOARD_POTRAIT_HEIGHT, -1) == -1) {
                 this.keybpardHeight = displayMetrics.heightPixels / 3;
                 this.speaklayheight = (displayMetrics.heightPixels / 3) + (displayMetrics.heightPixels / 10);
             } else {
-                this.keybpardHeight = new MySharePref(getApplicationContext()).getPrefInt(MySharePref.KEYBOARD_POTRAIT_HEIGHT, 2);
-                this.speaklayheight = new MySharePref(getApplicationContext()).getPrefInt(MySharePref.KEYBOARD_POTRAIT_HEIGHT, 2) + (displayMetrics.heightPixels / 10);
+                this.keybpardHeight = new MySharePref(getApplicationContext()).getPrefInt(MySharePref.KEYBOARD_POTRAIT_HEIGHT, -1);
+                this.speaklayheight = new MySharePref(getApplicationContext()).getPrefInt(MySharePref.KEYBOARD_POTRAIT_HEIGHT, -1) + (displayMetrics.heightPixels / 10);
             }
-        } else if (new MySharePref(getApplicationContext()).getPrefInt(MySharePref.KEYBOARD_LANDSCAP_HEIGHT, 2) == -1) {
+        } else if (new MySharePref(getApplicationContext()).getPrefInt(MySharePref.KEYBOARD_LANDSCAP_HEIGHT, -1) == -1) {
             this.keybpardHeight = displayMetrics.heightPixels / 2;
             this.speaklayheight = (displayMetrics.heightPixels / 2) + (displayMetrics.heightPixels / 10);
             HindiUtils.checkheight = this.keybpardHeight;
         } else {
-            this.keybpardHeight = new MySharePref(getApplicationContext()).getPrefInt(MySharePref.KEYBOARD_LANDSCAP_HEIGHT, 2);
-            this.speaklayheight = new MySharePref(getApplicationContext()).getPrefInt(MySharePref.KEYBOARD_LANDSCAP_HEIGHT, 2) + (displayMetrics.heightPixels / 10);
+            this.keybpardHeight = new MySharePref(getApplicationContext()).getPrefInt(MySharePref.KEYBOARD_LANDSCAP_HEIGHT, -1);
+            this.speaklayheight = new MySharePref(getApplicationContext()).getPrefInt(MySharePref.KEYBOARD_LANDSCAP_HEIGHT, -1) + (displayMetrics.heightPixels / 10);
         }
         this.tmpHieght = Constants.DpToPx(getApplicationContext(), 41);
         this.tmpShowSuggestion = true;
@@ -3376,7 +3377,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         return getAssets().list(str);
     }
 
-    /* access modifiers changed from: private */
     public AlertDialog dialogAskInstallSTT() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Install Google Voice For Voice Translate");
@@ -3401,7 +3401,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-    /* access modifiers changed from: package-private */
     public void showToast(String str, int i) {
         Toast toast = this.mThongBao;
         if (toast != null) {
@@ -3417,7 +3416,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         this.mThongBao.show();
     }
 
-    /* access modifiers changed from: private */
     public void doTheDownAnimation(int i, int i2) {
         int i3 = this.mLevel - 100;
         this.mLevel = i3;
@@ -3430,7 +3428,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         this.fromLevel = i2;
     }
 
-    /* access modifiers changed from: private */
     public void doTheUpAnimation(int i, int i2) {
         int i3 = this.mLevel + 100;
         this.mLevel = i3;
@@ -3443,7 +3440,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         this.fromLevel = i2;
     }
 
-    /* access modifiers changed from: private */
     public AlertDialog dialogSettingGoogleApp() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Please Enable Micro Permission");
@@ -3457,7 +3453,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         return builder.create();
     }
 
-    /* access modifiers changed from: private */
     public void goToGoogleSettings() {
         Intent intent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS", Uri.parse("package:com.google.android.googlequicksearchbox"));
         intent.addCategory("android.intent.category.DEFAULT");
@@ -3493,7 +3488,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
         myAsyncTask() {
         }
 
-        /* access modifiers changed from: protected */
         public void onPreExecute() {
             super.onPreExecute();
             ArrayList arrayList = new ArrayList();
@@ -3501,7 +3495,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
             HindiKeypad.this.hlist.setAdapter((ListAdapter) HindiUtils.setSuggestionAdapter(HindiKeypad.this.getApplicationContext(), arrayList, HindiKeypad.this.selectedTheme, HindiKeypad.this.hlist.getWidth()));
         }
 
-        /* access modifiers changed from: protected */
         public Void doInBackground(Void... voidArr) {
             try {
                 if (HindiKeypad.this.word.equals("")) {
@@ -3514,10 +3507,6 @@ public class HindiKeypad extends InputMethodService implements KeyboardView.OnKe
             }
         }
 
-        /* access modifiers changed from: protected */
-        /* JADX WARNING: Can't wrap try/catch for region: R(6:6|7|8|(1:10)|11|12) */
-        /* JADX WARNING: Missing exception handler attribute for start block: B:11:0x0051 */
-        /* Code decompiled incorrectly, please refer to instructions dump. */
         public void onPostExecute(Void r6) {
             try {
                 if (!HindiKeypad.this.word.equals("")) {

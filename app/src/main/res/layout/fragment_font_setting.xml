@@ -43,8 +43,8 @@
 
         <View
             android:id="@+id/ViewTextColor"
-            android:layout_width="@dimen/_30sdp"
-            android:layout_height="@dimen/_30sdp"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
             android:layout_marginEnd="@dimen/_14sdp"
             android:background="#fcfcfc"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -99,8 +99,8 @@
 
         <View
             android:id="@+id/ViewPreviewColor"
-            android:layout_width="@dimen/_30sdp"
-            android:layout_height="@dimen/_30sdp"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
             android:layout_marginEnd="@dimen/_14sdp"
             android:background="#fcfcfc"
             app:layout_constraintBottom_toBottomOf="parent"

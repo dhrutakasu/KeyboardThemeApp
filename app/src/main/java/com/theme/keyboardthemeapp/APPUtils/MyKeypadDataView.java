@@ -4,6 +4,8 @@ import android.content.Context;
 import android.inputmethodservice.Keyboard;
 import android.util.Log;
 
+import com.theme.keyboardthemeapp.Constants;
+
 import java.util.List;
 
 /* loaded from: classes2.dex */
@@ -31,7 +33,7 @@ public class MyKeypadDataView extends Keyboard {
         this.set = i3;
         this.keyboardHeight = i2;
         if (i3 == 0) {
-            if (HindiUtils.CurrentLang == 0) {
+            if (Constants.ChangeLanguage == 0) {
                 this.mKeyHeight = this.keyboardHeight / 4;
             } else {
                 this.mKeyHeight = this.keyboardHeight / 4;
@@ -46,7 +48,7 @@ public class MyKeypadDataView extends Keyboard {
     public void setkeyBoardHeight(int i) {
         this.keyboardHeight = i;
         if (this.set == 0) {
-            if (HindiUtils.CurrentLang == 0) {
+            if (Constants.ChangeLanguage == 0) {
                 this.mKeyHeight = this.keyboardHeight / 4;
             } else {
                 this.mKeyHeight = this.keyboardHeight / 4;
@@ -66,7 +68,7 @@ public class MyKeypadDataView extends Keyboard {
 
     @Override // android.inputmethodservice.Keyboard
     protected void setKeyHeight(int i) {
-        if (HindiUtils.CurrentLang == 2 || HindiUtils.CurrentLang == 3 || HindiUtils.CurrentLang == 10 || HindiUtils.CurrentLang == 11 || HindiUtils.CurrentLang == 12) {
+        if (Constants.ChangeLanguage == 2 || Constants.ChangeLanguage == 3 || Constants.ChangeLanguage == 10 || Constants.ChangeLanguage == 11 || Constants.ChangeLanguage == 12) {
             i -= HindiUtils.pxFromDp(this.c, 3.0f);
         }
         int i2 = 0;

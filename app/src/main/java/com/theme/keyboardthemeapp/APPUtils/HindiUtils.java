@@ -34,6 +34,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.view.ViewCompat;
 
 
+import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.R;
 
 import org.json.JSONArray;
@@ -200,18 +201,18 @@ public class HindiUtils {
     public static int w;
     public static boolean wordExist = true;
 
-    public static int calculateInSampleSize(BitmapFactory.Options options, int i, int i2) {
-        int i3 = options.outHeight;
-        int i4 = options.outWidth;
-        int i5 = 1;
-        if (i3 > i2 || i4 > i) {
-            int i6 = i3 / 2;
-            int i7 = i4 / 2;
-            while (i6 / i5 > i2 && i7 / i5 > i) {
-                i5 *= 2;
+    public static int calculateInSampleSize(BitmapFactory.Options options, int width, int height) {
+        int outHeight = options.outHeight;
+        int outWidth = options.outWidth;
+        int out = 1;
+        if (outHeight > height || outWidth > width) {
+            int h = outHeight / 2;
+            int w = outWidth / 2;
+            while (h / out > height && w / out > width) {
+                out *= 2;
             }
         }
-        return i5;
+        return out;
     }
 
     public static String getCurrentProcess(Context context) {
@@ -313,9 +314,9 @@ public class HindiUtils {
     /* JADX WARNING: Removed duplicated region for block: B:42:0x00cf A[Catch:{ Exception -> 0x00d4 }] */
     /* JADX WARNING: Removed duplicated region for block: B:43:0x00d2 A[Catch:{ Exception -> 0x00d4 }] */
     /* Code decompiled incorrectly, please refer to instructions dump. */
-    public static ArrayList<String> getSuggestion(String r6) {
+    /*public static ArrayList<String> getSuggestion(String r6) {
 
-        /*    int r0 = r6.length()     // Catch:{ Exception -> 0x00d4 }
+     *//*    int r0 = r6.length()     // Catch:{ Exception -> 0x00d4 }
             r1 = 0
             r2 = 0
             r3 = 1
@@ -419,14 +420,66 @@ public class HindiUtils {
             wordExist = r3     // Catch:{ Exception -> 0x00d4 }
         L_0x00d4:
             java.util.ArrayList<java.lang.String> r6 = SuggestionData
-            return r6*/
+            return r6*//*
 
         throw new UnsupportedOperationException("Method not decompiled: com.tech.lang.keyboard.hindikeyboard.HindiUtils.getSuggestion(java.lang.String):java.util.ArrayList");
-   }
+   }*/
+
+    public static ArrayList<String> getSuggestion(String string) {
+        ArrayList<String> SuggestionData;
+        ArrayList<String> SuggestionWords = new ArrayList<>();
+
+        SuggestionWords.addAll(Constants.SuggestionWordsList);
+        SuggestionData = new ArrayList<>();
+        System.out.println("----- - - -string : " + string.length());
+        if (string.length() >= 1) {
+//        } else {
+//            SuggestionData = new ArrayList<>();
+//            SuggestionData.addAll(Constants.SuggestionWordsList);
+            if (SuggestionData != null) {
+                for (int i = 0; i < SuggestionWords.size(); i++) {
+                    String item = SuggestionWords.get(i).toLowerCase();
+                    String lowerR6 = string.toLowerCase();
+                    System.out.println("----- - - -lowerR6 : " + lowerR6);
+                    if (item.contains(lowerR6)) {
+                        System.out.println("----- - - -item : " + item);
+                        System.out.println("----- - - -contains(lowerR6) : " + lowerR6);
+                        SuggestionData.add(SuggestionWords.get(i));
+                    }
+                    if (!wordExist) {
+                        break;
+                    }
+                }
+            }
+        }
+        System.out.println("----- - - -SuggestionData.size : " + SuggestionData.size());
+        if (SuggestionData.size() == 0) {
+            for (int i = 0; i < SuggestionWords.size(); i++) {
+                String word = SuggestionWords.get(i).toLowerCase();
+                String lowerR6 = string.toLowerCase();
+                if (word.startsWith(lowerR6)) {
+                    SuggestionData.add(SuggestionWords.get(i));
+                }
+                if (!wordExist) {
+                    break;
+                }
+            }
+        }
+
+        if (SuggestionData.size() > 0) {
+            wordExist = true;
+        } else {
+            wordExist = false;
+        }
+        System.out.println("----- - - -SuggestionData : " + SuggestionData.size());
+
+        return SuggestionData;
+    }
 
     public static HintWordAdapter setSuggestionAdapter(Context context, ArrayList<String> arrayList2, int i, int i2) {
         return new HintWordAdapter(context, arrayList2, i, i2);
     }
+
     public static Method getMethod(Class<?> cls, String str, Class<?>... clsArr) {
         if (cls != null && !TextUtils.isEmpty(str)) {
             try {
@@ -458,10 +511,10 @@ public class HindiUtils {
             options.inJustDecodeBounds = true;
             AssetManager assets2 = context.getAssets();
             BitmapFactory.decodeStream(assets2.open("background/" + context.getAssets().list("background")[i]), new Rect(0, 0, 0, 0), options);
-            options.inSampleSize = calculateInSampleSize(options, w, (int) context.getResources().getDimension(R.dimen.keyboard_height));
+            options.inSampleSize = calculateInSampleSize(options, Constants.getWidth, (int) context.getResources().getDimension(R.dimen.keyboard_height));
             options.inJustDecodeBounds = false;
             AssetManager assets3 = context.getAssets();
-            Bitmap.createScaledBitmap(BitmapFactory.decodeStream(assets3.open("background/" + context.getAssets().list("background")[i]), new Rect(0, 0, 0, 0), options), w, (int) context.getResources().getDimension(R.dimen.keyboard_height), false).compress(Bitmap.CompressFormat.PNG, 100, new FileOutputStream(file));
+            Bitmap.createScaledBitmap(BitmapFactory.decodeStream(assets3.open("background/" + context.getAssets().list("background")[i]), new Rect(0, 0, 0, 0), options), Constants.getWidth, (int) context.getResources().getDimension(R.dimen.keyboard_height), false).compress(Bitmap.CompressFormat.PNG, 100, new FileOutputStream(file));
         } catch (IOException unused) {
             Toast.makeText(context, "Exception", Toast.LENGTH_SHORT).show();
         }
@@ -669,6 +722,7 @@ public class HindiUtils {
             return file.delete();
         }
     }
+
     public static boolean isSupported(Context context, String str) {
         float f = context.getResources().getDisplayMetrics().density;
         Bitmap.Config config = Bitmap.Config.ARGB_8888;

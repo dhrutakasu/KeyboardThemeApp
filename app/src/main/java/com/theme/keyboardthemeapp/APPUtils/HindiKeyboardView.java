@@ -167,7 +167,7 @@ public class HindiKeyboardView extends KeyboardView {
     public void init() {
         this.letterX = new int[126];
         this.letterY = new int[126];
-        if (HindiUtils.CurrentLang == 0) {
+        if (Constants.ChangeLanguage == 0) {
             Typeface createFromAsset = Typeface.createFromAsset(getContext().getAssets(), Constants.HindiFontList[new MySharePref(getContext()).getPrefInt(MySharePref.FONT_STYLE, Constants.FontStyle)]);
             this.fontstyle = createFromAsset;
             this.newpaint.setTypeface(createFromAsset);
@@ -233,13 +233,13 @@ public class HindiKeyboardView extends KeyboardView {
                             this.newpaint.setTextSize((int) getResources().getDimension(R.dimen.key_text_size));
                         }
                         String charSequence = key.label.toString();
-                        if (HindiUtils.CurrentLang == 0 && charSequence.equalsIgnoreCase("abc")) {
+                        if (Constants.ChangeLanguage == 0 && charSequence.equalsIgnoreCase("abc")) {
                             charSequence = "abc";
                         }
                         if (HindiKeypad.caps) {
                             charSequence = charSequence.toUpperCase();
                         }
-                        canvas.drawText(charSequence, key.x + (key.width / 2), key.y + (key.height / 2) + ((int) getResources().getDimension(com.intuit.sdp.R.dimen._18sdp)), this.newpaint);
+                        canvas.drawText(charSequence, key.x + (key.width / 2), key.y + (key.height / 2) + ((int) getResources().getDimension(com.intuit.sdp.R.dimen._22sdp)), this.newpaint);
                     } else {
                         if (key.label.toString().equals("?123")) {
                             this.simplePaint.setTextSize((int) getResources().getDimension(R.dimen.key123_text_size));
@@ -252,7 +252,7 @@ public class HindiKeyboardView extends KeyboardView {
                         if (HindiKeypad.caps) {
                             charSequence2 = charSequence2.toUpperCase();
                         }
-                        canvas.drawText(charSequence2, key.x + (key.width / 2), key.y + (key.height / 2) + ((int) getResources().getDimension(com.intuit.sdp.R.dimen._18sdp)), this.simplePaint);
+                        canvas.drawText(charSequence2, key.x + (key.width / 2), key.y + (key.height / 2) + ((int) getResources().getDimension(com.intuit.sdp.R.dimen._22sdp)), this.simplePaint);
                     }
                     if (hasCharKey(key)) {
                         this.letterX[i] = key.x;
@@ -316,20 +316,19 @@ public class HindiKeyboardView extends KeyboardView {
     private void showPreviewPopup(int i, Keyboard.Key key) {
         try {
             if (key.codes[0] != -97886 && new MySharePref(getContext()).getPrefBoolean(MySharePref.POPUP, true)) {
-                HindiUtils.tt.setText(key.label.toString());
+               Constants.TxtView.setText(key.label.toString());
                 if (getResources().getConfiguration().orientation == 1) {
-                    showKey(HindiUtils.tt, key, 20, 15);
+                    showKey(Constants.TxtView, key, 20, 15);
                     return;
                 } else {
-                    showKey(HindiUtils.tt, key, 40, 10);
+                    showKey(Constants.TxtView, key, 40, 10);
                     return;
                 }
             }
-            if (!HindiUtils.previewActivityisOpen) {
-                Log.e("preview", "open");
-            }
             showLongPressPreviewPopup(key, (char) key.codes[0]);
         } catch (Exception unused) {
+            System.out.println("----- - - -unused : " + unused.getMessage());
+            unused.printStackTrace();
         }
     }
 
@@ -368,32 +367,32 @@ public class HindiKeyboardView extends KeyboardView {
             }
             i7 += i3;
         }
-        if (HindiUtils.popup.isShowing()) {
-            HindiUtils.popup.update(i6 - 5, i7 - 20, max, i3);
+        if (Constants.popupScreen.isShowing()) {
+            Constants.popupScreen.update(i6 - 5, i7 - 20, max, i3);
             return;
         }
-        HindiUtils.popup.setWidth(max);
-        HindiUtils.popup.setHeight(i3);
-        HindiUtils.popup.showAtLocation(this, 0, i6, i7 - 18);
+        Constants.popupScreen.setWidth(max);
+        Constants.popupScreen.setHeight(i3);
+        Constants.popupScreen.showAtLocation(this, 0, i6, i7 - 18);
     }
 
     private void showLongPressPreviewPopup(Keyboard.Key key, char c) {
-        this.langadp = new MyCustomKeyboardLangAdapter(this.context, HindiUtils.langueges, this);
+        this.langadp = new MyCustomKeyboardLangAdapter(this.context, Constants.languegesArray, this);
         View inflate = ((LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.langlist_popup, (ViewGroup) null, false);
         this.vlng = inflate;
         ((ListView) inflate.findViewById(R.id.keyboardLangList)).setAdapter((ListAdapter) this.langadp);
         Typeface createFromAsset = Typeface.createFromAsset(getContext().getAssets(), "AvenirLTStd-Medium.otf");
-        HindiUtils.tt1 = (TextView) this.vlng.findViewById(R.id.textView1);
-        HindiUtils.tt1.setTypeface(createFromAsset);
-        if (HindiUtils.p == null) {
-            HindiUtils.p = new PopupWindow(this.context);
+       Constants.TxtLongPressView = (TextView) this.vlng.findViewById(R.id.textView1);
+       Constants.TxtLongPressView.setTypeface(createFromAsset);
+        if (Constants.popupWindow == null) {
+            Constants.popupWindow = new PopupWindow(this.context);
         }
-        HindiUtils.p.setContentView(this.vlng);
-        HindiUtils.p.setBackgroundDrawable(null);
-        HindiUtils.p.setTouchable(true);
-        HindiUtils.p.setAnimationStyle(R.style.PreviewPopupAnimation);
-        if (HindiUtils.tt1 != null) {
-            showKeypopup(key, Constants.pxFromDp(this.context, 130.0f), Constants.pxFromDp(this.context, 100.0f), HindiUtils.tt1);
+        Constants.popupWindow.setContentView(this.vlng);
+        Constants.popupWindow.setBackgroundDrawable(null);
+        Constants.popupWindow.setTouchable(true);
+        Constants.popupWindow.setAnimationStyle(R.style.PreviewPopupAnimation);
+        if (Constants.TxtLongPressView != null) {
+            showKeypopup(key, Constants.pxFromDp(this.context, 130.0f), Constants.pxFromDp(this.context, 100.0f),Constants.TxtLongPressView);
         }
     }
 
@@ -443,19 +442,19 @@ public class HindiKeyboardView extends KeyboardView {
             pxFromDp2 = Constants.pxFromDp(this.context, 26.0f);
         }
         int i8 = i7 + pxFromDp2;
-        if (HindiUtils.p.isShowing()) {
-            HindiUtils.p.update(pxFromDp, i8, max, i3);
+        if (Constants.popupWindow.isShowing()) {
+            Constants.popupWindow.update(pxFromDp, i8, max, i3);
             return;
         }
-        HindiUtils.p.setWidth(max);
-        HindiUtils.p.setHeight(i3);
-        HindiUtils.p.showAtLocation(this, 0, pxFromDp, i8);
+        Constants.popupWindow.setWidth(max);
+        Constants.popupWindow.setHeight(i3);
+        Constants.popupWindow.showAtLocation(this, 0, pxFromDp, i8);
     }
 
     public void dismissPreviewPopup() {
         try {
-            if (HindiUtils.popup.isShowing()) {
-                HindiUtils.popup.dismiss();
+            if (Constants.popupScreen.isShowing()) {
+                Constants.popupScreen.dismiss();
             }
         } catch (Exception unused) {
         }
@@ -464,8 +463,8 @@ public class HindiKeyboardView extends KeyboardView {
 
     public void dismissLangPopup() {
         try {
-            if (HindiUtils.p.isShowing()) {
-                HindiUtils.p.dismiss();
+            if (Constants.popupWindow.isShowing()) {
+                Constants.popupWindow.dismiss();
             }
         } catch (Exception unused) {
         }
@@ -481,7 +480,7 @@ public class HindiKeyboardView extends KeyboardView {
         this.npdShiftOn = ninePatchDrawable5;
         this.npdSpace = ninePatchDrawable3;
         this.textColorCode = new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white));
-        this.hintColorCode = HindiUtils.hintColorCode;
+//        this.hintColorCode = HindiUtils.hintColorCode;
         this.popupDrawable = drawable;
         this.newpaint.setColor(new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)));
         this.simplePaint.setColor(new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)));
@@ -500,36 +499,36 @@ public class HindiKeyboardView extends KeyboardView {
 
     public void setPopup() {
         LayoutInflater layoutInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        if (HindiUtils.popup == null) {
-            HindiUtils.popup = new PopupWindow(this.context);
+        if (Constants.popupScreen == null) {
+            Constants.popupScreen = new PopupWindow(this.context);
         }
-        if (HindiUtils.tt == null) {
+        if (Constants.TxtView == null) {
             if (HindiUtils.themeNo > 9) {
-                HindiUtils.tt = (TextView) layoutInflater.inflate(this.previewLayout[0], (ViewGroup) null, false);
+               Constants.TxtView = (TextView) layoutInflater.inflate(this.previewLayout[0], (ViewGroup) null, false);
             } else {
-                HindiUtils.tt = (TextView) layoutInflater.inflate(this.previewLayout[HindiUtils.themeNo], (ViewGroup) null, false);
+               Constants.TxtView = (TextView) layoutInflater.inflate(this.previewLayout[HindiUtils.themeNo], (ViewGroup) null, false);
             }
         }
         if (HindiUtils.themeNo > 9) {
             if (HindiUtils.previousSelectedThemeno != -1 && HindiUtils.previousSelectedThemeno != 0) {
-                HindiUtils.tt = null;
-                HindiUtils.tt = (TextView) layoutInflater.inflate(this.previewLayout[0], (ViewGroup) null, false);
+               Constants.TxtView = null;
+               Constants.TxtView = (TextView) layoutInflater.inflate(this.previewLayout[0], (ViewGroup) null, false);
                 HindiUtils.previousSelectedThemeno = 0;
             }
         } else if (HindiUtils.previousSelectedThemeno != -1 && HindiUtils.previousSelectedThemeno != HindiUtils.themeNo) {
-            HindiUtils.tt = null;
-            HindiUtils.tt = (TextView) layoutInflater.inflate(this.previewLayout[HindiUtils.themeNo], (ViewGroup) null, false);
+           Constants.TxtView = null;
+           Constants.TxtView = (TextView) layoutInflater.inflate(this.previewLayout[HindiUtils.themeNo], (ViewGroup) null, false);
             HindiUtils.previousSelectedThemeno = HindiUtils.themeNo;
         }
-        if (HindiUtils.CurrentLang == 0) {
-            HindiUtils.tt.setTypeface(this.fontstyle);
+        if (Constants.ChangeLanguage == 0) {
+           Constants.TxtView.setTypeface(this.fontstyle);
         } else {
-            HindiUtils.tt.setTypeface(Typeface.DEFAULT_BOLD);
+           Constants.TxtView.setTypeface(Typeface.DEFAULT_BOLD);
         }
-        if (HindiUtils.CurrentLang == 0) {
-            HindiUtils.tt.setPadding(0, 15, 0, 0);
+        if (Constants.ChangeLanguage == 0) {
+           Constants.TxtView.setPadding(0, 15, 0, 0);
         } else {
-            HindiUtils.tt.setPadding(0, 10, 0, 0);
+           Constants.TxtView.setPadding(0, 10, 0, 0);
         }
 
         StringBuilder builderPreview = new StringBuilder();
@@ -549,13 +548,13 @@ public class HindiKeyboardView extends KeyboardView {
         }
 
         if (HindiUtils.themeNo > 9) {
-            HindiUtils.tt.setTextColor(Color.parseColor(Constants.ThemePreviewTextColor[0]));
+           Constants.TxtView.setTextColor(Color.parseColor(Constants.ThemePreviewTextColor[0]));
         } else {
-            HindiUtils.tt.setTextColor(Color.parseColor(Constants.ThemePreviewTextColor[Constants.SelectTheme]));
+           Constants.TxtView.setTextColor(Color.parseColor(Constants.ThemePreviewTextColor[Constants.SelectTheme]));
         }
-        HindiUtils.popup.setContentView(HindiUtils.tt);
-        HindiUtils.popup.setBackgroundDrawable(null);
-        HindiUtils.popup.setTouchable(false);
-        HindiUtils.popup.setAnimationStyle(R.style.PreviewPopupAnimation);
+        Constants.popupScreen.setContentView(Constants.TxtView);
+        Constants.popupScreen.setBackgroundDrawable(null);
+        Constants.popupScreen.setTouchable(false);
+        Constants.popupScreen.setAnimationStyle(R.style.PreviewPopupAnimation);
     }
 }

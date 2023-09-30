@@ -21,6 +21,8 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -39,6 +41,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Constants {
     public static final int OVERLAY_REQUEST_CODE = 101;
@@ -103,6 +106,23 @@ public class Constants {
     public static int height = 0;
     public static int KeyboardHeight = -1;
     public static String dictionaryword="";
+    public static TextView TxtView = null;
+    public static TextView TxtLongPressView = null;
+    public static int getWidth;
+    public static PopupWindow popupWindow = null;
+    public static PopupWindow popupScreen = null;
+    public static int ChangeLanguage=0;
+
+    public static boolean SuggestedView = true;
+    public static ArrayList<String> SuggestionWordsList = new ArrayList<>(25000);
+
+    static String[] langStrings = {"Hindi", "English"};
+    public static ArrayList<String> languegesArray = new ArrayList<>(Arrays.asList(langStrings));
+    public static String selectedLanguageName = "Hindi";
+    public static int FlagChangeLanguage = 0;
+    public static final int CODE_ALPHABETS = -2830;
+    public static final int CODE_EMOJI = -5000;
+    public static int temp_flag = 0;
 
     static {
         String[][] strArr = new String[24][];
@@ -356,7 +376,12 @@ public class Constants {
             return null;
         }
     }
-
+    public static ArrayList<String> getDefaultLanguageArray() {
+        ArrayList<String> LanguageList = new ArrayList<>();
+        LanguageList.add("Hindi");
+        LanguageList.add("English");
+        return LanguageList;
+    }
     public static File getBackground(Context context, int pos) {
         File file2 = new File(context.getFilesDir() + "/photo_save.jpeg");
         if (!file2.exists()) {
@@ -430,7 +455,5 @@ public class Constants {
         } catch (Exception e) {
             Log.e("tag", e.getMessage());
         }
-
-
     }
 }

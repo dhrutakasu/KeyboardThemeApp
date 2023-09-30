@@ -32,6 +32,7 @@ import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+import com.theme.keyboardthemeapp.APPUtils.HindiUtils;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.Dialogs.KeyboardPermissionDialog;
 import com.theme.keyboardthemeapp.Dialogs.OverlayPermissionDialog;
@@ -249,6 +250,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             Constants.NoInternetConnection(MainActivity.this);
         }
+
     }
 
     @Override
@@ -270,6 +272,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(context, FontActivity.class));
                 break;
             case R.id.CardSetting:
+                Constants.wordExist = true;
                 startActivity(new Intent(context, SettingActivity.class));
                 break;
             case R.id.CardDictionary:

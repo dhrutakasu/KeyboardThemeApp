@@ -45,7 +45,6 @@ import java.io.IOException;
 
 public class BackgroundActivity extends AppCompatActivity implements View.OnClickListener, SeekBar.OnSeekBarChangeListener {
     private static final int CAMERA_RESULT = 92;
-    private static final int GALLERY_RESULT = 93;
     private final int CAMERA_CODE = 95;
     private final int GALLERY_CODE = 98;
     private Context context;
@@ -167,7 +166,6 @@ public class BackgroundActivity extends AppCompatActivity implements View.OnClic
         IvBlackCover.setAlpha(((float) new MySharePref(context).getPrefInt(MySharePref.TRANSPARENT_BLACK_BG, 0)) / 255.0f);
         SeekOpacityView.setProgress(new MySharePref(context).getPrefInt(MySharePref.TRANSPARENT_BLACK_BG, 0));
 
-        new MySharePref(context).putPrefBoolean(MySharePref.ISCOLOR_CODE_CHANGE, true);
         int color = new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white));
         GotoFontColor(color);
         GotoFontTypeface();
@@ -219,6 +217,8 @@ public class BackgroundActivity extends AppCompatActivity implements View.OnClic
 
         RvFontColorList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         ColorAdapter fontcoloradapter = new ColorAdapter(context, Constants.ColorsList, (position, ints) -> {
+            new MySharePref(context).putPrefBoolean(MySharePref.ISCOLOR_CODE_CHANGE, true);
+
             if (position == 0) {
                 ColorPickerDialogBuilder
                         .with(context)

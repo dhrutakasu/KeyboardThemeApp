@@ -5,11 +5,8 @@ import android.view.MotionEvent;
 import android.view.View;
 
 public class RepeatButtonListener implements View.OnTouchListener {
-    /* access modifiers changed from: private */
     public final View.OnClickListener clickListener;
-    /* access modifiers changed from: private */
     public View downView;
-    /* access modifiers changed from: private */
     public Handler handler = new Handler();
     private Runnable handlerRunnable = new Runnable() {
         public void run() {
@@ -18,7 +15,6 @@ public class RepeatButtonListener implements View.OnTouchListener {
         }
     };
     private int initialInterval;
-    /* access modifiers changed from: private */
     public final int normalInterval;
 
     public RepeatButtonListener(int i, int i2, View.OnClickListener onClickListener) {

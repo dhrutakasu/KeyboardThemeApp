@@ -1,11 +1,13 @@
 package com.theme.keyboardthemeapp.APPUtils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.provider.ContactsContract;
 import android.provider.UserDictionary;
 
+import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.R;
 
 import java.io.BufferedReader;
@@ -19,7 +21,6 @@ public class DictionaryLoadTask extends AsyncTask<String, String, String> {
     Context mContext;
     private String resp = "load";
 
-    /* access modifiers changed from: protected */
     public void onProgressUpdate(String... strArr) {
     }
 
@@ -28,7 +29,6 @@ public class DictionaryLoadTask extends AsyncTask<String, String, String> {
         this.ID = i;
     }
 
-    /* access modifiers changed from: protected */
     public String doInBackground(String... strArr) {
         String str;
         try {
@@ -50,23 +50,21 @@ public class DictionaryLoadTask extends AsyncTask<String, String, String> {
         return this.resp;
     }
 
-    /* access modifiers changed from: protected */
     public void onPostExecute(String str) {
         try {
             HindiUtils.dictionaryisLoad = true;
             HashSet hashSet = new HashSet();
-            hashSet.addAll(HindiUtils.SuggestionWords);
-            HindiUtils.SuggestionWords.clear();
-            HindiUtils.SuggestionWords.addAll(hashSet);
+            hashSet.addAll(Constants.SuggestionWordsList);
+            Constants.SuggestionWordsList.clear();
+            Constants.SuggestionWordsList.addAll(hashSet);
         } catch (Exception unused) {
         }
     }
 
-    /* access modifiers changed from: protected */
     public void onPreExecute() {
-        HindiUtils.SuggestionWords.clear();
-        HindiUtils.SuggestionWords = null;
-        HindiUtils.SuggestionWords = new ArrayList<>();
+        Constants.SuggestionWordsList.clear();
+        Constants.SuggestionWordsList = null;
+        Constants.SuggestionWordsList = new ArrayList<>();
     }
 
     public void getMobileData() {
@@ -74,16 +72,16 @@ public class DictionaryLoadTask extends AsyncTask<String, String, String> {
             Cursor query = this.mContext.getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
             if (query.getCount() > 0) {
                 while (query.moveToNext()) {
-                    String string = query.getString(query.getColumnIndex("display_name"));
+                    @SuppressLint("Range") String string = query.getString(query.getColumnIndex("display_name"));
                     if (string.contains(" ")) {
                         String[] split = string.split(" ");
                         for (int i = 0; i < split.length; i++) {
-                            if (!HindiUtils.SuggestionWords.contains(split[i])) {
-                                HindiUtils.SuggestionWords.add(split[i]);
+                            if (!Constants.SuggestionWordsList.contains(split[i])) {
+                                Constants.SuggestionWordsList.add(split[i]);
                             }
                         }
-                    } else if (!HindiUtils.SuggestionWords.contains(string)) {
-                        HindiUtils.SuggestionWords.add(string);
+                    } else if (!Constants.SuggestionWordsList.contains(string)) {
+                        Constants.SuggestionWordsList.add(string);
                     }
                 }
             }
@@ -96,12 +94,12 @@ public class DictionaryLoadTask extends AsyncTask<String, String, String> {
                 if (string2.contains(" ")) {
                     String[] split2 = string2.split(" ");
                     for (int i2 = 0; i2 < split2.length; i2++) {
-                        if (!HindiUtils.SuggestionWords.contains(split2[i2])) {
-                            HindiUtils.SuggestionWords.add(split2[i2]);
+                        if (!Constants.SuggestionWordsList.contains(split2[i2])) {
+                            Constants.SuggestionWordsList.add(split2[i2]);
                         }
                     }
-                } else if (!HindiUtils.SuggestionWords.contains(string2)) {
-                    HindiUtils.SuggestionWords.add(string2);
+                } else if (!Constants.SuggestionWordsList.contains(string2)) {
+                    Constants.SuggestionWordsList.add(string2);
                 }
             }
         } catch (Exception unused2) {
@@ -114,7 +112,7 @@ public class DictionaryLoadTask extends AsyncTask<String, String, String> {
             while (true) {
                 String readLine = bufferedReader.readLine();
                 if (readLine != null) {
-                    HindiUtils.SuggestionWords.add(readLine);
+                    Constants.SuggestionWordsList.add(readLine);
                 } else {
                     bufferedReader.close();
                     return;

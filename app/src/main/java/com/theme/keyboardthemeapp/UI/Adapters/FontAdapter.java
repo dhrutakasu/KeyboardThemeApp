@@ -46,8 +46,6 @@ public class FontAdapter extends RecyclerView.Adapter<FontAdapter.MyViewHolder> 
         holder.itemView.setOnClickListener(view -> {
             if (position != new MySharePref(context).getPrefInt(MySharePref.FONT_STYLE, 0)) {
                 new MySharePref(context).putPrefInt(MySharePref.BACKGROUND_FONT_STYLE, position);
-                new MySharePref(context).putPrefInt(MySharePref.FLAG_CHANGE_LANGUAGE, 1);
-                new MySharePref(context).putPrefInt(MySharePref.CHANGE_LANGUAGE, 0);
                 listen.FontClick(position);
                 notifyDataSetChanged();
             }
