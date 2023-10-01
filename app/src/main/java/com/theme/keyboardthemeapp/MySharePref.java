@@ -43,6 +43,7 @@ public class MySharePref {
     public static final String CHANGE_LANGUAGE = "CHANGE_LANGUAGE";
     public static final String DEFAULT_BG_COLOR = "DEFAULT_BG_COLOR";
     public static final String DEFAULT_THEME = "DEFAULT_THEME";
+    public static final String PREVIOUS_THEME = "DEFAULT_THEME";
     public static final String TRANSPARENT = "TRANSPARENT";
     public static final String TRANSPARENT_BLACK_BG = "TRANSPARENT_BLACK_BG";
     public static final String TRANSPARENT_TOP_BG = "TRANSPARENT_TOP_BG";
@@ -50,6 +51,7 @@ public class MySharePref {
     public static final String PREVIEW_IS_OPEN = "PREVIEW_IS_OPEN";
     public static final String DEFAULT_GIF = "DEFAULT_GIF";
     public static final String DEFULT_LANGUAGE = "DEFULT_LANGUAGE";
+    public static final String SAVE_IMAGE = "SAVE_IMAGE";
 
 
     private SharedPreferences sharedPreferences;

@@ -193,6 +193,7 @@ public class ThemeDownloader extends AsyncTask<String, Void, Void> {
             Constants.copyFile(Theme,new File(context.getFilesDir().getAbsolutePath() + "/photo_save.jpeg"));
             new MySharePref(context).putPrefInt(MySharePref.DEFAULT_THEME, Pos);
             new MySharePref(context).putPrefBoolean(MySharePref.DEFAULT_GIF, false);
+            new MySharePref(context).putPrefBoolean(MySharePref.SAVE_IMAGE,false);
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {

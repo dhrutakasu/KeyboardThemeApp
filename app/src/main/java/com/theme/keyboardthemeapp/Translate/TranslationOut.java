@@ -1,14 +1,14 @@
-package com.theme.keyboardthemeapp.ngonngu;
+package com.theme.keyboardthemeapp.Translate;
 
 import android.content.Context;
 
 
-import com.theme.keyboardthemeapp.APPUtils.Common_Resource;
+import com.theme.keyboardthemeapp.APPUtils.ConstantResource;
 import com.theme.keyboardthemeapp.APPUtils.LanguageY;
 
 import java.util.Arrays;
 
-public class NgonNguOut extends NgonNgu {
+public class TranslationOut extends Translation {
     private boolean isTextToSpeech = true;
     private String mCodeDocmau;
     private String mCodeLanguage;
@@ -17,19 +17,19 @@ public class NgonNguOut extends NgonNgu {
     private int mPosition;
     private String mText;
 
-    public NgonNguOut(Context context, String str) {
+    public TranslationOut(Context context, String str) {
         super(str);
         this.mContext = context;
         this.mLanguageName = str;
-        Common_Resource common_Resource = new Common_Resource(context);
-        this.mPosition = common_Resource.getPosition(this.mLanguageName, common_Resource.getContriesout());
-        this.mCodeDocmau = common_Resource.getCodelangout()[this.mPosition];
-        this.mCodeLanguage = common_Resource.getFromLanguageName(str, common_Resource.getContriesout(), common_Resource.getCodelangout());
+        ConstantResource constant_Resource = new ConstantResource(context);
+        this.mPosition = constant_Resource.getPosition(this.mLanguageName, constant_Resource.getContriesout());
+        this.mCodeDocmau = constant_Resource.getCodelangout()[this.mPosition];
+        this.mCodeLanguage = constant_Resource.getFromLanguageName(str, constant_Resource.getContriesout(), constant_Resource.getCodelangout());
         this.mText = "";
         if (getLanguageY().equals(LanguageY.TAGALOG)) {
             this.mCodeDocmau = "fil";
         }
-        this.isTextToSpeech = !Arrays.asList(common_Resource.getNoSpeaker()).contains(this.mLanguageName);
+        this.isTextToSpeech = !Arrays.asList(constant_Resource.getNoSpeaker()).contains(this.mLanguageName);
     }
 
     public String getmText() {
@@ -70,13 +70,13 @@ public class NgonNguOut extends NgonNgu {
 
     public void updateNgonNguOut(String str) {
         this.mLanguageName = str;
-        Common_Resource common_Resource = new Common_Resource(this.mContext);
-        this.mPosition = common_Resource.getPosition(this.mLanguageName, common_Resource.getContriesout());
-        this.mCodeDocmau = common_Resource.getCodelangout()[this.mPosition];
+        ConstantResource constant_Resource = new ConstantResource(this.mContext);
+        this.mPosition = constant_Resource.getPosition(this.mLanguageName, constant_Resource.getContriesout());
+        this.mCodeDocmau = constant_Resource.getCodelangout()[this.mPosition];
         if (getLanguageY().equals(LanguageY.TAGALOG)) {
             this.mCodeDocmau = "fil";
         }
-        this.mCodeLanguage = common_Resource.getFromLanguageName(str, common_Resource.getContriesout(), common_Resource.getCodelangout());
+        this.mCodeLanguage = constant_Resource.getFromLanguageName(str, constant_Resource.getContriesout(), constant_Resource.getCodelangout());
     }
 
     public LanguageY getLanguageY() {

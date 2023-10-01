@@ -177,7 +177,7 @@ public class BackgroundActivity extends AppCompatActivity implements View.OnClic
         ColorAdapter adapter = new ColorAdapter(context, Constants.ColorsList, (position, ints) -> {
             TxtPercentage.setText(((new MySharePref(context).getPrefInt(MySharePref.TRANSPARENT, 0) * 100) / 255) + "%");
             IvBlackCover.setAlpha(((float) new MySharePref(context).getPrefInt(MySharePref.TRANSPARENT_BLACK_BG, 0)) / 255.0f);
-
+            new MySharePref(context).putPrefBoolean(MySharePref.SAVE_IMAGE,true);
             if (position == 0) {
                 ColorPickerDialogBuilder
                         .with(context)

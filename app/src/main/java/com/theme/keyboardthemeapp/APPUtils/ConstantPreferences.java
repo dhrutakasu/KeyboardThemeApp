@@ -3,8 +3,10 @@ package com.theme.keyboardthemeapp.APPUtils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.theme.keyboardthemeapp.Constants;
+
 /* loaded from: classes.dex */
-public class Common_Preferences {
+public class ConstantPreferences {
     private static final String CONTRY_NAME_IN = "contrynamein";
     private static final String CONTRY_NAME_OUT = "contrynameout";
     private static final String CURRENT_PHOTO_PATH = "photopath";
@@ -29,7 +31,7 @@ public class Common_Preferences {
     private int mSoRequest;
     private boolean mTranslateCamera;
 
-    public Common_Preferences(Context context) {
+    public ConstantPreferences(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(MAIN_NAME_PREFERENCE, 0);
         this.mPreference = sharedPreferences;
         this.mEditor = sharedPreferences.edit();
@@ -44,7 +46,7 @@ public class Common_Preferences {
         this.mInApp = this.mPreference.getInt(IN_APP, 0);
         this.mTranslateCamera = this.mPreference.getBoolean(TRANSLATE_CAMERA, false);
         this.mNoAds = this.mPreference.getBoolean(NO_ADS, false);
-        this.mContryNameIn = this.mPreference.getString(CONTRY_NAME_IN, HindiUtils.speakLangName);
+        this.mContryNameIn = this.mPreference.getString(CONTRY_NAME_IN, Constants.SpeakLanguageName);
         this.mContryNameOut = this.mPreference.getString(CONTRY_NAME_OUT, "Hindi");
         this.mCurrentPhotoPath = this.mPreference.getString(CURRENT_PHOTO_PATH, "");
     }

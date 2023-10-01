@@ -28,9 +28,10 @@ import com.theme.keyboardthemeapp.R;
 import com.theme.keyboardthemeapp.UI.Adapters.MyCustomKeyboardLangAdapter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class HindiKeyboardView extends KeyboardView {
+public class CustomKeyboardView extends KeyboardView {
     Context context;
     Typeface fontstyle;
     int hintColorCode;
@@ -65,7 +66,10 @@ public class HindiKeyboardView extends KeyboardView {
     int x;
     int y;
 
-    public HindiKeyboardView(Context context, AttributeSet attributeSet, int i) {
+    private String[] deafultchar = {"44", "46", "-97886", "64", "35", "36", "37", "38", "40", "41", "42", "43", "45", "33", "34", "39", "58", "59", "47", "63", "126", "177", "215", "247", "8226", "176", "96", "180", "123", "125", "169", "163", "8364", "94", "174", "165", "95", "43", "91", "93", "161", "60", "62", "162", "124", "92", "191", "-6003", "-1763", "8230"};
+    private ArrayList<String> defaultCharacter = new ArrayList<>(Arrays.asList(deafultchar));
+
+    public CustomKeyboardView(Context context, AttributeSet attributeSet, int i) {
         super(context, attributeSet, i);
         this.keys = null;
         this.totalkey = null;
@@ -98,7 +102,7 @@ public class HindiKeyboardView extends KeyboardView {
         this.npdDone = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_enter);
     }
 
-    public HindiKeyboardView(Context context) {
+    public CustomKeyboardView(Context context) {
         super(context, null);
         this.keys = null;
         this.totalkey = null;
@@ -131,7 +135,7 @@ public class HindiKeyboardView extends KeyboardView {
         this.npdDone = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_enter);
     }
 
-    public HindiKeyboardView(Context context, AttributeSet attributeSet) {
+    public CustomKeyboardView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         this.keys = null;
         this.totalkey = null;
@@ -204,7 +208,7 @@ public class HindiKeyboardView extends KeyboardView {
         return false;
     }
 
-    @Override // android.inputmethodservice.KeyboardView, android.view.View
+    @Override
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         this.keys = getKeyboard().getKeys();
@@ -223,7 +227,7 @@ public class HindiKeyboardView extends KeyboardView {
                     key.repeatable = false;
                 } else {
                     key.repeatable = false;
-                    ArrayList<String> arrayList = HindiUtils.defaultCharacter;
+                    ArrayList<String> arrayList = defaultCharacter;
                     if (!arrayList.contains(key.codes[0] + "")) {
                         if (key.label.toString().equals("?123")) {
                             this.newpaint.setTextSize((int) getResources().getDimension(R.dimen.key123_text_size));
@@ -236,7 +240,7 @@ public class HindiKeyboardView extends KeyboardView {
                         if (Constants.ChangeLanguage == 0 && charSequence.equalsIgnoreCase("abc")) {
                             charSequence = "abc";
                         }
-                        if (HindiKeypad.caps) {
+                        if (CustomKeypad.CapsLock) {
                             charSequence = charSequence.toUpperCase();
                         }
                         canvas.drawText(charSequence, key.x + (key.width / 2), key.y + (key.height / 2) + ((int) getResources().getDimension(com.intuit.sdp.R.dimen._22sdp)), this.newpaint);
@@ -249,7 +253,7 @@ public class HindiKeyboardView extends KeyboardView {
                             this.simplePaint.setTextSize((int) getResources().getDimension(R.dimen.key_text_size));
                         }
                         String charSequence2 = key.label.toString();
-                        if (HindiKeypad.caps) {
+                        if (CustomKeypad.CapsLock) {
                             charSequence2 = charSequence2.toUpperCase();
                         }
                         canvas.drawText(charSequence2, key.x + (key.width / 2), key.y + (key.height / 2) + ((int) getResources().getDimension(com.intuit.sdp.R.dimen._22sdp)), this.simplePaint);
@@ -266,7 +270,7 @@ public class HindiKeyboardView extends KeyboardView {
         }
     }
 
-    @Override // android.inputmethodservice.KeyboardView, android.view.View
+    @Override
     public boolean onTouchEvent(MotionEvent motionEvent) {
         this.x = (int) motionEvent.getX();
         this.y = (int) motionEvent.getY();
@@ -480,7 +484,6 @@ public class HindiKeyboardView extends KeyboardView {
         this.npdShiftOn = ninePatchDrawable5;
         this.npdSpace = ninePatchDrawable3;
         this.textColorCode = new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white));
-//        this.hintColorCode = HindiUtils.hintColorCode;
         this.popupDrawable = drawable;
         this.newpaint.setColor(new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)));
         this.simplePaint.setColor(new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)));
@@ -503,22 +506,23 @@ public class HindiKeyboardView extends KeyboardView {
             Constants.popupScreen = new PopupWindow(this.context);
         }
         if (Constants.TxtView == null) {
-            if (HindiUtils.themeNo > 9) {
+            if (new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0) > 9) {
                Constants.TxtView = (TextView) layoutInflater.inflate(this.previewLayout[0], (ViewGroup) null, false);
             } else {
-               Constants.TxtView = (TextView) layoutInflater.inflate(this.previewLayout[HindiUtils.themeNo], (ViewGroup) null, false);
+               Constants.TxtView = (TextView) layoutInflater.inflate(this.previewLayout[new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0) ], (ViewGroup) null, false);
             }
         }
-        if (HindiUtils.themeNo > 9) {
-            if (HindiUtils.previousSelectedThemeno != -1 && HindiUtils.previousSelectedThemeno != 0) {
+        if (new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0)  > 9) {
+            if (new MySharePref(context).getPrefInt(MySharePref.PREVIOUS_THEME, -1)  != -1 && new MySharePref(context).getPrefInt(MySharePref.PREVIOUS_THEME, -1)  != 0) {
                Constants.TxtView = null;
                Constants.TxtView = (TextView) layoutInflater.inflate(this.previewLayout[0], (ViewGroup) null, false);
-                HindiUtils.previousSelectedThemeno = 0;
+
+                new MySharePref(context).putPrefInt(MySharePref.PREVIOUS_THEME, new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0));
             }
-        } else if (HindiUtils.previousSelectedThemeno != -1 && HindiUtils.previousSelectedThemeno != HindiUtils.themeNo) {
+        } else if (new MySharePref(context).getPrefInt(MySharePref.PREVIOUS_THEME, -1)  != -1 && new MySharePref(context).getPrefInt(MySharePref.PREVIOUS_THEME, -1)  != new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0)) {
            Constants.TxtView = null;
-           Constants.TxtView = (TextView) layoutInflater.inflate(this.previewLayout[HindiUtils.themeNo], (ViewGroup) null, false);
-            HindiUtils.previousSelectedThemeno = HindiUtils.themeNo;
+           Constants.TxtView = (TextView) layoutInflater.inflate(this.previewLayout[new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0) ], (ViewGroup) null, false);
+            new MySharePref(context).putPrefInt(MySharePref.PREVIOUS_THEME, new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0));
         }
         if (Constants.ChangeLanguage == 0) {
            Constants.TxtView.setTypeface(this.fontstyle);
@@ -547,7 +551,7 @@ public class HindiKeyboardView extends KeyboardView {
             }
         }
 
-        if (HindiUtils.themeNo > 9) {
+        if (new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0) > 9) {
            Constants.TxtView.setTextColor(Color.parseColor(Constants.ThemePreviewTextColor[0]));
         } else {
            Constants.TxtView.setTextColor(Color.parseColor(Constants.ThemePreviewTextColor[Constants.SelectTheme]));

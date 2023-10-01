@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.theme.keyboardthemeapp.APPUtils.HindiKeypad;
-import com.theme.keyboardthemeapp.APPUtils.HindiUtils;
+import com.theme.keyboardthemeapp.APPUtils.CustomKeypad;
+import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.ModelClass.StickerModel;
 import com.theme.keyboardthemeapp.R;
 
@@ -28,7 +28,6 @@ public class StickerAdapter extends BaseAdapter {
     Context mContext = null;
     LinearLayout.LayoutParams params;
     RelativeLayout.LayoutParams paramsPortrait;
-    String parent = HindiUtils.appDataPath;
 
     public long getItemId(int i) {
         return (long) i;
@@ -43,9 +42,9 @@ public class StickerAdapter extends BaseAdapter {
         this.display = ((WindowManager) this.mContext.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         this.paramsPortrait = new RelativeLayout.LayoutParams(-1, i2 / 2);
         if (this.mContext.getResources().getConfiguration().orientation == 1) {
-            this.params = new LinearLayout.LayoutParams((this.display.getWidth() / 3) - HindiUtils.pxFromDp(context, 4.0f), -2);
+            this.params = new LinearLayout.LayoutParams((this.display.getWidth() / 3) - Constants.pxFromDp(context, 4.0f), -2);
         } else {
-            this.params = new LinearLayout.LayoutParams((this.display.getWidth() / 4) - HindiUtils.pxFromDp(context, 4.0f), -2);
+            this.params = new LinearLayout.LayoutParams((this.display.getWidth() / 4) - Constants.pxFromDp(context, 4.0f), -2);
         }
     }
 
@@ -75,7 +74,7 @@ public class StickerAdapter extends BaseAdapter {
         StickerModel stickerModel = this.iconarr.get(i);
         view2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                ((HindiKeypad) HindiKeypad.ims).StickerClick(i, HindiUtils.storePath + "/sticker/" + StickerAdapter.this.folder + "/");
+                ((CustomKeypad) CustomKeypad.service).StickerClick(i, mContext.getFilesDir().getAbsolutePath()  + "/sticker/" + StickerAdapter.this.folder + "/");
             }
         });
         return view2;

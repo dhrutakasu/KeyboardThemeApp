@@ -80,6 +80,17 @@
     <string name="error_text7">मुझे समज नहीं आ रहा हे,कृपया फिर से प्रयास करे !</string>
     <string name="error_text8">रेकोगनाइजर व्यस्त हे ,कृपया बाद में प्रयास करे !</string>
     <string name="error_text9">कोई पहुंच नहीं है!!</string>
+
+    <string name="en_error_text1">Network timeout</string>
+    <string name="en_error_text10">Let\'s Speak</string>
+    <string name="en_error_text2">Network Error, Please Check Your Internet</string>
+    <string name="en_error_text3">Audio Error, Please Try Again</string>
+    <string name="en_error_text4">I Can not Connect To Server</string>
+    <string name="en_error_text5">I Can\'t Hear You, Please Try Again</string>
+    <string name="en_error_text6">Speech Timeout, Please Try Again</string>
+    <string name="en_error_text7">I Don\'t Understand, Please Try Again</string>
+    <string name="en_error_text8">Reconizer Busy, Please Try Later</string>
+    <string name="en_error_text9">Didn\'t understand, please try again.</string>
     <string name="isSupportLang">فارسی</string>
     <string name="speak_lang_2">hi</string>
     <string name="Theme_style">Keyboard Theme</string>
@@ -98,5 +109,10 @@
     <string name="dict_name1">englishdictionary.txt</string>
     <string name="dict_name2">hindidictionary.txt</string>
     <string name="dictonary_name">Hindi Dictionary</string>
+    <string name="phonetic_keyboard">Please Connect To Internet for Phonetic Keyboard</string>
+    <string name="install_voice_translate">Install Google Voice For Voice Translate</string>
+    <string name="install_now">Install Now!</string>
+    <string name="Cancel">Cancel</string>
+    <string name="No_internet">Opps! No Internet Access, Please Try Again</string>
 
 </resources>

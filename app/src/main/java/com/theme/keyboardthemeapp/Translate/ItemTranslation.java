@@ -1,4 +1,4 @@
-package com.theme.keyboardthemeapp.ngonngu;
+package com.theme.keyboardthemeapp.Translate;
 
 import android.content.Context;
 
@@ -8,8 +8,8 @@ public class ItemTranslation {
     private int id;
     private String lagin;
     private String lagout;
-    private NgonNguIn mNgonNguIn;
-    private NgonNguOut mNgonNguOut;
+    private TranslateIn mTranslateIn;
+    private TranslationOut mNgonNguOut;
     Context mcontext;
     private String textin;
     private String textout;
@@ -17,15 +17,15 @@ public class ItemTranslation {
     public ItemTranslation() {
     }
 
-    public ItemTranslation(int i, NgonNguIn ngonNguIn, NgonNguOut ngonNguOut) {
+    public ItemTranslation(int i, TranslateIn translateIn, TranslationOut ngonNguOut) {
         this.id = i;
-        this.mNgonNguIn = ngonNguIn;
+        this.mTranslateIn = translateIn;
         this.mNgonNguOut = ngonNguOut;
-        this.lagin = ngonNguIn.getmLanguageName();
+        this.lagin = translateIn.getmLanguageName();
         this.lagout = this.mNgonNguOut.getmLanguageName();
-        this.textin = this.mNgonNguIn.getmText();
+        this.textin = this.mTranslateIn.getmText();
         this.textout = this.mNgonNguOut.getmText();
-        this.docmauin = this.mNgonNguIn.getmCodeDocmau();
+        this.docmauin = this.mTranslateIn.getmCodeDocmau();
         this.docmauout = this.mNgonNguOut.getmCodeDocmau();
     }
 
@@ -37,22 +37,22 @@ public class ItemTranslation {
         this.id = i;
     }
 
-    public NgonNguIn getmNgonNguIn() {
-        return this.mNgonNguIn;
+    public TranslateIn getmNgonNguIn() {
+        return this.mTranslateIn;
     }
 
-    public void setmNgonNguIn(NgonNguIn ngonNguIn) {
-        this.mNgonNguIn = ngonNguIn;
-        this.lagin = ngonNguIn.getmLanguageName();
-        this.textin = ngonNguIn.getmText();
-        this.docmauin = ngonNguIn.getmCodeDocmau();
+    public void setmNgonNguIn(TranslateIn translateIn) {
+        this.mTranslateIn = translateIn;
+        this.lagin = translateIn.getmLanguageName();
+        this.textin = translateIn.getmText();
+        this.docmauin = translateIn.getmCodeDocmau();
     }
 
-    public NgonNguOut getmNgonNguOut() {
+    public TranslationOut getmNgonNguOut() {
         return this.mNgonNguOut;
     }
 
-    public void setmNgonNguOut(NgonNguOut ngonNguOut) {
+    public void setmNgonNguOut(TranslationOut ngonNguOut) {
         this.mNgonNguOut = ngonNguOut;
         this.lagout = ngonNguOut.getmLanguageName();
         this.textout = ngonNguOut.getmText();

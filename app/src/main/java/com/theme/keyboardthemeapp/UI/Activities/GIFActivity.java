@@ -100,6 +100,7 @@ public class GIFActivity extends AppCompatActivity implements View.OnClickListen
                         if (THUMB.exists()) {
                             new MySharePref(context).putPrefString(MySharePref.SELECT_GIF_THEME_GIF, GIF.getAbsolutePath());
                             new MySharePref(context).putPrefString(MySharePref.SELECT_GIF_THEME_THUMB, THUMB.getAbsolutePath());
+                            new MySharePref(context).putPrefBoolean(MySharePref.SAVE_IMAGE,false);
                             Glide.with(context).asFile().load(GIF).into(new CustomTarget<File>() {
                                 @Override
                                 public void onResourceReady(@NonNull File resource, @Nullable Transition<? super File> transition) {

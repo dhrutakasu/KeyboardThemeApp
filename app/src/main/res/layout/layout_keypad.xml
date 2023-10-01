@@ -452,7 +452,7 @@
                         </RelativeLayout>
                     </RelativeLayout>
 
-                    <com.theme.keyboardthemeapp.APPUtils.HindiKeyboardView
+                    <com.theme.keyboardthemeapp.APPUtils.CustomKeyboardView
                         android:id="@+id/keyboard"
                         style="@style/Widget.KeyboardView"
                         android:layout_width="match_parent"

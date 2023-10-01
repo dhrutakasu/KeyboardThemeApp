@@ -1,3 +1,4 @@
+/*
 package com.theme.keyboardthemeapp.APPUtils;
 
 import android.annotation.SuppressLint;
@@ -311,12 +312,21 @@ public class HindiUtils {
         return string;
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:42:0x00cf A[Catch:{ Exception -> 0x00d4 }] */
-    /* JADX WARNING: Removed duplicated region for block: B:43:0x00d2 A[Catch:{ Exception -> 0x00d4 }] */
-    /* Code decompiled incorrectly, please refer to instructions dump. */
-    /*public static ArrayList<String> getSuggestion(String r6) {
+    */
+/* JADX WARNING: Removed duplicated region for block: B:42:0x00cf A[Catch:{ Exception -> 0x00d4 }] *//*
 
-     *//*    int r0 = r6.length()     // Catch:{ Exception -> 0x00d4 }
+    */
+/* JADX WARNING: Removed duplicated region for block: B:43:0x00d2 A[Catch:{ Exception -> 0x00d4 }] *//*
+
+    */
+/* Code decompiled incorrectly, please refer to instructions dump. *//*
+
+    */
+/*public static ArrayList<String> getSuggestion(String r6) {
+
+     *//*
+*/
+/*    int r0 = r6.length()     // Catch:{ Exception -> 0x00d4 }
             r1 = 0
             r2 = 0
             r3 = 1
@@ -421,9 +431,12 @@ public class HindiUtils {
         L_0x00d4:
             java.util.ArrayList<java.lang.String> r6 = SuggestionData
             return r6*//*
+*/
+/*
 
         throw new UnsupportedOperationException("Method not decompiled: com.tech.lang.keyboard.hindikeyboard.HindiUtils.getSuggestion(java.lang.String):java.util.ArrayList");
-   }*/
+   }*//*
+
 
     public static ArrayList<String> getSuggestion(String string) {
         ArrayList<String> SuggestionData;
@@ -741,3 +754,4 @@ public class HindiUtils {
         return z;
     }
 }
+*/

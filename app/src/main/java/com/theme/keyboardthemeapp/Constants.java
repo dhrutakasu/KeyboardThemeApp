@@ -29,7 +29,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.viewpager.widget.ViewPager;
 
 import com.karumi.dexter.PermissionToken;
-import com.theme.keyboardthemeapp.APPUtils.HindiKeypad;
+import com.theme.keyboardthemeapp.APPUtils.CustomKeypad;
+import com.theme.keyboardthemeapp.APPUtils.HintWordAdapter;
 import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
 import com.theme.keyboardthemeapp.ModelClass.StatusItem;
 
@@ -105,24 +106,52 @@ public class Constants {
     public static int width = 0;
     public static int height = 0;
     public static int KeyboardHeight = -1;
-    public static String dictionaryword="";
+    public static String dictionaryword = "";
     public static TextView TxtView = null;
     public static TextView TxtLongPressView = null;
     public static int getWidth;
     public static PopupWindow popupWindow = null;
     public static PopupWindow popupScreen = null;
-    public static int ChangeLanguage=0;
+    public static int ChangeLanguage = 0;
 
     public static boolean SuggestedView = true;
     public static ArrayList<String> SuggestionWordsList = new ArrayList<>(25000);
+    public static boolean isUpHoneycombVersion = false;
+    public static View KeypedView = null;
+    public static int selectedLangName = 0;
+    public static boolean DeleteValFlag = false;
+    public static boolean PreviewViewisOpen = false;
+    public static boolean DictionaryWordLoad = false;
+    public static String selectedStickerCategory = "category0";
+    static String[] packagename = {"com.whatsapp", "com.facebook.orca", "com.snapchat.android", "com.google.android.talk", "jp.naver.line.android", "com.viber.voip", "com.skype.raider", "com.twitter.android", "com.bsb.hike"};
+    public static ArrayList<String> socialPackageNames = new ArrayList<>(Arrays.asList(packagename));
 
     static String[] langStrings = {"Hindi", "English"};
     public static ArrayList<String> languegesArray = new ArrayList<>(Arrays.asList(langStrings));
     public static String selectedLanguageName = "Hindi";
+    public static String SpeakLanguageName = "hi";
     public static int FlagChangeLanguage = 0;
     public static final int CODE_ALPHABETS = -2830;
     public static final int CODE_EMOJI = -5000;
     public static int temp_flag = 0;
+    public static String Error1 = "";
+    public static String Error2 = "";
+    public static String Error3 = "";
+    public static String Error4 = "";
+    public static String Error5 = "";
+    public static String Error6 = "";
+    public static String Error7 = "";
+    public static String Error8 = "";
+    public static String Error9 = "";
+    public static String En_Error1 = "";
+    public static String En_Error2 = "";
+    public static String En_Error3 = "";
+    public static String En_Error4 = "";
+    public static String En_Error5 = "";
+    public static String En_Error6 = "";
+    public static String En_Error7 = "";
+    public static String En_Error8 = "";
+    public static String En_Error9 = "";
 
     static {
         String[][] strArr = new String[24][];
@@ -252,7 +281,7 @@ public class Constants {
     }
 
     public static boolean IsActivateKeyboard(Context context) {
-        return new ComponentName(context, HindiKeypad.class).equals(ComponentName.unflattenFromString(Settings.Secure.getString(context.getContentResolver(), "default_input_method")));
+        return new ComponentName(context, CustomKeypad.class).equals(ComponentName.unflattenFromString(Settings.Secure.getString(context.getContentResolver(), "default_input_method")));
     }
 
     public static AlertDialog.Builder NoInternetConnection(final Activity activity) {
@@ -376,12 +405,14 @@ public class Constants {
             return null;
         }
     }
+
     public static ArrayList<String> getDefaultLanguageArray() {
         ArrayList<String> LanguageList = new ArrayList<>();
         LanguageList.add("Hindi");
         LanguageList.add("English");
         return LanguageList;
     }
+
     public static File getBackground(Context context, int pos) {
         File file2 = new File(context.getFilesDir() + "/photo_save.jpeg");
         if (!file2.exists()) {
@@ -456,4 +487,60 @@ public class Constants {
             Log.e("tag", e.getMessage());
         }
     }
+
+    public static ArrayList<String> getSuggestion(String string) {
+        ArrayList<String> SuggestionData;
+        ArrayList<String> SuggestionWords = new ArrayList<>();
+
+        SuggestionWords.addAll(Constants.SuggestionWordsList);
+        SuggestionData = new ArrayList<>();
+        System.out.println("----- - - -string : " + string.length());
+        if (string.length() >= 1) {
+//        } else {
+//            SuggestionData = new ArrayList<>();
+//            SuggestionData.addAll(Constants.SuggestionWordsList);
+            if (SuggestionData != null) {
+                for (int i = 0; i < SuggestionWords.size(); i++) {
+                    String item = SuggestionWords.get(i).toLowerCase();
+                    String lowerR6 = string.toLowerCase();
+                    System.out.println("----- - - -lowerR6 : " + lowerR6);
+                    if (item.contains(lowerR6)) {
+                        System.out.println("----- - - -item : " + item);
+                        System.out.println("----- - - -contains(lowerR6) : " + lowerR6);
+                        SuggestionData.add(SuggestionWords.get(i));
+                    }
+                    if (!wordExist) {
+                        break;
+                    }
+                }
+            }
+        }
+        System.out.println("----- - - -SuggestionData.size : " + SuggestionData.size());
+        if (SuggestionData.size() == 0) {
+            for (int i = 0; i < SuggestionWords.size(); i++) {
+                String word = SuggestionWords.get(i).toLowerCase();
+                String lowerR6 = string.toLowerCase();
+                if (word.startsWith(lowerR6)) {
+                    SuggestionData.add(SuggestionWords.get(i));
+                }
+                if (!wordExist) {
+                    break;
+                }
+            }
+        }
+
+        if (SuggestionData.size() > 0) {
+            wordExist = true;
+        } else {
+            wordExist = false;
+        }
+        System.out.println("----- - - -SuggestionData : " + SuggestionData.size());
+
+        return SuggestionData;
+    }
+
+    public static HintWordAdapter setSuggestionAdapter(Context context, ArrayList<String> arrayList2, int i, int i2) {
+        return new HintWordAdapter(context, arrayList2, i, i2);
+    }
+
 }

@@ -116,7 +116,6 @@ public class HintWordAdapter extends BaseAdapter {
             if (lowerCase.startsWith(" ")) {
                 lowerCase = lowerCase.substring(1, lowerCase.length());
             }
-            HindiUtils.tempTemplateItem = lowerCase;
             FilterResults filterResults = new FilterResults();
             ArrayList<String> arrayList = HintWordAdapter.this.langNameArrayList;
             int size = arrayList.size();

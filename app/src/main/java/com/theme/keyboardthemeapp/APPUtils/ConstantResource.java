@@ -6,7 +6,7 @@ import android.content.res.TypedArray;
 import com.theme.keyboardthemeapp.R;
 
 /* loaded from: classes.dex */
-public class Common_Resource {
+public class ConstantResource {
     private String[] cameraocr;
     private String[] codelangin;
     private String[] codelangout;
@@ -26,7 +26,7 @@ public class Common_Resource {
     private String[] novoice;
     private String[] ocrTextAPI;
 
-    public Common_Resource(Context context) {
+    public ConstantResource(Context context) {
         this.mcontext = context;
     }
 

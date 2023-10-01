@@ -37,7 +37,7 @@ public class DictionaryLoadTask extends AsyncTask<String, String, String> {
             if (i == 0) {
                 AddDictionaryWord(this.mContext.getResources().getString(R.string.dict_name2));
             } else if (i == 1) {
-                if (HindiKeypad.checkLanguage) {
+                if (CustomKeypad.CheckLanguage) {
                     str = this.mContext.getResources().getString(R.string.dict_name2);
                 } else {
                     str = this.mContext.getResources().getString(R.string.dict_name1);
@@ -52,7 +52,7 @@ public class DictionaryLoadTask extends AsyncTask<String, String, String> {
 
     public void onPostExecute(String str) {
         try {
-            HindiUtils.dictionaryisLoad = true;
+            Constants.DictionaryWordLoad = true;
             HashSet hashSet = new HashSet();
             hashSet.addAll(Constants.SuggestionWordsList);
             Constants.SuggestionWordsList.clear();

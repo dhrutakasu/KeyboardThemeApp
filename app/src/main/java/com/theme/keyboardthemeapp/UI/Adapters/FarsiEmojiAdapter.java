@@ -11,7 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.theme.keyboardthemeapp.APPUtils.HindiKeypad;
+import com.theme.keyboardthemeapp.APPUtils.CustomKeypad;
 import com.theme.keyboardthemeapp.R;
 
 import java.util.ArrayList;
@@ -71,15 +71,15 @@ public class FarsiEmojiAdapter extends BaseAdapter {
             public boolean onTouch(View view2, MotionEvent motionEvent) {
                 if (motionEvent.getAction() == 1) {
                     if (FarsiEmojiAdapter.this.items == 0) {
-                        ((HindiKeypad) HindiKeypad.ims).clickevent(i);
+                        ((CustomKeypad) CustomKeypad.service).clickevent(i);
                     } else if (FarsiEmojiAdapter.this.items == 1) {
-                        ((HindiKeypad) HindiKeypad.ims).clickeventfl(i);
+                        ((CustomKeypad) CustomKeypad.service).clickeventfl(i);
                     } else if (FarsiEmojiAdapter.this.items == 2) {
-                        ((HindiKeypad) HindiKeypad.ims).clickeventfg(i);
+                        ((CustomKeypad) CustomKeypad.service).clickeventfg(i);
                     } else if (FarsiEmojiAdapter.this.items == 3) {
-                        ((HindiKeypad) HindiKeypad.ims).clickeventcar(i);
+                        ((CustomKeypad) CustomKeypad.service).clickeventcar(i);
                     } else if (FarsiEmojiAdapter.this.items == 4) {
-                        ((HindiKeypad) HindiKeypad.ims).clickeventsymbol(i);
+                        ((CustomKeypad) CustomKeypad.service).clickeventsymbol(i);
                     }
                 } else {
                     motionEvent.getAction();

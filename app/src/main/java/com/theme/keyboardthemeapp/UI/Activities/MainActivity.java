@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.location.LocationManager;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -32,7 +33,7 @@ import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
-import com.theme.keyboardthemeapp.APPUtils.HindiUtils;
+import com.theme.keyboardthemeapp.APPUtils.DictionaryLoadTask;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.Dialogs.KeyboardPermissionDialog;
 import com.theme.keyboardthemeapp.Dialogs.OverlayPermissionDialog;
@@ -110,6 +111,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (new File(getFilesDir().getAbsolutePath() + "/photo_save.jpeg").exists()) {
             new File(getFilesDir().getAbsolutePath() + "/photo_save.jpeg").delete();
         }
+        if (!Constants.DictionaryWordLoad) {
+            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(this, 0);
+            if (Constants.isUpHoneycombVersion) {
+                dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
+            } else {
+                dictionaryLoadTask.execute(new String[0]);
+            }
+            Constants.DictionaryWordLoad = true;
+        }
+
         Constants.getBackground(context, new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0)).getAbsolutePath();
     }
 
@@ -123,8 +134,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String s1 = Manifest.permission.ACCESS_COARSE_LOCATION;
             String s2 = Manifest.permission.ACCESS_FINE_LOCATION;
             String s3 = Manifest.permission.CAMERA;
+            String s4 = Manifest.permission.RECORD_AUDIO;
             Dexter.withContext(context)
-                    .withPermissions(s, s1, s2, s3)
+                    .withPermissions(s, s1, s2, s3,s4)
                     .withListener(new MultiplePermissionsListener() {
                         public void onPermissionsChecked(MultiplePermissionsReport report) {
                             if (report.areAllPermissionsGranted()) {
@@ -149,8 +161,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String s1 = Manifest.permission.ACCESS_FINE_LOCATION;
             String s2 = Manifest.permission.ACCESS_COARSE_LOCATION;
             String s3 = Manifest.permission.CAMERA;
+            String s4 = Manifest.permission.RECORD_AUDIO;
             Dexter.withContext(context)
-                    .withPermissions(s, s1, s2, s3)
+                    .withPermissions(s, s1, s2, s3,s4)
                     .withListener(new MultiplePermissionsListener() {
                         public void onPermissionsChecked(MultiplePermissionsReport report) {
                             if (report.areAllPermissionsGranted()) {

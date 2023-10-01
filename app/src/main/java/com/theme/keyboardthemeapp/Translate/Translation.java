@@ -1,9 +1,9 @@
-package com.theme.keyboardthemeapp.ngonngu;
+package com.theme.keyboardthemeapp.Translate;
 
-public class NgonNgu {
+public class Translation {
     private String mLanguageName;
 
-    public NgonNgu(String str) {
+    public Translation(String str) {
         this.mLanguageName = str;
     }
 

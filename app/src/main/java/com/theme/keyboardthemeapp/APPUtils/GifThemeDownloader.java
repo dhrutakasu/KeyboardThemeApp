@@ -141,6 +141,7 @@ public class GifThemeDownloader extends AsyncTask<String, Void, Void> {
 //        Constants.copyFile(GIF,new File(context.getFilesDir(), "Gif_save.gif"));
         new MySharePref(context).putPrefBoolean(MySharePref.DEFAULT_GIF, true);
         new MySharePref(context).putPrefInt(MySharePref.DEFAULT_THEME, Pos);
+        new MySharePref(context).putPrefBoolean(MySharePref.SAVE_IMAGE,false);
         MediaScannerConnection.scanFile(context, new String[]{Environment.getExternalStorageDirectory().getAbsolutePath()}, null, (path, uri) -> {
             // TODO Auto-generated method stub
 

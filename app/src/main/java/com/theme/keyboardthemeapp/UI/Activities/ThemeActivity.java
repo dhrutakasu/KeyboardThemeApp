@@ -98,6 +98,7 @@ public class ThemeActivity extends AppCompatActivity implements View.OnClickList
                     RvThemeList.setLayoutManager(new GridLayoutManager(context, 2));
                     adapter = new ThemeAdapter(context, response.body().getThumburl() + "/", response.body().getUrl() + "/", ThemeArrays, (pos, ThemeArray, ivTheme, ivDownloadTheme, ivCheckTheme) -> {
 
+                        new MySharePref(context).putPrefInt(MySharePref.PREVIOUS_THEME, new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0) );
                         File THUMB = new File(context.getFilesDir(), "Theme/" + ThemeArray.get(pos).getName());
                         File Theme = new File(context.getFilesDir(), "Theme/" + ThemeArray.get(pos).getName());
                         if (THUMB.exists()) {
@@ -107,6 +108,7 @@ public class ThemeActivity extends AppCompatActivity implements View.OnClickList
                             Constants.copyFile(Theme,new File(getFilesDir().getAbsolutePath() + "/photo_save.jpeg"));
                             new MySharePref(context).putPrefInt(MySharePref.DEFAULT_THEME, pos);
                             new MySharePref(context).putPrefBoolean(MySharePref.DEFAULT_GIF, false);
+                            new MySharePref(context).putPrefBoolean(MySharePref.SAVE_IMAGE,false);
                             onBackPressed();
                         } else {
 //                            if (ThemeArray.get(pos).getName().equalsIgnoreCase("android_asset")) {

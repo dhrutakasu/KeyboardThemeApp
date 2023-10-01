@@ -69,7 +69,7 @@ public class MyKeypadDataView extends Keyboard {
     @Override // android.inputmethodservice.Keyboard
     protected void setKeyHeight(int i) {
         if (Constants.ChangeLanguage == 2 || Constants.ChangeLanguage == 3 || Constants.ChangeLanguage == 10 || Constants.ChangeLanguage == 11 || Constants.ChangeLanguage == 12) {
-            i -= HindiUtils.pxFromDp(this.c, 3.0f);
+            i -= Constants.pxFromDp(this.c, 3.0f);
         }
         int i2 = 0;
         for (Key key : getKeys()) {

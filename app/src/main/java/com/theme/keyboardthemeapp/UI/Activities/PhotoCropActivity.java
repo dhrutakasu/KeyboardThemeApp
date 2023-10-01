@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.Cropper.CropImageView;
+import com.theme.keyboardthemeapp.MySharePref;
 import com.theme.keyboardthemeapp.R;
 
 import java.io.File;
@@ -123,6 +124,7 @@ public class PhotoCropActivity extends AppCompatActivity implements View.OnClick
         @Override
         protected void onPostExecute(Void unused) {
             super.onPostExecute(unused);
+            new MySharePref(context).putPrefBoolean(MySharePref.SAVE_IMAGE,true);
             setResult(RESULT_OK);
             finish();
         }
