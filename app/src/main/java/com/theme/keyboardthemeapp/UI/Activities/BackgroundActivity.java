@@ -363,7 +363,6 @@ public class BackgroundActivity extends AppCompatActivity implements View.OnClic
 
             @Override
             public void onTakePhoto(SelectPhotoDialog selectPhotoDialog) {
-//                file = new File(getFilesDir().getAbsolutePath(), "photo_save.jpeg");
                 File photoFile = createImageFile();
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if (photoFile != null) {

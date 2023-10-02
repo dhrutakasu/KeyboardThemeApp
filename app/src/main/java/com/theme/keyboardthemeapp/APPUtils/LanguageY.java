@@ -23,7 +23,7 @@ public enum LanguageY {
     
     private final String language;
 
-    private LanguageY(String str) {
+    LanguageY(String str) {
         this.language = str;
     }
 

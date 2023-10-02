@@ -10,38 +10,38 @@ public class RepeatButtonListener implements View.OnTouchListener {
     public Handler handler = new Handler();
     private Runnable handlerRunnable = new Runnable() {
         public void run() {
-            RepeatButtonListener.this.handler.postDelayed(this, (long) RepeatButtonListener.this.normalInterval);
-            RepeatButtonListener.this.clickListener.onClick(RepeatButtonListener.this.downView);
+            handler.postDelayed(this, (long) normalInterval);
+            clickListener.onClick(downView);
         }
     };
     private int initialInterval;
-    public final int normalInterval;
+    final int normalInterval;
 
-    public RepeatButtonListener(int i, int i2, View.OnClickListener onClickListener) {
-        if (onClickListener == null) {
+    public RepeatButtonListener(int internal, int i, View.OnClickListener listener) {
+        if (listener == null) {
             throw new IllegalArgumentException("null runnable");
-        } else if (i < 0 || i2 < 0) {
+        } else if (internal < 0 || i < 0) {
             throw new IllegalArgumentException("negative interval");
         } else {
-            this.initialInterval = i;
-            this.normalInterval = i2;
-            this.clickListener = onClickListener;
+            initialInterval = internal;
+            normalInterval = i;
+            clickListener = listener;
         }
     }
 
     public boolean onTouch(View view, MotionEvent motionEvent) {
         int action = motionEvent.getAction();
         if (action == 0) {
-            this.handler.removeCallbacks(this.handlerRunnable);
-            this.handler.postDelayed(this.handlerRunnable, (long) this.initialInterval);
-            this.downView = view;
-            this.clickListener.onClick(view);
+            handler.removeCallbacks(handlerRunnable);
+            handler.postDelayed(handlerRunnable, (long) initialInterval);
+            downView = view;
+            clickListener.onClick(view);
             return true;
         } else if (action != 1 && action != 3) {
             return false;
         } else {
-            this.handler.removeCallbacks(this.handlerRunnable);
-            this.downView = null;
+            handler.removeCallbacks(handlerRunnable);
+            downView = null;
             return true;
         }
     }

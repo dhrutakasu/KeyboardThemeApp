@@ -16,47 +16,47 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class DictionaryLoadTask extends AsyncTask<String, String, String> {
-    int ID = 0;
-    Context mContext;
-    private String resp = "load";
+public class DictionaryTask extends AsyncTask<String, String, String> {
+    private int ID = 0;
+    private Context context;
+    private String loadStr = "load";
 
     public void onProgressUpdate(String... strArr) {
     }
 
-    public DictionaryLoadTask(Context context, int i) {
-        this.mContext = context;
-        this.ID = i;
+    public DictionaryTask(Context context, int id) {
+        this.context = context;
+        ID = id;
     }
 
     public String doInBackground(String... strArr) {
         String str;
         try {
-            this.mContext.getResources().getString(R.string.dict_name2);
-            int i = this.ID;
-            if (i == 0) {
-                AddDictionaryWord(this.mContext.getResources().getString(R.string.dict_name2));
-            } else if (i == 1) {
+            context.getResources().getString(R.string.dict_name2);
+            int id = ID;
+            if (id == 0) {
+                GetDictionaryWords(context.getResources().getString(R.string.dict_name2));
+            } else if (id == 1) {
                 if (CustomKeypad.CheckLanguage) {
-                    str = this.mContext.getResources().getString(R.string.dict_name2);
+                    str = context.getResources().getString(R.string.dict_name2);
                 } else {
-                    str = this.mContext.getResources().getString(R.string.dict_name1);
+                    str = context.getResources().getString(R.string.dict_name1);
                 }
-                AddDictionaryWord(str);
-                getMobileData();
+                GetDictionaryWords(str);
+                GetMobileData();
             }
-        } catch (Exception unused) {
+        } catch (Exception e) {
         }
-        return this.resp;
+        return loadStr;
     }
 
     public void onPostExecute(String str) {
         try {
             Constants.DictionaryWordLoad = true;
-            HashSet hashSet = new HashSet();
-            hashSet.addAll(Constants.SuggestionWordsList);
+            HashSet set = new HashSet();
+            set.addAll(Constants.SuggestionWordsList);
             Constants.SuggestionWordsList.clear();
-            Constants.SuggestionWordsList.addAll(hashSet);
+            Constants.SuggestionWordsList.addAll(Constants.SuggestionWordsList);
         } catch (Exception unused) {
         }
     }
@@ -67,17 +67,17 @@ public class DictionaryLoadTask extends AsyncTask<String, String, String> {
         Constants.SuggestionWordsList = new ArrayList<>();
     }
 
-    public void getMobileData() {
+    public void GetMobileData() {
         try {
-            Cursor query = this.mContext.getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
-            if (query.getCount() > 0) {
-                while (query.moveToNext()) {
-                    @SuppressLint("Range") String string = query.getString(query.getColumnIndex("display_name"));
+            Cursor cursor = context.getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    @SuppressLint("Range") String string = cursor.getString(cursor.getColumnIndex("display_name"));
                     if (string.contains(" ")) {
-                        String[] split = string.split(" ");
-                        for (int i = 0; i < split.length; i++) {
-                            if (!Constants.SuggestionWordsList.contains(split[i])) {
-                                Constants.SuggestionWordsList.add(split[i]);
+                        String[] splitStrings = string.split(" ");
+                        for (int i = 0; i < splitStrings.length; i++) {
+                            if (!Constants.SuggestionWordsList.contains(splitStrings[i])) {
+                                Constants.SuggestionWordsList.add(splitStrings[i]);
                             }
                         }
                     } else if (!Constants.SuggestionWordsList.contains(string)) {
@@ -85,40 +85,40 @@ public class DictionaryLoadTask extends AsyncTask<String, String, String> {
                     }
                 }
             }
-        } catch (Exception unused) {
+        } catch (Exception e) {
         }
         try {
-            Cursor query2 = this.mContext.getContentResolver().query(UserDictionary.Words.CONTENT_URI, null, null, null, null);
-            while (query2.moveToNext()) {
-                String string2 = query2.getString(query2.getColumnIndex("word"));
+            Cursor cursor = context.getContentResolver().query(UserDictionary.Words.CONTENT_URI, null, null, null, null);
+            while (cursor.moveToNext()) {
+                @SuppressLint("Range") String string2 = cursor.getString(cursor.getColumnIndex("word"));
                 if (string2.contains(" ")) {
-                    String[] split2 = string2.split(" ");
-                    for (int i2 = 0; i2 < split2.length; i2++) {
-                        if (!Constants.SuggestionWordsList.contains(split2[i2])) {
-                            Constants.SuggestionWordsList.add(split2[i2]);
+                    String[] split = string2.split(" ");
+                    for (int i = 0; i < split.length; i++) {
+                        if (!Constants.SuggestionWordsList.contains(split[i])) {
+                            Constants.SuggestionWordsList.add(split[i]);
                         }
                     }
                 } else if (!Constants.SuggestionWordsList.contains(string2)) {
                     Constants.SuggestionWordsList.add(string2);
                 }
             }
-        } catch (Exception unused2) {
+        } catch (Exception exception) {
         }
     }
 
-    public void AddDictionaryWord(String str) {
+    public void GetDictionaryWords(String str) {
         try {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(this.mContext.getAssets().open(str)));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open(str)));
             while (true) {
-                String readLine = bufferedReader.readLine();
-                if (readLine != null) {
-                    Constants.SuggestionWordsList.add(readLine);
+                String line = reader.readLine();
+                if (line != null) {
+                    Constants.SuggestionWordsList.add(line);
                 } else {
-                    bufferedReader.close();
+                    reader.close();
                     return;
                 }
             }
-        } catch (IOException unused) {
+        } catch (IOException ioException) {
         }
     }
 }

@@ -41,7 +41,7 @@ public class GifThemeDownloader extends AsyncTask<String, Void, Void> {
     private View layoutProgress;
     private String fileName = null;
     private Context context;
-    String Tostmsg = "";
+    private String Tostmsg = "";
 
 
     public GifThemeDownloader(Context context, View layoutProgress, ArrayList<CategoriesItem> gifArray, int pos, ImageView ivDownloadGif, ImageView ivCheckGif, GifAdapter adapter) {
@@ -76,13 +76,10 @@ public class GifThemeDownloader extends AsyncTask<String, Void, Void> {
             File inputFile = new File(newFolder, fileName + ".png");
             InputStream inputStream = new BufferedInputStream(url.openStream(), 8192);
             byte[] buffer = new byte[1024];
-            long total = 0;
             int count;
             OutputStream outputStream = new FileOutputStream(inputFile);
             while ((count = inputStream.read(buffer)) != -1) {
-                total += count;
                 outputStream.write(buffer, 0, count);
-                int progress = (int) total * 100 / fileLength;
             }
             inputStream.close();
             outputStream.close();
@@ -138,7 +135,6 @@ public class GifThemeDownloader extends AsyncTask<String, Void, Void> {
                 Toast.makeText(context, "Background set successfully", Toast.LENGTH_SHORT).show();
             }
         }, 1000);
-//        Constants.copyFile(GIF,new File(context.getFilesDir(), "Gif_save.gif"));
         new MySharePref(context).putPrefBoolean(MySharePref.DEFAULT_GIF, true);
         new MySharePref(context).putPrefInt(MySharePref.DEFAULT_THEME, Pos);
         new MySharePref(context).putPrefBoolean(MySharePref.SAVE_IMAGE,false);

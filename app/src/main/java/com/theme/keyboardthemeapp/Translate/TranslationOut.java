@@ -22,9 +22,9 @@ public class TranslationOut extends Translation {
         this.mContext = context;
         this.mLanguageName = str;
         ConstantResource constant_Resource = new ConstantResource(context);
-        this.mPosition = constant_Resource.getPosition(this.mLanguageName, constant_Resource.getContriesout());
-        this.mCodeDocmau = constant_Resource.getCodelangout()[this.mPosition];
-        this.mCodeLanguage = constant_Resource.getFromLanguageName(str, constant_Resource.getContriesout(), constant_Resource.getCodelangout());
+        this.mPosition = constant_Resource.getPosition(this.mLanguageName, constant_Resource.getCountriesOut());
+        this.mCodeDocmau = constant_Resource.getCodeLanguageOut()[this.mPosition];
+        this.mCodeLanguage = constant_Resource.getFromLanguageName(str, constant_Resource.getCountriesOut(), constant_Resource.getCodeLanguageOut());
         this.mText = "";
         if (getLanguageY().equals(LanguageY.TAGALOG)) {
             this.mCodeDocmau = "fil";
@@ -71,12 +71,12 @@ public class TranslationOut extends Translation {
     public void updateNgonNguOut(String str) {
         this.mLanguageName = str;
         ConstantResource constant_Resource = new ConstantResource(this.mContext);
-        this.mPosition = constant_Resource.getPosition(this.mLanguageName, constant_Resource.getContriesout());
-        this.mCodeDocmau = constant_Resource.getCodelangout()[this.mPosition];
+        this.mPosition = constant_Resource.getPosition(this.mLanguageName, constant_Resource.getCountriesOut());
+        this.mCodeDocmau = constant_Resource.getCodeLanguageOut()[this.mPosition];
         if (getLanguageY().equals(LanguageY.TAGALOG)) {
             this.mCodeDocmau = "fil";
         }
-        this.mCodeLanguage = constant_Resource.getFromLanguageName(str, constant_Resource.getContriesout(), constant_Resource.getCodelangout());
+        this.mCodeLanguage = constant_Resource.getFromLanguageName(str, constant_Resource.getCountriesOut(), constant_Resource.getCodeLanguageOut());
     }
 
     public LanguageY getLanguageY() {

@@ -22,7 +22,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.GridView;
 
-import com.theme.keyboardthemeapp.APPUtils.EmojiAdapter;
+import com.theme.keyboardthemeapp.APPUtils.EmojiListAdapter;
 import com.theme.keyboardthemeapp.R;
 
 import java.util.Arrays;
@@ -46,7 +46,7 @@ public class EmojiconGridView{
     public EmojiconGridView(Context context, Emojicon[] emojicons, EmojiconRecents recents, EmojiconsPopup emojiconPopup, boolean useSystemDefault) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         mEmojiconPopup = emojiconPopup;
-        rootView = inflater.inflate(R.layout.emojicon_grid, null);
+        rootView = inflater.inflate(R.layout.layout_emojicon_grid, null);
         setRecents(recents);
         GridView gridView = (GridView) rootView.findViewById(R.id.Emoji_GridView);
         if (emojicons== null) {
@@ -55,8 +55,8 @@ public class EmojiconGridView{
             Object[] o = (Object[]) emojicons;
             mData = Arrays.asList(o).toArray(new Emojicon[o.length]);
         }
-        EmojiAdapter mAdapter = new EmojiAdapter(rootView.getContext(), mData ,useSystemDefault);
-        mAdapter.setEmojiClickListener(new OnEmojiconClickedListener() {
+        EmojiListAdapter mAdapter = new EmojiListAdapter(rootView.getContext(), mData ,useSystemDefault);
+        mAdapter.setOnEmojiconClickedListener(new OnEmojiconClickedListener() {
 
             @Override
             public void onEmojiconClicked(Emojicon emojicon) {

@@ -55,7 +55,6 @@ public class SetDefaultKeyboardActivity extends AppCompatActivity implements Vie
     }
 
     private void initActions() {
-//        imchange = new InputMethodChangedReceiver(getApplicationContext(), true);
         Typeface createFromAsset = Typeface.createFromAsset(getAssets(), "FontSec.otf");
         Typeface createFromAsset2 = Typeface.createFromAsset(getAssets(), "Artheavy.otf");
         Typeface createFromAsset3 = Typeface.createFromAsset(getAssets(), "FontMedium.otf");
@@ -120,18 +119,7 @@ public class SetDefaultKeyboardActivity extends AppCompatActivity implements Vie
             Intent enableIntent = new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS);
             enableIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             this.startActivity(enableIntent);
-//            startActivityForResult(new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS), 7);
         }
-//        HindiUtils.timer.purge();
-//        HindiUtils.timer = null;
-//        HindiUtils.timer = new Timer();
-//        if (SetKeypadKeyBoardActivityGreen.this.imchange != null) {
-//            SetKeypadKeyBoardActivityGreen.this.imchange.cancel();
-//        }
-//        SetKeypadKeyBoardActivityGreen.this.imchange = null;
-//        SetKeypadKeyBoardActivityGreen.this.imchange = new InputMethodChangedReceiver(SetKeypadKeyBoardActivityGreen.this.getApplicationContext(), true);
-//        HindiUtils.timer.scheduleAtFixedRate(SetKeypadKeyBoardActivityGreen.this.imchange, 500, 500);
-
     }
 
     private void GotoActivateKeyboard() {
@@ -162,14 +150,6 @@ public class SetDefaultKeyboardActivity extends AppCompatActivity implements Vie
     public void onWindowFocusChanged(boolean hasFocus) {
         boolean isEnabled = Constants.IsEnableKeyboard(context);
         isEnableKeyboard = isEnabled;
-        if (isEnabled) {
-//            try {
-//                if (imchange != null) {
-//                    imchange.cancel();
-//                }
-//            } catch (Exception unused) {
-//            }
-        }
         if (isEnableKeyboard) {
             TxtEnableKeyboard.setTextColor(Color.parseColor("#CCCCCC"));
             TxtActivateKeyboard.setTextColor(Color.parseColor("#363f46"));

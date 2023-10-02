@@ -1,4 +1,4 @@
-package com.theme.keyboardthemeapp.APPUtils;
+package com.theme.keyboardthemeapp.UI.Adapters;
 
 import android.content.Context;
 import android.graphics.Color;

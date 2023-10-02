@@ -9,11 +9,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import android.Manifest;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -21,7 +19,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -33,9 +30,8 @@ import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
-import com.theme.keyboardthemeapp.APPUtils.DictionaryLoadTask;
+import com.theme.keyboardthemeapp.APPUtils.DictionaryTask;
 import com.theme.keyboardthemeapp.Constants;
-import com.theme.keyboardthemeapp.Dialogs.KeyboardPermissionDialog;
 import com.theme.keyboardthemeapp.Dialogs.OverlayPermissionDialog;
 import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
 import com.theme.keyboardthemeapp.ModelClass.QuoteCategoryModel;
@@ -43,7 +39,6 @@ import com.theme.keyboardthemeapp.MySharePref;
 import com.theme.keyboardthemeapp.R;
 import com.theme.keyboardthemeapp.Retrofit.RetrofitInstance;
 import com.theme.keyboardthemeapp.Retrofit.RetrofitInterface;
-import com.theme.keyboardthemeapp.UI.Adapters.QuotePagerAdapter;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -112,11 +107,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             new File(getFilesDir().getAbsolutePath() + "/photo_save.jpeg").delete();
         }
         if (!Constants.DictionaryWordLoad) {
-            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(this, 0);
+            DictionaryTask dictionaryTask = new DictionaryTask(this, 0);
             if (Constants.isUpHoneycombVersion) {
-                dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
+                dictionaryTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
             } else {
-                dictionaryLoadTask.execute(new String[0]);
+                dictionaryTask.execute(new String[0]);
             }
             Constants.DictionaryWordLoad = true;
         }

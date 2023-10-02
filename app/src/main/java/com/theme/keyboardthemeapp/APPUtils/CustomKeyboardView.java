@@ -25,177 +25,177 @@ import android.widget.TextView;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.MySharePref;
 import com.theme.keyboardthemeapp.R;
-import com.theme.keyboardthemeapp.UI.Adapters.MyCustomKeyboardLangAdapter;
+import com.theme.keyboardthemeapp.UI.Adapters.CustomKeyboardLanguageAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class CustomKeyboardView extends KeyboardView {
-    Context context;
-    Typeface fontstyle;
-    int hintColorCode;
-    String hitLatter;
-    int keyHeight;
-    int keyWidth;
-    List<Keyboard.Key> keys;
-    private PopupWindow langPopup;
-    MyCustomKeyboardLangAdapter langadp;
-    int[] letterX;
-    int[] letterY;
-    int[] mOffsetInWindow;
-    int mPopupPreviewOffsetX;
-    int mPopupPreviewOffsetY;
-    int mPreviewOffset;
-    int mWindowY;
-    Paint newpaint;
-    NinePatchDrawable npd;
-    NinePatchDrawable npdDelete;
-    NinePatchDrawable npdDone;
-    NinePatchDrawable npdShiftOff;
-    NinePatchDrawable npdShiftOn;
-    NinePatchDrawable npdSpace;
-    NinePatchDrawable npd_presed;
-    Drawable popupDrawable;
-    int[] previewLayout;
-    int[] previewRes;
-    Paint simplePaint;
-    int textColorCode;
-    List<Keyboard.Key> totalkey;
-    View vlng;
-    int x;
-    int y;
+    public static Context context;
+    public static Typeface fontTypeface;
+    public static int HintColorCode;
+    public static String HitLetter;
+    public static int KeyHeight;
+    public static int KeyWidth;
+    public static List<Keyboard.Key> KeboardKeys;
+    public static PopupWindow LanguagePopup;
+    public static CustomKeyboardLanguageAdapter LanguageAdapter;
+    public static int[] LetterXInts;
+    public static int[] LetterYInts;
+    public static int[] OffsetInWindowInts;
+    public static int PopupPreviewOffsetXInt;
+    public static int PopupPreviewOffsetYInt;
+    public static int PreviewOffsetInt;
+    public static int WindowYInt;
+    public static Paint NewPaint;
+    public static NinePatchDrawable ninePatchDrawable;
+    public static NinePatchDrawable ninePatchDrawableDelete;
+    public static NinePatchDrawable ninePatchDrawableDone;
+    public static NinePatchDrawable ninePatchDrawableShiftOff;
+    public static NinePatchDrawable ninePatchDrawableShiftOn;
+    public static NinePatchDrawable ninePatchDrawableSpace;
+    public static NinePatchDrawable ninePatchDrawablePresed;
+    public static Drawable PopupDrawable;
+    public static int[] PreviewLayoutInts;
+    public static int[] PreviewResInts;
+    public static Paint SimplePaint;
+    public static int TxtColorCodeInt;
+    public static List<Keyboard.Key> TotalKeyboardKey;
+    public static View ViewLanguage;
+    public static int XInt;
+    public static int YInt;
 
-    private String[] deafultchar = {"44", "46", "-97886", "64", "35", "36", "37", "38", "40", "41", "42", "43", "45", "33", "34", "39", "58", "59", "47", "63", "126", "177", "215", "247", "8226", "176", "96", "180", "123", "125", "169", "163", "8364", "94", "174", "165", "95", "43", "91", "93", "161", "60", "62", "162", "124", "92", "191", "-6003", "-1763", "8230"};
-    private ArrayList<String> defaultCharacter = new ArrayList<>(Arrays.asList(deafultchar));
+    public static String[] CharStrs = {"44", "46", "-97886", "64", "35", "36", "37", "38", "40", "41", "42", "43", "45", "33", "34", "39", "58", "59", "47", "63", "126", "177", "215", "247", "8226", "176", "96", "180", "123", "125", "169", "163", "8364", "94", "174", "165", "95", "43", "91", "93", "161", "60", "62", "162", "124", "92", "191", "-6003", "-1763", "8230"};
+    public static ArrayList<String> DefaultCharacterList = new ArrayList<>(Arrays.asList(CharStrs));
 
     public CustomKeyboardView(Context context, AttributeSet attributeSet, int i) {
         super(context, attributeSet, i);
-        this.keys = null;
-        this.totalkey = null;
-        this.x = 0;
-        this.y = 0;
-        this.textColorCode = -1;
-        this.hintColorCode = -1;
-        this.previewRes = new int[]{R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg};
-        this.fontstyle = null;
-        this.newpaint = new Paint();
-        this.simplePaint = new Paint();
-        this.keyWidth = 0;
-        this.keyHeight = 0;
-        this.hitLatter = new String();
-        this.letterX = null;
-        this.letterY = null;
-        this.previewLayout = new int[]{R.layout.keypad_prev, R.layout.keypad_prev1, R.layout.keypad_prev2, R.layout.keypad_prev3, R.layout.keypad_prev4, R.layout.keypad_prev5, R.layout.keypad_prev6, R.layout.keypad_prev7, R.layout.keypad_prev8, R.layout.keypad_prev9};
-        this.mOffsetInWindow = null;
-        this.mPreviewOffset = 0;
-        this.textColorCode = new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white));
+        KeboardKeys = null;
+        TotalKeyboardKey = null;
+        XInt = 0;
+        YInt = 0;
+        TxtColorCodeInt = -1;
+        HintColorCode = -1;
+        PreviewResInts = new int[]{R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg};
+        fontTypeface = null;
+        NewPaint = new Paint();
+        SimplePaint = new Paint();
+        KeyWidth = 0;
+        KeyHeight = 0;
+        HitLetter = new String();
+        LetterXInts = null;
+        LetterYInts = null;
+        PreviewLayoutInts = new int[]{R.layout.layout_keypad_prev, R.layout.layout_keypad_prev1, R.layout.layout_keypad_prev2, R.layout.layout_keypad_prev3, R.layout.layout_keypad_prev4, R.layout.layout_keypad_prev5, R.layout.layout_keypad_prev6, R.layout.layout_keypad_prev7, R.layout.layout_keypad_prev8, R.layout.layout_keypad_prev9};
+        OffsetInWindowInts = null;
+        PreviewOffsetInt = 0;
+        TxtColorCodeInt = new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white));
         this.context = context;
         setPreviewEnabled(false);
-        init();
-        this.npd = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_unpresed);
-        this.npd_presed = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_presed);
-        this.popupDrawable = getResources().getDrawable(this.previewRes[0]);
-        this.npdShiftOn = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_shift_on);
-        this.npdSpace = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_space);
-        this.npdDelete = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_back);
-        this.npdDone = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_enter);
+        InitActions();
+        ninePatchDrawable = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_unpresed);
+        ninePatchDrawablePresed = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_presed);
+        PopupDrawable = getResources().getDrawable(PreviewResInts[0]);
+        ninePatchDrawableShiftOn = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_shift_on);
+        ninePatchDrawableSpace = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_space);
+        ninePatchDrawableDelete = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_back);
+        ninePatchDrawableDone = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_enter);
     }
 
     public CustomKeyboardView(Context context) {
         super(context, null);
-        this.keys = null;
-        this.totalkey = null;
-        this.x = 0;
-        this.y = 0;
-        this.textColorCode = -1;
-        this.hintColorCode = -1;
-        this.previewRes = new int[]{R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg};
-        this.fontstyle = null;
-        this.newpaint = new Paint();
-        this.simplePaint = new Paint();
-        this.keyWidth = 0;
-        this.keyHeight = 0;
-        this.hitLatter = new String();
-        this.letterX = null;
-        this.letterY = null;
-        this.previewLayout = new int[]{R.layout.keypad_prev, R.layout.keypad_prev1, R.layout.keypad_prev2, R.layout.keypad_prev3, R.layout.keypad_prev4, R.layout.keypad_prev5, R.layout.keypad_prev6, R.layout.keypad_prev7, R.layout.keypad_prev8, R.layout.keypad_prev9};
-        this.mOffsetInWindow = null;
-        this.mPreviewOffset = 0;
-        this.textColorCode = new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white));
+        KeboardKeys = null;
+        TotalKeyboardKey = null;
+        XInt = 0;
+        YInt = 0;
+        TxtColorCodeInt = -1;
+        HintColorCode = -1;
+        PreviewResInts = new int[]{R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg};
+        fontTypeface = null;
+        NewPaint = new Paint();
+        SimplePaint = new Paint();
+        KeyWidth = 0;
+        KeyHeight = 0;
+        HitLetter = new String();
+        LetterXInts = null;
+        LetterYInts = null;
+        PreviewLayoutInts = new int[]{R.layout.layout_keypad_prev, R.layout.layout_keypad_prev1, R.layout.layout_keypad_prev2, R.layout.layout_keypad_prev3, R.layout.layout_keypad_prev4, R.layout.layout_keypad_prev5, R.layout.layout_keypad_prev6, R.layout.layout_keypad_prev7, R.layout.layout_keypad_prev8, R.layout.layout_keypad_prev9};
+        OffsetInWindowInts = null;
+        PreviewOffsetInt = 0;
+        TxtColorCodeInt = new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white));
         this.context = context;
         setPreviewEnabled(false);
-        init();
-        this.npd = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_unpresed);
-        this.npd_presed = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_presed);
-        this.popupDrawable = getResources().getDrawable(this.previewRes[0]);
-        this.npdShiftOn = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_shift_on);
-        this.npdSpace = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_space);
-        this.npdDelete = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_back);
-        this.npdDone = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_enter);
+        InitActions();
+        ninePatchDrawable = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_unpresed);
+        ninePatchDrawablePresed = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_presed);
+        PopupDrawable = getResources().getDrawable(PreviewResInts[0]);
+        ninePatchDrawableShiftOn = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_shift_on);
+        ninePatchDrawableSpace = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_space);
+        ninePatchDrawableDelete = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_back);
+        ninePatchDrawableDone = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_enter);
     }
 
     public CustomKeyboardView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        this.keys = null;
-        this.totalkey = null;
-        this.x = 0;
-        this.y = 0;
-        this.textColorCode = -1;
-        this.hintColorCode = -1;
-        this.previewRes = new int[]{R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg};
-        this.fontstyle = null;
-        this.newpaint = new Paint();
-        this.simplePaint = new Paint();
-        this.keyWidth = 0;
-        this.keyHeight = 0;
-        this.hitLatter = new String();
-        this.letterX = null;
-        this.letterY = null;
-        this.previewLayout = new int[]{R.layout.keypad_prev, R.layout.keypad_prev1, R.layout.keypad_prev2, R.layout.keypad_prev3, R.layout.keypad_prev4, R.layout.keypad_prev5, R.layout.keypad_prev6, R.layout.keypad_prev7, R.layout.keypad_prev8, R.layout.keypad_prev9};
-        this.mOffsetInWindow = null;
-        this.mPreviewOffset = 0;
-        this.textColorCode = new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white));
+        KeboardKeys = null;
+        TotalKeyboardKey = null;
+        XInt = 0;
+        YInt = 0;
+        TxtColorCodeInt = -1;
+        HintColorCode = -1;
+        PreviewResInts = new int[]{R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg};
+        fontTypeface = null;
+        NewPaint = new Paint();
+        SimplePaint = new Paint();
+        KeyWidth = 0;
+        KeyHeight = 0;
+        HitLetter = new String();
+        LetterXInts = null;
+        LetterYInts = null;
+        PreviewLayoutInts = new int[]{R.layout.layout_keypad_prev, R.layout.layout_keypad_prev1, R.layout.layout_keypad_prev2, R.layout.layout_keypad_prev3, R.layout.layout_keypad_prev4, R.layout.layout_keypad_prev5, R.layout.layout_keypad_prev6, R.layout.layout_keypad_prev7, R.layout.layout_keypad_prev8, R.layout.layout_keypad_prev9};
+        OffsetInWindowInts = null;
+        PreviewOffsetInt = 0;
+        TxtColorCodeInt = new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white));
         this.context = context;
         setPreviewEnabled(false);
-        init();
-        this.npd = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_unpresed);
-        this.npd_presed = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_presed);
-        this.popupDrawable = getResources().getDrawable(this.previewRes[0]);
-        this.npdShiftOn = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_shift_on);
-        this.npdSpace = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_space);
-        this.npdDelete = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_back);
-        this.npdDone = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_enter);
+        InitActions();
+        ninePatchDrawable = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_unpresed);
+        ninePatchDrawablePresed = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_presed);
+        PopupDrawable = getResources().getDrawable(PreviewResInts[0]);
+        ninePatchDrawableShiftOn = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_shift_on);
+        ninePatchDrawableSpace = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_space);
+        ninePatchDrawableDelete = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_back);
+        ninePatchDrawableDone = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_enter);
     }
 
-    public void init() {
-        this.letterX = new int[126];
-        this.letterY = new int[126];
+    public void InitActions() {
+        LetterXInts = new int[126];
+        LetterYInts = new int[126];
         if (Constants.ChangeLanguage == 0) {
             Typeface createFromAsset = Typeface.createFromAsset(getContext().getAssets(), Constants.HindiFontList[new MySharePref(getContext()).getPrefInt(MySharePref.FONT_STYLE, Constants.FontStyle)]);
-            this.fontstyle = createFromAsset;
-            this.newpaint.setTypeface(createFromAsset);
+            fontTypeface = createFromAsset;
+            NewPaint.setTypeface(createFromAsset);
         } else {
             Typeface createFromAsset2 = Typeface.createFromAsset(getContext().getAssets(), Constants.FontList[new MySharePref(context).getPrefInt(MySharePref.BACKGROUND_FONT_STYLE, 0)]);
-            this.fontstyle = createFromAsset2;
-            this.newpaint.setTypeface(createFromAsset2);
+            fontTypeface = createFromAsset2;
+            NewPaint.setTypeface(createFromAsset2);
         }
-        this.newpaint.setTextAlign(Paint.Align.CENTER);
-        this.newpaint.setColor(this.textColorCode);
-        this.newpaint.setStrokeWidth(0.3f);
-        this.newpaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        this.newpaint.setStrokeWidth(1.0f);
-        this.newpaint.setStyle(Paint.Style.FILL);
-        this.newpaint.setAntiAlias(true);
-        this.simplePaint.setTypeface(Typeface.DEFAULT);
-        this.simplePaint.setTextAlign(Paint.Align.CENTER);
-        this.simplePaint.setColor(this.textColorCode);
-        this.simplePaint.setStrokeWidth(0.3f);
-        this.simplePaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        this.simplePaint.setStrokeWidth(1.0f);
-        this.simplePaint.setStyle(Paint.Style.FILL);
-        this.simplePaint.setAntiAlias(true);
-        setPopup();
+        NewPaint.setTextAlign(Paint.Align.CENTER);
+        NewPaint.setColor(TxtColorCodeInt);
+        NewPaint.setStrokeWidth(0.3f);
+        NewPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        NewPaint.setStrokeWidth(1.0f);
+        NewPaint.setStyle(Paint.Style.FILL);
+        NewPaint.setAntiAlias(true);
+        SimplePaint.setTypeface(Typeface.DEFAULT);
+        SimplePaint.setTextAlign(Paint.Align.CENTER);
+        SimplePaint.setColor(TxtColorCodeInt);
+        SimplePaint.setStrokeWidth(0.3f);
+        SimplePaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        SimplePaint.setStrokeWidth(1.0f);
+        SimplePaint.setStyle(Paint.Style.FILL);
+        SimplePaint.setAntiAlias(true);
+        SetPopupVIew();
         invalidate();
     }
 
@@ -211,59 +211,59 @@ public class CustomKeyboardView extends KeyboardView {
     @Override
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        this.keys = getKeyboard().getKeys();
-        this.totalkey = getKeyboard().getKeys();
-        int i = 0;
-        for (Keyboard.Key key : this.keys) {
+        KeboardKeys = getKeyboard().getKeys();
+        TotalKeyboardKey = getKeyboard().getKeys();
+        int val = 0;
+        for (Keyboard.Key key : KeboardKeys) {
             if (key.label != null) {
-                int i2 = key.codes[0];
-                if (i2 == -978903) {
+                int code = key.codes[0];
+                if (code == -978903) {
                     key.repeatable = false;
-                } else if (i2 == -1) {
+                } else if (code == -1) {
                     key.repeatable = false;
-                } else if (i2 == -5) {
+                } else if (code == -5) {
                     key.repeatable = true;
-                } else if (i2 == -4) {
+                } else if (code == -4) {
                     key.repeatable = false;
                 } else {
                     key.repeatable = false;
-                    ArrayList<String> arrayList = defaultCharacter;
-                    if (!arrayList.contains(key.codes[0] + "")) {
+                    ArrayList<String> defaultCharacterList = DefaultCharacterList;
+                    if (!defaultCharacterList.contains(key.codes[0] + "")) {
                         if (key.label.toString().equals("?123")) {
-                            this.newpaint.setTextSize((int) getResources().getDimension(R.dimen.key123_text_size));
+                            NewPaint.setTextSize((int) getResources().getDimension(R.dimen.key123_text_size));
                         } else if (key.label.toString().equals("sym")) {
-                            this.newpaint.setTextSize((int) getResources().getDimension(R.dimen.keysym_text_size));
+                            NewPaint.setTextSize((int) getResources().getDimension(R.dimen.keysym_text_size));
                         } else {
-                            this.newpaint.setTextSize((int) getResources().getDimension(R.dimen.key_text_size));
+                            NewPaint.setTextSize((int) getResources().getDimension(R.dimen.key_text_size));
                         }
-                        String charSequence = key.label.toString();
-                        if (Constants.ChangeLanguage == 0 && charSequence.equalsIgnoreCase("abc")) {
-                            charSequence = "abc";
+                        String label = key.label.toString();
+                        if (Constants.ChangeLanguage == 0 && label.equalsIgnoreCase("abc")) {
+                            label = "abc";
                         }
                         if (CustomKeypad.CapsLock) {
-                            charSequence = charSequence.toUpperCase();
+                            label = label.toUpperCase();
                         }
-                        canvas.drawText(charSequence, key.x + (key.width / 2), key.y + (key.height / 2) + ((int) getResources().getDimension(com.intuit.sdp.R.dimen._22sdp)), this.newpaint);
+                        canvas.drawText(label, key.x + (key.width / 2), key.y + (key.height / 2) + ((int) getResources().getDimension(com.intuit.sdp.R.dimen._22sdp)), NewPaint);
                     } else {
                         if (key.label.toString().equals("?123")) {
-                            this.simplePaint.setTextSize((int) getResources().getDimension(R.dimen.key123_text_size));
+                            SimplePaint.setTextSize((int) getResources().getDimension(R.dimen.key123_text_size));
                         } else if (key.label.toString().equals("sym")) {
-                            this.simplePaint.setTextSize((int) getResources().getDimension(R.dimen.keysym_text_size));
+                            SimplePaint.setTextSize((int) getResources().getDimension(R.dimen.keysym_text_size));
                         } else {
-                            this.simplePaint.setTextSize((int) getResources().getDimension(R.dimen.key_text_size));
+                            SimplePaint.setTextSize((int) getResources().getDimension(R.dimen.key_text_size));
                         }
-                        String charSequence2 = key.label.toString();
+                        String labels = key.label.toString();
                         if (CustomKeypad.CapsLock) {
-                            charSequence2 = charSequence2.toUpperCase();
+                            labels = labels.toUpperCase();
                         }
-                        canvas.drawText(charSequence2, key.x + (key.width / 2), key.y + (key.height / 2) + ((int) getResources().getDimension(com.intuit.sdp.R.dimen._22sdp)), this.simplePaint);
+                        canvas.drawText(labels, key.x + (key.width / 2), key.y + (key.height / 2) + ((int) getResources().getDimension(com.intuit.sdp.R.dimen._22sdp)), SimplePaint);
                     }
                     if (hasCharKey(key)) {
-                        this.letterX[i] = key.x;
-                        this.letterY[i] = key.y;
-                        this.keyHeight = key.height;
-                        this.keyWidth = key.width;
-                        i++;
+                        LetterXInts[val] = key.x;
+                        LetterYInts[val] = key.y;
+                        KeyHeight = key.height;
+                        KeyWidth = key.width;
+                        val++;
                     }
                 }
             }
@@ -271,28 +271,28 @@ public class CustomKeyboardView extends KeyboardView {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent motionEvent) {
-        this.x = (int) motionEvent.getX();
-        this.y = (int) motionEvent.getY();
-        float x = motionEvent.getX();
-        float y = motionEvent.getY();
-        int pointerCount = motionEvent.getPointerCount();
+    public boolean onTouchEvent(MotionEvent event) {
+        XInt = (int) event.getX();
+        YInt = (int) event.getY();
+        float x = event.getX();
+        float y = event.getY();
+        int pointerCount = event.getPointerCount();
         try {
-            int i = 0;
-            for (Keyboard.Key key : this.keys) {
-                int i2 = key.codes[0];
-                if (i2 != -978903 && i2 != -97886 && i2 != -1 && i2 != 32 && i2 != -6003 && i2 != -6002 && i2 != -2831 && i2 != -2830 && i2 != -5 && i2 != -4) {
+            int val = 0;
+            for (Keyboard.Key key : KeboardKeys) {
+                int code = key.codes[0];
+                if (code != -978903 && code != -97886 && code != -1 && code != 32 && code != -6003 && code != -6002 && code != -2831 && code != -2830 && code != -5 && code != -4) {
                     try {
                         if (hasCharKey(key) && pointerCount == 1) {
-                            if (x >= this.letterX[i] && x <= this.letterX[i] + this.keyWidth && y >= this.letterY[i] && y <= this.letterY[i] + this.keyHeight) {
-                                if (this.hitLatter == null || this.hitLatter.contains("null") || this.hitLatter.length() <= 0) {
-                                    this.hitLatter += ((Object) key.label) + "";
-                                } else if (!this.hitLatter.endsWith(key.label.toString())) {
-                                    this.hitLatter += ((Object) key.label) + "";
-                                    showPreviewPopup(key.codes[0], key);
+                            if (x >= LetterXInts[val] && x <= LetterXInts[val] + KeyWidth && y >= LetterYInts[val] && y <= LetterYInts[val] + KeyHeight) {
+                                if (HitLetter == null || HitLetter.contains("null") || HitLetter.length() <= 0) {
+                                    HitLetter += ((Object) key.label) + "";
+                                } else if (!HitLetter.endsWith(key.label.toString())) {
+                                    HitLetter += ((Object) key.label) + "";
+                                    ShowPopupView(key);
                                 }
                             }
-                            i++;
+                            val++;
                         }
                     } catch (Exception unused) {
                     }
@@ -300,162 +300,161 @@ public class CustomKeyboardView extends KeyboardView {
             }
         } catch (Exception unused2) {
         }
-        motionEvent.getAction();
+        event.getAction();
         postInvalidate();
-        return super.onTouchEvent(motionEvent);
+        return super.onTouchEvent(event);
     }
 
-    public void onPressKey(int i) {
-        if (i == -1 || i == -5 || i == -978903 || i == -4 || i == 32 || i == -2830 || i == -2831 || i == -6002 || i == -6003 || i == -1762 || i == -1763 || i == -97890 || i == -9789001 || i == -972550 || i == -978901 || i == -978902 || i == -9789020 || i == -99255 || i == -97255 || i == -5000) {
+    public void onPressKey(int code) {
+        if (code == -1 || code == -5 || code == -978903 || code == -4 || code == 32 || code == -2830 || code == -2831 || code == -6002 || code == -6003 || code == -1762 || code == -1763 || code == -97890 || code == -9789001 || code == -972550 || code == -978901 || code == -978902 || code == -9789020 || code == -99255 || code == -97255 || code == -5000) {
             return;
         }
-        for (Keyboard.Key key : this.keys) {
-            if (key.codes[0] == i) {
-                showPreviewPopup(i, key);
+        for (Keyboard.Key key : KeboardKeys) {
+            if (key.codes[0] == code) {
+                ShowPopupView(key);
                 return;
             }
         }
     }
 
-    private void showPreviewPopup(int i, Keyboard.Key key) {
+    private void ShowPopupView(Keyboard.Key key) {
         try {
             if (key.codes[0] != -97886 && new MySharePref(getContext()).getPrefBoolean(MySharePref.POPUP, true)) {
-               Constants.TxtView.setText(key.label.toString());
+                Constants.TxtView.setText(key.label.toString());
                 if (getResources().getConfiguration().orientation == 1) {
-                    showKey(Constants.TxtView, key, 20, 15);
-                    return;
+                    ShowKeyCode(Constants.TxtView, key, 20, 15);
                 } else {
-                    showKey(Constants.TxtView, key, 40, 10);
-                    return;
+                    ShowKeyCode(Constants.TxtView, key, 40, 10);
                 }
+                return;
             }
-            showLongPressPreviewPopup(key, (char) key.codes[0]);
+            ShowLongPreviewPopupView(key);
         } catch (Exception unused) {
             System.out.println("----- - - -unused : " + unused.getMessage());
             unused.printStackTrace();
         }
     }
 
-    private void showKey(TextView textView, Keyboard.Key key, int i, int i2) {
+    private void ShowKeyCode(TextView TxtView, Keyboard.Key key, int valI, int vals) {
         if (key == null) {
             return;
         }
-        textView.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
-        int max = Math.max(textView.getMeasuredWidth(), key.width + textView.getPaddingLeft() + textView.getPaddingRight()) + i2;
-        int i3 = key.height + i;
-        int i4 = key.x - ((max - key.width) / 2);
-        int i5 = (key.y - i3) + this.mPreviewOffset;
-        if (this.mOffsetInWindow == null) {
-            int[] iArr = new int[2];
-            this.mOffsetInWindow = iArr;
-            getLocationInWindow(iArr);
-            int[] iArr2 = this.mOffsetInWindow;
-            iArr2[0] = iArr2[0] + this.mPopupPreviewOffsetX;
-            iArr2[1] = iArr2[1] + this.mPopupPreviewOffsetY;
-            int[] iArr3 = new int[2];
-            getLocationOnScreen(iArr3);
-            this.mWindowY = iArr3[1];
+        TxtView.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+        int max = Math.max(TxtView.getMeasuredWidth(), key.width + TxtView.getPaddingLeft() + TxtView.getPaddingRight()) + vals;
+        int height = key.height + valI;
+        int width = key.x - ((max - key.width) / 2);
+        int offset = (key.y - height) + PreviewOffsetInt;
+        if (OffsetInWindowInts == null) {
+            int[] ints = new int[2];
+            OffsetInWindowInts = ints;
+            getLocationInWindow(ints);
+            int[] inWindowInts = OffsetInWindowInts;
+            inWindowInts[0] = inWindowInts[0] + PopupPreviewOffsetXInt;
+            inWindowInts[1] = inWindowInts[1] + PopupPreviewOffsetYInt;
+            int[] iarr3 = new int[2];
+            getLocationOnScreen(iarr3);
+            WindowYInt = iarr3[1];
         }
-        int[] iArr4 = this.mOffsetInWindow;
-        int i6 = i4 + iArr4[0];
-        int i7 = i5 + iArr4[1];
-        if (this.mWindowY + i7 < 0) {
+        int[] inWindowInts = OffsetInWindowInts;
+        int widthS = width + inWindowInts[0];
+        int Offsets = offset + inWindowInts[1];
+        if (WindowYInt + Offsets < 0) {
             if (key.x + key.width <= getWidth() / 2) {
-                double d = key.width;
-                Double.isNaN(d);
-                i6 += (int) (d * 2.5d);
+                double width1 = key.width;
+                Double.isNaN(width1);
+                widthS += (int) (width1 * 2.5d);
             } else {
-                double d2 = key.width;
-                Double.isNaN(d2);
-                i6 -= (int) (d2 * 2.5d);
+                double width1 = key.width;
+                Double.isNaN(width1);
+                widthS -= (int) (width1 * 2.5d);
             }
-            i7 += i3;
+            Offsets += height;
         }
         if (Constants.popupScreen.isShowing()) {
-            Constants.popupScreen.update(i6 - 5, i7 - 20, max, i3);
+            Constants.popupScreen.update(widthS - 5, Offsets - 20, max, height);
             return;
         }
         Constants.popupScreen.setWidth(max);
-        Constants.popupScreen.setHeight(i3);
-        Constants.popupScreen.showAtLocation(this, 0, i6, i7 - 18);
+        Constants.popupScreen.setHeight(height);
+        Constants.popupScreen.showAtLocation(this, 0, widthS, Offsets - 18);
     }
 
-    private void showLongPressPreviewPopup(Keyboard.Key key, char c) {
-        this.langadp = new MyCustomKeyboardLangAdapter(this.context, Constants.languegesArray, this);
-        View inflate = ((LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.langlist_popup, (ViewGroup) null, false);
-        this.vlng = inflate;
-        ((ListView) inflate.findViewById(R.id.keyboardLangList)).setAdapter((ListAdapter) this.langadp);
-        Typeface createFromAsset = Typeface.createFromAsset(getContext().getAssets(), "AvenirLTStd-Medium.otf");
-       Constants.TxtLongPressView = (TextView) this.vlng.findViewById(R.id.textView1);
-       Constants.TxtLongPressView.setTypeface(createFromAsset);
+    private void ShowLongPreviewPopupView(Keyboard.Key key) {
+        LanguageAdapter = new CustomKeyboardLanguageAdapter(context, Constants.languegesArray, this);
+        View view = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.layout_language_list_popup, (ViewGroup) null, false);
+        ViewLanguage = view;
+        ((ListView) view.findViewById(R.id.keyboardLanguageList)).setAdapter((ListAdapter) LanguageAdapter);
+        Typeface fromAsset = Typeface.createFromAsset(getContext().getAssets(), "AvenirLTStd-Medium.otf");
+        Constants.TxtLongPressView = (TextView) ViewLanguage.findViewById(R.id.TxtKeyboardPopup);
+        Constants.TxtLongPressView.setTypeface(fromAsset);
         if (Constants.popupWindow == null) {
-            Constants.popupWindow = new PopupWindow(this.context);
+            Constants.popupWindow = new PopupWindow(context);
         }
-        Constants.popupWindow.setContentView(this.vlng);
+        Constants.popupWindow.setContentView(ViewLanguage);
         Constants.popupWindow.setBackgroundDrawable(null);
         Constants.popupWindow.setTouchable(true);
         Constants.popupWindow.setAnimationStyle(R.style.PreviewPopupAnimation);
         if (Constants.TxtLongPressView != null) {
-            showKeypopup(key, Constants.pxFromDp(this.context, 130.0f), Constants.pxFromDp(this.context, 100.0f),Constants.TxtLongPressView);
+            showKeypopup(key, Constants.pxFromDp(context, 130.0f), Constants.pxFromDp(context, 100.0f), Constants.TxtLongPressView);
         }
     }
 
-    private void showKeypopup(Keyboard.Key key, int i, int i2, TextView textView) {
+    private void showKeypopup(Keyboard.Key key, int heightS, int maxS, TextView TxtViews) {
         int pxFromDp;
         int pxFromDp2;
-        dismissLangPopup();
+        DismissLanguagePopup();
         if (key == null) {
             return;
         }
-        textView.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
-        int max = Math.max(textView.getMeasuredWidth(), key.width + textView.getPaddingLeft() + textView.getPaddingRight()) + i2;
-        int i3 = key.height + i;
-        int i4 = key.x - ((max - key.width) / 2);
-        int i5 = (key.y - i3) + this.mPreviewOffset;
-        if (this.mOffsetInWindow == null) {
-            int[] iArr = new int[2];
-            this.mOffsetInWindow = iArr;
-            getLocationInWindow(iArr);
-            int[] iArr2 = this.mOffsetInWindow;
-            iArr2[0] = iArr2[0] + this.mPopupPreviewOffsetX;
-            iArr2[1] = iArr2[1] + this.mPopupPreviewOffsetY;
-            int[] iArr3 = new int[2];
-            getLocationOnScreen(iArr3);
-            this.mWindowY = iArr3[1];
+        TxtViews.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+        int max = Math.max(TxtViews.getMeasuredWidth(), key.width + TxtViews.getPaddingLeft() + TxtViews.getPaddingRight()) + maxS;
+        int heights = key.height + heightS;
+        int widths = key.x - ((max - key.width) / 2);
+        int offset = (key.y - heights) + PreviewOffsetInt;
+        if (OffsetInWindowInts == null) {
+            int[] ints = new int[2];
+            OffsetInWindowInts = ints;
+            getLocationInWindow(ints);
+            int[] inWindowInts = OffsetInWindowInts;
+            inWindowInts[0] = inWindowInts[0] + PopupPreviewOffsetXInt;
+            inWindowInts[1] = inWindowInts[1] + PopupPreviewOffsetYInt;
+            int[] iarr3 = new int[2];
+            getLocationOnScreen(iarr3);
+            WindowYInt = iarr3[1];
         }
-        int[] iArr4 = this.mOffsetInWindow;
-        int i6 = i4 + iArr4[0];
-        int i7 = i5 + iArr4[1];
-        if (this.mWindowY + i7 < 0) {
+        int[] offsetInWindowInts = OffsetInWindowInts;
+        int w = widths + offsetInWindowInts[0];
+        int o = offset + offsetInWindowInts[1];
+        if (WindowYInt + o < 0) {
             if (key.x + key.width <= getWidth() / 2) {
                 double d = key.width;
                 Double.isNaN(d);
-                i6 += (int) (d * 2.5d);
+                w += (int) (d * 2.5d);
             } else {
                 double d2 = key.width;
                 Double.isNaN(d2);
-                i6 -= (int) (d2 * 2.5d);
+                w -= (int) (d2 * 2.5d);
             }
-            i7 += i3;
+            o += heights;
         }
         if (getResources().getConfiguration().orientation == 1) {
-            pxFromDp = i6 + Constants.pxFromDp(this.context, 10.0f);
-            pxFromDp2 = Constants.pxFromDp(this.context, 35.0f);
+            pxFromDp = w + Constants.pxFromDp(context, 10.0f);
+            pxFromDp2 = Constants.pxFromDp(context, 35.0f);
         } else {
-            pxFromDp = i6 + Constants.pxFromDp(this.context, 14.0f);
-            pxFromDp2 = Constants.pxFromDp(this.context, 26.0f);
+            pxFromDp = w + Constants.pxFromDp(context, 14.0f);
+            pxFromDp2 = Constants.pxFromDp(context, 26.0f);
         }
-        int i8 = i7 + pxFromDp2;
+        int i = o + pxFromDp2;
         if (Constants.popupWindow.isShowing()) {
-            Constants.popupWindow.update(pxFromDp, i8, max, i3);
+            Constants.popupWindow.update(pxFromDp, i, max, heights);
             return;
         }
         Constants.popupWindow.setWidth(max);
-        Constants.popupWindow.setHeight(i3);
-        Constants.popupWindow.showAtLocation(this, 0, pxFromDp, i8);
+        Constants.popupWindow.setHeight(heights);
+        Constants.popupWindow.showAtLocation(this, 0, pxFromDp, i);
     }
 
-    public void dismissPreviewPopup() {
+    public void DismissPreviewPopup() {
         try {
             if (Constants.popupScreen.isShowing()) {
                 Constants.popupScreen.dismiss();
@@ -465,7 +464,7 @@ public class CustomKeyboardView extends KeyboardView {
         invalidateAllKeys();
     }
 
-    public void dismissLangPopup() {
+    public void DismissLanguagePopup() {
         try {
             if (Constants.popupWindow.isShowing()) {
                 Constants.popupWindow.dismiss();
@@ -475,86 +474,86 @@ public class CustomKeyboardView extends KeyboardView {
         invalidateAllKeys();
     }
 
-    public void setOnlineKeyboard(NinePatchDrawable ninePatchDrawable, NinePatchDrawable ninePatchDrawable2, int i, NinePatchDrawable ninePatchDrawable3, NinePatchDrawable ninePatchDrawable4, NinePatchDrawable ninePatchDrawable5, NinePatchDrawable ninePatchDrawable6, NinePatchDrawable ninePatchDrawable7, Drawable drawable) {
-        this.npd = ninePatchDrawable;
-        this.npd_presed = ninePatchDrawable2;
-        this.npdDelete = ninePatchDrawable6;
-        this.npdDone = ninePatchDrawable7;
-        this.npdShiftOff = ninePatchDrawable4;
-        this.npdShiftOn = ninePatchDrawable5;
-        this.npdSpace = ninePatchDrawable3;
-        this.textColorCode = new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white));
-        this.popupDrawable = drawable;
-        this.newpaint.setColor(new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)));
-        this.simplePaint.setColor(new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)));
+    public void setOnlineKeyboard(NinePatchDrawable ninePatchDrawable, NinePatchDrawable ninePatchDrawable2, int i, NinePatchDrawable ninePatchDrawable3, NinePatchDrawable ninePatchDrawable4, NinePatchDrawable ninePatchDrawable5, NinePatchDrawable ninePatchDrawable6, NinePatchDrawable ninePatchDrawable7, Drawable PUpdrawable) {
+        CustomKeyboardView.ninePatchDrawable = ninePatchDrawable;
+        ninePatchDrawablePresed = ninePatchDrawable2;
+        ninePatchDrawableDelete = ninePatchDrawable6;
+        ninePatchDrawableDone = ninePatchDrawable7;
+        ninePatchDrawableShiftOff = ninePatchDrawable4;
+        ninePatchDrawableShiftOn = ninePatchDrawable5;
+        ninePatchDrawableSpace = ninePatchDrawable3;
+        TxtColorCodeInt = new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white));
+        PopupDrawable = PUpdrawable;
+        NewPaint.setColor(new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)));
+        SimplePaint.setColor(new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)));
         try {
-            this.npdShiftOn.setColorFilter(new PorterDuffColorFilter(this.textColorCode, PorterDuff.Mode.SRC_IN));
-            this.npdShiftOff.setColorFilter(new PorterDuffColorFilter(this.textColorCode, PorterDuff.Mode.SRC_IN));
-            this.npdSpace.setColorFilter(new PorterDuffColorFilter(this.textColorCode, PorterDuff.Mode.SRC_IN));
-            this.npdDone.setColorFilter(new PorterDuffColorFilter(this.textColorCode, PorterDuff.Mode.SRC_IN));
-            this.npdDelete.setColorFilter(new PorterDuffColorFilter(this.textColorCode, PorterDuff.Mode.SRC_IN));
+            ninePatchDrawableShiftOn.setColorFilter(new PorterDuffColorFilter(TxtColorCodeInt, PorterDuff.Mode.SRC_IN));
+            ninePatchDrawableShiftOff.setColorFilter(new PorterDuffColorFilter(TxtColorCodeInt, PorterDuff.Mode.SRC_IN));
+            ninePatchDrawableSpace.setColorFilter(new PorterDuffColorFilter(TxtColorCodeInt, PorterDuff.Mode.SRC_IN));
+            ninePatchDrawableDone.setColorFilter(new PorterDuffColorFilter(TxtColorCodeInt, PorterDuff.Mode.SRC_IN));
+            ninePatchDrawableDelete.setColorFilter(new PorterDuffColorFilter(TxtColorCodeInt, PorterDuff.Mode.SRC_IN));
         } catch (Exception e) {
             Log.e("EROOR:", "" + e);
         }
-        setPopup();
+        SetPopupVIew();
         invalidate();
     }
 
-    public void setPopup() {
-        LayoutInflater layoutInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    public void SetPopupVIew() {
+        LayoutInflater service = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (Constants.popupScreen == null) {
-            Constants.popupScreen = new PopupWindow(this.context);
+            Constants.popupScreen = new PopupWindow(context);
         }
         if (Constants.TxtView == null) {
             if (new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0) > 9) {
-               Constants.TxtView = (TextView) layoutInflater.inflate(this.previewLayout[0], (ViewGroup) null, false);
+                Constants.TxtView = (TextView) service.inflate(PreviewLayoutInts[0], (ViewGroup) null, false);
             } else {
-               Constants.TxtView = (TextView) layoutInflater.inflate(this.previewLayout[new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0) ], (ViewGroup) null, false);
+                Constants.TxtView = (TextView) service.inflate(PreviewLayoutInts[new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0)], (ViewGroup) null, false);
             }
         }
-        if (new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0)  > 9) {
-            if (new MySharePref(context).getPrefInt(MySharePref.PREVIOUS_THEME, -1)  != -1 && new MySharePref(context).getPrefInt(MySharePref.PREVIOUS_THEME, -1)  != 0) {
-               Constants.TxtView = null;
-               Constants.TxtView = (TextView) layoutInflater.inflate(this.previewLayout[0], (ViewGroup) null, false);
+        if (new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0) > 9) {
+            if (new MySharePref(context).getPrefInt(MySharePref.PREVIOUS_THEME, -1) != -1 && new MySharePref(context).getPrefInt(MySharePref.PREVIOUS_THEME, -1) != 0) {
+                Constants.TxtView = null;
+                Constants.TxtView = (TextView) service.inflate(PreviewLayoutInts[0], (ViewGroup) null, false);
 
                 new MySharePref(context).putPrefInt(MySharePref.PREVIOUS_THEME, new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0));
             }
-        } else if (new MySharePref(context).getPrefInt(MySharePref.PREVIOUS_THEME, -1)  != -1 && new MySharePref(context).getPrefInt(MySharePref.PREVIOUS_THEME, -1)  != new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0)) {
-           Constants.TxtView = null;
-           Constants.TxtView = (TextView) layoutInflater.inflate(this.previewLayout[new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0) ], (ViewGroup) null, false);
+        } else if (new MySharePref(context).getPrefInt(MySharePref.PREVIOUS_THEME, -1) != -1 && new MySharePref(context).getPrefInt(MySharePref.PREVIOUS_THEME, -1) != new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0)) {
+            Constants.TxtView = null;
+            Constants.TxtView = (TextView) service.inflate(PreviewLayoutInts[new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0)], (ViewGroup) null, false);
             new MySharePref(context).putPrefInt(MySharePref.PREVIOUS_THEME, new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0));
         }
         if (Constants.ChangeLanguage == 0) {
-           Constants.TxtView.setTypeface(this.fontstyle);
+            Constants.TxtView.setTypeface(fontTypeface);
         } else {
-           Constants.TxtView.setTypeface(Typeface.DEFAULT_BOLD);
+            Constants.TxtView.setTypeface(Typeface.DEFAULT_BOLD);
         }
         if (Constants.ChangeLanguage == 0) {
-           Constants.TxtView.setPadding(0, 15, 0, 0);
+            Constants.TxtView.setPadding(0, 15, 0, 0);
         } else {
-           Constants.TxtView.setPadding(0, 10, 0, 0);
+            Constants.TxtView.setPadding(0, 10, 0, 0);
         }
 
-        StringBuilder builderPreview = new StringBuilder();
+        StringBuilder builder = new StringBuilder();
         int PreviewInt = 0;
         while (true) {
             String[] PreviewStrArr = Constants.ThemePreviewTextColor;
             if (PreviewInt < PreviewStrArr.length) {
-                builderPreview.append(PreviewStrArr[PreviewInt]);
-                builderPreview.append(",");
+                builder.append(PreviewStrArr[PreviewInt]);
+                builder.append(",");
                 PreviewInt++;
             } else {
-                String string2 = new MySharePref(getContext()).getPrefString(MySharePref.ISPREVIEW_COLOR_CODE, builderPreview.toString());
+                String prefString = new MySharePref(getContext()).getPrefString(MySharePref.ISPREVIEW_COLOR_CODE, builder.toString());
                 Constants.ThemePreviewTextColor = new String[10];
-                Constants.ThemePreviewTextColor = string2.split(",");
+                Constants.ThemePreviewTextColor = prefString.split(",");
                 break;
             }
         }
 
         if (new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0) > 9) {
-           Constants.TxtView.setTextColor(Color.parseColor(Constants.ThemePreviewTextColor[0]));
+            Constants.TxtView.setTextColor(Color.parseColor(Constants.ThemePreviewTextColor[0]));
         } else {
-           Constants.TxtView.setTextColor(Color.parseColor(Constants.ThemePreviewTextColor[Constants.SelectTheme]));
+            Constants.TxtView.setTextColor(Color.parseColor(Constants.ThemePreviewTextColor[Constants.SelectTheme]));
         }
         Constants.popupScreen.setContentView(Constants.TxtView);
         Constants.popupScreen.setBackgroundDrawable(null);

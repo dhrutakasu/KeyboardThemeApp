@@ -194,15 +194,12 @@ public class ThemeDownloader extends AsyncTask<String, Void, Void> {
             new MySharePref(context).putPrefInt(MySharePref.DEFAULT_THEME, Pos);
             new MySharePref(context).putPrefBoolean(MySharePref.DEFAULT_GIF, false);
             new MySharePref(context).putPrefBoolean(MySharePref.SAVE_IMAGE,false);
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    ivDownloadTheme.setVisibility(View.GONE);
-                    ivCheckTheme.setVisibility(View.VISIBLE);
-                    adapter.notifyDataSetChanged();
-                    layoutProgress.setVisibility(View.GONE);
-                    themeActivity.onBackPressed();
-                }
+            new Handler().postDelayed(() -> {
+                ivDownloadTheme.setVisibility(View.GONE);
+                ivCheckTheme.setVisibility(View.VISIBLE);
+                adapter.notifyDataSetChanged();
+                layoutProgress.setVisibility(View.GONE);
+                themeActivity.onBackPressed();
             }, 1000);
         }
         MediaScannerConnection.scanFile(context, new String[]{Environment.getExternalStorageDirectory().getAbsolutePath()}, null, (path, uri) -> {

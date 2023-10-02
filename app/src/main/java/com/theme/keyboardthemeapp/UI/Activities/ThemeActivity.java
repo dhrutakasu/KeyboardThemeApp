@@ -111,9 +111,6 @@ public class ThemeActivity extends AppCompatActivity implements View.OnClickList
                             new MySharePref(context).putPrefBoolean(MySharePref.SAVE_IMAGE,false);
                             onBackPressed();
                         } else {
-//                            if (ThemeArray.get(pos).getName().equalsIgnoreCase("android_asset")) {
-//                                new ThemeDownloader(context, LayoutProgress, ThemeArray, pos, ivDownloadTheme, ivCheckTheme, adapter, ThemeActivity.this).execute(response.body().getThumburl() + "/" + ThemeArray.get(pos).getId() + ".png", response.body().getUrl() + "/");
-//                            } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                                 builder.setCancelable(false);
                                 builder.setMessage(R.string.Alert_string)

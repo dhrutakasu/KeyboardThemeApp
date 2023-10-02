@@ -106,8 +106,8 @@
     <string name="pick_image_intent_chooser_title">Select source</string>
 
     <string name="crop_image_activity_no_permissions">Cancelling, required permissions are not granted</string>
-    <string name="dict_name1">englishdictionary.txt</string>
-    <string name="dict_name2">hindidictionary.txt</string>
+    <string name="dict_name1">DictionaryEnglishWords.txt</string>
+    <string name="dict_name2">DictionaryHindiWords.txt</string>
     <string name="dictonary_name">Hindi Dictionary</string>
     <string name="phonetic_keyboard">Please Connect To Internet for Phonetic Keyboard</string>
     <string name="install_voice_translate">Install Google Voice For Voice Translate</string>

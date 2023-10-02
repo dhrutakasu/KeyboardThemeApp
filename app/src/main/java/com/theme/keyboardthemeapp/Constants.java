@@ -30,7 +30,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.karumi.dexter.PermissionToken;
 import com.theme.keyboardthemeapp.APPUtils.CustomKeypad;
-import com.theme.keyboardthemeapp.APPUtils.HintWordAdapter;
+import com.theme.keyboardthemeapp.UI.Adapters.HintWordListAdapter;
 import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
 import com.theme.keyboardthemeapp.ModelClass.StatusItem;
 
@@ -426,7 +426,6 @@ public class Constants {
                 options.inSampleSize = Constants.calculateInSampleSize(options, Constants.width, (int) context.getResources().getDimension(R.dimen.keyboard_height));
                 options.inJustDecodeBounds = false;
                 AssetManager assetManager = context.getAssets();
-//                Bitmap.createScaledBitmap(BitmapFactory.decodeStream(assets3.open("background/" + context.getAssets().list("background")[0]), new Rect(0, 0, 0, 0), options), HindiUtils.w, (int) getResources().getDimension(R.dimen.keyboard_height), false).compress(Bitmap.CompressFormat.PNG, 100, new FileOutputStream(file2));
                 Bitmap.createScaledBitmap(BitmapFactory.decodeStream(assetManager.open("background/" + context.getAssets().list("background")[pos]), new Rect(0, 0, 0, 0), options), Constants.width, (int) context.getResources().getDimension(R.dimen.keyboard_height), false).compress(Bitmap.CompressFormat.PNG, 100, new FileOutputStream(file2));
             } catch (IOException unused) {
                 Toast.makeText(context, "Exception", Toast.LENGTH_LONG).show();
@@ -476,7 +475,6 @@ public class Constants {
             in.close();
             in = null;
 
-            // write the output file (You have now copied the file)
             out.flush();
             out.close();
             out = null;
@@ -496,9 +494,6 @@ public class Constants {
         SuggestionData = new ArrayList<>();
         System.out.println("----- - - -string : " + string.length());
         if (string.length() >= 1) {
-//        } else {
-//            SuggestionData = new ArrayList<>();
-//            SuggestionData.addAll(Constants.SuggestionWordsList);
             if (SuggestionData != null) {
                 for (int i = 0; i < SuggestionWords.size(); i++) {
                     String item = SuggestionWords.get(i).toLowerCase();
@@ -539,8 +534,8 @@ public class Constants {
         return SuggestionData;
     }
 
-    public static HintWordAdapter setSuggestionAdapter(Context context, ArrayList<String> arrayList2, int i, int i2) {
-        return new HintWordAdapter(context, arrayList2, i, i2);
+    public static HintWordListAdapter setSuggestionAdapter(Context context, ArrayList<String> arrayList2, int SelectedTheme, int i2) {
+        return new HintWordListAdapter(context, arrayList2, SelectedTheme);
     }
 
 }

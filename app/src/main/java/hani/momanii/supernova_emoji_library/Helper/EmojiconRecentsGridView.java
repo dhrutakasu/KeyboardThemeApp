@@ -19,7 +19,7 @@ package hani.momanii.supernova_emoji_library.Helper;
 import android.content.Context;
 import android.widget.GridView;
 
-import com.theme.keyboardthemeapp.APPUtils.EmojiAdapter;
+import com.theme.keyboardthemeapp.APPUtils.EmojiListAdapter;
 import com.theme.keyboardthemeapp.R;
 
 import hani.momanii.supernova_emoji_library.emoji.Emojicon;
@@ -30,7 +30,7 @@ import hani.momanii.supernova_emoji_library.emoji.Emojicon;
  * @author Hani Al Momani (hani.momanii@gmail.com)
  */
 public class EmojiconRecentsGridView  extends EmojiconGridView implements EmojiconRecents {
-    EmojiAdapter mAdapter;
+    EmojiListAdapter mAdapter;
     private boolean mUseSystemDefault = false;
 
 
@@ -41,8 +41,8 @@ public class EmojiconRecentsGridView  extends EmojiconGridView implements Emojic
         this.mUseSystemDefault=useSystemDefault;
         EmojiconRecentsManager recents1 = EmojiconRecentsManager
                 .getInstance(rootView.getContext());
-        mAdapter = new EmojiAdapter(rootView.getContext(),  recents1,mUseSystemDefault);
-        mAdapter.setEmojiClickListener(new OnEmojiconClickedListener() {
+        mAdapter = new EmojiListAdapter(rootView.getContext(),  recents1,mUseSystemDefault);
+        mAdapter.setOnEmojiconClickedListener(new OnEmojiconClickedListener() {
 
             @Override
             public void onEmojiconClicked(Emojicon emojicon) {

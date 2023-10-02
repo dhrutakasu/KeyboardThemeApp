@@ -26,16 +26,16 @@ public class TranslateIn extends Translation {
         this.mContext = context;
         this.mLanguageName = str;
         ConstantResource constant_Resource = new ConstantResource(context);
-        this.mPosition = constant_Resource.getPosition(this.mLanguageName, constant_Resource.getContriesin());
-        this.mCodeDocmau = constant_Resource.getCodelangin()[this.mPosition];
-        this.mCodeSpeech = constant_Resource.getFromLanguageName(str, constant_Resource.getContriesin(), constant_Resource.getCodespeech());
-        this.mCodeOCR = constant_Resource.getFromLanguageName(str, constant_Resource.getCameraOcr(), constant_Resource.getCodeocr());
-        this.mCodeLanguage = constant_Resource.getFromLanguageName(str, constant_Resource.getContriesin(), constant_Resource.getCodelangin());
+        this.mPosition = constant_Resource.getPosition(this.mLanguageName, constant_Resource.getCountriesIn());
+        this.mCodeDocmau = constant_Resource.getCodeLanguageIn()[this.mPosition];
+        this.mCodeSpeech = constant_Resource.getFromLanguageName(str, constant_Resource.getCountriesIn(), constant_Resource.getCodeSpeech());
+        this.mCodeOCR = constant_Resource.getFromLanguageName(str, constant_Resource.getCameraOcr(), constant_Resource.getCodeOcr());
+        this.mCodeLanguage = constant_Resource.getFromLanguageName(str, constant_Resource.getCountriesIn(), constant_Resource.getCodeLanguageIn());
         this.mText = "";
         if (!getmCodeOCR().isEmpty()) {
             this.isOcrTextAPI = Arrays.asList(constant_Resource.getOcrTextAPI()).contains(this.mLanguageName);
         }
-        this.isSpeechRecognition = !Arrays.asList(constant_Resource.getNovoice()).contains(this.mLanguageName);
+        this.isSpeechRecognition = !Arrays.asList(constant_Resource.getNoVoice()).contains(this.mLanguageName);
         this.isTextToSpeech = true;
     }
 
@@ -94,18 +94,15 @@ public class TranslateIn extends Translation {
     public void updateNgonNguIn(String str) {
         setmLanguageName(str);
         ConstantResource constant_Resource = new ConstantResource(this.mContext);
-        setmPosition(constant_Resource.getPosition(getmLanguageName(), constant_Resource.getContriesin()));
-        setmCodeDocmau(constant_Resource.getCodelangin()[getmPosition()]);
-//        if (getLanguageY().equals(LanguageY.TAGALOG)) {
-//            setmCodeDocmau("fil");
-//        }
-        setmCodeSpeech(constant_Resource.getFromLanguageName(str, constant_Resource.getContriesin(), constant_Resource.getCodespeech()));
-        setmCodeOCR(constant_Resource.getFromLanguageName(str, constant_Resource.getCameraOcr(), constant_Resource.getCodeocr()));
-        setmCodeLanguage(constant_Resource.getFromLanguageName(str, constant_Resource.getContriesin(), constant_Resource.getCodelangin()));
+        setmPosition(constant_Resource.getPosition(getmLanguageName(), constant_Resource.getCountriesIn()));
+        setmCodeDocmau(constant_Resource.getCodeLanguageIn()[getmPosition()]);
+        setmCodeSpeech(constant_Resource.getFromLanguageName(str, constant_Resource.getCountriesIn(), constant_Resource.getCodeSpeech()));
+        setmCodeOCR(constant_Resource.getFromLanguageName(str, constant_Resource.getCameraOcr(), constant_Resource.getCodeOcr()));
+        setmCodeLanguage(constant_Resource.getFromLanguageName(str, constant_Resource.getCountriesIn(), constant_Resource.getCodeLanguageIn()));
         if (!getmCodeOCR().isEmpty()) {
             this.isOcrTextAPI = Arrays.asList(constant_Resource.getOcrTextAPI()).contains(this.mLanguageName);
         }
-        this.isSpeechRecognition = !Arrays.asList(constant_Resource.getNovoice()).contains(this.mLanguageName);
+        this.isSpeechRecognition = !Arrays.asList(constant_Resource.getNoVoice()).contains(this.mLanguageName);
     }
 
     public LanguageY getLanguageY() {

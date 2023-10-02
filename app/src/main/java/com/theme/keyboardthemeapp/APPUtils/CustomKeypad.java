@@ -9,7 +9,6 @@ import android.app.usage.UsageStatsManager;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
@@ -71,7 +70,6 @@ import com.theme.keyboardthemeapp.R;
 import com.theme.keyboardthemeapp.UI.Activities.ImagePreviewActivity;
 import com.theme.keyboardthemeapp.UI.Activities.SettingActivity;
 import com.theme.keyboardthemeapp.UI.Activities.ThemeActivity;
-import com.theme.keyboardthemeapp.UI.Adapters.FarsiEmojiAdapter;
 import com.theme.keyboardthemeapp.Translate.TranslateIn;
 
 import java.io.BufferedReader;
@@ -121,7 +119,6 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
     public static LinearLayout LlLanguageChange;
     public static Drawable DrawableSpeak;
     public static CountDownTimer CountDownTimer;
-    public static FarsiEmojiAdapter farsiEmojiAdapter = null;
     public Runnable RunnableAnimateDown = new AnimatedDownImg();
     public Runnable RunnableAnimateUp = new AnimatedUpImg();
     public static ImageView IvBlackTransparent;
@@ -177,7 +174,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
     public static SpeechRecognizer speechRecognizer;
     public static Toast toast;
     public static Handler UpHandler = new Handler();
-    public static SetVibrateCompact vibrateCompact;
+    public static SetVibrateComp vibrateCompact;
     public static LinearLayout LlMainMenu;
     public static boolean ManageClick = false;
     public static boolean NewCapital = false;
@@ -287,7 +284,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 InitDialogInstallTranslate().show();
             } else if (!isOnline()) {
                 showToast(getResources().getString(R.string.No_internet), 1);
-            } else if (Arrays.asList(constantResource.getNovoice()).contains(constantResource.getContriesin()[mTranslateIn.getmPosition()])) {
+            } else if (Arrays.asList(constantResource.getNoVoice()).contains(constantResource.getCountriesIn()[mTranslateIn.getmPosition()])) {
                 showToast("Opps! " + mTranslateIn.getmLanguageName() + " language was not supported Speech to Text", 1);
             } else {
                 try {
@@ -328,14 +325,14 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                     }
                     Toast.makeText(getApplicationContext(), "Word Added Successfully", Toast.LENGTH_LONG).show();
                     StrWord = "";
-                    getGujarati(StrWord);
+                    getWord(StrWord);
                 } else if (resultList.contains("Touch to add")) {
                     if (!Constants.SuggestionWordsList.contains(StrWord.toLowerCase())) {
                         Constants.SuggestionWordsList.add(StrWord.toLowerCase());
                     }
                     Toast.makeText(getApplicationContext(), "Word Added Successfully", Toast.LENGTH_LONG).show();
                     StrWord = "";
-                    getGujarati(StrWord);
+                    getWord(StrWord);
                 } else {
                     CharSequence charSequence2 = null;
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.CUPCAKE) {
@@ -354,16 +351,17 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                     }
                     getCurrentInputConnection().commitText(str, 0);
                     StrWord = "";
-                    getGujarati(StrWord);
+                    getWord(StrWord);
                 }
                 LlHintWord.setVisibility(View.GONE);
                 resultList = null;
                 resultList = new ArrayList<>();
-                HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.hint_item_view, resultList));
+                HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.layout_hint_item_view, resultList));
                 LlMainMenu.setVisibility(View.VISIBLE);
             }
         }
     };
+    private RelativeLayout otherContents;
 
     public void onText(CharSequence charSequence) {
     }
@@ -535,11 +533,11 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
             DrawableDropArrow.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
         }
 
-        DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+        DictionaryTask dictionaryTask = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
         if (Constants.isUpHoneycombVersion) {
-            dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+            dictionaryTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         } else {
-            dictionaryLoadTask.execute();
+            dictionaryTask.execute();
         }
         switch (selectedTheme) {
             case 0:
@@ -567,22 +565,22 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 LlLanguageChange.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+                            DictionaryTask dictionaryTask = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
                             if (Constants.isUpHoneycombVersion) {
-                                dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                                dictionaryTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                             } else {
-                                dictionaryLoadTask.execute();
+                                dictionaryTask.execute();
                             }
 
                             new MySharePref(getApplicationContext()).putPrefBoolean(MySharePref.TYPING, false);
                             LlLanguageChange.setBackgroundResource(R.drawable.disable);
                             return;
                         }
-                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+                        DictionaryTask dictionaryTask2 = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
                         if (Constants.isUpHoneycombVersion) {
-                            dictionaryLoadTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                            dictionaryTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                         } else {
-                            dictionaryLoadTask2.execute();
+                            dictionaryTask2.execute();
                         }
                         new MySharePref(getApplicationContext()).putPrefBoolean(MySharePref.TYPING, true);
                         LlLanguageChange.setBackgroundResource(R.drawable.enable);
@@ -590,7 +588,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 });
                 linearLayout.setOnClickListener(ChangeThemeListern);
                 hideProgressDialog();
-                String str = constantPreferences.getmContryNameIn();
+                String str = constantPreferences.getCountryNameIn();
                 StrCountryName = str;
                 mTranslateIn = new TranslateIn(this, str);
                 LlSpeakLay = views.findViewById(R.id.speaklay);
@@ -630,7 +628,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 }
             case 1:
                 CapsLock = false;
-                View inflate2 = getLayoutInflater().inflate(R.layout.keypad1, null);
+                View inflate2 = getLayoutInflater().inflate(R.layout.layout_keypad1, null);
                 views = inflate2;
                 LlHeader = inflate2.findViewById(R.id.rl_headertext);
                 RlSubContents = views.findViewById(R.id.contents);
@@ -651,28 +649,28 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 LlLanguageChange.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+                            DictionaryTask dictionaryTask = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
                             if (Constants.isUpHoneycombVersion) {
-                                dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                                dictionaryTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                             } else {
-                                dictionaryLoadTask.execute();
+                                dictionaryTask.execute();
                             }
                             new MySharePref(getApplicationContext()).putPrefBoolean(MySharePref.TYPING, false);
                             LlLanguageChange.setBackgroundResource(R.drawable.disable);
                             return;
                         }
-                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+                        DictionaryTask dictionaryTask2 = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
                         if (Constants.isUpHoneycombVersion) {
-                            dictionaryLoadTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                            dictionaryTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                         } else {
-                            dictionaryLoadTask2.execute();
+                            dictionaryTask2.execute();
                         }
                         new MySharePref(getApplicationContext()).putPrefBoolean(MySharePref.TYPING, true);
                         LlLanguageChange.setBackgroundResource(R.drawable.enable);
                     }
                 });
                 hideProgressDialog();
-                String str2 = constantPreferences.getmContryNameIn();
+                String str2 = constantPreferences.getCountryNameIn();
                 StrCountryName = str2;
                 mTranslateIn = new TranslateIn(this, str2);
                 LlSpeakLay = views.findViewById(R.id.speaklay);
@@ -713,7 +711,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 }
             case 2:
                 CapsLock = false;
-                View inflate3 = getLayoutInflater().inflate(R.layout.keypad2, null);
+                View inflate3 = getLayoutInflater().inflate(R.layout.layout_keypad2, null);
                 views = inflate3;
                 LlHeader = inflate3.findViewById(R.id.rl_headertext);
                 RlSubContents = views.findViewById(R.id.contents);
@@ -733,21 +731,21 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 LlLanguageChange.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+                            DictionaryTask dictionaryTask = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
                             if (Constants.isUpHoneycombVersion) {
-                                dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                                dictionaryTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                             } else {
-                                dictionaryLoadTask.execute();
+                                dictionaryTask.execute();
                             }
                             new MySharePref(getApplicationContext()).putPrefBoolean(MySharePref.TYPING, false);
                             LlLanguageChange.setBackgroundResource(R.drawable.disable);
                             return;
                         }
-                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+                        DictionaryTask dictionaryTask2 = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
                         if (Constants.isUpHoneycombVersion) {
-                            dictionaryLoadTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                            dictionaryTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                         } else {
-                            dictionaryLoadTask2.execute();
+                            dictionaryTask2.execute();
                         }
                         new MySharePref(getApplicationContext()).putPrefBoolean(MySharePref.TYPING, true);
                         LlLanguageChange.setBackgroundResource(R.drawable.enable);
@@ -755,7 +753,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 });
                 customKeyboardView = views.findViewById(R.id.keyboard);
                 hideProgressDialog();
-                String str3 = constantPreferences.getmContryNameIn();
+                String str3 = constantPreferences.getCountryNameIn();
                 StrCountryName = str3;
                 mTranslateIn = new TranslateIn(this, str3);
                 LlSpeakLay = views.findViewById(R.id.speaklay);
@@ -796,7 +794,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 }
             case 3:
                 CapsLock = false;
-                View inflate4 = getLayoutInflater().inflate(R.layout.keypad3, null);
+                View inflate4 = getLayoutInflater().inflate(R.layout.layout_keypad3, null);
                 views = inflate4;
                 LlHeader = inflate4.findViewById(R.id.rl_headertext);
                 RlSubContents = views.findViewById(R.id.contents);
@@ -816,21 +814,21 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 LlLanguageChange.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+                            DictionaryTask dictionaryTask = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
                             if (Constants.isUpHoneycombVersion) {
-                                dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                                dictionaryTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                             } else {
-                                dictionaryLoadTask.execute();
+                                dictionaryTask.execute();
                             }
                             new MySharePref(getApplicationContext()).putPrefBoolean(MySharePref.TYPING, false);
                             LlLanguageChange.setBackgroundResource(R.drawable.disable);
                             return;
                         }
-                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+                        DictionaryTask dictionaryTask2 = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
                         if (Constants.isUpHoneycombVersion) {
-                            dictionaryLoadTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                            dictionaryTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                         } else {
-                            dictionaryLoadTask2.execute();
+                            dictionaryTask2.execute();
                         }
                         new MySharePref(getApplicationContext()).putPrefBoolean(MySharePref.TYPING, true);
                         LlLanguageChange.setBackgroundResource(R.drawable.enable);
@@ -838,7 +836,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 });
                 customKeyboardView = views.findViewById(R.id.keyboard);
                 hideProgressDialog();
-                String str4 = constantPreferences.getmContryNameIn();
+                String str4 = constantPreferences.getCountryNameIn();
                 StrCountryName = str4;
                 mTranslateIn = new TranslateIn(this, str4);
                 LlSpeakLay = views.findViewById(R.id.speaklay);
@@ -879,7 +877,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 }
             case 4:
                 CapsLock = false;
-                View inflate5 = getLayoutInflater().inflate(R.layout.keypad4, null);
+                View inflate5 = getLayoutInflater().inflate(R.layout.layout_keypad4, null);
                 views = inflate5;
                 LlHeader = inflate5.findViewById(R.id.rl_headertext);
                 RlSubContents = views.findViewById(R.id.contents);
@@ -899,21 +897,21 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 LlLanguageChange.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+                            DictionaryTask dictionaryTask = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
                             if (Constants.isUpHoneycombVersion) {
-                                dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                                dictionaryTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                             } else {
-                                dictionaryLoadTask.execute();
+                                dictionaryTask.execute();
                             }
                             new MySharePref(getApplicationContext()).putPrefBoolean(MySharePref.TYPING, false);
                             LlLanguageChange.setBackgroundResource(R.drawable.disable);
                             return;
                         }
-                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+                        DictionaryTask dictionaryTask2 = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
                         if (Constants.isUpHoneycombVersion) {
-                            dictionaryLoadTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                            dictionaryTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                         } else {
-                            dictionaryLoadTask2.execute();
+                            dictionaryTask2.execute();
                         }
                         new MySharePref(getApplicationContext()).putPrefBoolean(MySharePref.TYPING, true);
                         LlLanguageChange.setBackgroundResource(R.drawable.enable);
@@ -921,7 +919,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 });
                 customKeyboardView = views.findViewById(R.id.keyboard);
                 hideProgressDialog();
-                String str5 = constantPreferences.getmContryNameIn();
+                String str5 = constantPreferences.getCountryNameIn();
                 StrCountryName = str5;
                 mTranslateIn = new TranslateIn(this, str5);
                 LlSpeakLay = views.findViewById(R.id.speaklay);
@@ -962,7 +960,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 }
             case 5:
                 CapsLock = false;
-                View inflate6 = getLayoutInflater().inflate(R.layout.keypad5, null);
+                View inflate6 = getLayoutInflater().inflate(R.layout.layout_keypad5, null);
                 views = inflate6;
                 LlHeader = inflate6.findViewById(R.id.rl_headertext);
                 RlSubContents = views.findViewById(R.id.contents);
@@ -982,21 +980,21 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 LlLanguageChange.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+                            DictionaryTask dictionaryTask = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
                             if (Constants.isUpHoneycombVersion) {
-                                dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                                dictionaryTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                             } else {
-                                dictionaryLoadTask.execute();
+                                dictionaryTask.execute();
                             }
                             new MySharePref(getApplicationContext()).putPrefBoolean(MySharePref.TYPING, false);
                             LlLanguageChange.setBackgroundResource(R.drawable.disable);
                             return;
                         }
-                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+                        DictionaryTask dictionaryTask2 = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
                         if (Constants.isUpHoneycombVersion) {
-                            dictionaryLoadTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                            dictionaryTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                         } else {
-                            dictionaryLoadTask2.execute();
+                            dictionaryTask2.execute();
                         }
                         new MySharePref(getApplicationContext()).putPrefBoolean(MySharePref.TYPING, true);
                         LlLanguageChange.setBackgroundResource(R.drawable.enable);
@@ -1004,7 +1002,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 });
                 customKeyboardView = views.findViewById(R.id.keyboard);
                 hideProgressDialog();
-                String str6 = constantPreferences.getmContryNameIn();
+                String str6 = constantPreferences.getCountryNameIn();
                 StrCountryName = str6;
                 mTranslateIn = new TranslateIn(this, str6);
                 LlSpeakLay = views.findViewById(R.id.speaklay);
@@ -1045,7 +1043,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 }
             case 6:
                 CapsLock = false;
-                View inflate7 = getLayoutInflater().inflate(R.layout.keypad6, null);
+                View inflate7 = getLayoutInflater().inflate(R.layout.layout_keypad6, null);
                 views = inflate7;
                 LlHeader = inflate7.findViewById(R.id.rl_headertext);
                 RlSubContents = views.findViewById(R.id.contents);
@@ -1065,21 +1063,21 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 LlLanguageChange.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+                            DictionaryTask dictionaryTask = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
                             if (Constants.isUpHoneycombVersion) {
-                                dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                                dictionaryTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                             } else {
-                                dictionaryLoadTask.execute();
+                                dictionaryTask.execute();
                             }
                             new MySharePref(getApplicationContext()).putPrefBoolean(MySharePref.TYPING, false);
                             LlLanguageChange.setBackgroundResource(R.drawable.disable);
                             return;
                         }
-                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+                        DictionaryTask dictionaryTask2 = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
                         if (Constants.isUpHoneycombVersion) {
-                            dictionaryLoadTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                            dictionaryTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                         } else {
-                            dictionaryLoadTask2.execute();
+                            dictionaryTask2.execute();
                         }
                         new MySharePref(getApplicationContext()).putPrefBoolean(MySharePref.TYPING, true);
                         LlLanguageChange.setBackgroundResource(R.drawable.enable);
@@ -1087,7 +1085,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 });
                 customKeyboardView = views.findViewById(R.id.keyboard);
                 hideProgressDialog();
-                String str7 = constantPreferences.getmContryNameIn();
+                String str7 = constantPreferences.getCountryNameIn();
                 StrCountryName = str7;
                 mTranslateIn = new TranslateIn(this, str7);
                 LlSpeakLay = views.findViewById(R.id.speaklay);
@@ -1128,7 +1126,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 }
             case 7:
                 CapsLock = false;
-                View inflate8 = getLayoutInflater().inflate(R.layout.keypad7, null);
+                View inflate8 = getLayoutInflater().inflate(R.layout.layout_keypad7, null);
                 views = inflate8;
                 LlHeader = inflate8.findViewById(R.id.rl_headertext);
                 RlSubContents = views.findViewById(R.id.contents);
@@ -1149,21 +1147,21 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 LlLanguageChange.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+                            DictionaryTask dictionaryTask = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
                             if (Constants.isUpHoneycombVersion) {
-                                dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                                dictionaryTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                             } else {
-                                dictionaryLoadTask.execute();
+                                dictionaryTask.execute();
                             }
                             new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true);
                             LlLanguageChange.setBackgroundResource(R.drawable.disable);
                             return;
                         }
-                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+                        DictionaryTask dictionaryTask2 = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
                         if (Constants.isUpHoneycombVersion) {
-                            dictionaryLoadTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                            dictionaryTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                         } else {
-                            dictionaryLoadTask2.execute();
+                            dictionaryTask2.execute();
                         }
                         new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true);
                         LlLanguageChange.setBackgroundResource(R.drawable.enable);
@@ -1171,7 +1169,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 });
                 linearLayout2.setOnClickListener(ChangeThemeListern);
                 hideProgressDialog();
-                String str8 = constantPreferences.getmContryNameIn();
+                String str8 = constantPreferences.getCountryNameIn();
                 StrCountryName = str8;
                 mTranslateIn = new TranslateIn(this, str8);
                 LlSpeakLay = views.findViewById(R.id.speaklay);
@@ -1212,7 +1210,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 }
             case 8:
                 CapsLock = false;
-                View inflate9 = getLayoutInflater().inflate(R.layout.keypad8, null);
+                View inflate9 = getLayoutInflater().inflate(R.layout.layout_keypad8, null);
                 views = inflate9;
                 LlHeader = inflate9.findViewById(R.id.rl_headertext);
                 RlSubContents = views.findViewById(R.id.contents);
@@ -1233,21 +1231,21 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 LlLanguageChange.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+                            DictionaryTask dictionaryTask = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
                             if (Constants.isUpHoneycombVersion) {
-                                dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                                dictionaryTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                             } else {
-                                dictionaryLoadTask.execute();
+                                dictionaryTask.execute();
                             }
                             new MySharePref(getApplicationContext()).putPrefBoolean(MySharePref.TYPING, false);
                             LlLanguageChange.setBackgroundResource(R.drawable.disable);
                             return;
                         }
-                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+                        DictionaryTask dictionaryTask2 = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
                         if (Constants.isUpHoneycombVersion) {
-                            dictionaryLoadTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                            dictionaryTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                         } else {
-                            dictionaryLoadTask2.execute();
+                            dictionaryTask2.execute();
                         }
                         new MySharePref(getApplicationContext()).putPrefBoolean(MySharePref.TYPING, true);
                         LlLanguageChange.setBackgroundResource(R.drawable.enable);
@@ -1255,7 +1253,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 });
                 linearLayout3.setOnClickListener(ChangeThemeListern);
                 hideProgressDialog();
-                String str9 = constantPreferences.getmContryNameIn();
+                String str9 = constantPreferences.getCountryNameIn();
                 StrCountryName = str9;
                 mTranslateIn = new TranslateIn(this, str9);
                 LlSpeakLay = views.findViewById(R.id.speaklay);
@@ -1296,7 +1294,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 }
             case 9:
                 CapsLock = false;
-                View inflate10 = getLayoutInflater().inflate(R.layout.keypad9, null);
+                View inflate10 = getLayoutInflater().inflate(R.layout.layout_keypad9, null);
                 views = inflate10;
                 LlHeader = inflate10.findViewById(R.id.rl_headertext);
                 RlSubContents = views.findViewById(R.id.contents);
@@ -1317,21 +1315,21 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 LlLanguageChange.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+                            DictionaryTask dictionaryTask = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
                             if (Constants.isUpHoneycombVersion) {
-                                dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                                dictionaryTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                             } else {
-                                dictionaryLoadTask.execute();
+                                dictionaryTask.execute();
                             }
                             new MySharePref(getApplicationContext()).putPrefBoolean(MySharePref.TYPING, false);
                             LlLanguageChange.setBackgroundResource(R.drawable.disable);
                             return;
                         }
-                        DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+                        DictionaryTask dictionaryTask2 = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
                         if (Constants.isUpHoneycombVersion) {
-                            dictionaryLoadTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                            dictionaryTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                         } else {
-                            dictionaryLoadTask2.execute();
+                            dictionaryTask2.execute();
                         }
                         new MySharePref(getApplicationContext()).putPrefBoolean(MySharePref.TYPING, true);
                         LlLanguageChange.setBackgroundResource(R.drawable.enable);
@@ -1339,7 +1337,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 });
                 linearLayout4.setOnClickListener(ChangeThemeListern);
                 hideProgressDialog();
-                String str10 = constantPreferences.getmContryNameIn();
+                String str10 = constantPreferences.getCountryNameIn();
                 StrCountryName = str10;
                 mTranslateIn = new TranslateIn(this, str10);
                 LlSpeakLay = views.findViewById(R.id.speaklay);
@@ -1379,7 +1377,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                     break;
                 }
         }
-        if (i > 9) {
+        if (selectedTheme > 9) {
             CapsLock = false;
             View inflate11 = getLayoutInflater().inflate(R.layout.layout_keypad, null);
             views = inflate11;
@@ -1403,21 +1401,21 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
             LlLanguageChange.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                        DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+                        DictionaryTask dictionaryTask = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
                         if (Constants.isUpHoneycombVersion) {
-                            dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                            dictionaryTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                         } else {
-                            dictionaryLoadTask.execute();
+                            dictionaryTask.execute();
                         }
                         new MySharePref(getApplicationContext()).putPrefBoolean(MySharePref.TYPING, false);
                         LlLanguageChange.setBackgroundResource(R.drawable.disable);
                         return;
                     }
-                    DictionaryLoadTask dictionaryLoadTask2 = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+                    DictionaryTask dictionaryTask2 = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
                     if (Constants.isUpHoneycombVersion) {
-                        dictionaryLoadTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                        dictionaryTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                     } else {
-                        dictionaryLoadTask2.execute();
+                        dictionaryTask2.execute();
                     }
                     new MySharePref(getApplicationContext()).putPrefBoolean(MySharePref.TYPING, true);
                     LlLanguageChange.setBackgroundResource(R.drawable.enable);
@@ -1425,7 +1423,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
             });
             linearLayout5.setOnClickListener(ChangeThemeListern);
             hideProgressDialog();
-            String str11 = constantPreferences.getmContryNameIn();
+            String str11 = constantPreferences.getCountryNameIn();
             StrCountryName = str11;
             mTranslateIn = new TranslateIn(this, str11);
             LlSpeakLay = views.findViewById(R.id.speaklay);
@@ -1464,9 +1462,9 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
             }
         }
         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.SAVE_IMAGE, false)) {
-            if (i == 1) {
+            if (selectedTheme == 1) {
                 RlSubContents.setBackgroundResource(R.drawable.trans2);
-            } else if (i == 2) {
+            } else if (selectedTheme == 2) {
                 RlSubContents.setBackgroundResource(R.drawable.trans3);
             }
         }
@@ -1490,9 +1488,8 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 key.icon = DrawableEnter;
             }
         }
-        CustomKeyboardView customKeyboardView = customKeyboardView;
         if (customKeyboardView != null) {
-            customKeyboardView.dismissLangPopup();
+            customKeyboardView.DismissLanguagePopup();
         }
         customKeyboardView.setOnlineKeyboard(ninePatchDrawable, ninePatchDrawablePresed, TextColorCode, ninePatchDrawableSpace, ninePatchDrawableShiftOff, ninePatchDrawableShiftOn, ninePatchDrawableDelete, ninePatchDrawableDone, DrawablePopUp);
         customKeyboardView.setBackgroundDrawable(new BitmapDrawable());
@@ -1703,9 +1700,9 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
     }
 
     @SuppressLint("ResourceType")
-    public void onKey(int i, int[] iArr) {
-        final int i2 = i;
-        System.out.println("----- - - -i2i2i2i2 : " + i2);
+    public void onKey(int code, int[] iArr) {
+        final int codes = code;
+        System.out.println("----- - - -i2i2i2i2 : " + codes);
         final int[] iArr2 = iArr;
         final InputConnection currentInputConnection = getCurrentInputConnection();
         if (Constants.ChangeLanguage == 1) {
@@ -1725,13 +1722,13 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
             }
             customKeyboardView.invalidateAllKeys();
             Constants.DeleteValFlag = false;
-        } else if (i2 == -978903) {
+        } else if (codes == -978903) {
             Constants.wordExist = true;
             CapsOn();
             CapsLock = true;
             CapsOnOffFlag = true;
             NewCapital = true;
-        } else if (i2 == -6003) {
+        } else if (codes == -6003) {
             Constants.wordExist = true;
             CheckFlag = true;
             MyKeypadDataView myKeypadDataView = new MyKeypadDataView(this, AllNumericQwerty[Constants.ChangeLanguage], keyboardHeight, 1);
@@ -1759,11 +1756,10 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
             }
             customKeyboardView.invalidateAllKeys();
             CapsLock = false;
-        } else if (i2 == -5000) {
-            CustomKeyboardView customKeyboardView = customKeyboardView;
+        } else if (codes == -5000) {
             if (customKeyboardView != null) {
-                customKeyboardView.dismissLangPopup();
-                customKeyboardView.dismissPreviewPopup();
+                customKeyboardView.DismissLanguagePopup();
+                customKeyboardView.DismissPreviewPopup();
             }
             if (!ManageClick) {
                 Constants.wordExist = true;
@@ -1771,7 +1767,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                     LlHintWord.setVisibility(View.GONE);
                     resultList = null;
                     resultList = new ArrayList<>();
-                    HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.hint_item_view, resultList));
+                    HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.layout_hint_item_view, resultList));
                     LlMainMenu.setVisibility(View.VISIBLE);
                 }
                 LlHeader.setVisibility(View.VISIBLE);
@@ -1788,7 +1784,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 setKeyboardData();
             }
             ManageClick = !ManageClick;
-        } else if (i2 == -1763) {
+        } else if (codes == -1763) {
             Constants.wordExist = true;
             CheckFlag = true;
             MyKeypadDataView myKeypadDataView2 = new MyKeypadDataView(this, R.xml.numeric_shift_querty, keyboardHeight, 1);
@@ -1816,7 +1812,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
             }
             customKeyboardView.invalidateAllKeys();
             CapsLock = false;
-        } else if (i2 == -1) {
+        } else if (codes == -1) {
             Constants.wordExist = true;
             NewCapital = false;
             CapsLock = !CapsLock;
@@ -1850,12 +1846,12 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 CapsOnOffFlag = true;
                 customKeyboardView.invalidateAllKeys();
             }
-        } else if (i2 == 66) {
+        } else if (codes == 66) {
         } else {
-            if (i2 == -2831) {
+            if (codes == -2831) {
                 Constants.wordExist = true;
                 setKeyboardData();
-            } else if (i2 == -2830) {
+            } else if (codes == -2830) {
                 Constants.wordExist = true;
                 CheckFlag = false;
                 MyKeypadDataView myKeypadDataView3 = new MyKeypadDataView(this, DefaultQWERTY[Constants.ChangeLanguage], keyboardHeight, 0);
@@ -1901,16 +1897,16 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                         SelectQuertyShiftOn();
                     }
                 }
-            } else if (i2 == -5) {
+            } else if (codes == -5) {
                 CustomKeyboardView customKeyboardView2 = customKeyboardView;
                 if (customKeyboardView2 != null) {
-                    customKeyboardView2.dismissPreviewPopup();
+                    customKeyboardView2.DismissPreviewPopup();
                 }
                 if (LlMainMenu.getVisibility() == View.GONE) {
                     LlHintWord.setVisibility(View.GONE);
                     resultList = null;
                     resultList = new ArrayList<>();
-                    HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.hint_item_view, resultList));
+                    HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.layout_hint_item_view, resultList));
                     LlMainMenu.setVisibility(View.VISIBLE);
                 }
                 Constants.wordExist = true;
@@ -1939,7 +1935,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                     }
                     new Handler().postDelayed(new Runnable() {
                         public void run() {
-                            showSuggestion(currentInputConnection, i2, iArr2);
+                            showSuggestion(currentInputConnection, codes, iArr2);
                         }
                     }, 500);
                 } catch (Exception e) {
@@ -1957,13 +1953,13 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                     }
                 }
 
-            } else if (i2 == -4) {
+            } else if (codes == -4) {
                 Constants.wordExist = true;
                 if (LlMainMenu.getVisibility() == View.GONE) {
                     LlHintWord.setVisibility(View.GONE);
                     resultList = null;
                     resultList = new ArrayList<>();
-                    HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.hint_item_view, resultList));
+                    HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.layout_hint_item_view, resultList));
                     LlMainMenu.setVisibility(View.VISIBLE);
                 }
                 int i5 = getCurrentInputEditorInfo().imeOptions & 1073742079;
@@ -1987,10 +1983,10 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 } else {
                     currentInputConnection.performEditorAction(6);
                 }
-            } else if (i2 != -97886) {
-                char c = (char) i2;
+            } else if (codes != -97886) {
+                char c = (char) codes;
                 if (Constants.ChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                    if (Counter == 0 && i2 == 32) {
+                    if (Counter == 0 && codes == 32) {
                         String str = "" + currentInputConnection.getTextBeforeCursor(Integer.MAX_VALUE, 0);
                         FinalPatternWord = str;
                         String substring = str.substring(str.lastIndexOf(" ") + 1);
@@ -2051,7 +2047,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                         Counter++;
                         new Handler().postDelayed(new Runnable() {
                             public void run() {
-                                showSuggestion(currentInputConnection, i2, iArr2);
+                                showSuggestion(currentInputConnection, codes, iArr2);
                             }
                         }, 500);
                     } else {
@@ -2060,15 +2056,15 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 }
                 if (!Character.isLetter(c) || !CapsLock) {
                     currentInputConnection.commitText(String.valueOf(c), 1);
-                    if (i2 == 46 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true) && TempShowSuggestion && Constants.FlagChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
+                    if (codes == 46 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true) && TempShowSuggestion && Constants.FlagChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
                         CapsLock = true;
                         CapsOnOffFlag = false;
                         customKeyboardView.setShifted(true);
                     }
                     if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.SUGGESTION, true) && TempShowSuggestion && !Constants.PreviewViewisOpen && !CheckLanguage) {
-                        showSuggestion(currentInputConnection, i2, iArr2);
+                        showSuggestion(currentInputConnection, codes, iArr2);
                     }
-                    if (i2 >= 97 && i2 <= 122) {
+                    if (codes >= 97 && codes <= 122) {
                         CapsOnOffFlag = true;
                         return;
                     }
@@ -2080,7 +2076,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                     onKey(-1, new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1});
                 }
                 if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.SUGGESTION, true) && TempShowSuggestion && !Constants.PreviewViewisOpen && !CheckLanguage) {
-                    showSuggestion(currentInputConnection, i2, iArr2);
+                    showSuggestion(currentInputConnection, codes, iArr2);
                 }
             }
         }
@@ -2119,7 +2115,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                                 LlHintWord.setVisibility(View.GONE);
                                 resultList = null;
                                 resultList = new ArrayList<>();
-                                HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.hint_item_view, resultList));
+                                HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.layout_hint_item_view, resultList));
                                 LlMainMenu.setVisibility(View.VISIBLE);
                             }
                         }
@@ -2132,7 +2128,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                     LlHintWord.setVisibility(View.GONE);
                     resultList = null;
                     resultList = new ArrayList<>();
-                    HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.hint_item_view, resultList));
+                    HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.layout_hint_item_view, resultList));
                     LlMainMenu.setVisibility(View.VISIBLE);
                 }
                 StrWord = new StringBuilder(StrWord).reverse().toString();
@@ -2148,7 +2144,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
         }
     }
 
-    public void getGujarati(String str) {
+    public void getWord(String str) {
         if (!str.equals("")) {
             ArrayList<String> suggestion = Constants.getSuggestion(str);
             resultList = suggestion;
@@ -2184,16 +2180,15 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
 
     public void onFinishInput() {
         Log.d("main", "finish input");
-        CustomKeyboardView customKeyboardView = customKeyboardView;
         if (customKeyboardView != null) {
-            customKeyboardView.dismissLangPopup();
+            customKeyboardView.DismissLanguagePopup();
         }
         super.onFinishInput();
     }
 
     public void onPress(int i) {
         customKeyboardView.setPreviewEnabled(false);
-        customKeyboardView.dismissLangPopup();
+        customKeyboardView.DismissLanguagePopup();
         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.POPUP, true)) {
             customKeyboardView.onPressKey(i);
         }
@@ -2208,23 +2203,22 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
     public void vibrate() {
         long j = KeypressVibrationDuration;
         if (j < 0) {
-            CustomKeyboardView customKeyboardView = customKeyboardView;
             if (customKeyboardView != null) {
                 customKeyboardView.performHapticFeedback(3, 2);
                 return;
             }
             return;
         }
-        SetVibrateCompact setVibrateCompact = vibrateCompact;
-        if (setVibrateCompact != null) {
-            setVibrateCompact.vibrate(j);
+        SetVibrateComp setVibrateComp = vibrateCompact;
+        if (setVibrateComp != null) {
+            setVibrateComp.vibrate(j);
         }
     }
 
     public void onRelease(int i) {
         new Handler().postDelayed(new Runnable() {
             public void run() {
-                customKeyboardView.dismissPreviewPopup();
+                customKeyboardView.DismissPreviewPopup();
             }
         }, 100);
     }
@@ -2243,7 +2237,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
         gridView.setNumColumns(8);
         GridEmoji.setGravity(17);
         GridEmoji.setLayoutParams(new RelativeLayout.LayoutParams(-1, customKeyboardView.getHeight() - TempHeight));
-        GridEmoji.setAdapter(new EmojiAdapter(getApplicationContext(), People.DATA, 0));
+        GridEmoji.setAdapter(new EmojiListAdapter(getApplicationContext(), People.DATA, 0));
     }
 
     public void clickeventfg(int i) {
@@ -2271,7 +2265,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
         GridEmoji = gridView;
         gridView.setNumColumns(8);
         GridEmoji.setLayoutParams(new RelativeLayout.LayoutParams(-1, customKeyboardView.getHeight() - TempHeight));
-        GridEmoji.setAdapter(new EmojiAdapter(getApplicationContext(), Nature.DATA, 1));
+        GridEmoji.setAdapter(new EmojiListAdapter(getApplicationContext(), Nature.DATA, 1));
         RlOtherContent.addView(GridEmoji);
     }
 
@@ -2288,7 +2282,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
         GridEmoji = gridView;
         gridView.setNumColumns(8);
         GridEmoji.setLayoutParams(new RelativeLayout.LayoutParams(-1, customKeyboardView.getHeight() - TempHeight));
-        GridEmoji.setAdapter(new EmojiAdapter(getApplicationContext(), Electr.DATA, 6));
+        GridEmoji.setAdapter(new EmojiListAdapter(getApplicationContext(), Electr.DATA, 6));
         RlOtherContent.addView(GridEmoji);
     }
 
@@ -2305,7 +2299,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
         GridEmoji = gridView;
         gridView.setNumColumns(8);
         GridEmoji.setLayoutParams(new RelativeLayout.LayoutParams(-1, customKeyboardView.getHeight() - TempHeight));
-        GridEmoji.setAdapter(new EmojiAdapter(getApplicationContext(), Sport.DATA, 2));
+        GridEmoji.setAdapter(new EmojiListAdapter(getApplicationContext(), Sport.DATA, 2));
         RlOtherContent.addView(GridEmoji);
     }
 
@@ -2322,7 +2316,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
         GridEmoji = gridView;
         gridView.setNumColumns(8);
         GridEmoji.setLayoutParams(new RelativeLayout.LayoutParams(-1, customKeyboardView.getHeight() - TempHeight));
-        GridEmoji.setAdapter(new EmojiAdapter(getApplicationContext(), Cars.DATA, 3));
+        GridEmoji.setAdapter(new EmojiListAdapter(getApplicationContext(), Cars.DATA, 3));
         RlOtherContent.addView(GridEmoji);
     }
 
@@ -2339,7 +2333,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
         GridEmoji = gridView;
         gridView.setNumColumns(8);
         GridEmoji.setLayoutParams(new RelativeLayout.LayoutParams(-1, customKeyboardView.getHeight() - TempHeight));
-        GridEmoji.setAdapter(new EmojiAdapter(getApplicationContext(), Food.DATA, 5));
+        GridEmoji.setAdapter(new EmojiListAdapter(getApplicationContext(), Food.DATA, 5));
         RlOtherContent.addView(GridEmoji);
     }
 
@@ -2356,7 +2350,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
         GridEmoji = gridView;
         gridView.setNumColumns(8);
         GridEmoji.setLayoutParams(new RelativeLayout.LayoutParams(-1, customKeyboardView.getHeight() - TempHeight));
-        GridEmoji.setAdapter(new EmojiAdapter(getApplicationContext(), Symbols.DATA, 4));
+        GridEmoji.setAdapter(new EmojiListAdapter(getApplicationContext(), Symbols.DATA, 4));
         RlOtherContent.addView(GridEmoji);
     }
 
@@ -2411,7 +2405,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
         BtnArray.add(view.findViewById(R.id.emojis_tab_1_electronics));
         BtnArray.add(view.findViewById(R.id.emojis_tab_1_symbol));
         LlMainMenu = views.findViewById(R.id.main_patti);
-        vibrateCompact = SetVibrateCompact.getInstance(this);
+        vibrateCompact = SetVibrateComp.getInstance(this);
         otherContents = (RelativeLayout) views.findViewById(R.id.otherContents);
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         RlOtherContent = views.findViewById(R.id.otherContents);
@@ -2445,10 +2439,6 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
 
     public void clickeventElectronics(int i) {
         getCurrentInputConnection().commitText(Electr.DATA[i].getEmoji(), 1);
-    }
-
-    public int getResId(String str, Class<?> cls) {
-        return getResources().getIdentifier(str, "drawable", getPackageName());
     }
 
     public void SetKeyBoardLayout1() {
@@ -2576,7 +2566,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
         }
         try {
             LlHeader.setVisibility(View.GONE);
-            customKeyboardView.init();
+            customKeyboardView.InitActions();
             int i = Constants.FlagChangeLanguage;
             if (i == 0) {
                 Constants.ChangeLanguage = 0;
@@ -2595,17 +2585,17 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                     TempShiftOnOff = false;
                 }
             }
-            DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(getApplicationContext(), Constants.FlagChangeLanguage);
+            DictionaryTask dictionaryTask = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
             if (Constants.isUpHoneycombVersion) {
-                dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                dictionaryTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
             } else {
-                dictionaryLoadTask.execute();
+                dictionaryTask.execute();
             }
             new MySharePref(getApplicationContext()).putPrefInt(MySharePref.FLAG_CHANGE_LANGUAGE, Constants.FlagChangeLanguage);
             new MySharePref(getApplicationContext()).putPrefString(MySharePref.LANGUAGE_NAME, Constants.selectedLanguageName.substring(0, 2).toLowerCase());
             new MySharePref(getApplicationContext()).putPrefString(MySharePref.DEFULT_LANGUAGE, Constants.SpeakLanguageName.substring(0, 2).toLowerCase());
             Constants.temp_flag = 0;
-            customKeyboardView.init();
+            customKeyboardView.InitActions();
         } catch (Exception unused) {
             unused.getMessage();
         }
@@ -2637,18 +2627,18 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
             if (split.length >= 1) {
                 String trim = split[split.length - 1].trim();
                 StrWord = trim;
-                getGujarati(trim);
+                getWord(trim);
                 Log.d("TextData", split[split.length - 1]);
                 LlHintWord.setVisibility(View.VISIBLE);
                 LlMainMenu.setVisibility(View.GONE);
             }
             if (textBeforeCursor.toString().length() <= 0) {
                 StrWord = "";
-                getGujarati("");
+                getWord("");
                 LlHintWord.setVisibility(View.GONE);
                 resultList = null;
                 resultList = new ArrayList<>();
-                HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.hint_item_view, resultList));
+                HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.layout_hint_item_view, resultList));
                 LlMainMenu.setVisibility(View.VISIBLE);
             }
         }
@@ -2824,98 +2814,6 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
         }
     }
 
-    /* JADX WARNING: Failed to process nested try/catch */
-    /* JADX WARNING: Missing exception handler attribute for start block: B:10:0x002c */
-    /* JADX WARNING: Removed duplicated region for block: B:28:0x0059 A[SYNTHETIC, Splitter:B:28:0x0059] */
-    /* JADX WARNING: Removed duplicated region for block: B:35:0x0065 A[SYNTHETIC, Splitter:B:35:0x0065] */
-    /* JADX WARNING: Removed duplicated region for block: B:39:0x006c A[SYNTHETIC, Splitter:B:39:0x006c] */
-    /* JADX WARNING: Removed duplicated region for block: B:44:? A[RETURN, SYNTHETIC] */
-    /* Code decompiled incorrectly, please refer to instructions dump. */
-    private void copyAssetssticker(String r6, File r7) {
-        /*
-            r5 = this;
-            android.content.res.AssetManager r0 = r5.getAssets()
-            r1 = 0
-            java.lang.StringBuilder r2 = new java.lang.StringBuilder     // Catch:{ IOException -> 0x003f, all -> 0x003c }
-            r2.<init>()     // Catch:{ IOException -> 0x003f, all -> 0x003c }
-            java.lang.String r3 = "sticker/"
-            r2.append(r3)     // Catch:{ IOException -> 0x003f, all -> 0x003c }
-            r2.append(r6)     // Catch:{ IOException -> 0x003f, all -> 0x003c }
-            java.lang.String r3 = ".png"
-            r2.append(r3)     // Catch:{ IOException -> 0x003f, all -> 0x003c }
-            java.lang.String r2 = r2.toString()     // Catch:{ IOException -> 0x003f, all -> 0x003c }
-            java.io.InputStream r0 = r0.open(r2)     // Catch:{ IOException -> 0x003f, all -> 0x003c }
-            java.io.FileOutputStream r2 = new java.io.FileOutputStream     // Catch:{ IOException -> 0x0038, all -> 0x0034 }
-            r2.<init>(r7)     // Catch:{ IOException -> 0x0038, all -> 0x0034 }
-            r5.copyFile(r0, r2)     // Catch:{ IOException -> 0x0032, all -> 0x0030 }
-            if (r0 == 0) goto L_0x002c
-            r0.close()     // Catch:{ IOException -> 0x002c }
-        L_0x002c:
-            r2.close()     // Catch:{ IOException -> 0x0061 }
-            goto L_0x0061
-        L_0x0030:
-            r6 = move-exception
-            goto L_0x0036
-        L_0x0032:
-            r7 = move-exception
-            goto L_0x003a
-        L_0x0034:
-            r6 = move-exception
-            r2 = r1
-        L_0x0036:
-            r1 = r0
-            goto L_0x0063
-        L_0x0038:
-            r7 = move-exception
-            r2 = r1
-        L_0x003a:
-            r1 = r0
-            goto L_0x0041
-        L_0x003c:
-            r6 = move-exception
-            r2 = r1
-            goto L_0x0063
-        L_0x003f:
-            r7 = move-exception
-            r2 = r1
-        L_0x0041:
-            java.lang.String r0 = "tag"
-            java.lang.StringBuilder r3 = new java.lang.StringBuilder     // Catch:{ all -> 0x0062 }
-            r3.<init>()     // Catch:{ all -> 0x0062 }
-            java.lang.String r4 = "Failed to copy asset file: "
-            r3.append(r4)     // Catch:{ all -> 0x0062 }
-            r3.append(r6)     // Catch:{ all -> 0x0062 }
-            java.lang.String r6 = r3.toString()     // Catch:{ all -> 0x0062 }
-            android.util.Log.e(r0, r6, r7)     // Catch:{ all -> 0x0062 }
-            if (r1 == 0) goto L_0x005e
-            r1.close()     // Catch:{ IOException -> 0x005d }
-            goto L_0x005e
-        L_0x005d:
-        L_0x005e:
-            if (r2 == 0) goto L_0x0061
-            goto L_0x002c
-        L_0x0061:
-            return
-        L_0x0062:
-            r6 = move-exception
-        L_0x0063:
-            if (r1 == 0) goto L_0x006a
-            r1.close()     // Catch:{ IOException -> 0x0069 }
-            goto L_0x006a
-        L_0x0069:
-        L_0x006a:
-            if (r2 == 0) goto L_0x006f
-            r2.close()     // Catch:{ IOException -> 0x006f }
-        L_0x006f:
-            goto L_0x0071
-        L_0x0070:
-            throw r6
-        L_0x0071:
-            goto L_0x0070
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.tech.lang.keyboard.hindikeyboard.HindiKeypad.copyAssetssticker(java.lang.String, java.io.File):void");
-    }
-
     private void saveImageData(String str) {
         Bitmap changeBackground = changeBackground(BitmapFactory.decodeFile(str, new BitmapFactory.Options()));
         FileOutputStream fileOutputStream = null;
@@ -2923,7 +2821,6 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
             try {
                 FileOutputStream fileOutputStream2 = new FileOutputStream(str);
                 try {
-//                        fileOutputStream = 100;
                     changeBackground.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream2);
                     fileOutputStream2.close();
                 } catch (Exception e) {
@@ -2995,7 +2892,6 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
     }
 
     public void showToast(String str, int i) {
-        Toast toast = toast;
         if (toast != null) {
             toast.cancel();
         }
@@ -3009,39 +2905,37 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
         toast.show();
     }
 
-    public void doTheDownAnimation(int i, int i2) {
+    public void doTheDownAnimation(int level) {
         int i3 = Level - 100;
         Level = i3;
         DrawableImage.setLevel(i3);
-        if (Level >= i2) {
+        if (Level >= level) {
             HandlerDown.postDelayed(RunnableAnimateDown, 10);
             return;
         }
         HandlerDown.removeCallbacks(RunnableAnimateDown);
-        FromLevel = i2;
+        FromLevel = level;
     }
 
-    public void doTheUpAnimation(int i, int i2) {
+    public void doTheUpAnimation(int level) {
         int i3 = Level + 100;
         Level = i3;
         DrawableImage.setLevel(i3);
-        if (Level <= i2) {
+        if (Level <= level) {
             UpHandler.postDelayed(RunnableAnimateUp, 10);
             return;
         }
         UpHandler.removeCallbacks(RunnableAnimateUp);
-        FromLevel = i2;
+        FromLevel = level;
     }
 
     public AlertDialog dialogSettingGoogleApp() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Please Enable Micro Permission");
         builder.setTitle("SettingActivity Permissions");
-        builder.setPositiveButton("Go To SettingActivity", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.cancel();
-                goToGoogleSettings();
-            }
+        builder.setPositiveButton("Go To SettingActivity", (dialogInterface, i) -> {
+            dialogInterface.cancel();
+            goToGoogleSettings();
         });
         return builder.create();
     }
@@ -3053,16 +2947,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
         startActivity(intent);
     }
 
-    public void translateWithSpeech() {
-        SpeakToTextBtn.setVisibility(View.VISIBLE);
-        progressBarTalk.setVisibility(View.GONE);
-        if (!mTranslateIn.getmText().equals("")) {
-            showProgressDialog(this, "Translating...");
-            showProgressDialog(this, "Translating...");
-        }
-    }
-
-    public void showProgressDialog(Context context, String str) {
+    public void showProgressDialog() {
         hideProgressDialog();
         dialog.setCancelable(true);
     }
@@ -3183,7 +3068,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
 
         public void onRmsChanged(float f) {
             int i;
-            boolean unused = IsSpeech = true;
+            IsSpeech = true;
             Log.i("speechtotext", "onRmsChanged: " + f);
             if (f < 0.0f) {
                 SpeechErrorCode = SpeechErrorCode - 1;
@@ -3268,7 +3153,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
         }
 
         public void run() {
-            doTheDownAnimation(FromLevel, ToLevel);
+            doTheDownAnimation(ToLevel);
         }
     }
 
@@ -3277,7 +3162,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
         }
 
         public void run() {
-            doTheUpAnimation(FromLevel, ToLevel);
+            doTheUpAnimation(ToLevel);
         }
     }
 }

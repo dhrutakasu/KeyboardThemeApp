@@ -60,7 +60,7 @@ public class CustomKeyboardLanguageAdapter extends BaseAdapter {
     @Override // android.widget.Adapter
     public View getView(final int i, View view, ViewGroup viewGroup) {
         if (view == null) {
-            view = this.infalter.inflate(R.layout.keyboard_lang_item, (ViewGroup) null);
+            view = this.infalter.inflate(R.layout.layout_keyboard_lang_item, (ViewGroup) null);
             ViewHolder viewHolder = new ViewHolder();
             viewHolder.Mediumtext = (TextView) view.findViewById(R.id.LangName);
             view.setTag(viewHolder);
@@ -112,7 +112,6 @@ public class CustomKeyboardLanguageAdapter extends BaseAdapter {
         return view;
     }
 
-    /* loaded from: classes2.dex */
     static class ViewHolder {
         protected TextView Mediumtext;
 
