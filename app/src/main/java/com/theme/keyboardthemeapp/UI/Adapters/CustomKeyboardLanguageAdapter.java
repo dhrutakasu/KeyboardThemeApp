@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import androidx.core.view.ViewCompat;
 
-import com.theme.keyboardthemeapp.APPUtils.DictionaryLoadTask;
+import com.theme.keyboardthemeapp.APPUtils.DictionaryTask;
 import com.theme.keyboardthemeapp.APPUtils.CustomKeyboardView;
 import com.theme.keyboardthemeapp.APPUtils.CustomKeypad;
 import com.theme.keyboardthemeapp.Constants;
@@ -22,7 +22,7 @@ import com.theme.keyboardthemeapp.R;
 
 import java.util.ArrayList;
 
-public class MyCustomKeyboardLangAdapter extends BaseAdapter {
+public class CustomKeyboardLanguageAdapter extends BaseAdapter {
     Context c;
     SharedPreferences.Editor edit;
     Typeface fontstyle;
@@ -36,7 +36,7 @@ public class MyCustomKeyboardLangAdapter extends BaseAdapter {
         return i;
     }
 
-    public MyCustomKeyboardLangAdapter(Context context, ArrayList<String> arrayList, CustomKeyboardView customKeyboardView) {
+    public CustomKeyboardLanguageAdapter(Context context, ArrayList<String> arrayList, CustomKeyboardView customKeyboardView) {
         this.c = context;
         this.list = arrayList;
         this.kv = customKeyboardView;
@@ -84,7 +84,7 @@ public class MyCustomKeyboardLangAdapter extends BaseAdapter {
             int action = motionEvent.getAction();
             if (action == 0) {
                 viewHolder2.Mediumtext.setTextColor(-16776961);
-                viewHolder2.Mediumtext.setTextSize(Constants.pxFromDp(MyCustomKeyboardLangAdapter.this.c, 8.0f));
+                viewHolder2.Mediumtext.setTextSize(Constants.pxFromDp(CustomKeyboardLanguageAdapter.this.c, 8.0f));
             } else if (action == 1) {
                 new MySharePref(c.getApplicationContext()).putPrefInt(MySharePref.FONT_STYLE, new MySharePref(c.getApplicationContext()).getPrefInt(MySharePref.FONT_STYLE, Constants.FontStyle));
                 new MySharePref(c.getApplicationContext()).putPrefInt(MySharePref.BACKGROUND_FONT_STYLE, new MySharePref(c.getApplicationContext()).getPrefInt(MySharePref.BACKGROUND_FONT_STYLE, 0));
@@ -94,18 +94,18 @@ public class MyCustomKeyboardLangAdapter extends BaseAdapter {
                 Constants.FlagChangeLanguage = i;
                 Constants.selectedLanguageName = list.get(i);
                 try {
-                    DictionaryLoadTask dictionaryLoadTask = new DictionaryLoadTask(MyCustomKeyboardLangAdapter.this.c, Constants.ChangeLanguage);
+                    DictionaryTask dictionaryTask = new DictionaryTask(CustomKeyboardLanguageAdapter.this.c, Constants.ChangeLanguage);
                     if (Constants.isUpHoneycombVersion) {
-                        dictionaryLoadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
+                        dictionaryTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new String[0]);
                     } else {
-                        dictionaryLoadTask.execute(new String[0]);
+                        dictionaryTask.execute(new String[0]);
                     }
                     Constants.DictionaryWordLoad = true;
                 } catch (Exception unused) {
                 }
                 CustomKeypad.setKeyboardView();
-                MyCustomKeyboardLangAdapter.this.kv.setPopup();
-                MyCustomKeyboardLangAdapter.this.kv.dismissLangPopup();
+                CustomKeyboardLanguageAdapter.this.kv.SetPopupVIew();
+                CustomKeyboardLanguageAdapter.this.kv.DismissLanguagePopup();
             }
             return true;
         });

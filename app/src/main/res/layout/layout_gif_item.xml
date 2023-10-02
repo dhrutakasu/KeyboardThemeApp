@@ -7,14 +7,14 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/lybg"
+        android:id="@+id/RlStickerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="1dp">
 
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/IvSticker"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:focusable="false"
