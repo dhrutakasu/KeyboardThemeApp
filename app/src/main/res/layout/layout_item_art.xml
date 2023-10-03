@@ -21,6 +21,7 @@
             android:layout_height="match_parent"
             android:ellipsize="end"
             android:gravity="center_vertical"
+            android:fontFamily="@font/monmedium"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:textColor="@color/black"

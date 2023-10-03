@@ -1,4 +1,4 @@
-package com.theme.keyboardthemeapp.APPUtils;
+package com.theme.keyboardthemeapp.Task;
 
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -114,7 +114,7 @@ public class ThemeDownloader extends AsyncTask<String, Void, Void> {
                 InputStream inputStream;
                 OutputStream outputStream;
                 fileName = ThemeArray.get(Pos).getName().substring(ThemeArray.get(Pos).getName().lastIndexOf("/") + 1);
-                String input = "background/" + "bg_" + paths;
+                String input = "ThemeBgList/" + "bg_" + paths;
                 inputStream = assetManager.open(input);
                 File imageFile = new File(newFolder, "bg_" + fileName);
                 outputStream = new FileOutputStream(imageFile);

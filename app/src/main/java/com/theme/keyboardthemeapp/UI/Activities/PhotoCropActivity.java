@@ -3,7 +3,6 @@ package com.theme.keyboardthemeapp.UI.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -15,7 +14,6 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.Cropper.CropImageView;
 import com.theme.keyboardthemeapp.MySharePref;
@@ -59,7 +57,7 @@ public class PhotoCropActivity extends AppCompatActivity implements View.OnClick
     private void initActions() {
         ImgBack.setVisibility(View.VISIBLE);
         ImgDone.setVisibility(View.VISIBLE);
-        TxtTitle.setText(R.string.crop);
+        TxtTitle.setText(R.string.str_crop);
 
         Display window = ((WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         DisplayMetrics metrics = new DisplayMetrics();

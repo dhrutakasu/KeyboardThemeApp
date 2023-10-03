@@ -30,7 +30,7 @@ import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
-import com.theme.keyboardthemeapp.APPUtils.DictionaryTask;
+import com.theme.keyboardthemeapp.Task.DictionaryTask;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.Dialogs.OverlayPermissionDialog;
 import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
@@ -237,7 +237,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void GetQuoteResponse() {
         if (Constants.isNetworkAvailable(context)) {
             LayoutProgress.setVisibility(View.VISIBLE);
-            RetrofitInterface downloadService = RetrofitInstance.createService(RetrofitInterface.class, Constants.BASE_URL);
+            RetrofitInterface downloadService = RetrofitInstance.createService(RetrofitInterface.class, Constants.BASE_URL1);
             Call<QuoteCategoryModel> call = downloadService.getQuoteCategoryData(Constants.QUOTES_CATEGORY_URL);
             call.enqueue(new Callback<QuoteCategoryModel>() {
                 @Override

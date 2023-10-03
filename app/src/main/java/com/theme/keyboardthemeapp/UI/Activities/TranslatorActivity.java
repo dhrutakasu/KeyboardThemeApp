@@ -1,16 +1,12 @@
 package com.theme.keyboardthemeapp.UI.Activities;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -20,9 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.mlkit.common.model.DownloadConditions;
 import com.google.mlkit.nl.translate.TranslateLanguage;
 import com.google.mlkit.nl.translate.Translation;
 import com.google.mlkit.nl.translate.Translator;
@@ -32,10 +26,7 @@ import com.theme.keyboardthemeapp.Helper.DatabaseHelper;
 import com.theme.keyboardthemeapp.ModelClass.TranslatorModel;
 import com.theme.keyboardthemeapp.R;
 
-import java.net.HttpURLConnection;
-import java.util.ArrayList;
 import java.util.Locale;
-import java.util.Random;
 
 public class TranslatorActivity extends AppCompatActivity implements View.OnClickListener {
     private Context context;
@@ -118,7 +109,7 @@ public class TranslatorActivity extends AppCompatActivity implements View.OnClic
         ImgSave.setVisibility(View.VISIBLE);
         ImgHistory.setVisibility(View.VISIBLE);
         ImgShare.setVisibility(View.VISIBLE);
-        TxtTitle.setText(getString(R.string.Translator));
+        TxtTitle.setText(getString(R.string.str_Translator));
         helper = new DatabaseHelper(context);
         textToSpeech = new TextToSpeech(getApplicationContext(), i -> {
             if (i != TextToSpeech.ERROR) {
@@ -228,7 +219,7 @@ public class TranslatorActivity extends AppCompatActivity implements View.OnClic
         } else {
             try {
                 if (TxtEnglish.getText().toString().equals("English")) {
-                    if (TxtHindi.getText().toString().equals(getResources().getString(R.string.hindi))) {
+                    if (TxtHindi.getText().toString().equals(getResources().getString(R.string.str_hindi))) {
                         if (Constants.isNetworkAvailable(context)) {
                             try {
                                 TranslatorOptions options = new TranslatorOptions.Builder()
@@ -262,7 +253,7 @@ public class TranslatorActivity extends AppCompatActivity implements View.OnClic
                             Constants.NoInternetConnection(TranslatorActivity.this);
                         }
                     }
-                } else if (TxtEnglish.getText().toString().equals(getResources().getString(R.string.hindi)) || TxtHindi.getText().toString().equals("English")) {
+                } else if (TxtEnglish.getText().toString().equals(getResources().getString(R.string.str_hindi)) || TxtHindi.getText().toString().equals("English")) {
                     if (Constants.isNetworkAvailable(context)) {
                         try {
                             TranslatorOptions options_2 = new TranslatorOptions.Builder()

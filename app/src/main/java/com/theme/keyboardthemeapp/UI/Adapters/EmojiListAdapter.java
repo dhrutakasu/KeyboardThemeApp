@@ -1,4 +1,4 @@
-package com.theme.keyboardthemeapp.APPUtils;
+package com.theme.keyboardthemeapp.UI.Adapters;
 
 import android.content.Context;
 import android.view.MotionEvent;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import com.theme.keyboardthemeapp.KeyboardView.CustomKeypad;
 import com.theme.keyboardthemeapp.R;
 
 import java.util.List;

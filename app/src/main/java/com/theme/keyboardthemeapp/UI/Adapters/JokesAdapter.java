@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.theme.keyboardthemeapp.ModelClass.JokeModelItem;
 import com.theme.keyboardthemeapp.ModelClass.StatusItem;
 import com.theme.keyboardthemeapp.R;
 
@@ -17,11 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class JokesAdapter extends RecyclerView.Adapter<JokesAdapter.MyViewHolder> {
     private final Context context;
-    private final ArrayList<StatusItem> statusItems;
+    private final ArrayList<JokeModelItem> statusItems;
     private final setQuoteListener quoteListener;
     private final Typeface txtTypeface;
 
-    public JokesAdapter(Context context, ArrayList<StatusItem> statusItems, setQuoteListener quoteListener) {
+    public JokesAdapter(Context context, ArrayList<JokeModelItem> statusItems, setQuoteListener quoteListener) {
         this.context = context;
         this.statusItems = statusItems;
         this.quoteListener = quoteListener;

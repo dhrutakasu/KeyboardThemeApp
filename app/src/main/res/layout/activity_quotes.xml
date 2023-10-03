@@ -45,6 +45,7 @@
             app:tabGravity="fill"
             app:tabTextColor="@color/sub_text_color"
             app:tabIndicatorColor="@color/white"
+            app:tabTextAppearance="@style/TabText"
             app:tabIndicatorHeight="@dimen/_3ssp"
             app:tabMode="scrollable"
             app:tabSelectedTextColor="@color/white" />

@@ -29,7 +29,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.viewpager.widget.ViewPager;
 
 import com.karumi.dexter.PermissionToken;
-import com.theme.keyboardthemeapp.APPUtils.CustomKeypad;
+import com.theme.keyboardthemeapp.KeyboardView.CustomKeypad;
+import com.theme.keyboardthemeapp.ModelClass.JokeModelItem;
 import com.theme.keyboardthemeapp.UI.Adapters.HintWordListAdapter;
 import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
 import com.theme.keyboardthemeapp.ModelClass.StatusItem;
@@ -50,14 +51,18 @@ public class Constants {
     public static final String BUNDLE_LIST = "BUNDLE_LIST";
     public static final String QUOTE_POS = "QUOTE_POS";
     public static final String TITLES = "TITLES";
-    public static final String BASE_URL = "http://technoappsolution.com/app/";
+    public static final String BASE_URL1 = "http://technoappsolution.com/app/";
+    public static final String BASE_URL = "https://hpqrzfjgciltygmpyjss.supabase.co/rest/v1/";
     public static final String QUOTE_BASE_URL = "assets/android/hindikeyboard/";
     public static final String GIF_URL = "assets/android/hindikeyboard/hindithemekeyboard.json";
-    public static final String THEME_URL = "assets/android/keyboard/keyboard.json";
+    public static final String THEME_URL1 = "assets/android/keyboard/keyboard.json";
+    public static final String THEME_URL = "keybord_fileparth?select=*,categories(id,name)";
     public static final String QUOTES_CATEGORY_URL = "assets/android/hindikeyboard/get_categories.json";
-    public static final String JOKE_CATEGORY_URL = "assets/android/hindikeyboard/hindijokes.json";
+    public static final String JOKE_CATEGORY_URL1 = "assets/android/hindikeyboard/hindijokes.json";
+    public static final String JOKE_CATEGORY_URL = "HindiJokes?select=*";
     public static final String FILE_PATH = "FILE_PATH";
     public static ArrayList<StatusItem> statusItems = new ArrayList<>();
+    public static ArrayList<JokeModelItem> jokeModelItems = new ArrayList<>();
     public static ArrayList<CategoriesItem> categoriesItems = new ArrayList<>();
     public static boolean enableKeyboard = true;
     public static String[][] FancyNameStyle = null;
@@ -99,8 +104,8 @@ public class Constants {
     public static boolean IsColorCodeChange = false;
     public static int FontStyle = 0;
     public static final int[] ColorsList = {0, -14521120, -1092784, -1294214, -5552196, -12627531, -14575885, -10011977, -14273992, -8825528, -16611119, -16742021, -16757440, -13154481, -10453621, -16728876, -12434878, -10354454, -11922292, -6381922, -8825528, -2937041, -12756226, -12232092, -14983648, -37120, -10011977, -8708190, -16725933, -16540699, -720809, -769226, -16742021, -2818048, -16752540, -14606047, -16728155};
-    public static String[] FontList = {"fontList/font7.ttf", "fontList/font9.ttf", "fontList/font10.ttf", "fontList/font12.ttf", "fontList/font14.ttf", "fontList/font15.ttf", "fontList/font16.ttf", "fontList/font17.ttf", "fontList/font18.ttf", "fontList/font19.otf", "fontList/font20.ttf", "fontList/font21.ttf", "fontList/font23.ttf", "fontList/font25.ttf", "fontList/font26.otf", "fontList/font27.otf", "fontList/font28.ttf", "fontList/font29.ttf", "fontList/font30.ttf", "fontList/font31.ttf", "fontList/font32.ttf"};
-    public static String[] HindiFontList = {"font/style1.ttf", "font/style2.ttf", "font/style3.ttf", "font/style4.ttf", "font/style5.ttf", "font/style6.ttf", "font/style7.ttf", "font/style8.ttf", "font/style9.ttf", "font/style10.ttf"};
+    public static String[] FontList = {"FontStyleList/Font7.ttf", "FontStyleList/Font9.ttf", "FontStyleList/Font10.ttf", "FontStyleList/Font12.ttf", "FontStyleList/Font14.ttf", "FontStyleList/Font15.ttf", "FontStyleList/Font16.ttf", "FontStyleList/Font17.ttf", "FontStyleList/Font18.ttf", "FontStyleList/Font19.otf", "FontStyleList/Font20.ttf", "FontStyleList/Font21.ttf", "FontStyleList/Font23.ttf", "FontStyleList/Font25.ttf", "FontStyleList/Font26.otf", "FontStyleList/Font27.otf", "FontStyleList/Font28.ttf", "FontStyleList/Font29.ttf", "FontStyleList/Font30.ttf", "FontStyleList/Font31.ttf", "FontStyleList/Font32.ttf"};
+    public static String[] HindiFontList = {"FontList/FontStyle1.ttf", "FontList/FontStyle2.ttf", "FontList/FontStyle3.ttf", "FontList/FontStyle4.ttf", "FontList/FontStyle5.ttf", "FontList/FontStyle6.ttf", "FontList/FontStyle7.ttf", "FontList/FontStyle8.ttf", "FontList/FontStyle9.ttf", "FontList/FontStyle10.ttf"};
     public static boolean wordExist = true;
     public static boolean previewActivityisOpen = false;
     public static int width = 0;
@@ -418,15 +423,15 @@ public class Constants {
         if (!file2.exists()) {
             try {
                 AssetManager assets = context.getAssets();
-                assets.open("background/" + context.getAssets().list("background")[pos]);
+                assets.open("ThemeBgList/" + context.getAssets().list("ThemeBgList")[pos]);
                 BitmapFactory.Options options = new BitmapFactory.Options();
                 options.inJustDecodeBounds = true;
                 AssetManager contextAssets = context.getAssets();
-                BitmapFactory.decodeStream(contextAssets.open("background/" + context.getAssets().list("background")[pos]), new Rect(0, 0, 0, 0), options);
+                BitmapFactory.decodeStream(contextAssets.open("ThemeBgList/" + context.getAssets().list("ThemeBgList")[pos]), new Rect(0, 0, 0, 0), options);
                 options.inSampleSize = Constants.calculateInSampleSize(options, Constants.width, (int) context.getResources().getDimension(R.dimen.keyboard_height));
                 options.inJustDecodeBounds = false;
                 AssetManager assetManager = context.getAssets();
-                Bitmap.createScaledBitmap(BitmapFactory.decodeStream(assetManager.open("background/" + context.getAssets().list("background")[pos]), new Rect(0, 0, 0, 0), options), Constants.width, (int) context.getResources().getDimension(R.dimen.keyboard_height), false).compress(Bitmap.CompressFormat.PNG, 100, new FileOutputStream(file2));
+                Bitmap.createScaledBitmap(BitmapFactory.decodeStream(assetManager.open("ThemeBgList/" + context.getAssets().list("ThemeBgList")[pos]), new Rect(0, 0, 0, 0), options), Constants.width, (int) context.getResources().getDimension(R.dimen.keyboard_height), false).compress(Bitmap.CompressFormat.PNG, 100, new FileOutputStream(file2));
             } catch (IOException unused) {
                 Toast.makeText(context, "Exception", Toast.LENGTH_LONG).show();
             }

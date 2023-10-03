@@ -86,7 +86,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".UI.Activities.ViewJokeQuoteActivity"
+            android:name=".UI.Activities.ViewJokeActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
@@ -125,6 +125,7 @@
             android:name=".UI.Activities.MainActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
+        <activity android:name=".UI.Activities.ViewQuoteActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -136,12 +137,12 @@
                 android:resource="@xml/provider_path" />
         </provider>
         <service
-            android:name=".APPUtils.CustomKeypad"
+            android:name=".KeyboardView.CustomKeypad"
             android:permission="android.permission.BIND_INPUT_METHOD"
             android:exported="false">
             <meta-data
                 android:name="android.view.im"
-                android:resource="@xml/myime" />
+                android:resource="@xml/keyboardview" />
             <intent-filter>
                 <action android:name="android.view.InputMethod" />
                 <action android:name="android.intent.action.SEND" />

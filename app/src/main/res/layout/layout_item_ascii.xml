@@ -25,6 +25,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:text="TextView01"
+            android:fontFamily="@font/monmedium"
             android:textColor="#b6b7b8"
             android:textSize="@dimen/_16ssp" />
     </androidx.cardview.widget.CardView>

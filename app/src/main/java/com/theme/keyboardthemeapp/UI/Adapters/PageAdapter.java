@@ -1,8 +1,8 @@
 package com.theme.keyboardthemeapp.UI.Adapters;
 
 import android.content.Context;
-import android.os.Bundle;
 
+import com.theme.keyboardthemeapp.ModelClass.JokeModelItem;
 import com.theme.keyboardthemeapp.ModelClass.StatusItem;
 import com.theme.keyboardthemeapp.UI.Fragment.QuoteFragment;
 
@@ -14,9 +14,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 public class PageAdapter  extends FragmentPagerAdapter {
-    private final ArrayList<StatusItem> StatusItems;
+    private final ArrayList<JokeModelItem> StatusItems;
 
-    public PageAdapter(Context context, FragmentManager supportFragmentManager, ArrayList<StatusItem> statusItemArrayList) {
+    public PageAdapter(Context context, FragmentManager supportFragmentManager, ArrayList<JokeModelItem> statusItemArrayList) {
         super(supportFragmentManager);
         this.StatusItems=statusItemArrayList;
     }

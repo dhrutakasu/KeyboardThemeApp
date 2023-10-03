@@ -1,7 +1,6 @@
 package com.theme.keyboardthemeapp.UI.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -53,7 +52,7 @@ public class ViewTranslatedWordsActivity extends AppCompatActivity implements Vi
     private void initActions() {
         ImgBack.setVisibility(View.VISIBLE);
         ImgShare.setVisibility(View.VISIBLE);
-        TxtTitle.setText(R.string.my_saved_data);
+        TxtTitle.setText(R.string.str_my_saved_data);
         helper = new DatabaseHelper(context);
         TranslatorModel translatorModel = helper.getTranslatorsHistoryId(DatabseId);
         TxtInputWords.setText(translatorModel.getInputStr());

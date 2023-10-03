@@ -1,6 +1,6 @@
 package com.theme.keyboardthemeapp.APPUtils;
 
-public enum LanguageY {
+public enum CustomLanguageY {
     AUTODETECT(""),
     CATALAN("ca"),
     CROATIAN("hr"),
@@ -23,14 +23,14 @@ public enum LanguageY {
     
     private final String language;
 
-    LanguageY(String str) {
+    CustomLanguageY(String str) {
         this.language = str;
     }
 
-    public static LanguageY fromString(String str) {
-        for (LanguageY languageY : values()) {
-            if (languageY.toString().equals(str)) {
-                return languageY;
+    public static CustomLanguageY fromString(String str) {
+        for (CustomLanguageY customLanguageY : values()) {
+            if (customLanguageY.toString().equals(str)) {
+                return customLanguageY;
             }
         }
         return null;

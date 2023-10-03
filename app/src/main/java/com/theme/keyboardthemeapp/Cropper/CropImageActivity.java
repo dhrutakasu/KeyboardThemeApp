@@ -57,7 +57,7 @@ public class CropImageActivity extends AppCompatActivity
   @SuppressLint("NewApi")
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.crop_image_activity);
+    setContentView(R.layout.activity_crop_image);
 
     mCropImageView = findViewById(R.id.cropImageView);
 
@@ -91,7 +91,7 @@ public class CropImageActivity extends AppCompatActivity
       CharSequence title = mOptions != null &&
           mOptions.activityTitle != null && mOptions.activityTitle.length() > 0
               ? mOptions.activityTitle
-              : getResources().getString(R.string.crop_image_activity_title);
+              : getResources().getString(R.string.str_crop_image_activity_title);
       actionBar.setTitle(title);
       actionBar.setDisplayHomeAsUpEnabled(true);
     }
@@ -227,7 +227,7 @@ public class CropImageActivity extends AppCompatActivity
         // required permissions granted, start crop image activity
         mCropImageView.setImageUriAsync(mCropImageUri);
       } else {
-        Toast.makeText(this, R.string.crop_image_activity_no_permissions, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, R.string.str_crop_image_activity_no_permissions, Toast.LENGTH_LONG).show();
         setResultCancel();
       }
     }

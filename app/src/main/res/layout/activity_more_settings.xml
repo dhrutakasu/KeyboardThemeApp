@@ -60,8 +60,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:fontFamily="@font/avenirltstdmedium"
-                        android:text="@string/main_text12"
+                        android:fontFamily="@font/monsemibold"
+                        android:text="@string/str_text12"
                         android:textColor="@color/main_text_color"
                         android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
@@ -70,8 +70,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:fontFamily="@font/avenirltstdmedium"
-                        android:text="@string/sub_text8"
+                        android:fontFamily="@font/monmedium"
+                        android:text="@string/str_sub_text8"
                         android:textColor="@color/sub_text_color"
                         android:textSize="@dimen/_12ssp" />
                 </LinearLayout>
@@ -113,8 +113,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:fontFamily="@font/avenirltstdmedium"
-                        android:text="@string/main_text13"
+                        android:fontFamily="@font/monsemibold"
+                        android:text="@string/str_text13"
                         android:textColor="@color/main_text_color"
                         android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
@@ -123,8 +123,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:fontFamily="@font/avenirltstdmedium"
-                        android:text="@string/sub_text13"
+                        android:fontFamily="@font/monmedium"
+                        android:text="@string/str_sub_text13"
                         android:textColor="@color/sub_text_color"
                         android:textSize="@dimen/_12ssp" />
                 </LinearLayout>
@@ -166,8 +166,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:fontFamily="@font/avenirltstdmedium"
-                        android:text="@string/main_text14"
+                        android:fontFamily="@font/monsemibold"
+                        android:text="@string/str_text14"
                         android:textColor="@color/main_text_color"
                         android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
@@ -176,8 +176,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:fontFamily="@font/avenirltstdmedium"
-                        android:text="@string/sub_text14"
+                        android:fontFamily="@font/monmedium"
+                        android:text="@string/str_sub_text14"
                         android:textColor="@color/sub_text_color"
                         android:textSize="@dimen/_12ssp" />
                 </LinearLayout>
@@ -219,8 +219,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:fontFamily="@font/avenirltstdmedium"
-                        android:text="@string/main_text7"
+                        android:fontFamily="@font/monsemibold"
+                        android:text="@string/str_text7"
                         android:textColor="@color/main_text_color"
                         android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
@@ -229,8 +229,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:fontFamily="@font/avenirltstdmedium"
-                        android:text="@string/sub_text7"
+                        android:fontFamily="@font/monmedium"
+                        android:text="@string/str_sub_text7"
                         android:textColor="@color/sub_text_color"
                         android:textSize="@dimen/_12ssp" />
                 </LinearLayout>

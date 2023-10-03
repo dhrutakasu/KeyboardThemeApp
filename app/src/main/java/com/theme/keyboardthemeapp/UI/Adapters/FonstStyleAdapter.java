@@ -37,7 +37,7 @@ public class FonstStyleAdapter extends RecyclerView.Adapter<FonstStyleAdapter.My
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.TxtFontStyle.setTextColor(context.getResources().getColor(R.color.black));
         AssetManager assets = context.getAssets();
-        Typeface typeface = Typeface.createFromAsset(assets, "font/style" + (position + 1) + ".ttf");
+        Typeface typeface = Typeface.createFromAsset(assets, "FontList/FontStyle" + (position + 1) + ".ttf");
         holder.TxtFontStyle.setTypeface(typeface);
         holder.TxtFontStyle.setText(fontname);
         Constants.FontStyle = new MySharePref(context).getPrefInt(MySharePref.FONT_STYLE, 0);
@@ -68,7 +68,7 @@ public class FonstStyleAdapter extends RecyclerView.Adapter<FonstStyleAdapter.My
     public int getItemCount() {
         String[] list;
         try {
-            list = context.getAssets().list("font");
+            list = context.getAssets().list("FontList");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

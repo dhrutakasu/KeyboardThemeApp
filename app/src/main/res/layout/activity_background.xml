@@ -1129,6 +1129,7 @@
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginBottom="3dp"
                                 android:text="Choose Font Color"
+                                android:fontFamily="@font/monsemibold"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
                                 android:textColor="@color/purple_200" />
                         </RelativeLayout>
@@ -1166,6 +1167,7 @@
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginBottom="3dp"
                                 android:text="Select Font"
+                                android:fontFamily="@font/monsemibold"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
                                 android:textColor="@color/purple_200" />
                         </RelativeLayout>

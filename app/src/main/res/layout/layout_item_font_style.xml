@@ -29,6 +29,7 @@
                 android:gravity="center_vertical"
                 android:textColor="#373636"
                 android:textSize="@dimen/_14sdp"
+                android:fontFamily="@font/monmedium"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/CheckFontStyle"
                 app:layout_constraintStart_toStartOf="parent"

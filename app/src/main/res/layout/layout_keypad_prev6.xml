@@ -1,2 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android" android:textSize="30dp" android:textStyle="bold" android:textColor="#fcfcfc" android:gravity="top|center_horizontal" android:background="@drawable/preview_bg6" android:paddingTop="5dp" android:layout_width="match_parent" android:layout_height="match_parent" android:shadowColor="#000000" android:shadowDx="1" android:shadowDy="1" android:shadowRadius="1"/>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/preview_bg6"
+    android:gravity="top|center_horizontal"
+    android:paddingTop="5dp"
+    android:shadowColor="#000000"
+    android:shadowDx="1"
+    android:shadowDy="1"
+    android:fontFamily="@font/monmedium"
+    android:shadowRadius="1"
+    android:textColor="#fcfcfc"
+    android:textSize="30dp"
+    android:textStyle="bold" />

@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
-import com.theme.keyboardthemeapp.APPUtils.GifThemeDownloader;
+import com.theme.keyboardthemeapp.Task.GifThemeDownloader;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
 import com.theme.keyboardthemeapp.ModelClass.GifModel;
@@ -74,7 +74,7 @@ public class GIFActivity extends AppCompatActivity implements View.OnClickListen
     private void initActions() {
         ImgBack.setVisibility(View.VISIBLE);
         ImgMore.setVisibility(View.VISIBLE);
-        TxtTitle.setText(R.string.Gif_style);
+        TxtTitle.setText(R.string.str_Gif_style);
         if (Constants.isNetworkAvailable(context)) {
             getGifs();
         } else {
@@ -122,7 +122,7 @@ public class GIFActivity extends AppCompatActivity implements View.OnClickListen
                         } else {
                             AlertDialog.Builder builder = new AlertDialog.Builder(context);
                             builder.setCancelable(false);
-                            builder.setMessage(R.string.Alert_gif_string)
+                            builder.setMessage(R.string.str_Alert_gif_string)
                                     .setPositiveButton("Yes", (dialogInterface, i) -> {
                                         dialogInterface.dismiss();
                                         new GifThemeDownloader(context, LayoutProgress, gifArray, pos, ivDownloadGif, ivCheckGif, adapter).execute(response.body().getThumburl() + "/" + gifArray.get(pos).getId() + ".png", response.body().getUrl() + "/");

@@ -47,7 +47,7 @@ public class TextArtActivity extends AppCompatActivity implements View.OnClickLi
 
     private void initActions() {
         ImgBack.setVisibility(View.VISIBLE);
-        TxtTitle.setText(getString(R.string.Text_art));
+        TxtTitle.setText(getString(R.string.str_Text_art));
         strings = new ArrayList<>();
         strings.add("Nature");
         strings.add("Mood");

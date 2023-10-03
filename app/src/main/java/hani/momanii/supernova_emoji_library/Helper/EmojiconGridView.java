@@ -22,7 +22,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.GridView;
 
-import com.theme.keyboardthemeapp.APPUtils.EmojiListAdapter;
+import com.theme.keyboardthemeapp.UI.Adapters.EmojiListAdapter;
 import com.theme.keyboardthemeapp.R;
 
 import java.util.Arrays;

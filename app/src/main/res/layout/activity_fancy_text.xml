@@ -47,6 +47,7 @@
             app:tabIndicatorColor="@color/purple_500"
             app:tabIndicatorHeight="@dimen/_3ssp"
             app:tabMode="fixed"
+            app:tabTextAppearance="@style/TabText"
             app:tabSelectedTextColor="@color/purple_500"
             app:tabTextColor="@color/sub_text_color" />
     </androidx.constraintlayout.widget.ConstraintLayout>

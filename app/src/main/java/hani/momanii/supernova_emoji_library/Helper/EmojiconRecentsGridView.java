@@ -19,7 +19,7 @@ package hani.momanii.supernova_emoji_library.Helper;
 import android.content.Context;
 import android.widget.GridView;
 
-import com.theme.keyboardthemeapp.APPUtils.EmojiListAdapter;
+import com.theme.keyboardthemeapp.UI.Adapters.EmojiListAdapter;
 import com.theme.keyboardthemeapp.R;
 
 import hani.momanii.supernova_emoji_library.emoji.Emojicon;

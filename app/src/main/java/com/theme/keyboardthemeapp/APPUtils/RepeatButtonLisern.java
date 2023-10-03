@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 
-public class RepeatButtonListener implements View.OnTouchListener {
+public class RepeatButtonLisern implements View.OnTouchListener {
     public final View.OnClickListener clickListener;
     public View downView;
     public Handler handler = new Handler();
@@ -17,7 +17,7 @@ public class RepeatButtonListener implements View.OnTouchListener {
     private int initialInterval;
     final int normalInterval;
 
-    public RepeatButtonListener(int internal, int i, View.OnClickListener listener) {
+    public RepeatButtonLisern(int internal, int i, View.OnClickListener listener) {
         if (listener == null) {
             throw new IllegalArgumentException("null runnable");
         } else if (internal < 0 || i < 0) {

@@ -87,7 +87,7 @@ public class MoreSettingsActivity extends AppCompatActivity implements View.OnCl
             Intent intentShare = new Intent(Intent.ACTION_SEND);
             intentShare.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intentShare.setType("text/plain");
-            intentShare.putExtra(Intent.EXTRA_TEXT, context.getResources().getString(R.string.share_message) + context.getPackageName());
+            intentShare.putExtra(Intent.EXTRA_TEXT, context.getResources().getString(R.string.str_share_message) + context.getPackageName());
             Intent createChooser = Intent.createChooser(intentShare, "Share via");
             createChooser.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(createChooser);

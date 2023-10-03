@@ -48,7 +48,7 @@ public class TranslatorHistoryActivity extends AppCompatActivity implements View
 
     private void initActions() {
         ImgBack.setVisibility(View.VISIBLE);
-        TxtTitle.setText(R.string.my_translated_words);
+        TxtTitle.setText(R.string.str_my_translated_words);
         RvTranslatorHistory.setLayoutManager(new LinearLayoutManager(context));
         helper = new DatabaseHelper(context);
         translatorModels = helper.getTranslatorsHistory();

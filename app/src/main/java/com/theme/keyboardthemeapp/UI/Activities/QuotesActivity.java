@@ -2,30 +2,17 @@ package com.theme.keyboardthemeapp.UI.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 import com.theme.keyboardthemeapp.Constants;
-import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
-import com.theme.keyboardthemeapp.ModelClass.QuoteCategoryModel;
-import com.theme.keyboardthemeapp.ModelClass.StatusItem;
 import com.theme.keyboardthemeapp.R;
-import com.theme.keyboardthemeapp.Retrofit.RetrofitInstance;
-import com.theme.keyboardthemeapp.Retrofit.RetrofitInterface;
-import com.theme.keyboardthemeapp.UI.Adapters.JokesAdapter;
 import com.theme.keyboardthemeapp.UI.Adapters.QuotePagerAdapter;
-
-import java.util.ArrayList;
 
 public class QuotesActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -51,6 +38,16 @@ public class QuotesActivity extends AppCompatActivity implements View.OnClickLis
         TxtTitle = (TextView) findViewById(R.id.TxtTitle);
         TabQuote = (TabLayout) findViewById(R.id.TabQuote);
         PagerQuote = (ViewPager) findViewById(R.id.PagerQuote);
+        //todo urls
+      /*  curl --location 'https://hpqrzfjgciltygmpyjss.supabase.co/rest/v1/HindiJokes?select=*' \
+        --header 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhwcXJ6ZmpnY2lsdHlnbXB5anNzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5NTc0MTkxNCwiZXhwIjoyMDExMzE3OTE0fQ.DCJOX18WZTsqTz2dq23iBFqpTWTgg5-9f7VsAtLROmY' \
+        --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhwcXJ6ZmpnY2lsdHlnbXB5anNzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5NTc0MTkxNCwiZXhwIjoyMDExMzE3OTE0fQ.DCJOX18WZTsqTz2dq23iBFqpTWTgg5-9f7VsAtLROmY' \
+        --data ''
+            */
+//        https://hpqrzfjgciltygmpyjss.supabase.co/rest/v1/keybord_fileparth?select=*,categories(id,name)
+//        https://hpqrzfjgciltygmpyjss.supabase.co/rest/v1/HindiJokes?select=*
+//        https://hpqrzfjgciltygmpyjss.supabase.co/rest/v1/HindiJokes?parent_id=eq.1(chnages 1,2,3)
+
 //        http://technoappsolution.com/app/assets/android/hindikeyboard/1.json
 //        http://technoappsolution.com/app/assets/android/hindikeyboard/get_categories.json
     }
@@ -62,7 +59,7 @@ public class QuotesActivity extends AppCompatActivity implements View.OnClickLis
 
     private void initActions() {
         ImgBack.setVisibility(View.VISIBLE);
-        TxtTitle.setText(getString(R.string.Quote_text));
+        TxtTitle.setText(getString(R.string.str_Quote_text));
         if (Constants.categoriesItems.size() > 0) {
             for (int i = 0; i < Constants.categoriesItems.size(); i++) {
                 TabQuote.addTab(TabQuote.newTab().setText(Constants.categoriesItems.get(i).getName()));

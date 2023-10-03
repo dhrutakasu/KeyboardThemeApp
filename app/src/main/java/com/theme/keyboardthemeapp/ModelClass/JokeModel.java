@@ -5,34 +5,22 @@ import com.google.gson.annotations.SerializedName;
 
 public class JokeModel{
 
-	@SerializedName("url")
-	private String url;
+	@SerializedName("JokeModel")
+	private List<JokeModelItem> jokeModel;
 
-	@SerializedName("status")
-	private List<StatusItem> status;
-
-	public void setUrl(String url){
-		this.url = url;
+	public void setJokeModel(List<JokeModelItem> jokeModel){
+		this.jokeModel = jokeModel;
 	}
 
-	public String getUrl(){
-		return url;
-	}
-
-	public void setStatus(List<StatusItem> status){
-		this.status = status;
-	}
-
-	public List<StatusItem> getStatus(){
-		return status;
+	public List<JokeModelItem> getJokeModel(){
+		return jokeModel;
 	}
 
 	@Override
  	public String toString(){
 		return 
 			"JokeModel{" + 
-			"url = '" + url + '\'' + 
-			",status = '" + status + '\'' + 
+			"jokeModel = '" + jokeModel + '\'' + 
 			"}";
 		}
 }

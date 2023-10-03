@@ -1,4 +1,4 @@
-package com.theme.keyboardthemeapp.APPUtils;
+package com.theme.keyboardthemeapp.Task;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -41,7 +41,6 @@ public class GifThemeDownloader extends AsyncTask<String, Void, Void> {
     private View layoutProgress;
     private String fileName = null;
     private Context context;
-    private String Tostmsg = "";
 
 
     public GifThemeDownloader(Context context, View layoutProgress, ArrayList<CategoriesItem> gifArray, int pos, ImageView ivDownloadGif, ImageView ivCheckGif, GifAdapter adapter) {
@@ -72,7 +71,7 @@ public class GifThemeDownloader extends AsyncTask<String, Void, Void> {
             if (!(newFolder.exists())) {
                 newFolder.mkdirs();
             }
-            fileName = gifArray.get(Pos).getId();
+            fileName = String.valueOf(gifArray.get(Pos).getId());
             File inputFile = new File(newFolder, fileName + ".png");
             InputStream inputStream = new BufferedInputStream(url.openStream(), 8192);
             byte[] buffer = new byte[1024];
@@ -92,7 +91,6 @@ public class GifThemeDownloader extends AsyncTask<String, Void, Void> {
                         copyFile(resource, new File(context.getFilesDir(), "Gif_save.gif"));
                     } catch (IOException e) {
                         e.printStackTrace();
-                        Tostmsg = "Failed to save image.";
                     }
                 }
 
@@ -116,7 +114,6 @@ public class GifThemeDownloader extends AsyncTask<String, Void, Void> {
         }
         fis.close();
         fos.close();
-        Tostmsg = "Download Complete.";
     }
 
     @Override

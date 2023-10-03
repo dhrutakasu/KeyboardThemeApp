@@ -3,7 +3,6 @@ package com.theme.keyboardthemeapp.UI.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +13,8 @@ import com.theme.keyboardthemeapp.ModelClass.StatusItem;
 import com.theme.keyboardthemeapp.R;
 import com.theme.keyboardthemeapp.Retrofit.RetrofitInstance;
 import com.theme.keyboardthemeapp.Retrofit.RetrofitInterface;
-import com.theme.keyboardthemeapp.UI.Activities.ViewJokeQuoteActivity;
-import com.theme.keyboardthemeapp.UI.Adapters.JokesAdapter;
+import com.theme.keyboardthemeapp.UI.Activities.ViewQuoteActivity;
+import com.theme.keyboardthemeapp.UI.Adapters.QuoteAdapter;
 
 import java.util.ArrayList;
 
@@ -80,10 +79,10 @@ public class QuoteListFragment extends Fragment {
                         Constants.statusItems = new ArrayList<>();
                         Constants.statusItems = (ArrayList<StatusItem>) response.body().getStatus();
                         RvFancyTxt.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false));
-                        JokesAdapter jokesAdapter=new JokesAdapter(context, Constants.statusItems, new JokesAdapter.setQuoteListener() {
+                        QuoteAdapter jokesAdapter=new QuoteAdapter(context, Constants.statusItems, new QuoteAdapter.setQuoteListener() {
                             @Override
                             public void QuoteListen(int pos) {
-                                Intent intent = new Intent(context, ViewJokeQuoteActivity.class);
+                                Intent intent = new Intent(context, ViewQuoteActivity.class);
                                 intent.putExtra(Constants.QUOTE_POS, pos);
                                 intent.putExtra(Constants.TITLES, Status_Str);
                                 startActivity(intent);

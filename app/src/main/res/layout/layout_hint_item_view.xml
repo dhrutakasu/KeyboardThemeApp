@@ -12,6 +12,7 @@
         android:layout_gravity="center"
         android:gravity="center_horizontal"
         android:paddingTop="3dp"
+        android:fontFamily="@font/monmedium"
         android:singleLine="true"
         android:text="Touch To Add"
         android:textStyle="bold" />

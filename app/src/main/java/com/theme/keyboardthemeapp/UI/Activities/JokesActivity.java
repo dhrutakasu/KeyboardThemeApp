@@ -10,21 +10,19 @@ import retrofit2.Response;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.theme.keyboardthemeapp.Constants;
-import com.theme.keyboardthemeapp.ModelClass.JokeModel;
-import com.theme.keyboardthemeapp.ModelClass.StatusItem;
+import com.theme.keyboardthemeapp.ModelClass.JokeModelItem;
 import com.theme.keyboardthemeapp.R;
 import com.theme.keyboardthemeapp.Retrofit.RetrofitInstance;
 import com.theme.keyboardthemeapp.Retrofit.RetrofitInterface;
 import com.theme.keyboardthemeapp.UI.Adapters.JokesAdapter;
 
-import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class JokesActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -58,7 +56,7 @@ public class JokesActivity extends AppCompatActivity implements View.OnClickList
 
     private void initActions() {
         ImgBack.setVisibility(View.VISIBLE);
-        TxtTitle.setText(getString(R.string.Jockes));
+        TxtTitle.setText(getString(R.string.str_Jockes));
         RecyclerJoke.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
         GetJokeResponse();
     }
@@ -67,16 +65,17 @@ public class JokesActivity extends AppCompatActivity implements View.OnClickList
         if (Constants.isNetworkAvailable(context)) {
             LayoutProgress.setVisibility(View.VISIBLE);
             RetrofitInterface downloadService = RetrofitInstance.createService(RetrofitInterface.class, Constants.BASE_URL);
-            Call<JokeModel> call = downloadService.getJokeData(Constants.JOKE_CATEGORY_URL);
-            call.enqueue(new Callback<JokeModel>() {
+            Call<List<JokeModelItem>> call = downloadService.getJokeData(Constants.JOKE_CATEGORY_URL);
+            call.enqueue(new Callback<List<JokeModelItem>>() {
                 @Override
-                public void onResponse(Call<JokeModel> call, Response<JokeModel> response) {
+                public void onResponse(Call<List<JokeModelItem>> call, Response<List<JokeModelItem>> response) {
                     if (response.isSuccessful()) {
                         LayoutProgress.setVisibility(View.GONE);
-                        Constants.statusItems = new ArrayList<>();
-                        Constants.statusItems = (ArrayList<StatusItem>) response.body().getStatus();
-                        jokesAdapter = new JokesAdapter(context, Constants.statusItems, pos -> {
-                            Intent intent = new Intent(context, ViewJokeQuoteActivity.class);
+                        Constants.jokeModelItems = new ArrayList<>();
+                        Constants.jokeModelItems = (ArrayList<JokeModelItem>) response.body();
+                        System.out.println("---- -- -- ttt UUL "+Constants.jokeModelItems.size());
+                        jokesAdapter = new JokesAdapter(context, Constants.jokeModelItems, pos -> {
+                            Intent intent = new Intent(context, ViewJokeActivity.class);
                             intent.putExtra(Constants.QUOTE_POS, pos);
                             intent.putExtra(Constants.TITLES, "Jokes");
                             startActivity(intent);
@@ -86,7 +85,8 @@ public class JokesActivity extends AppCompatActivity implements View.OnClickList
                 }
 
                 @Override
-                public void onFailure(Call<JokeModel> call, Throwable t) {
+                public void onFailure(Call<List<JokeModelItem>> call, Throwable t) {
+                    System.out.println("---- -- -- ttt L "+t.getMessage());
                     LayoutProgress.setVisibility(View.GONE);
                 }
             });

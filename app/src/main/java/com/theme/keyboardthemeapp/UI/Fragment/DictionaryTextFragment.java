@@ -398,7 +398,11 @@ public class DictionaryTextFragment extends Fragment implements View.OnClickList
                 RvDictionaryTxt.setAdapter(new FavouriteAdapter(getActivity(), favoriteWordList, Dictionary_Str, this));
             }
         } else if (Dictionary_Str.equalsIgnoreCase("Recent")) {
-
+            if (RvDictionaryTxt != null) {
+                ArrayList<DictionaryModel> recentWordList = helper.getDictionaryRecent();
+                FavouriteAdapter adapter = new FavouriteAdapter(getContext(), recentWordList, Dictionary_Str, this);
+                RvDictionaryTxt.setAdapter(adapter);
+            }
         }
     }
 

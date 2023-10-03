@@ -40,8 +40,6 @@ import com.theme.keyboardthemeapp.R;
 import java.lang.ref.WeakReference;
 import java.util.UUID;
 
-import static com.theme.keyboardthemeapp.R.styleable.CropImageView_cropAspectRatioX;
-
 public class CropImageView extends FrameLayout {
 
  private final ImageView mImageView;
@@ -323,7 +321,7 @@ public class CropImageView extends FrameLayout {
     mFlipVertically = options.flipVertically;
 
     LayoutInflater inflater = LayoutInflater.from(context);
-    View v = inflater.inflate(R.layout.crop_image_view, this, true);
+    View v = inflater.inflate(R.layout.layout_crop_image_view, this, true);
 
     mImageView = v.findViewById(R.id.ImageView_image);
     mImageView.setScaleType(ImageView.ScaleType.MATRIX);

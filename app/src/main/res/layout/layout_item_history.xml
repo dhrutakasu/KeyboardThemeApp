@@ -31,6 +31,7 @@
                 android:paddingEnd="@dimen/_8sdp"
                 android:text="TextView01"
                 android:textColor="#b6b7b8"
+                android:fontFamily="@font/monmedium"
                 android:textSize="@dimen/_14ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/ImgDelete"

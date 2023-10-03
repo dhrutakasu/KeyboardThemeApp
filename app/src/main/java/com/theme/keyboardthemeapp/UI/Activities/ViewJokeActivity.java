@@ -10,25 +10,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.theme.keyboardthemeapp.Constants;
+import com.theme.keyboardthemeapp.ModelClass.JokeModelItem;
 import com.theme.keyboardthemeapp.ModelClass.StatusItem;
 import com.theme.keyboardthemeapp.R;
 import com.theme.keyboardthemeapp.UI.Adapters.PageAdapter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class ViewJokeQuoteActivity extends AppCompatActivity implements View.OnClickListener {
+public class ViewJokeActivity extends AppCompatActivity implements View.OnClickListener {
     private Context context;
     private ImageView ImgBack;
     private TextView TxtTitle;
-    private ArrayList<StatusItem> statusItemArrayList;
+    private ArrayList<JokeModelItem> statusItemArrayList;
     private int QuotePos;
     private ViewPager PagerQuote;
     private ImageView ImgWhatsapp, ImgFacebook, ImgShare, ImgCopy;
@@ -61,7 +60,7 @@ public class ViewJokeQuoteActivity extends AppCompatActivity implements View.OnC
         Intent intent = getIntent();
         QuotePos = intent.getIntExtra(Constants.QUOTE_POS, 0);
         QuoteTitle = intent.getStringExtra(Constants.TITLES);
-        statusItemArrayList = Constants.statusItems;
+        statusItemArrayList = Constants.jokeModelItems;
     }
 
     private void initListeners() {

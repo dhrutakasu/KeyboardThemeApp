@@ -1,4 +1,4 @@
-package com.theme.keyboardthemeapp.APPUtils;
+package com.theme.keyboardthemeapp.Task;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,6 +8,7 @@ import android.provider.ContactsContract;
 import android.provider.UserDictionary;
 
 import com.theme.keyboardthemeapp.Constants;
+import com.theme.keyboardthemeapp.KeyboardView.CustomKeypad;
 import com.theme.keyboardthemeapp.R;
 
 import java.io.BufferedReader;
@@ -32,15 +33,15 @@ public class DictionaryTask extends AsyncTask<String, String, String> {
     public String doInBackground(String... strArr) {
         String str;
         try {
-            context.getResources().getString(R.string.dict_name2);
+            context.getResources().getString(R.string.str_dict_name2);
             int id = ID;
             if (id == 0) {
-                GetDictionaryWords(context.getResources().getString(R.string.dict_name2));
+                GetDictionaryWords(context.getResources().getString(R.string.str_dict_name2));
             } else if (id == 1) {
                 if (CustomKeypad.CheckLanguage) {
-                    str = context.getResources().getString(R.string.dict_name2);
+                    str = context.getResources().getString(R.string.str_dict_name2);
                 } else {
-                    str = context.getResources().getString(R.string.dict_name1);
+                    str = context.getResources().getString(R.string.str_dict_name1);
                 }
                 GetDictionaryWords(str);
                 GetMobileData();
@@ -56,7 +57,8 @@ public class DictionaryTask extends AsyncTask<String, String, String> {
             HashSet set = new HashSet();
             set.addAll(Constants.SuggestionWordsList);
             Constants.SuggestionWordsList.clear();
-            Constants.SuggestionWordsList.addAll(Constants.SuggestionWordsList);
+            Constants.SuggestionWordsList.addAll(set);
+//            Constants.SuggestionWordsList.addAll(Constants.SuggestionWordsList);
         } catch (Exception unused) {
         }
     }

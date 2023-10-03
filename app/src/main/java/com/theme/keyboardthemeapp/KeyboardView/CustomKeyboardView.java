@@ -1,4 +1,4 @@
-package com.theme.keyboardthemeapp.APPUtils;
+package com.theme.keyboardthemeapp.KeyboardView;
 
 import android.content.Context;
 import android.graphics.Canvas;

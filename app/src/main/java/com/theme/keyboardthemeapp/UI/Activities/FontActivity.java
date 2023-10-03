@@ -45,7 +45,7 @@ public class FontActivity extends AppCompatActivity implements View.OnClickListe
     private void initActions() {
         ImgBack.setVisibility(View.VISIBLE);
         ImgMore.setVisibility(View.VISIBLE);
-        TxtTitle.setText(R.string.font_style);
+        TxtTitle.setText(R.string.str_font_style);
         RvFontList.setLayoutManager(new LinearLayoutManager(context));
         RvFontList.setAdapter(new FonstStyleAdapter(context));
     }

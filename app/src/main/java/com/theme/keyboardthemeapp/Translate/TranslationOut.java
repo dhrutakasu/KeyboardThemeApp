@@ -4,7 +4,7 @@ import android.content.Context;
 
 
 import com.theme.keyboardthemeapp.APPUtils.ConstantResource;
-import com.theme.keyboardthemeapp.APPUtils.LanguageY;
+import com.theme.keyboardthemeapp.APPUtils.CustomLanguageY;
 
 import java.util.Arrays;
 
@@ -26,7 +26,7 @@ public class TranslationOut extends Translation {
         this.mCodeDocmau = constant_Resource.getCodeLanguageOut()[this.mPosition];
         this.mCodeLanguage = constant_Resource.getFromLanguageName(str, constant_Resource.getCountriesOut(), constant_Resource.getCodeLanguageOut());
         this.mText = "";
-        if (getLanguageY().equals(LanguageY.TAGALOG)) {
+        if (getLanguageY().equals(CustomLanguageY.TAGALOG)) {
             this.mCodeDocmau = "fil";
         }
         this.isTextToSpeech = !Arrays.asList(constant_Resource.getNoSpeaker()).contains(this.mLanguageName);
@@ -73,14 +73,14 @@ public class TranslationOut extends Translation {
         ConstantResource constant_Resource = new ConstantResource(this.mContext);
         this.mPosition = constant_Resource.getPosition(this.mLanguageName, constant_Resource.getCountriesOut());
         this.mCodeDocmau = constant_Resource.getCodeLanguageOut()[this.mPosition];
-        if (getLanguageY().equals(LanguageY.TAGALOG)) {
+        if (getLanguageY().equals(CustomLanguageY.TAGALOG)) {
             this.mCodeDocmau = "fil";
         }
         this.mCodeLanguage = constant_Resource.getFromLanguageName(str, constant_Resource.getCountriesOut(), constant_Resource.getCodeLanguageOut());
     }
 
-    public LanguageY getLanguageY() {
-        return LanguageY.fromString(getmCodeLanguage());
+    public CustomLanguageY getLanguageY() {
+        return CustomLanguageY.fromString(getmCodeLanguage());
     }
 
     public int getmPosition() {

@@ -13,9 +13,9 @@ import android.widget.TextView;
 
 import androidx.core.view.ViewCompat;
 
-import com.theme.keyboardthemeapp.APPUtils.DictionaryTask;
-import com.theme.keyboardthemeapp.APPUtils.CustomKeyboardView;
-import com.theme.keyboardthemeapp.APPUtils.CustomKeypad;
+import com.theme.keyboardthemeapp.Task.DictionaryTask;
+import com.theme.keyboardthemeapp.KeyboardView.CustomKeyboardView;
+import com.theme.keyboardthemeapp.KeyboardView.CustomKeypad;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.MySharePref;
 import com.theme.keyboardthemeapp.R;

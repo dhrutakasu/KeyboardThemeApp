@@ -8,7 +8,7 @@ public class CategoriesItem{
 	private String name;
 
 	@SerializedName("id")
-	private String id;
+	private int id;
 
 	public void setName(String name){
 		this.name = name;
@@ -18,11 +18,11 @@ public class CategoriesItem{
 		return name;
 	}
 
-	public void setId(String id){
+	public void setId(int id){
 		this.id = id;
 	}
 
-	public String getId(){
+	public int getId(){
 		return id;
 	}
 

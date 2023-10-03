@@ -163,7 +163,7 @@ public final class CropImage {
    */
   public static Intent getPickImageChooserIntent(@NonNull Context context) {
     return getPickImageChooserIntent(
-        context, context.getString(R.string.pick_image_intent_chooser_title), false, true);
+        context, context.getString(R.string.str_pick_image_intent_chooser_title), false, true);
   }
 
   /**

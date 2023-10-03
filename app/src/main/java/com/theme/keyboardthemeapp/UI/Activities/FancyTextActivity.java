@@ -6,7 +6,6 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -49,7 +48,7 @@ public class FancyTextActivity extends AppCompatActivity implements View.OnClick
 
     private void initActions() {
         ImgBack.setVisibility(View.VISIBLE);
-        TxtTitle.setText(getString(R.string.Fancy_Txt));
+        TxtTitle.setText(getString(R.string.str_Fancy_Txt));
         strings = new ArrayList<>();
         strings.add("Fancy");
         strings.add("Decorative");

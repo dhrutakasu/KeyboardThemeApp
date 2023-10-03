@@ -1,4 +1,4 @@
-package com.theme.keyboardthemeapp.APPUtils;
+package com.theme.keyboardthemeapp.KeyboardView;
 
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
@@ -63,6 +63,14 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.theme.keyboardthemeapp.APPUtils.ConstantPreferences;
+import com.theme.keyboardthemeapp.APPUtils.ConstantResource;
+import com.theme.keyboardthemeapp.Task.DictionaryTask;
+import com.theme.keyboardthemeapp.UI.Adapters.EmojiListAdapter;
+import com.theme.keyboardthemeapp.APPUtils.HorizontalListView;
+import com.theme.keyboardthemeapp.APPUtils.MyKeypadDataView;
+import com.theme.keyboardthemeapp.APPUtils.RepeatButtonLisern;
+import com.theme.keyboardthemeapp.APPUtils.SetVibrateComp;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.ModelClass.StickerModel;
 import com.theme.keyboardthemeapp.MySharePref;
@@ -227,10 +235,10 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
 
 
     View.OnClickListener ChangeSpeakingLanguage = view -> {
-        if (new MySharePref(getApplicationContext()).getPrefString(MySharePref.DEFULT_LANGUAGE, "hi").equals(getResources().getString(R.string.speak_lang_2))) {
+        if (new MySharePref(getApplicationContext()).getPrefString(MySharePref.DEFULT_LANGUAGE, "hi").equals(getResources().getString(R.string.str_speak_lang_2))) {
             new MySharePref(getApplicationContext()).putPrefString(MySharePref.DEFULT_LANGUAGE, "en");
         } else {
-            new MySharePref(getApplicationContext()).putPrefString(MySharePref.DEFULT_LANGUAGE, getResources().getString(R.string.speak_lang_2));
+            new MySharePref(getApplicationContext()).putPrefString(MySharePref.DEFULT_LANGUAGE, getResources().getString(R.string.str_speak_lang_2));
         }
         BtnSpeakLanguage.setText(new MySharePref(getApplicationContext()).getPrefString(MySharePref.DEFULT_LANGUAGE, "hi"));
     };
@@ -283,7 +291,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
             if (!IsSpeechRecognizeAvaliable) {
                 InitDialogInstallTranslate().show();
             } else if (!isOnline()) {
-                showToast(getResources().getString(R.string.No_internet), 1);
+                showToast(getResources().getString(R.string.str_No_internet), 1);
             } else if (Arrays.asList(constantResource.getNoVoice()).contains(constantResource.getCountriesIn()[mTranslateIn.getmPosition()])) {
                 showToast("Opps! " + mTranslateIn.getmLanguageName() + " language was not supported Speech to Text", 1);
             } else {
@@ -387,25 +395,25 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
     }
 
     public static String getErrorText(Context applicationContext, int i) {
-        Constants.Error1 = applicationContext.getResources().getString(R.string.error_text1);
-        Constants.Error2 = applicationContext.getResources().getString(R.string.error_text2);
-        Constants.Error3 = applicationContext.getResources().getString(R.string.error_text3);
-        Constants.Error4 = applicationContext.getResources().getString(R.string.error_text4);
-        Constants.Error5 = applicationContext.getResources().getString(R.string.error_text5);
-        Constants.Error6 = applicationContext.getResources().getString(R.string.error_text6);
-        Constants.Error7 = applicationContext.getResources().getString(R.string.error_text7);
-        Constants.Error8 = applicationContext.getResources().getString(R.string.error_text8);
-        Constants.Error9 = applicationContext.getResources().getString(R.string.error_text9);
+        Constants.Error1 = applicationContext.getResources().getString(R.string.str_error_text1);
+        Constants.Error2 = applicationContext.getResources().getString(R.string.str_error_text2);
+        Constants.Error3 = applicationContext.getResources().getString(R.string.str_error_text3);
+        Constants.Error4 = applicationContext.getResources().getString(R.string.str_error_text4);
+        Constants.Error5 = applicationContext.getResources().getString(R.string.str_error_text5);
+        Constants.Error6 = applicationContext.getResources().getString(R.string.str_error_text6);
+        Constants.Error7 = applicationContext.getResources().getString(R.string.str_error_text7);
+        Constants.Error8 = applicationContext.getResources().getString(R.string.str_error_text8);
+        Constants.Error9 = applicationContext.getResources().getString(R.string.str_error_text9);
 
-        Constants.En_Error1 = applicationContext.getResources().getString(R.string.en_error_text1);
-        Constants.En_Error2 = applicationContext.getResources().getString(R.string.en_error_text2);
-        Constants.En_Error3 = applicationContext.getResources().getString(R.string.en_error_text3);
-        Constants.En_Error4 = applicationContext.getResources().getString(R.string.en_error_text4);
-        Constants.En_Error5 = applicationContext.getResources().getString(R.string.en_error_text5);
-        Constants.En_Error6 = applicationContext.getResources().getString(R.string.en_error_text6);
-        Constants.En_Error7 = applicationContext.getResources().getString(R.string.en_error_text7);
-        Constants.En_Error8 = applicationContext.getResources().getString(R.string.en_error_text8);
-        Constants.En_Error9 = applicationContext.getResources().getString(R.string.en_error_text9);
+        Constants.En_Error1 = applicationContext.getResources().getString(R.string.str_en_error_text1);
+        Constants.En_Error2 = applicationContext.getResources().getString(R.string.str_en_error_text2);
+        Constants.En_Error3 = applicationContext.getResources().getString(R.string.str_en_error_text3);
+        Constants.En_Error4 = applicationContext.getResources().getString(R.string.str_en_error_text4);
+        Constants.En_Error5 = applicationContext.getResources().getString(R.string.str_en_error_text5);
+        Constants.En_Error6 = applicationContext.getResources().getString(R.string.str_en_error_text6);
+        Constants.En_Error7 = applicationContext.getResources().getString(R.string.str_en_error_text7);
+        Constants.En_Error8 = applicationContext.getResources().getString(R.string.str_en_error_text8);
+        Constants.En_Error9 = applicationContext.getResources().getString(R.string.str_en_error_text9);
         switch (i) {
             case 1:
                 if (Constants.SpeakLanguageName.equals("en")) {
@@ -483,7 +491,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
         constantPreferences = new ConstantPreferences(this);
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         if (((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo() == null) {
-            Toast.makeText(getApplicationContext(), getResources().getString(R.string.phonetic_keyboard), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.str_phonetic_keyboard), Toast.LENGTH_SHORT).show();
         }
 
         Constants.languegesArray = new ArrayList<>();
@@ -531,13 +539,6 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
             DrawableLanguageOff.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
             DrawableSpeak.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
             DrawableDropArrow.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
-        }
-
-        DictionaryTask dictionaryTask = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
-        if (Constants.isUpHoneycombVersion) {
-            dictionaryTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-        } else {
-            dictionaryTask.execute();
         }
         switch (selectedTheme) {
             case 0:
@@ -1534,12 +1535,12 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
             setTabBg(0, i);
             CapsLock = false;
         });
-        views.findViewById(R.id.emojis_tab_1_delete).setOnTouchListener(new RepeatButtonListener(400, 100, new View.OnClickListener() {
+        views.findViewById(R.id.emojis_tab_1_delete).setOnTouchListener(new RepeatButtonLisern(400, 100, new View.OnClickListener() {
             public void onClick(View view) {
                 deleteemoji();
             }
         }));
-        views.findViewById(R.id.food_tab_1_emoji).setOnTouchListener(new RepeatButtonListener(400, 100, new View.OnClickListener() {
+        views.findViewById(R.id.food_tab_1_emoji).setOnTouchListener(new RepeatButtonLisern(400, 100, new View.OnClickListener() {
             public void onClick(View view) {
                 getFood();
                 setTabBg(Integer.parseInt((String) view.getTag()), i);
@@ -1787,7 +1788,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
         } else if (codes == -1763) {
             Constants.wordExist = true;
             CheckFlag = true;
-            MyKeypadDataView myKeypadDataView2 = new MyKeypadDataView(this, R.xml.numeric_shift_querty, keyboardHeight, 1);
+            MyKeypadDataView myKeypadDataView2 = new MyKeypadDataView(this, R.xml.layout_numeric_shift_querty, keyboardHeight, 1);
             keypadDataView = myKeypadDataView2;
             customKeyboardView.setKeyboard(myKeypadDataView2);
             for (Keyboard.Key key2 : keypadDataView.getKeys()) {
@@ -1898,9 +1899,8 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                     }
                 }
             } else if (codes == -5) {
-                CustomKeyboardView customKeyboardView2 = customKeyboardView;
-                if (customKeyboardView2 != null) {
-                    customKeyboardView2.DismissPreviewPopup();
+                if (customKeyboardView != null) {
+                    customKeyboardView.DismissPreviewPopup();
                 }
                 if (LlMainMenu.getVisibility() == View.GONE) {
                     LlHintWord.setVisibility(View.GONE);
@@ -1952,7 +1952,6 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                         }
                     }
                 }
-
             } else if (codes == -4) {
                 Constants.wordExist = true;
                 if (LlMainMenu.getVisibility() == View.GONE) {
@@ -1985,13 +1984,15 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 }
             } else if (codes != -97886) {
                 char c = (char) codes;
-                if (Constants.ChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
+                if (new MySharePref(getApplicationContext()).getPrefInt(MySharePref.FLAG_CHANGE_LANGUAGE, 0) == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
                     if (Counter == 0 && codes == 32) {
                         String str = "" + currentInputConnection.getTextBeforeCursor(Integer.MAX_VALUE, 0);
                         FinalPatternWord = str;
                         String substring = str.substring(str.lastIndexOf(" ") + 1);
                         StrLastWord = substring;
-                        currentInputConnection.deleteSurroundingText(substring.length() + 1, 0);
+
+//                        currentInputConnection.commitText(String.valueOf(Character.toUpperCase(c)), 1)
+//                        currentInputConnection.deleteSurroundingText(StrLastWord.length() + 1, 0);
                         new AsyncTask<Void, Void, Void>() {
                             public void onPreExecute() {
                             }
@@ -2132,7 +2133,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                     LlMainMenu.setVisibility(View.VISIBLE);
                 }
                 StrWord = new StringBuilder(StrWord).reverse().toString();
-                myAsyncTask myasynctask = new myAsyncTask();
+                SuggetionAsyncTask myasynctask = new SuggetionAsyncTask();
                 if (Constants.isUpHoneycombVersion) {
                     myasynctask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                 } else {
@@ -2873,15 +2874,15 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
 
     public AlertDialog InitDialogInstallTranslate() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(getResources().getString(R.string.install_voice_translate));
-        builder.setPositiveButton(getResources().getString(R.string.install_now), (dialogInterface, i) -> {
+        builder.setMessage(getResources().getString(R.string.str_install_voice_translate));
+        builder.setPositiveButton(getResources().getString(R.string.str_install_now), (dialogInterface, i) -> {
             try {
                 getApplicationContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.google.android.googlequicksearchbox")));
             } catch (ActivityNotFoundException unused) {
                 getApplicationContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=com.google.android.googlequicksearchbox")));
             }
         });
-        builder.setNegativeButton(getResources().getString(R.string.Cancel), (dialogInterface, i) -> {
+        builder.setNegativeButton(getResources().getString(R.string.str_Cancel), (dialogInterface, i) -> {
         });
         return builder.create();
     }
@@ -2962,8 +2963,8 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
         }
     }
 
-    class myAsyncTask extends AsyncTask<Void, Void, Void> {
-        myAsyncTask() {
+    class SuggetionAsyncTask extends AsyncTask<Void, Void, Void> {
+        SuggetionAsyncTask() {
         }
 
         public void onPreExecute() {
@@ -2971,6 +2972,13 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
             ArrayList arrayList = new ArrayList();
             arrayList.add("");
             HListView.setAdapter(Constants.setSuggestionAdapter(getApplicationContext(), arrayList, selectedTheme, HListView.getWidth()));
+            DictionaryTask dictionaryTask = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
+            if (Constants.isUpHoneycombVersion) {
+                dictionaryTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+            } else {
+                dictionaryTask.execute();
+            }
+
         }
 
         public Void doInBackground(Void... voidArr) {
@@ -3056,9 +3064,9 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
             RvBottom.setVisibility(View.GONE);
             boolean unused2 = IsSpeech = true;
             if (Constants.SpeakLanguageName.contains("en")) {
-                TxtSpeak.setText(getResources().getString(R.string.en_error_text10));
+                TxtSpeak.setText(getResources().getString(R.string.str_en_error_text10));
             } else {
-                TxtSpeak.setText(getResources().getString(R.string.error_text10));
+                TxtSpeak.setText(getResources().getString(R.string.str_error_text10));
             }
         }
 

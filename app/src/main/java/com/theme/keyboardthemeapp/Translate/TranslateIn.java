@@ -3,7 +3,7 @@ package com.theme.keyboardthemeapp.Translate;
 import android.content.Context;
 
 import com.theme.keyboardthemeapp.APPUtils.ConstantResource;
-import com.theme.keyboardthemeapp.APPUtils.LanguageY;
+import com.theme.keyboardthemeapp.APPUtils.CustomLanguageY;
 
 import java.util.Arrays;
 
@@ -105,8 +105,8 @@ public class TranslateIn extends Translation {
         this.isSpeechRecognition = !Arrays.asList(constant_Resource.getNoVoice()).contains(this.mLanguageName);
     }
 
-    public LanguageY getLanguageY() {
-        return LanguageY.fromString(getmCodeLanguage());
+    public CustomLanguageY getLanguageY() {
+        return CustomLanguageY.fromString(getmCodeLanguage());
     }
 
     public boolean isOCRTextAPI() {
