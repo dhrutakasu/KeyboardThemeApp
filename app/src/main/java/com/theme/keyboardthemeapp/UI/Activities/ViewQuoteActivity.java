@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.theme.keyboardthemeapp.Constants;
+import com.theme.keyboardthemeapp.ModelClass.QuoteModelItem;
 import com.theme.keyboardthemeapp.ModelClass.StatusItem;
 import com.theme.keyboardthemeapp.R;
 import com.theme.keyboardthemeapp.UI.Adapters.PageAdapter;
@@ -27,7 +28,7 @@ public class ViewQuoteActivity extends AppCompatActivity implements View.OnClick
     private Context context;
     private ImageView ImgBack;
     private TextView TxtTitle;
-    private ArrayList<StatusItem> statusItemArrayList;
+    private ArrayList<QuoteModelItem> statusItemArrayList;
     private int QuotePos;
     private ViewPager PagerQuote;
     private ImageView ImgWhatsapp, ImgFacebook, ImgShare, ImgCopy;

@@ -17,7 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.theme.keyboardthemeapp.Constants;
-import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
+import com.theme.keyboardthemeapp.ModelClass.KeyboardItem;
 import com.theme.keyboardthemeapp.MySharePref;
 import com.theme.keyboardthemeapp.UI.Activities.ThemeActivity;
 import com.theme.keyboardthemeapp.UI.Adapters.ThemeAdapter;
@@ -35,7 +35,7 @@ import java.util.ArrayList;
 
 public class ThemeDownloader extends AsyncTask<String, Void, Void> {
 
-    private final ArrayList<CategoriesItem> ThemeArray;
+    private final ArrayList<KeyboardItem> ThemeArray;
     private final int Pos;
     private final ImageView ivDownloadTheme, ivCheckTheme;
     private final ThemeAdapter adapter;
@@ -45,7 +45,7 @@ public class ThemeDownloader extends AsyncTask<String, Void, Void> {
     private Context context;
     private URL url;
 
-    public ThemeDownloader(Context context, View layoutProgress, ArrayList<CategoriesItem> ThemeArray, int pos, ImageView ivDownloadTheme, ImageView ivCheckTheme, ThemeAdapter adapter, ThemeActivity themeActivity) {
+    public ThemeDownloader(Context context, View layoutProgress, ArrayList<KeyboardItem> ThemeArray, int pos, ImageView ivDownloadTheme, ImageView ivCheckTheme, ThemeAdapter adapter, ThemeActivity themeActivity) {
         this.context = context;
         this.layoutProgress = layoutProgress;
         this.ThemeArray = ThemeArray;
@@ -114,7 +114,7 @@ public class ThemeDownloader extends AsyncTask<String, Void, Void> {
                 InputStream inputStream;
                 OutputStream outputStream;
                 fileName = ThemeArray.get(Pos).getName().substring(ThemeArray.get(Pos).getName().lastIndexOf("/") + 1);
-                String input = "ThemeBgList/" + "bg_" + paths;
+                String input = "ThemeBgLists/" + "bg_" + paths;
                 inputStream = assetManager.open(input);
                 File imageFile = new File(newFolder, "bg_" + fileName);
                 outputStream = new FileOutputStream(imageFile);
@@ -185,7 +185,7 @@ public class ThemeDownloader extends AsyncTask<String, Void, Void> {
                 }
             }, 1000);
         } else {
-            File Theme = new File(context.getFilesDir(), "Theme/" + ThemeArray.get(Pos).getName());
+            File Theme = new File(context.getFilesDir(), "Theme/" + "bg_" + ThemeArray.get(Pos).getName());
             File THUMB = new File(context.getFilesDir(), "Theme/" + ThemeArray.get(Pos).getName());
             new MySharePref(context).putPrefString(MySharePref.SELECT_THEME, Theme.getAbsolutePath());
             new MySharePref(context).putPrefString(MySharePref.SELECT_THEME_THUMB, THUMB.getAbsolutePath());

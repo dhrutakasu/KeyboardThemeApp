@@ -5,25 +5,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class QuoteModel{
 
-	@SerializedName("url")
-	private String url;
+	@SerializedName("QuoteModel")
+	private List<QuoteModelItem> quoteModel;
 
-	@SerializedName("status")
-	private List<StatusItem> status;
-
-	public void setUrl(String url){
-		this.url = url;
-	}
-
-	public String getUrl(){
-		return url;
-	}
-
-	public void setStatus(List<StatusItem> status){
-		this.status = status;
-	}
-
-	public List<StatusItem> getStatus(){
-		return status;
+	public List<QuoteModelItem> getQuoteModel(){
+		return quoteModel;
 	}
 }

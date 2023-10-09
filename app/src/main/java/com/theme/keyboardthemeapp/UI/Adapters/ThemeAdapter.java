@@ -12,8 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.theme.keyboardthemeapp.Constants;
-import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
+import com.theme.keyboardthemeapp.ModelClass.KeyboardItem;
 import com.theme.keyboardthemeapp.MySharePref;
 import com.theme.keyboardthemeapp.R;
 
@@ -22,11 +21,11 @@ import java.util.ArrayList;
 
 public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.MyViewHolder> {
     private final Context context;
-    private final ArrayList<CategoriesItem> gifArray;
+    private final ArrayList<KeyboardItem> gifArray;
     private final GifClick gifClick;
     private final String thumbUrl, gifUrl;
 
-    public ThemeAdapter(Context context, String thumbUrl, String gifUrl, ArrayList<CategoriesItem> gifArray, GifClick gifClick) {
+    public ThemeAdapter(Context context, String thumbUrl, String gifUrl, ArrayList<KeyboardItem> gifArray, GifClick gifClick) {
         this.context = context;
         this.gifArray = gifArray;
         this.thumbUrl = thumbUrl;
@@ -85,7 +84,7 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.MyViewHolder
     }
 
     public interface GifClick {
-        void GifListeners(int pos, ArrayList<CategoriesItem> gifArray, ImageView ivGif, ImageView ivDownloadGif, ImageView ivCheckGif);
+        void GifListeners(int pos, ArrayList<KeyboardItem> gifArray, ImageView ivGif, ImageView ivDownloadGif, ImageView ivCheckGif);
     }
 
     @Override

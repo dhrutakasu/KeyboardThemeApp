@@ -12,9 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.theme.keyboardthemeapp.ModelClass.KeyboardItem;
 import com.theme.keyboardthemeapp.Task.ThemeDownloader;
 import com.theme.keyboardthemeapp.Constants;
-import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
 import com.theme.keyboardthemeapp.ModelClass.ThemeModelItem;
 import com.theme.keyboardthemeapp.MySharePref;
 import com.theme.keyboardthemeapp.R;
@@ -36,7 +36,7 @@ public class ThemeActivity extends AppCompatActivity implements View.OnClickList
     private ImageView ImgBack, ImgMore;
     private TextView TxtTitle;
     private RecyclerView RvThemeList;
-    private ArrayList<CategoriesItem> ThemeArrays = new ArrayList<>();
+    private ArrayList<KeyboardItem> ThemeArrays = new ArrayList<>();
     private ThemeAdapter adapter;
     private View LayoutProgress;
 
@@ -78,12 +78,12 @@ public class ThemeActivity extends AppCompatActivity implements View.OnClickList
         LayoutProgress.setVisibility(View.VISIBLE);
         try {
             ThemeArrays = new ArrayList<>();
-            String[] strings = getAssets().list("ThemesList");
+            String[] strings = getAssets().list("ThemesLists");
             for (int i = 0; i < strings.length; i++) {
-                CategoriesItem categoriesItem = new CategoriesItem();
-                categoriesItem.setId(i);
-                categoriesItem.setName("file:///android_asset/ThemesList/" + strings[i]);
-                ThemeArrays.add(categoriesItem);
+                KeyboardItem keyboardItem = new KeyboardItem();
+                keyboardItem.setId(i);
+                keyboardItem.setName("file:///android_asset/ThemesList/" + strings[i]);
+                ThemeArrays.add(keyboardItem);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -94,14 +94,14 @@ public class ThemeActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onResponse(Call<List<ThemeModelItem>> call, Response<List<ThemeModelItem>> response) {
                 if (response.isSuccessful()) {
-                    ThemeArrays.addAll((ArrayList<CategoriesItem>) response.body().get(0).getCategories());
+                    ThemeArrays.addAll((ArrayList<KeyboardItem>) response.body().get(0).getKeyboard());
                     LayoutProgress.setVisibility(View.GONE);
                     RvThemeList.setLayoutManager(new GridLayoutManager(context, 2));
                     adapter = new ThemeAdapter(context, response.body().get(0).getThumburl() + "/", response.body().get(0).getUrl() + "/", ThemeArrays, (pos, ThemeArray, ivTheme, ivDownloadTheme, ivCheckTheme) -> {
 
                         new MySharePref(context).putPrefInt(MySharePref.PREVIOUS_THEME, new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0) );
                         File THUMB = new File(context.getFilesDir(), "Theme/" + ThemeArray.get(pos).getName());
-                        File Theme = new File(context.getFilesDir(), "Theme/" + ThemeArray.get(pos).getName());
+                        File Theme = new File(context.getFilesDir(), "Theme/" + "bg_" + ThemeArray.get(pos).getName());
                         if (THUMB.exists()) {
                             new MySharePref(context).putPrefString(MySharePref.SELECT_THEME, Theme.getAbsolutePath());
                             new MySharePref(context).putPrefString(MySharePref.SELECT_THEME_THUMB, THUMB.getAbsolutePath());

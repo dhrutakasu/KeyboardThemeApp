@@ -61,10 +61,7 @@ dependencies {
 
     //todo emoji dependency
     implementation 'com.koushikdutta.ion:ion:3.0.8'
-    /*implementation "com.vanniktech:emoji-ios:0.14.0-SNAPSHOT"
-    implementation "com.vanniktech:emoji-google:0.14.0-SNAPSHOT"
-    implementation "com.vanniktech:emoji-google-compat:0.14.0-SNAPSHOT"
-    implementation "com.vanniktech:emoji-twitter:0.14.0-SNAPSHOT"
-    implementation "com.vanniktech:emoji-facebook:0.14.0-SNAPSHOT"
-    implementation "com.vanniktech:emoji-material:0.14.0-SNAPSHOT"*/
+
+    //todo ads dependency
+    implementation 'com.google.android.gms:play-services-ads:22.1.0'
 }

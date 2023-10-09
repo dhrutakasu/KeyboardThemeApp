@@ -3,7 +3,9 @@ package com.theme.keyboardthemeapp.Retrofit;
 import com.theme.keyboardthemeapp.ModelClass.GifModel;
 import com.theme.keyboardthemeapp.ModelClass.JokeModelItem;
 import com.theme.keyboardthemeapp.ModelClass.QuoteCategoryModel;
+import com.theme.keyboardthemeapp.ModelClass.QuoteCategoryModelItem;
 import com.theme.keyboardthemeapp.ModelClass.QuoteModel;
+import com.theme.keyboardthemeapp.ModelClass.QuoteModelItem;
 import com.theme.keyboardthemeapp.ModelClass.ThemeModelItem;
 
 import java.util.List;
@@ -25,11 +27,19 @@ public interface RetrofitInterface {
 
     @Streaming
     @GET
-    Call<QuoteCategoryModel> getQuoteCategoryData(@Url String Url);
+    @Headers({
+            "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhwcXJ6ZmpnY2lsdHlnbXB5anNzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5NTc0MTkxNCwiZXhwIjoyMDExMzE3OTE0fQ.DCJOX18WZTsqTz2dq23iBFqpTWTgg5-9f7VsAtLROmY",
+            "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhwcXJ6ZmpnY2lsdHlnbXB5anNzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5NTc0MTkxNCwiZXhwIjoyMDExMzE3OTE0fQ.DCJOX18WZTsqTz2dq23iBFqpTWTgg5-9f7VsAtLROmY"
+    })
+    Call<List<QuoteCategoryModelItem>> getQuoteCategoryData(@Url String Url);
 
     @Streaming
     @GET
-    Call<QuoteModel> getQuotesData(@Url String Url);
+    @Headers({
+            "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhwcXJ6ZmpnY2lsdHlnbXB5anNzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5NTc0MTkxNCwiZXhwIjoyMDExMzE3OTE0fQ.DCJOX18WZTsqTz2dq23iBFqpTWTgg5-9f7VsAtLROmY",
+            "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhwcXJ6ZmpnY2lsdHlnbXB5anNzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5NTc0MTkxNCwiZXhwIjoyMDExMzE3OTE0fQ.DCJOX18WZTsqTz2dq23iBFqpTWTgg5-9f7VsAtLROmY"
+    })
+    Call<List<QuoteModelItem>> getQuotesData(@Url String Url);
     @Streaming
     @GET
     @Headers({

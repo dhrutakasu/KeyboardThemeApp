@@ -27,6 +27,7 @@ public class DictionaryTask extends AsyncTask<String, String, String> {
 
     public DictionaryTask(Context context, int id) {
         this.context = context;
+        System.out.println("----------Constants.ID : "+id);
         ID = id;
     }
 
@@ -47,6 +48,7 @@ public class DictionaryTask extends AsyncTask<String, String, String> {
                 GetMobileData();
             }
         } catch (Exception e) {
+            e.getMessage();
         }
         return loadStr;
     }
@@ -58,6 +60,7 @@ public class DictionaryTask extends AsyncTask<String, String, String> {
             set.addAll(Constants.SuggestionWordsList);
             Constants.SuggestionWordsList.clear();
             Constants.SuggestionWordsList.addAll(set);
+            System.out.println("-------- Constants.SuggestionWordsList : "+Constants.SuggestionWordsList.size());
 //            Constants.SuggestionWordsList.addAll(Constants.SuggestionWordsList);
         } catch (Exception unused) {
         }

@@ -3,7 +3,7 @@ package com.theme.keyboardthemeapp.UI.Adapters;
 import android.content.Context;
 
 import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
-import com.theme.keyboardthemeapp.UI.Fragment.QuoteFragment;
+import com.theme.keyboardthemeapp.ModelClass.QuoteCategoryModelItem;
 import com.theme.keyboardthemeapp.UI.Fragment.QuoteListFragment;
 
 import java.util.ArrayList;
@@ -15,9 +15,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 public class QuotePagerAdapter extends FragmentPagerAdapter {
-    private final ArrayList<CategoriesItem> categoriesItems;
+    private final ArrayList<QuoteCategoryModelItem> categoriesItems;
 
-    public QuotePagerAdapter(Context context, FragmentManager supportFragmentManager, ArrayList<CategoriesItem> categoriesItemArrayList) {
+    public QuotePagerAdapter(Context context, FragmentManager supportFragmentManager, ArrayList<QuoteCategoryModelItem> categoriesItemArrayList) {
         super(supportFragmentManager);
         this.categoriesItems = categoriesItemArrayList;
     }
@@ -25,13 +25,13 @@ public class QuotePagerAdapter extends FragmentPagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return categoriesItems.get(position).getName();
+        return categoriesItems.get(position).getCatName();
     }
 
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        return QuoteListFragment.newInstance(String.valueOf(categoriesItems.get(position).getId()), categoriesItems.get(position).getName());
+        return QuoteListFragment.newInstance(String.valueOf(categoriesItems.get(position).getId()), categoriesItems.get(position).getCatName());
     }
 
     @Override

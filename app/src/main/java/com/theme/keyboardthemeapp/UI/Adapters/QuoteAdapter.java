@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.theme.keyboardthemeapp.ModelClass.QuoteModelItem;
 import com.theme.keyboardthemeapp.ModelClass.StatusItem;
 import com.theme.keyboardthemeapp.R;
 
@@ -17,11 +18,11 @@ import java.util.ArrayList;
 
 public class QuoteAdapter extends RecyclerView.Adapter<QuoteAdapter.MyViewHolder> {
     private final Context context;
-    private final ArrayList<StatusItem> statusItems;
+    private final ArrayList<QuoteModelItem> statusItems;
     private final setQuoteListener quoteListener;
     private final Typeface txtTypeface;
 
-    public QuoteAdapter(Context context, ArrayList<StatusItem> statusItems, setQuoteListener quoteListener) {
+    public QuoteAdapter(Context context, ArrayList<QuoteModelItem> statusItems, setQuoteListener quoteListener) {
         this.context = context;
         this.statusItems = statusItems;
         this.quoteListener = quoteListener;

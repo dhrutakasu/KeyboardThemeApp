@@ -62,7 +62,7 @@ public class QuotesActivity extends AppCompatActivity implements View.OnClickLis
         TxtTitle.setText(getString(R.string.str_Quote_text));
         if (Constants.categoriesItems.size() > 0) {
             for (int i = 0; i < Constants.categoriesItems.size(); i++) {
-                TabQuote.addTab(TabQuote.newTab().setText(Constants.categoriesItems.get(i).getName()));
+                TabQuote.addTab(TabQuote.newTab().setText(Constants.categoriesItems.get(i).getCatName()));
             }
             QuotePagerAdapter quotePagerAdapter = new QuotePagerAdapter(context, getSupportFragmentManager(), Constants.categoriesItems);
             PagerQuote.setAdapter(quotePagerAdapter);

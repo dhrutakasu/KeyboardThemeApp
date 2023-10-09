@@ -24,12 +24,16 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
+import com.google.android.gms.ads.AdSize;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+import com.theme.keyboardthemeapp.AdsClass;
+import com.theme.keyboardthemeapp.ModelClass.QuoteCategoryModelItem;
 import com.theme.keyboardthemeapp.Task.DictionaryTask;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.Dialogs.OverlayPermissionDialog;
@@ -95,6 +99,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initActions() {
+
+
         isEnableKeyboard = Constants.IsEnableKeyboard(context);
         isActivateKeyboard = Constants.IsActivateKeyboard(context);
 
@@ -103,9 +109,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Constants.height = displayMetrics.heightPixels;
         Constants.width = displayMetrics.widthPixels;
         GetQuoteResponse();
-        if (new File(getFilesDir().getAbsolutePath() + "/photo_save.jpeg").exists()) {
-            new File(getFilesDir().getAbsolutePath() + "/photo_save.jpeg").delete();
-        }
+//        if (new File(getFilesDir().getAbsolutePath() + "/photo_save.jpeg").exists()) {
+//            new File(getFilesDir().getAbsolutePath() + "/photo_save.jpeg").delete();
+//        }
+        System.out.println("--- -- - -Constants.DictionaryWordLoad : " + Constants.DictionaryWordLoad);
         if (!Constants.DictionaryWordLoad) {
             DictionaryTask dictionaryTask = new DictionaryTask(this, 0);
             if (Constants.isUpHoneycombVersion) {
@@ -116,7 +123,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Constants.DictionaryWordLoad = true;
         }
 
+//        if (new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0) == 0) {
         Constants.getBackground(context, new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0)).getAbsolutePath();
+//        }
     }
 
     private void GotoPermission() {
@@ -131,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String s3 = Manifest.permission.CAMERA;
             String s4 = Manifest.permission.RECORD_AUDIO;
             Dexter.withContext(context)
-                    .withPermissions(s, s1, s2, s3,s4)
+                    .withPermissions(s, s1, s2, s3, s4)
                     .withListener(new MultiplePermissionsListener() {
                         public void onPermissionsChecked(MultiplePermissionsReport report) {
                             if (report.areAllPermissionsGranted()) {
@@ -158,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String s3 = Manifest.permission.CAMERA;
             String s4 = Manifest.permission.RECORD_AUDIO;
             Dexter.withContext(context)
-                    .withPermissions(s, s1, s2, s3,s4)
+                    .withPermissions(s, s1, s2, s3, s4)
                     .withListener(new MultiplePermissionsListener() {
                         public void onPermissionsChecked(MultiplePermissionsReport report) {
                             if (report.areAllPermissionsGranted()) {
@@ -237,28 +246,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void GetQuoteResponse() {
         if (Constants.isNetworkAvailable(context)) {
             LayoutProgress.setVisibility(View.VISIBLE);
-            RetrofitInterface downloadService = RetrofitInstance.createService(RetrofitInterface.class, Constants.BASE_URL1);
-            Call<QuoteCategoryModel> call = downloadService.getQuoteCategoryData(Constants.QUOTES_CATEGORY_URL);
-            call.enqueue(new Callback<QuoteCategoryModel>() {
+            RetrofitInterface downloadService = RetrofitInstance.createService(RetrofitInterface.class, Constants.BASE_URL);
+            Call<List<QuoteCategoryModelItem>> call = downloadService.getQuoteCategoryData(Constants.QUOTES_CATEGORY_URL);
+            call.enqueue(new Callback<List<QuoteCategoryModelItem>>() {
                 @Override
-                public void onResponse(Call<QuoteCategoryModel> call, Response<QuoteCategoryModel> response) {
+                public void onResponse(Call<List<QuoteCategoryModelItem>> call, Response<List<QuoteCategoryModelItem>> response) {
+                    LayoutProgress.setVisibility(View.GONE);
+                    System.out.println("---- - - -qqqq sss: " + response.body().size());
+                    for (int i = 0; i < response.body().size(); i++) {
+                        System.out.println("---- - - -qqqq : " + response.body().get(i).getCatName());
+                    }
                     if (response.isSuccessful()) {
                         Constants.categoriesItems = new ArrayList<>();
-                        Constants.categoriesItems = (ArrayList<CategoriesItem>) response.body().getCategories();
-                        LayoutProgress.setVisibility(View.GONE);
+                        Constants.categoriesItems.addAll((ArrayList<QuoteCategoryModelItem>) response.body());
                         GotoPermission();
                     }
                 }
 
                 @Override
-                public void onFailure(Call<QuoteCategoryModel> call, Throwable t) {
+                public void onFailure(Call<List<QuoteCategoryModelItem>> call, Throwable t) {
                     LayoutProgress.setVisibility(View.GONE);
                 }
             });
         } else {
             Constants.NoInternetConnection(MainActivity.this);
         }
-
     }
 
     @Override
