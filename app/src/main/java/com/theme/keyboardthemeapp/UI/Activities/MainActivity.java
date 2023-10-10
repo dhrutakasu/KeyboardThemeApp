@@ -99,8 +99,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initActions() {
-
-
+        if (AdsClass.isInternetOn(context)) {
+            AdsClass.showBanner(this, AdSize.LARGE_BANNER, (RelativeLayout) findViewById(R.id.RlBannerAdView), (RelativeLayout) findViewById(R.id.RlBannerAd), Constants.BannerAd, Constants.Show);
+        }
         isEnableKeyboard = Constants.IsEnableKeyboard(context);
         isActivateKeyboard = Constants.IsActivateKeyboard(context);
 
@@ -277,42 +278,50 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ImgMore:
-                startActivity(new Intent(context, MoreSettingsActivity.class));
+                LoadAd(MoreSettingsActivity.class);
                 break;
             case R.id.CardBackground:
-                startActivity(new Intent(context, BackgroundActivity.class));
+                LoadAd(BackgroundActivity.class);
                 break;
             case R.id.CardTheme:
-                startActivity(new Intent(context, ThemeActivity.class));
+                LoadAd(ThemeActivity.class);
                 break;
             case R.id.CardGif:
-                startActivity(new Intent(context, GIFActivity.class));
+                LoadAd(GIFActivity.class);
                 break;
             case R.id.CardFont:
-                startActivity(new Intent(context, FontActivity.class));
+                LoadAd(FontActivity.class);
                 break;
             case R.id.CardSetting:
                 Constants.wordExist = true;
-                startActivity(new Intent(context, SettingActivity.class));
+                LoadAd(SettingActivity.class);
                 break;
             case R.id.CardDictionary:
-                startActivity(new Intent(context, DictionaryActivity.class));
+                LoadAd(DictionaryActivity.class);
                 break;
             case R.id.CardTranslator:
-                startActivity(new Intent(context, TranslatorActivity.class));
+                LoadAd(TranslatorActivity.class);
                 break;
             case R.id.CardArt:
-                startActivity(new Intent(context, TextArtActivity.class));
+                LoadAd(TextArtActivity.class);
                 break;
             case R.id.CardQuotes:
-                startActivity(new Intent(context, QuotesActivity.class));
+                LoadAd(QuotesActivity.class);
                 break;
             case R.id.CardFancyText:
-                startActivity(new Intent(context, FancyTextActivity.class));
+                LoadAd(FancyTextActivity.class);
                 break;
             case R.id.CardJokes:
-                startActivity(new Intent(context, JokesActivity.class));
+                LoadAd(JokesActivity.class);
                 break;
         }
+    }
+
+    private void LoadAd(Class aClass) {
+        AdsClass.loadInterOne(MainActivity.this, Constants.InterstitialAd);
+        AdsClass.showInter(MainActivity.this, () -> {
+            startActivity(new Intent(context, aClass));
+            finish();
+        }, Constants.Show);
     }
 }

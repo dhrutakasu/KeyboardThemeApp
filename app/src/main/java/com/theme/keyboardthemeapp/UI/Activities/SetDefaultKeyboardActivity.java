@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.theme.keyboardthemeapp.AdsClass;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.Dialogs.KeyboardPermissionDialog;
 import com.theme.keyboardthemeapp.MySharePref;
@@ -50,6 +51,9 @@ public class SetDefaultKeyboardActivity extends AppCompatActivity implements Vie
     }
 
     private void initListeners() {
+        if (AdsClass.isInternetOn(context)) {
+            AdsClass.showNative250(this, Constants.NativaAds, findViewById(R.id.FlNative), Constants.Show);
+        }
         IvEnableKeyboard.setOnClickListener(this);
         IvActivateKeyboard.setOnClickListener(this);
     }

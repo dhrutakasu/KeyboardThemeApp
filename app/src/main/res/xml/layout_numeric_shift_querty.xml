@@ -25,7 +25,7 @@
         <Key android:codes="93" android:keyEdgeFlags="right" android:keyLabel="]"/>
     </Row>
     <Row android:keyWidth="10%p">
-        <Key android:keyWidth="15%p" android:codes="-6003" android:keyEdgeFlags="left" android:isModifier="true" android:keyLabel="'?123'"/>
+        <Key android:keyWidth="15%p" android:codes="-6003" android:keyEdgeFlags="left" android:isModifier="true" android:keyLabel="\?123"/>
         <Key android:codes="161" android:keyLabel="¡"/>
         <Key android:codes="60" android:keyLabel="&lt;"/>
         <Key android:codes="62" android:keyLabel="&gt;"/>

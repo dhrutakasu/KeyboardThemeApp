@@ -7,8 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdSize;
+import com.theme.keyboardthemeapp.AdsClass;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.Helper.DatabaseHelper;
 import com.theme.keyboardthemeapp.ModelClass.TranslatorModel;
@@ -49,7 +52,9 @@ public class ViewTranslatedWordsActivity extends AppCompatActivity implements Vi
         ImgBack.setOnClickListener(this);
     }
 
-    private void initActions() {
+    private void initActions() {if (AdsClass.isInternetOn(context)) {
+        AdsClass.showBanner(this, AdSize.LARGE_BANNER, (RelativeLayout) findViewById(R.id.RlBannerAdView), (RelativeLayout) findViewById(R.id.RlBannerAd),Constants.BannerAd,Constants.Show);
+    }
         ImgBack.setVisibility(View.VISIBLE);
         ImgShare.setVisibility(View.VISIBLE);
         TxtTitle.setText(R.string.str_my_saved_data);

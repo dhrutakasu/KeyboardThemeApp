@@ -7,9 +7,12 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdSize;
 import com.google.android.material.tabs.TabLayout;
+import com.theme.keyboardthemeapp.AdsClass;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.R;
 import com.theme.keyboardthemeapp.UI.Adapters.DictionaryTextPagerAdapter;
@@ -48,6 +51,9 @@ public class DictionaryActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void initActions() {
+        if (AdsClass.isInternetOn(context)) {
+            AdsClass.showBanner(this, AdSize.LARGE_BANNER, (RelativeLayout) findViewById(R.id.RlBannerAdView), (RelativeLayout) findViewById(R.id.RlBannerAd),Constants.BannerAd,Constants.Show);
+        }
         ImgBack.setVisibility(View.VISIBLE);
         strings = new ArrayList<>();
         strings.add("Home");

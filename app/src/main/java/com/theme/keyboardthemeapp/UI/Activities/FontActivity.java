@@ -9,8 +9,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdSize;
+import com.theme.keyboardthemeapp.AdsClass;
+import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.R;
 import com.theme.keyboardthemeapp.UI.Adapters.FonstStyleAdapter;
 
@@ -43,6 +47,9 @@ public class FontActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initActions() {
+        if (AdsClass.isInternetOn(context)) {
+            AdsClass.showBanner(this, AdSize.LARGE_BANNER, (RelativeLayout) findViewById(R.id.RlBannerAdView), (RelativeLayout) findViewById(R.id.RlBannerAd), Constants.BannerAd,Constants.Show);
+        }
         ImgBack.setVisibility(View.VISIBLE);
         ImgMore.setVisibility(View.VISIBLE);
         TxtTitle.setText(R.string.str_font_style);
@@ -57,7 +64,11 @@ public class FontActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 break;
             case R.id.ImgMore:
-                startActivity(new Intent(context, MoreSettingsActivity.class));
+                AdsClass.loadInterOne(FontActivity.this,Constants.InterstitialAd);
+                AdsClass.showInter(FontActivity.this, () -> {
+                    startActivity(new Intent(context, MoreSettingsActivity.class));
+                    finish();
+                },Constants.Show);
                 break;
         }
     }

@@ -8,9 +8,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdSize;
 import com.google.android.material.tabs.TabLayout;
+import com.theme.keyboardthemeapp.AdsClass;
+import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.R;
 import com.theme.keyboardthemeapp.UI.Adapters.TextSettingPagerAdapter;
 
@@ -48,6 +52,9 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void initActions() {
+        if (AdsClass.isInternetOn(context)) {
+            AdsClass.showNative250(this, Constants.NativaAds, findViewById(R.id.FlNative), Constants.Show);
+        }
         ImgBack.setVisibility(View.VISIBLE);
         ImgMore.setVisibility(View.VISIBLE);
         TxtTitle.setText(getString(R.string.str_Setting));
@@ -72,7 +79,11 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                 finish();
                 break;
             case R.id.ImgMore:
-                startActivity(new Intent(context, MoreSettingsActivity.class));
+                AdsClass.loadInterOne(SettingActivity.this,Constants.InterstitialAd);
+                AdsClass.showInter(SettingActivity.this, () -> {
+                    startActivity(new Intent(context, MoreSettingsActivity.class));
+                    finish();
+                },Constants.Show);
                 break;
         }
     }

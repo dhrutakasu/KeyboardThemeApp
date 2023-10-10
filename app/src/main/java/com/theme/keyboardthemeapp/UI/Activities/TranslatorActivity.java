@@ -13,14 +13,17 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.mlkit.nl.translate.TranslateLanguage;
 import com.google.mlkit.nl.translate.Translation;
 import com.google.mlkit.nl.translate.Translator;
 import com.google.mlkit.nl.translate.TranslatorOptions;
+import com.theme.keyboardthemeapp.AdsClass;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.Helper.DatabaseHelper;
 import com.theme.keyboardthemeapp.ModelClass.TranslatorModel;
@@ -105,6 +108,9 @@ public class TranslatorActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void initActions() {
+        if (AdsClass.isInternetOn(context)) {
+            AdsClass.showBanner(this, AdSize.LARGE_BANNER, (RelativeLayout) findViewById(R.id.RlBannerAdView), (RelativeLayout) findViewById(R.id.RlBannerAd),Constants.BannerAd,Constants.Show);
+        }
         ImgBack.setVisibility(View.VISIBLE);
         ImgSave.setVisibility(View.VISIBLE);
         ImgHistory.setVisibility(View.VISIBLE);
@@ -304,6 +310,10 @@ public class TranslatorActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void GotoHistory() {
-        startActivity(new Intent(context, TranslatorHistoryActivity.class));
+        AdsClass.loadInterOne(TranslatorActivity.this,Constants.InterstitialAd);
+        AdsClass.showInter(TranslatorActivity.this, () -> {
+            startActivity(new Intent(context, TranslatorHistoryActivity.class));
+            finish();
+        },Constants.Show);
     }
 }

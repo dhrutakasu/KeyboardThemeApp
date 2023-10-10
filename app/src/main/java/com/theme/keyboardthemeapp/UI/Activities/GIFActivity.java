@@ -6,12 +6,15 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.google.android.gms.ads.AdSize;
+import com.theme.keyboardthemeapp.AdsClass;
 import com.theme.keyboardthemeapp.Task.GifThemeDownloader;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
@@ -72,6 +75,9 @@ public class GIFActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     private void initActions() {
+        if (AdsClass.isInternetOn(context)) {
+            AdsClass.showBanner(this, AdSize.LARGE_BANNER, (RelativeLayout) findViewById(R.id.RlBannerAdView), (RelativeLayout) findViewById(R.id.RlBannerAd),Constants.BannerAd,Constants.Show);
+        }
         ImgBack.setVisibility(View.VISIBLE);
         ImgMore.setVisibility(View.VISIBLE);
         TxtTitle.setText(R.string.str_Gif_style);
@@ -159,7 +165,11 @@ public class GIFActivity extends AppCompatActivity implements View.OnClickListen
                 finish();
                 break;
             case R.id.ImgMore:
-                startActivity(new Intent(context, MoreSettingsActivity.class));
+                AdsClass.loadInterOne(GIFActivity.this,Constants.InterstitialAd);
+                AdsClass.showInter(GIFActivity.this, () -> {
+                    startActivity(new Intent(context, MoreSettingsActivity.class));
+                    finish();
+                },Constants.Show);
                 break;
         }
     }

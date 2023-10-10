@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.theme.keyboardthemeapp.AdsClass;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.ModelClass.JokeModelItem;
 import com.theme.keyboardthemeapp.ModelClass.StatusItem;
@@ -73,6 +74,9 @@ public class ViewJokeActivity extends AppCompatActivity implements View.OnClickL
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void initActions() {
+        if (AdsClass.isInternetOn(context)) {
+            AdsClass.showNative250(this, Constants.NativaAds, findViewById(R.id.FlNative), Constants.Show);
+        }
         ImgBack.setVisibility(View.VISIBLE);
         TxtTitle.setText(QuoteTitle);
         PageAdapter pageAdapter = new PageAdapter(context, getSupportFragmentManager(), statusItemArrayList);

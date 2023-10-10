@@ -23,6 +23,8 @@ import android.widget.Toast;
 
 import com.flask.colorpicker.ColorPickerView;
 import com.flask.colorpicker.builder.ColorPickerDialogBuilder;
+import com.google.android.gms.ads.AdSize;
+import com.theme.keyboardthemeapp.AdsClass;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.Dialogs.MainExitDialog;
 import com.theme.keyboardthemeapp.Dialogs.OverlayPermissionDialog;
@@ -152,6 +154,9 @@ public class BackgroundActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void initActions() {
+        if (AdsClass.isInternetOn(context)) {
+            AdsClass.showBanner(this, AdSize.LARGE_BANNER, (RelativeLayout) findViewById(R.id.RlBannerAdView), (RelativeLayout) findViewById(R.id.RlBannerAd),Constants.BannerAd,Constants.Show);
+        }
         ImgBack.setVisibility(View.VISIBLE);
         ImgMore.setVisibility(View.VISIBLE);
         TxtTitle.setText(R.string.app_name);
@@ -271,7 +276,11 @@ public class BackgroundActivity extends AppCompatActivity implements View.OnClic
                 finish();
                 break;
             case R.id.ImgMore:
-                startActivity(new Intent(context, MoreSettingsActivity.class));
+                AdsClass.loadInterOne(BackgroundActivity.this,Constants.InterstitialAd);
+                AdsClass.showInter(BackgroundActivity.this, () -> {
+                    startActivity(new Intent(context, MoreSettingsActivity.class));
+                    finish();
+                },Constants.Show);
                 break;
             case R.id.IvChangeBg:
                 setPressButton(IvChangeBg, R.drawable.bgcolor_presed);
@@ -522,9 +531,13 @@ public class BackgroundActivity extends AppCompatActivity implements View.OnClic
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        Intent intent3 = new Intent(context, PhotoCropActivity.class);
-                        intent3.putExtra(Constants.FILE_PATH, file);
-                        startActivityForResult(intent3, CAMERA_RESULT);
+                        AdsClass.loadInterOne(BackgroundActivity.this,Constants.InterstitialAd);
+                        AdsClass.showInter(BackgroundActivity.this, () -> {
+                            Intent intent3 = new Intent(context, PhotoCropActivity.class);
+                            intent3.putExtra(Constants.FILE_PATH, file);
+                            startActivityForResult(intent3, CAMERA_RESULT);
+                            finish();
+                        },Constants.Show);
                         break;
                     case RESULT_CANCELED:
                         break;
@@ -559,9 +572,13 @@ public class BackgroundActivity extends AppCompatActivity implements View.OnClic
                         } catch (Exception unused3) {
                             unused3.printStackTrace();
                         }
-                        Intent intent3 = new Intent(context, PhotoCropActivity.class);
-                        intent3.putExtra(Constants.FILE_PATH, file);
-                        startActivityForResult(intent3, CAMERA_RESULT);
+                        AdsClass.loadInterOne(BackgroundActivity.this,Constants.InterstitialAd);
+                        AdsClass.showInter(BackgroundActivity.this, () -> {
+                            Intent intent3 = new Intent(context, PhotoCropActivity.class);
+                            intent3.putExtra(Constants.FILE_PATH, file);
+                            startActivityForResult(intent3, CAMERA_RESULT);
+                            finish();
+                        },Constants.Show);
                         break;
                     case RESULT_CANCELED:
                         break;

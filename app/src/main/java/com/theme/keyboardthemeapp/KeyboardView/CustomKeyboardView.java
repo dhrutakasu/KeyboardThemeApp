@@ -93,13 +93,13 @@ public class CustomKeyboardView extends KeyboardView {
         this.context = context;
         setPreviewEnabled(false);
         InitActions();
-        ninePatchDrawable = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_unpresed);
-        ninePatchDrawablePresed = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_presed);
+//        ninePatchDrawable = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_unpresed);
+//        ninePatchDrawablePresed = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_presed);
         PopupDrawable = getResources().getDrawable(PreviewResInts[0]);
-        ninePatchDrawableShiftOn = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_shift_on);
-        ninePatchDrawableSpace = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_space);
-        ninePatchDrawableDelete = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_back);
-        ninePatchDrawableDone = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_enter);
+//        ninePatchDrawableShiftOn = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_shift_on);
+//        ninePatchDrawableSpace = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_space);
+//        ninePatchDrawableDelete = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_back);
+//        ninePatchDrawableDone = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_enter);
     }
 
     public CustomKeyboardView(Context context) {
@@ -126,13 +126,13 @@ public class CustomKeyboardView extends KeyboardView {
         this.context = context;
         setPreviewEnabled(false);
         InitActions();
-        ninePatchDrawable = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_unpresed);
-        ninePatchDrawablePresed = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_presed);
+//        ninePatchDrawable = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_unpresed);
+//        ninePatchDrawablePresed = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_presed);
         PopupDrawable = getResources().getDrawable(PreviewResInts[0]);
-        ninePatchDrawableShiftOn = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_shift_on);
-        ninePatchDrawableSpace = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_space);
-        ninePatchDrawableDelete = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_back);
-        ninePatchDrawableDone = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_enter);
+//        ninePatchDrawableShiftOn = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_shift_on);
+//        ninePatchDrawableSpace = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_space);
+//        ninePatchDrawableDelete = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_back);
+//        ninePatchDrawableDone = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_enter);
     }
 
     public CustomKeyboardView(Context context, AttributeSet attributeSet) {
@@ -159,13 +159,13 @@ public class CustomKeyboardView extends KeyboardView {
         this.context = context;
         setPreviewEnabled(false);
         InitActions();
-        ninePatchDrawable = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_unpresed);
-        ninePatchDrawablePresed = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_presed);
+//        ninePatchDrawable = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_unpresed);
+//        ninePatchDrawablePresed = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_presed);
         PopupDrawable = getResources().getDrawable(PreviewResInts[0]);
-        ninePatchDrawableShiftOn = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_shift_on);
-        ninePatchDrawableSpace = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_space);
-        ninePatchDrawableDelete = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_back);
-        ninePatchDrawableDone = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_enter);
+//        ninePatchDrawableShiftOn = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_shift_on);
+//        ninePatchDrawableSpace = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_space);
+//        ninePatchDrawableDelete = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_back);
+//        ninePatchDrawableDone = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_enter);
     }
 
     public void InitActions() {
@@ -486,15 +486,15 @@ public class CustomKeyboardView extends KeyboardView {
         PopupDrawable = PUpdrawable;
         NewPaint.setColor(new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)));
         SimplePaint.setColor(new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)));
-        try {
-            ninePatchDrawableShiftOn.setColorFilter(new PorterDuffColorFilter(TxtColorCodeInt, PorterDuff.Mode.SRC_IN));
-            ninePatchDrawableShiftOff.setColorFilter(new PorterDuffColorFilter(TxtColorCodeInt, PorterDuff.Mode.SRC_IN));
-            ninePatchDrawableSpace.setColorFilter(new PorterDuffColorFilter(TxtColorCodeInt, PorterDuff.Mode.SRC_IN));
-            ninePatchDrawableDone.setColorFilter(new PorterDuffColorFilter(TxtColorCodeInt, PorterDuff.Mode.SRC_IN));
-            ninePatchDrawableDelete.setColorFilter(new PorterDuffColorFilter(TxtColorCodeInt, PorterDuff.Mode.SRC_IN));
-        } catch (Exception e) {
-            Log.e("EROOR:", "" + e);
-        }
+//        try {
+//            ninePatchDrawableShiftOn.setColorFilter(new PorterDuffColorFilter(TxtColorCodeInt, PorterDuff.Mode.SRC_IN));
+//            ninePatchDrawableShiftOff.setColorFilter(new PorterDuffColorFilter(TxtColorCodeInt, PorterDuff.Mode.SRC_IN));
+//            ninePatchDrawableSpace.setColorFilter(new PorterDuffColorFilter(TxtColorCodeInt, PorterDuff.Mode.SRC_IN));
+//            ninePatchDrawableDone.setColorFilter(new PorterDuffColorFilter(TxtColorCodeInt, PorterDuff.Mode.SRC_IN));
+//            ninePatchDrawableDelete.setColorFilter(new PorterDuffColorFilter(TxtColorCodeInt, PorterDuff.Mode.SRC_IN));
+//        } catch (Exception e) {
+//            Log.e("EROOR:", "" + e);
+//        }
         SetPopupVIew();
         invalidate();
     }

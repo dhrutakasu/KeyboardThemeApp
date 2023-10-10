@@ -6,6 +6,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import com.theme.keyboardthemeapp.AdsClass;
+import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.R;
 import com.theme.keyboardthemeapp.UI.Activities.MainActivity;
 
@@ -32,7 +34,9 @@ public class FancyTextDialog extends Dialog {
         ImageView IvFancyTextCopy = (ImageView) findViewById(R.id.IvFancyTextCopy);
         ImageView IvFancyTextShare = (ImageView) findViewById(R.id.IvFancyTextShare);
         ImageView IvFancyTextWhatsapp = (ImageView) findViewById(R.id.IvFancyTextWhatsapp);
-
+        if (AdsClass.isInternetOn(getContext())) {
+            AdsClass.showNative250(getOwnerActivity(), Constants.NativaAds, findViewById(R.id.FlNative), Constants.Show);
+        }
         IvFancyTextCopy.setOnClickListener(view -> {
             fancyTextListener.onCopy(this);
         });

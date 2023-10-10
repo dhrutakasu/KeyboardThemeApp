@@ -36,9 +36,6 @@
             android:name=".UI.Activities.PhotoCropActivity"
             android:exported="false" />
         <activity
-            android:name=".UI.Activities.ImagePreviewActivity"
-            android:exported="false" />
-        <activity
             android:name=".UI.Activities.BackgroundActivity"
             android:exported="false"
             android:screenOrientation="portrait" />

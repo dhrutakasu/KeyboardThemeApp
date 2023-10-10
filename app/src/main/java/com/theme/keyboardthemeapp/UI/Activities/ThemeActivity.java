@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -12,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.ads.AdSize;
+import com.theme.keyboardthemeapp.AdsClass;
 import com.theme.keyboardthemeapp.ModelClass.KeyboardItem;
 import com.theme.keyboardthemeapp.Task.ThemeDownloader;
 import com.theme.keyboardthemeapp.Constants;
@@ -64,6 +67,9 @@ public class ThemeActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void initActions() {
+        if (AdsClass.isInternetOn(context)) {
+            AdsClass.showBanner(this, AdSize.LARGE_BANNER, (RelativeLayout) findViewById(R.id.RlBannerAdView), (RelativeLayout) findViewById(R.id.RlBannerAd),Constants.BannerAd,Constants.Show);
+        }
         ImgBack.setVisibility(View.VISIBLE);
         ImgMore.setVisibility(View.VISIBLE);
         TxtTitle.setText(R.string.str_Theme_style);
@@ -140,7 +146,11 @@ public class ThemeActivity extends AppCompatActivity implements View.OnClickList
                 finish();
                 break;
             case R.id.ImgMore:
-                startActivity(new Intent(context, MoreSettingsActivity.class));
+                AdsClass.loadInterOne(ThemeActivity.this,Constants.InterstitialAd);
+                AdsClass.showInter(ThemeActivity.this, () -> {
+                    startActivity(new Intent(context, MoreSettingsActivity.class));
+                    finish();
+                },Constants.Show);
                 break;
         }
     }

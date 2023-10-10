@@ -189,6 +189,7 @@ public class Constants {
     public static String InterstitialAd = "ca-app-pub-3940256099942544/1033173712";
     public static String NativaAds = "ca-app-pub-3940256099942544/2247696110";
     public static String AppOpenAd = "ca-app-pub-3940256099942544/3419835294";
+    public static String Show = "yes";
 
     static {
         String[][] strArr = new String[24][];
@@ -530,7 +531,7 @@ public class Constants {
         SuggestionWords.addAll(Constants.SuggestionWordsList);
         SuggestionData = new ArrayList<>();
         System.out.println("----- - - -string : " + string.length());
-        System.out.println("----- - - -Constants.SuggestionWordsList : " + Arrays.toString(Constants.SuggestionWordsList.toArray()));
+        System.out.println("----- - - -Constants.SuggestionWordsList : " + Constants.SuggestionWordsList.size());
         if (string.length() >= 1) {
             if (SuggestionData != null) {
                 for (int i = 0; i < SuggestionWords.size(); i++) {

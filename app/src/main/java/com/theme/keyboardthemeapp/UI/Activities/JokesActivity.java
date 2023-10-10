@@ -3,6 +3,7 @@ package com.theme.keyboardthemeapp.UI.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -12,8 +13,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdSize;
+import com.theme.keyboardthemeapp.AdsClass;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.ModelClass.JokeModelItem;
 import com.theme.keyboardthemeapp.R;
@@ -55,6 +59,9 @@ public class JokesActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void initActions() {
+        if (AdsClass.isInternetOn(context)) {
+            AdsClass.showBanner(this, AdSize.LARGE_BANNER, (RelativeLayout) findViewById(R.id.RlBannerAdView), (RelativeLayout) findViewById(R.id.RlBannerAd), Constants.BannerAd, Constants.Show);
+        }
         ImgBack.setVisibility(View.VISIBLE);
         TxtTitle.setText(getString(R.string.str_Jockes));
         RecyclerJoke.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
@@ -73,7 +80,7 @@ public class JokesActivity extends AppCompatActivity implements View.OnClickList
                         LayoutProgress.setVisibility(View.GONE);
                         Constants.jokeModelItems = new ArrayList<>();
                         Constants.jokeModelItems = (ArrayList<JokeModelItem>) response.body();
-                        System.out.println("---- -- -- ttt UUL "+Constants.jokeModelItems.size());
+                        System.out.println("---- -- -- ttt UUL " + Constants.jokeModelItems.size());
                         jokesAdapter = new JokesAdapter(context, Constants.jokeModelItems, pos -> {
                             Intent intent = new Intent(context, ViewJokeActivity.class);
                             intent.putExtra(Constants.QUOTE_POS, pos);
@@ -86,7 +93,7 @@ public class JokesActivity extends AppCompatActivity implements View.OnClickList
 
                 @Override
                 public void onFailure(Call<List<JokeModelItem>> call, Throwable t) {
-                    System.out.println("---- -- -- ttt L "+t.getMessage());
+                    System.out.println("---- -- -- ttt L " + t.getMessage());
                     LayoutProgress.setVisibility(View.GONE);
                 }
             });

@@ -75,21 +75,16 @@ import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.ModelClass.StickerModel;
 import com.theme.keyboardthemeapp.MySharePref;
 import com.theme.keyboardthemeapp.R;
-import com.theme.keyboardthemeapp.UI.Activities.ImagePreviewActivity;
 import com.theme.keyboardthemeapp.UI.Activities.SettingActivity;
 import com.theme.keyboardthemeapp.UI.Activities.ThemeActivity;
 import com.theme.keyboardthemeapp.Translate.TranslateIn;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -98,8 +93,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.TreeMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import hani.momanii.supernova_emoji_library.emoji.Cars;
 import hani.momanii.supernova_emoji_library.emoji.Electr;
@@ -152,8 +145,6 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
     public static Drawable DrawableEnter;
     private final int[] EnterIconsInts = {R.drawable.btn_enter, R.drawable.btn_enter, R.drawable.btn_enter, R.drawable.btn_enter, R.drawable.btn_enter, R.drawable.btn_enter, R.drawable.btn_enter, R.drawable.btn_enter, R.drawable.btn_enter, R.drawable.btn_enter};
     public static int FromLevel = 0;
-    public static int[] GeneralIconsPresed = {R.drawable.key_unpresed, R.drawable.key_unpresed, R.drawable.key_unpresed, R.drawable.key_unpresed, R.drawable.key_unpresed, R.drawable.key_unpresed, R.drawable.key_unpresed, R.drawable.key_unpresed, R.drawable.key_unpresed, R.drawable.key_unpresed};
-    public static int[] GeneralIconsUnpresed = {R.drawable.key_presed, R.drawable.key_presed, R.drawable.key_presed, R.drawable.key_presed, R.drawable.key_presed, R.drawable.key_presed, R.drawable.key_presed, R.drawable.key_presed, R.drawable.key_presed, R.drawable.key_presed};
     public static RelativeLayout RlGif;
     public static ImageView ImgGif;
     public static LinearLayout LlHeader;
@@ -211,7 +202,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
     public static Drawable DrawableShiftOn;
     public static int[] ShiftOnInts = {R.drawable.btn_shift_on, R.drawable.btn_shift_on, R.drawable.btn_shift_on, R.drawable.btn_shift_on, R.drawable.btn_shift_on, R.drawable.btn_shift_on, R.drawable.btn_shift_on, R.drawable.btn_shift_on, R.drawable.btn_shift_on, R.drawable.btn_shift_on};
     public static Drawable DrawableSpace;
-    public static int[] SpaceInts = {R.drawable.btn_space, R.drawable.btn_space, R.drawable.btn_space, R.drawable.btn_space, R.drawable.btn_space, R.drawable.btn_space, R.drawable.btn_space, R.drawable.btn_space, R.drawable.btn_space, R.drawable.btn_space};
+    public static int[] SpaceInts = {R.drawable.ic_space_bar_white_24dp, R.drawable.btn_space, R.drawable.btn_space, R.drawable.btn_space, R.drawable.btn_space, R.drawable.btn_space, R.drawable.btn_space, R.drawable.btn_space, R.drawable.btn_space, R.drawable.btn_space};
     public static LinearLayout LlSpeakLay;
     public static int SpeakLayHeight = 0;
     public static ImageButton SpeakToTextBtn;
@@ -256,12 +247,6 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
-            } else if (ImagePreviewActivity.act == null) {
-                Constants.wordExist = true;
-                Intent intent2 = new Intent(getApplicationContext(), ThemeActivity.class);
-                intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent2);
             }
         } catch (Exception unused) {
         }
@@ -518,13 +503,13 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
         Constants.SelectTheme = selectedTheme;
         TextColorCode = ColorCodesInts[0];
 
-        ninePatchDrawable = (NinePatchDrawable) getResources().getDrawable(GeneralIconsUnpresed[0]);
-        ninePatchDrawablePresed = (NinePatchDrawable) getResources().getDrawable(GeneralIconsPresed[0]);
-        ninePatchDrawableShiftOff = (NinePatchDrawable) getResources().getDrawable(ShiftOffInts[0]);
-        ninePatchDrawableShiftOn = (NinePatchDrawable) getResources().getDrawable(ShiftOnInts[0]);
-        ninePatchDrawableSpace = (NinePatchDrawable) getResources().getDrawable(SpaceInts[0]);
-        ninePatchDrawableDelete = (NinePatchDrawable) getResources().getDrawable(DeleteIconsInts[0]);
-        ninePatchDrawableDone = (NinePatchDrawable) getResources().getDrawable(EnterIconsInts[0]);
+//        ninePatchDrawable = (NinePatchDrawable) getResources().getDrawable(GeneralIconsUnpresed[0]);
+//        ninePatchDrawablePresed = (NinePatchDrawable) getResources().getDrawable(GeneralIconsPresed[0]);
+//        ninePatchDrawableShiftOff = (NinePatchDrawable) getResources().getDrawable(ShiftOffInts[0]);
+//        ninePatchDrawableShiftOn = (NinePatchDrawable) getResources().getDrawable(ShiftOnInts[0]);
+//        ninePatchDrawableSpace = (NinePatchDrawable) getResources().getDrawable(SpaceInts[0]);
+//        ninePatchDrawableDelete = (NinePatchDrawable) getResources().getDrawable(DeleteIconsInts[0]);
+//        ninePatchDrawableDone = (NinePatchDrawable) getResources().getDrawable(EnterIconsInts[0]);
         DrawablePopUp = getResources().getDrawable(DrawablePopUpInts[0]);
         if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.ISCOLOR_CODE_CHANGE, false)) {
             DrawableShiftOff.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
@@ -1493,6 +1478,27 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
         if (customKeyboardView != null) {
             customKeyboardView.DismissLanguagePopup();
         }
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                DrawableShiftOn.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
+                DrawableShiftOff.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
+                DrawableSpace.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
+                DrawableEnter.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
+                DrawableDelete.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
+                DrawablePopUp.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
+                DrawableEmoji.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
+                DrawableTheme.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
+                DrawableStricker.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
+                DrawableSetting.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
+                DrawableLanguageOn.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
+                DrawableLanguageOff.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
+                DrawableSpeak.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
+                DrawableDropArrow.setColorFilter(new PorterDuffColorFilter(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)), PorterDuff.Mode.SRC_IN));
+                BtnSpeakLanguage.setTextColor(new MySharePref(getApplicationContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)));
+            }
+        }, 500);
+
         customKeyboardView.setOnlineKeyboard(ninePatchDrawable, ninePatchDrawablePresed, TextColorCode, ninePatchDrawableSpace, ninePatchDrawableShiftOff, ninePatchDrawableShiftOn, ninePatchDrawableDelete, ninePatchDrawableDone, DrawablePopUp);
         customKeyboardView.setBackgroundDrawable(new BitmapDrawable());
         customKeyboardView.setKeyboard(keypadDataView);
@@ -1622,9 +1628,18 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
             setInputView(onCreateInputView());
             IsPopupView = false;
         }
-        int i = editorInfo.inputType & 4080;
+        int inputTypes = editorInfo.inputType & 4080;
         if ((editorInfo.inputType & 15) == 1) {
-            if (i == 128 || i == 144) {
+            switch (inputTypes) {
+                case 128:
+                case 144:
+                case 32:
+                case 16:
+                case 176:
+                    TempShowSuggestion = false;
+                    break;
+            }
+          /*  if (i == 128 || i == 144) {
                 TempShowSuggestion = false;
             }
             if (i == 32) {
@@ -1637,8 +1652,22 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                 } else if (i == 160) {
                     int i2 = editorInfo.inputType;
                 }
+            }*/
+            switch ((editorInfo.inputType & 524288)) {
+                case 0:
+                    break;
+                default:
+                    TempShowSuggestion = false;
+
             }
-            if ((editorInfo.inputType & 524288) != 0) {
+            switch ((editorInfo.inputType & 65536)) {
+                case 0:
+                    break;
+                default:
+                    TempShowSuggestion = false;
+                    CompletionOn = isFullscreenMode();
+            }
+         /*   if ((editorInfo.inputType & 524288) != 0) {
                 TempShowSuggestion = false;
             }
             if ((editorInfo.inputType & 32768) == 0) {
@@ -1647,11 +1676,12 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
             if ((editorInfo.inputType & 65536) != 0) {
                 TempShowSuggestion = false;
                 CompletionOn = isFullscreenMode();
-            }
+            }*/
         }
-        System.out.println("---==== : " + TempShowSuggestion+" == : "+editorInfo.inputType);
-        int i4 = getCurrentInputEditorInfo().imeOptions & 1073742079;
-        if (i4 != 2 && i4 != 3 && i4 != 4 && i4 != 5 && i4 != 6) {
+        System.out.println("---==== : " + TempShowSuggestion + " == : " + editorInfo.inputType);
+        int imeOption = getCurrentInputEditorInfo().imeOptions & 1073742079;
+
+        if (imeOption != 2 && imeOption != 3 && imeOption != 4 && imeOption != 5 && imeOption != 6) {
             try {
                 if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true) && TempShowSuggestion && Constants.selectedLangName == 1) {
                     CapsOnOffFlag = false;
@@ -2088,11 +2118,11 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
         }
     }*/
     @Override
-    public void onKey(int i, int[] iArr) {
-        final int i2 = i;
-        System.out.println("----- - - -i2i2i2i2 : " + i2);
-        final int[] iArr2 = iArr;
-        final InputConnection currentInputConnection = getCurrentInputConnection();
+    public void onKey(int primaryCode, int[] keyCodes) {
+        final int code = primaryCode;
+        System.out.println("----- - - -i2i2i2i2 : " + code);
+        final int[] ints = keyCodes;
+        final InputConnection connection = getCurrentInputConnection();
         if (Constants.ChangeLanguage == 1) {
             LlLanguageChange.setVisibility(View.VISIBLE);
         } else {
@@ -2110,367 +2140,827 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
             }
             customKeyboardView.invalidateAllKeys();
             Constants.DeleteValFlag = false;
-        } else if (i2 == -978903) {
-            Constants.wordExist = true;
-            CapsOn();
-            CapsLock = true;
-            CapsOnOffFlag = true;
-            NewCapital = true;
-        } else if (i2 == -6003) {
-            Constants.wordExist = true;
-            CheckFlag = true;
-            MyKeypadDataView myKeypadDataView = new MyKeypadDataView(this, AllNumericQwerty[Constants.ChangeLanguage], keyboardHeight, 1);
-            keypadDataView = myKeypadDataView;
-            customKeyboardView.setKeyboard(myKeypadDataView);
-            for (Keyboard.Key key : keypadDataView.getKeys()) {
-                int parseInt = Integer.parseInt("" + key.codes[0]);
-                if (parseInt == -978903) {
-                    key.icon = DrawableShiftOff;
-                } else if (parseInt == -2830) {
-                    key.label = key.label;
-                } else if (parseInt == -1) {
-                    key.icon = DrawableShiftOff;
-                } else if (parseInt == 32) {
-                    key.icon = DrawableSpace;
-                } else if (parseInt == -6003) {
-                    key.label = key.label;
-                } else if (parseInt == -6002) {
-                    key.label = key.label;
-                } else if (parseInt == -5) {
-                    key.icon = DrawableDelete;
-                } else if (parseInt == -4) {
-                    key.icon = DrawableEnter;
+        } else {
+            switch (code) {
+                case -978903: {
+                    Constants.wordExist = true;
+                    CapsOn();
+                    CapsLock = true;
+                    CapsOnOffFlag = true;
+                    NewCapital = true;
                 }
-            }
-            customKeyboardView.invalidateAllKeys();
-            CapsLock = false;
-        } else if (i2 == -5000) {
-            CustomKeyboardView customKeyboardView = this.customKeyboardView;
-            if (customKeyboardView != null) {
-                customKeyboardView.DismissLanguagePopup();
-                customKeyboardView.DismissPreviewPopup();
-            }
-            if (!ManageClick) {
-                Constants.wordExist = true;
-                if (LlMainMenu.getVisibility() == View.GONE) {
-                    LlHintWord.setVisibility(View.GONE);
-                    resultList = null;
-                    resultList = new ArrayList<>();
-                    HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.layout_hint_item_view, resultList));
-                    LlMainMenu.setVisibility(View.VISIBLE);
+                break;
+                case -6003: {
+                    Constants.wordExist = true;
+                    CheckFlag = true;
+                    MyKeypadDataView myKeypadDataView = new MyKeypadDataView(this, AllNumericQwerty[Constants.ChangeLanguage], keyboardHeight, 1);
+                    keypadDataView = myKeypadDataView;
+                    customKeyboardView.setKeyboard(myKeypadDataView);
+                    for (Keyboard.Key key : keypadDataView.getKeys()) {
+                        int parseInt = Integer.parseInt("" + key.codes[0]);
+                        if (parseInt == -978903) {
+                            key.icon = DrawableShiftOff;
+                        } else if (parseInt == -2830) {
+                            key.label = key.label;
+                        } else if (parseInt == -1) {
+                            key.icon = DrawableShiftOff;
+                        } else if (parseInt == 32) {
+                            key.icon = DrawableSpace;
+                        } else if (parseInt == -6003) {
+                            key.label = key.label;
+                        } else if (parseInt == -6002) {
+                            key.label = key.label;
+                        } else if (parseInt == -5) {
+                            key.icon = DrawableDelete;
+                        } else if (parseInt == -4) {
+                            key.icon = DrawableEnter;
+                        }
+                    }
+                    customKeyboardView.invalidateAllKeys();
+                    CapsLock = false;
                 }
-                LlHeader.setVisibility(View.VISIBLE);
-                Constants.temp_flag = 1;
-                initEmojiAdapter();
-                customKeyboardView.setVisibility(View.GONE);
-                RlOtherContent.setVisibility(View.VISIBLE);
-                RlMainContents.setAnimation(AnimationUtils.loadAnimation(getApplicationContext(), 17432576));
-                RlOtherContent.removeAllViews();
-                RlOtherContent.addView(GridEmoji);
-            } else {
-                RlOtherContent.removeAllViews();
-                RlOtherContent.setVisibility(View.GONE);
-                setKeyboardData();
-            }
-            ManageClick = !ManageClick;
-        } else if (i2 == -1763) {
-            Constants.wordExist = true;
-            CheckFlag = true;
-            MyKeypadDataView myKeypadDataView2 = new MyKeypadDataView(this, R.xml.layout_numeric_shift_querty, keyboardHeight, 1);
-            keypadDataView = myKeypadDataView2;
-            customKeyboardView.setKeyboard(myKeypadDataView2);
-            for (Keyboard.Key key2 : keypadDataView.getKeys()) {
-                int parseInt2 = Integer.parseInt("" + key2.codes[0]);
-                if (parseInt2 == -978903) {
-                    key2.icon = DrawableShiftOff;
-                } else if (parseInt2 == -2830) {
-                    key2.label = key2.label;
-                } else if (parseInt2 == -1) {
-                    key2.icon = DrawableShiftOff;
-                } else if (parseInt2 == 32) {
-                    key2.icon = DrawableSpace;
-                } else if (parseInt2 == -6003) {
-                    key2.label = key2.label;
-                } else if (parseInt2 == -6002) {
-                    key2.label = key2.label;
-                } else if (parseInt2 == -5) {
-                    key2.icon = DrawableDelete;
-                } else if (parseInt2 == -4) {
-                    key2.icon = DrawableEnter;
+                break;
+                case -5000: {
+                    CustomKeyboardView customKeyboardView = this.customKeyboardView;
+                    if (customKeyboardView != null) {
+                        customKeyboardView.DismissLanguagePopup();
+                        customKeyboardView.DismissPreviewPopup();
+                    }
+                    if (!ManageClick) {
+                        Constants.wordExist = true;
+                        if (LlMainMenu.getVisibility() == View.GONE) {
+                            LlHintWord.setVisibility(View.GONE);
+                            resultList = null;
+                            resultList = new ArrayList<>();
+                            HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.layout_hint_item_view, resultList));
+                            LlMainMenu.setVisibility(View.VISIBLE);
+                        }
+                        LlHeader.setVisibility(View.VISIBLE);
+                        Constants.temp_flag = 1;
+                        initEmojiAdapter();
+                        customKeyboardView.setVisibility(View.GONE);
+                        RlOtherContent.setVisibility(View.VISIBLE);
+                        RlMainContents.setAnimation(AnimationUtils.loadAnimation(getApplicationContext(), 17432576));
+                        RlOtherContent.removeAllViews();
+                        RlOtherContent.addView(GridEmoji);
+                    } else {
+                        RlOtherContent.removeAllViews();
+                        RlOtherContent.setVisibility(View.GONE);
+                        setKeyboardData();
+                    }
+                    ManageClick = !ManageClick;
                 }
-            }
-            customKeyboardView.invalidateAllKeys();
-            CapsLock = false;
-        } else if (i2 == -1) {
-            Constants.wordExist = true;
-            NewCapital = false;
-            CapsLock = !CapsLock;
-            if (Constants.FlagChangeLanguage == 1) {
-                if (!new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
-                    if (CapsLock) {
-                        CapsOnOffFlag = false;
+                break;
+                case -1763: {
+                    Constants.wordExist = true;
+                    CheckFlag = true;
+                    MyKeypadDataView myKeypadDataView2 = new MyKeypadDataView(this, R.xml.layout_numeric_shift_querty, keyboardHeight, 1);
+                    keypadDataView = myKeypadDataView2;
+                    customKeyboardView.setKeyboard(myKeypadDataView2);
+                    for (Keyboard.Key key2 : keypadDataView.getKeys()) {
+                        int parseInt2 = Integer.parseInt("" + key2.codes[0]);
+                        if (parseInt2 == -978903) {
+                            key2.icon = DrawableShiftOff;
+                        } else if (parseInt2 == -2830) {
+                            key2.label = key2.label;
+                        } else if (parseInt2 == -1) {
+                            key2.icon = DrawableShiftOff;
+                        } else if (parseInt2 == 32) {
+                            key2.icon = DrawableSpace;
+                        } else if (parseInt2 == -6003) {
+                            key2.label = key2.label;
+                        } else if (parseInt2 == -6002) {
+                            key2.label = key2.label;
+                        } else if (parseInt2 == -5) {
+                            key2.icon = DrawableDelete;
+                        } else if (parseInt2 == -4) {
+                            key2.icon = DrawableEnter;
+                        }
+                    }
+                    customKeyboardView.invalidateAllKeys();
+                    CapsLock = false;
+                }
+                break;
+                case -1: {
+                    Constants.wordExist = true;
+                    NewCapital = false;
+                    CapsLock = !CapsLock;
+                    if (Constants.FlagChangeLanguage == 1) {
+                        if (!new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
+                            if (CapsLock) {
+                                CapsOnOffFlag = false;
+                                customKeyboardView.invalidateAllKeys();
+                            } else {
+                                CapsOnOffFlag = true;
+                                customKeyboardView.invalidateAllKeys();
+                            }
+                            customKeyboardView.setShifted(CapsLock);
+                        } else if (CapsLock) {
+                            SelectQuertyShiftOn();
+                            CapsOnOffFlag = false;
+                            customKeyboardView.invalidateAllKeys();
+                        } else {
+                            SelectQuertyShiftOff();
+                            CapsOnOffFlag = true;
+                            customKeyboardView.invalidateAllKeys();
+                        }
+                    } else if (CapsLock) {
+                        CapsOn();
+                        CapsLock = true;
+                        CapsOnOffFlag = true;
+                        NewCapital = true;
                         customKeyboardView.invalidateAllKeys();
                     } else {
+                        SelectQuertyShiftOff();
                         CapsOnOffFlag = true;
                         customKeyboardView.invalidateAllKeys();
                     }
-                    customKeyboardView.setShifted(CapsLock);
+                }
+                break;
+                case -2831: {
+                    Constants.wordExist = true;
+                    setKeyboardData();
+                }
+                break;
+                case -2830: {
+                    Constants.wordExist = true;
+                    CheckFlag = false;
+                    MyKeypadDataView myKeypadDataView3 = new MyKeypadDataView(this, DefaultQWERTY[Constants.ChangeLanguage], keyboardHeight, 0);
+                    keypadDataView = myKeypadDataView3;
+                    customKeyboardView.setKeyboard(myKeypadDataView3);
+                    for (Keyboard.Key key3 : keypadDataView.getKeys()) {
+                        int parseInt3 = Integer.parseInt("" + key3.codes[0]);
+                        if (parseInt3 == -978903) {
+                            key3.icon = DrawableShiftOff;
+                        } else if (parseInt3 == -2830) {
+                            key3.label = key3.label;
+                        } else if (parseInt3 == -1) {
+                            key3.icon = DrawableShiftOff;
+                        } else if (parseInt3 == 32) {
+                            key3.icon = DrawableSpace;
+                        } else if (parseInt3 == -6003) {
+                            key3.label = key3.label;
+                        } else if (parseInt3 == -6002) {
+                            key3.label = key3.label;
+                        } else if (parseInt3 == -5) {
+                            key3.icon = DrawableDelete;
+                        } else if (parseInt3 == -4) {
+                            key3.icon = DrawableEnter;
+                        }
+                    }
+                    customKeyboardView.invalidateAllKeys();
+                    try {
+                        if (NewCapital) {
+                            CapsOn();
+                            CapsOnOffFlag = true;
+                            CapsLock = true;
+                        }
+                        char charAt = getCurrentInputConnection().getTextBeforeCursor(1, 0).charAt(0);
+                        if (Character.isLetter(charAt) && Character.isUpperCase(charAt)
+                                && !NewCapital && Constants.ChangeLanguage == 1
+                                && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
+                            CapsOnOffFlag = false;
+                            CapsLock = false;
+                            onKey(-1, new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1});
+                        }
+                    } catch (Exception unused) {
+                        if (!NewCapital && Constants.ChangeLanguage == 1) {
+                            CapsLock = true;
+                            CapsOnOffFlag = false;
+                            SelectQuertyShiftOn();
+                        }
+                    }
+                }
+                break;
+                case -5: {
+                    CustomKeyboardView keyboardView = customKeyboardView;
+                    if (keyboardView != null) {
+                        keyboardView.DismissPreviewPopup();
+                    }
+                    if (LlMainMenu.getVisibility() == View.GONE) {
+                        LlHintWord.setVisibility(View.GONE);
+                        resultList = null;
+                        resultList = new ArrayList<>();
+                        HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.layout_hint_item_view, resultList));
+                        LlMainMenu.setVisibility(View.VISIBLE);
+                    }
+                    Constants.wordExist = true;
+                    try {
+                        char charAt2 = connection.getTextBeforeCursor(1, 0).charAt(0);
+                        if (Character.isDefined(charAt2)) {
+                            Log.d("main", "isDefined");
+                            if (Character.isHighSurrogate(connection.getTextBeforeCursor(2, 0).charAt(0))) {
+                                Log.d("main", "isEmoji");
+                                connection.deleteSurroundingText(2, 0);
+                                return;
+                            }
+                        }
+                        connection.deleteSurroundingText(1, 0);
+                        int i3 = getCurrentInputEditorInfo().imeOptions & 1073742079;
+                        if (i3 != 2 && i3 != 3 && i3 != 4 && i3 != 5 && i3 != 6 && !NewCapital && !CheckFlag && Constants.ChangeLanguage == 1) {
+                            deleteText(connection.getExtractedText(new ExtractedTextRequest(), 0).text.toString(), charAt2);
+                        }
+                        new Handler().postDelayed(() -> showSuggestion(connection), 500);
+                    } catch (Exception e) {
+                        Constants.DeleteValFlag = false;
+                        int i4 = getCurrentInputEditorInfo().imeOptions & 1073742079;
+                        if (i4 != 2 && i4 != 3 && i4 != 4 && i4 != 5 && i4 != 6) {
+                            Log.d("main", "Exception deleting no char " + e);
+                            if (Constants.FlagChangeLanguage != 0) {
+                                CapsOnOffFlag = false;
+                                customKeyboardView.setShifted(true);
+                                customKeyboardView.invalidate();
+                                customKeyboardView.invalidateAllKeys();
+                                TempShiftOnOff = true;
+                            }
+                        }
+                    }
+                }
+                break;
+                case -4: {
+                    Constants.wordExist = true;
+                    if (LlMainMenu.getVisibility() == View.GONE) {
+                        LlHintWord.setVisibility(View.GONE);
+                        resultList = null;
+                        resultList = new ArrayList<>();
+                        HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.layout_hint_item_view, resultList));
+                        LlMainMenu.setVisibility(View.VISIBLE);
+                    }
+                    int i5 = getCurrentInputEditorInfo().imeOptions & 1073742079;
+                    switch (i5) {
+                        case 2: {
+                            connection.performEditorAction(2);
+                        }
+                        break;
+                        case 3: {
+                            connection.performEditorAction(3);
+                        }
+                        break;
+                        case 4: {
+                            connection.performEditorAction(4);
+                        }
+                        break;
+                        case 5: {
+                            connection.performEditorAction(5);
+                        }
+                        break;
+                        case 6: {
+                            connection.performEditorAction(6);
+                        }
+                        break;
+                        default: {
+                            connection.sendKeyEvent(new KeyEvent(0, 66));
+                            if (!NewCapital && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
+                                CapsOnOffFlag = false;
+                                CapsLock = true;
+                                customKeyboardView.setShifted(true);
+                                customKeyboardView.invalidate();
+                                customKeyboardView.invalidateAllKeys();
+                            }
+                        }
+                    }
+                  /*  if (i5 == 2) {
+                        currentInputConnection.performEditorAction(2);
+                    } else if (i5 == 3) {
+                        currentInputConnection.performEditorAction(3);
+                    } else if (i5 == 4) {
+                        currentInputConnection.performEditorAction(4);
+                    } else if (i5 == 5) {
+                        currentInputConnection.performEditorAction(5);
+                    } else if (i5 != 6) {
+                        currentInputConnection.sendKeyEvent(new KeyEvent(0, 66));
+                        if (!NewCapital && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
+                            CapsOnOffFlag = false;
+                            CapsLock = true;
+                            customKeyboardView.setShifted(true);
+                            customKeyboardView.invalidate();
+                            customKeyboardView.invalidateAllKeys();
+                        }
+                    } else {
+                        currentInputConnection.performEditorAction(6);
+                    }*/
+                }
+                break;
+                case -97886: {
+
+                }
+                break;
+//                case 32: {
+////                    if (Constants.ChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
+//                    String str = "" + connection.getTextBeforeCursor(Integer.MAX_VALUE, 0);
+//                    FinalPatternWord = str;
+//                    String substring = str.substring(str.lastIndexOf(" ") + 1);
+//                    StrLastWord = substring;
+//                    connection.commitText(String.valueOf((char) primaryCode), 1);
+////                    connection.deleteSurroundingText(substring.length() + 1, 0);
+////                    new Handler().postDelayed(new Runnable() {
+////                        public void run() {
+//                            showSuggestion(connection);
+////                        }
+////                    }, 500);
+//                }
+//                break;
+                case 46: {
+                    if (!Character.isLetter(primaryCode) || !CapsLock) {
+                        connection.commitText(String.valueOf(primaryCode), 1);
+                        if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true) && Constants.FlagChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
+                            CapsLock = true;
+                            CapsOnOffFlag = false;
+                            customKeyboardView.setShifted(true);
+                        }
+                        if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.SUGGESTION, true) && TempShowSuggestion && !Constants.PreviewViewisOpen && !CheckLanguage) {
+                            showSuggestion(connection);
+                        }
+                    }
+                }
+                break;
+                default: {
+//                    char c = (char) code;
+//                    if (Constants.ChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
+//                        try {
+//                            if (code == 32) {
+//                                //                            String str = "" + connection.getTextBeforeCursor(Integer.MAX_VALUE, 0);
+//                                //                            FinalPatternWord = str;
+//                                //                            String substring = str.substring(str.lastIndexOf(" ") + 1);
+//                                //                            StrLastWord = substring;
+//                                ////                            connection.commitText(substring, 1);
+//                                //                            connection.deleteSurroundingText(substring.length() + 1, 0);
+//                                //                            connection.commitText(primaryCode, 1);
+//                                getCurrentInputConnection().commitText(String.valueOf((char) primaryCode), 1);
+//                               /* new AsyncTask<Void, Void, Void>() {
+//                                    public void onPreExecute() {
+//                                    }
+//
+//                                    public void onProgressUpdate(Void... voidArr) {
+//                                    }
+//
+//                                    public Void doInBackground(Void... voidArr) {
+//                                        try {
+//                                            urlConnection = null;
+//                                            URL url = new URL("http://www.google.com/inputtools/request");
+//                                            UrlString = "text=" + StrLastWord + "&ime=transliteration_en_hi";
+//                                            urlConnection = (HttpURLConnection) url.openConnection();
+//                                            urlConnection.setRequestMethod("GET");
+//                                            urlConnection.setConnectTimeout(5000);
+//                                            urlConnection.setReadTimeout(5000);
+//                                            urlConnection.setDoOutput(true);
+//                                            urlConnection.getOutputStream().write(UrlString.getBytes(StandardCharsets.UTF_8));
+//                                            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), StandardCharsets.UTF_8));
+//                                            builder = new StringBuilder();
+//                                            while (true) {
+//                                                int read = bufferedReader.read();
+//                                                if (read == -1) {
+//                                                    break;
+//                                                }
+//                                                builder.append((char) read);
+//                                            }
+//                                        } catch (Exception unused) {
+//                                        }
+//                                        return null;
+//                                    }
+//
+//                                    public void onPostExecute(Void voidR) {
+//                                        Pattern compile = Pattern.compile("\"([^\"]*)\"");
+//                                        Matcher matcher = compile.matcher("" + builder);
+//                                        while (matcher.find()) {
+//                                            FinalPatternString.add(matcher.group(1));
+//                                        }
+//                                        try {
+//                                            Constants.dictionaryword = FinalPatternString.get(2);
+//                                            InputConnection inputConnection = connection;
+//                                            inputConnection.commitText(FinalPatternString.get(2) + " ", 1);
+//                                            StrLastWord = "";
+//                                            FinalPatternString.clear();
+//                                        } catch (Exception unused) {
+//                                            InputConnection inputConnection2 = connection;
+//                                            inputConnection2.commitText(StrLastWord + " ", 1);
+//                                            StrLastWord = "";
+//                                            FinalPatternString.clear();
+//                                        }
+//                                    }
+//                                }.execute();*/
+//                                //                            Counter++;
+//                                new Handler().postDelayed(new Runnable() {
+//                                    public void run() {
+//                                        showSuggestion(connection);
+//                                    }
+//                                }, 500);
+//                            } else {
+//                                //                            Counter = 0;
+//                            }
+//                        } catch (Exception e) {
+//                            e.getMessage();
+//                        }
+//                    }
+                   /* if (!Character.isLetter(c) || !CapsLock) {
+                        connection.commitText(String.valueOf(c), 1);
+//                        if (code == 46 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true) && Constants.FlagChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
+//                            CapsLock = true;
+//                            CapsOnOffFlag = false;
+//                            customKeyboardView.setShifted(true);
+//                        }
+                        if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.SUGGESTION, true) && TempShowSuggestion && !Constants.PreviewViewisOpen && !CheckLanguage) {
+                            showSuggestion(connection);
+                        }
+                        if (code >= 97 && code <= 122) {
+                            CapsOnOffFlag = true;
+                            return;
+                        }
+                        return;
+                    }*/
+//                    connection.commitText(String.valueOf(Character.toUpperCase(c)), 1);
+//                    if (!CapsOnOffFlag && Constants.ChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
+//                        CapsOnOffFlag = true;
+//                        onKey(-1, new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1});
+//                    }
+//                    if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.SUGGESTION, true) && TempShowSuggestion && !Constants.PreviewViewisOpen && !CheckLanguage) {
+//                        showSuggestion(connection);
+//                    }
+                    char c = (char) code;
+                    if (!Character.isLetter(c) || !CapsLock) {
+                        connection.commitText(String.valueOf((char) primaryCode), 1);
+//                        if (code == 46 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true) && Constants.FlagChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
+//                            CapsLock = true;
+//                            CapsOnOffFlag = false;
+//                            customKeyboardView.setShifted(true);
+//                        }
+                        if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.SUGGESTION, true) && TempShowSuggestion && !Constants.PreviewViewisOpen && !CheckLanguage) {
+                            showSuggestion(connection);
+                        }
+                        if (code >= 97 && code <= 122) {
+                            CapsOnOffFlag = true;
+                            return;
+                        }
+                        return;
+                    } else {
+                        System.out.println("----- else : " + code);
+                    }
+                }
+            }
+
+       /*     if (i2 == -978903) {
+                Constants.wordExist = true;
+                CapsOn();
+                CapsLock = true;
+                CapsOnOffFlag = true;
+                NewCapital = true;
+            } else if (i2 == -6003) {
+                Constants.wordExist = true;
+                CheckFlag = true;
+                MyKeypadDataView myKeypadDataView = new MyKeypadDataView(this, AllNumericQwerty[Constants.ChangeLanguage], keyboardHeight, 1);
+                keypadDataView = myKeypadDataView;
+                customKeyboardView.setKeyboard(myKeypadDataView);
+                for (Keyboard.Key key : keypadDataView.getKeys()) {
+                    int parseInt = Integer.parseInt("" + key.codes[0]);
+                    if (parseInt == -978903) {
+                        key.icon = DrawableShiftOff;
+                    } else if (parseInt == -2830) {
+                        key.label = key.label;
+                    } else if (parseInt == -1) {
+                        key.icon = DrawableShiftOff;
+                    } else if (parseInt == 32) {
+                        key.icon = DrawableSpace;
+                    } else if (parseInt == -6003) {
+                        key.label = key.label;
+                    } else if (parseInt == -6002) {
+                        key.label = key.label;
+                    } else if (parseInt == -5) {
+                        key.icon = DrawableDelete;
+                    } else if (parseInt == -4) {
+                        key.icon = DrawableEnter;
+                    }
+                }
+                customKeyboardView.invalidateAllKeys();
+                CapsLock = false;
+            } else if (i2 == -5000) {
+                CustomKeyboardView customKeyboardView = this.customKeyboardView;
+                if (customKeyboardView != null) {
+                    customKeyboardView.DismissLanguagePopup();
+                    customKeyboardView.DismissPreviewPopup();
+                }
+                if (!ManageClick) {
+                    Constants.wordExist = true;
+                    if (LlMainMenu.getVisibility() == View.GONE) {
+                        LlHintWord.setVisibility(View.GONE);
+                        resultList = null;
+                        resultList = new ArrayList<>();
+                        HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.layout_hint_item_view, resultList));
+                        LlMainMenu.setVisibility(View.VISIBLE);
+                    }
+                    LlHeader.setVisibility(View.VISIBLE);
+                    Constants.temp_flag = 1;
+                    initEmojiAdapter();
+                    customKeyboardView.setVisibility(View.GONE);
+                    RlOtherContent.setVisibility(View.VISIBLE);
+                    RlMainContents.setAnimation(AnimationUtils.loadAnimation(getApplicationContext(), 17432576));
+                    RlOtherContent.removeAllViews();
+                    RlOtherContent.addView(GridEmoji);
+                } else {
+                    RlOtherContent.removeAllViews();
+                    RlOtherContent.setVisibility(View.GONE);
+                    setKeyboardData();
+                }
+                ManageClick = !ManageClick;
+            } else if (i2 == -1763) {
+                Constants.wordExist = true;
+                CheckFlag = true;
+                MyKeypadDataView myKeypadDataView2 = new MyKeypadDataView(this, R.xml.layout_numeric_shift_querty, keyboardHeight, 1);
+                keypadDataView = myKeypadDataView2;
+                customKeyboardView.setKeyboard(myKeypadDataView2);
+                for (Keyboard.Key key2 : keypadDataView.getKeys()) {
+                    int parseInt2 = Integer.parseInt("" + key2.codes[0]);
+                    if (parseInt2 == -978903) {
+                        key2.icon = DrawableShiftOff;
+                    } else if (parseInt2 == -2830) {
+                        key2.label = key2.label;
+                    } else if (parseInt2 == -1) {
+                        key2.icon = DrawableShiftOff;
+                    } else if (parseInt2 == 32) {
+                        key2.icon = DrawableSpace;
+                    } else if (parseInt2 == -6003) {
+                        key2.label = key2.label;
+                    } else if (parseInt2 == -6002) {
+                        key2.label = key2.label;
+                    } else if (parseInt2 == -5) {
+                        key2.icon = DrawableDelete;
+                    } else if (parseInt2 == -4) {
+                        key2.icon = DrawableEnter;
+                    }
+                }
+                customKeyboardView.invalidateAllKeys();
+                CapsLock = false;
+            } else if (i2 == -1) {
+                Constants.wordExist = true;
+                NewCapital = false;
+                CapsLock = !CapsLock;
+                if (Constants.FlagChangeLanguage == 1) {
+                    if (!new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
+                        if (CapsLock) {
+                            CapsOnOffFlag = false;
+                            customKeyboardView.invalidateAllKeys();
+                        } else {
+                            CapsOnOffFlag = true;
+                            customKeyboardView.invalidateAllKeys();
+                        }
+                        customKeyboardView.setShifted(CapsLock);
+                    } else if (CapsLock) {
+                        SelectQuertyShiftOn();
+                        CapsOnOffFlag = false;
+                        customKeyboardView.invalidateAllKeys();
+                    } else {
+                        SelectQuertyShiftOff();
+                        CapsOnOffFlag = true;
+                        customKeyboardView.invalidateAllKeys();
+                    }
                 } else if (CapsLock) {
-                    SelectQuertyShiftOn();
-                    CapsOnOffFlag = false;
+                    CapsOn();
+                    CapsLock = true;
+                    CapsOnOffFlag = true;
+                    NewCapital = true;
                     customKeyboardView.invalidateAllKeys();
                 } else {
                     SelectQuertyShiftOff();
                     CapsOnOffFlag = true;
                     customKeyboardView.invalidateAllKeys();
                 }
-            } else if (CapsLock) {
-                CapsOn();
-                CapsLock = true;
-                CapsOnOffFlag = true;
-                NewCapital = true;
-                customKeyboardView.invalidateAllKeys();
+            } else if (i2 == 66) {
             } else {
-                SelectQuertyShiftOff();
-                CapsOnOffFlag = true;
-                customKeyboardView.invalidateAllKeys();
-            }
-        } else if (i2 == 66) {
-        } else {
-            if (i2 == -2831) {
-                Constants.wordExist = true;
-                setKeyboardData();
-            } else if (i2 == -2830) {
-                Constants.wordExist = true;
-                CheckFlag = false;
-                MyKeypadDataView myKeypadDataView3 = new MyKeypadDataView(this, DefaultQWERTY[Constants.ChangeLanguage], keyboardHeight, 0);
-                keypadDataView = myKeypadDataView3;
-                customKeyboardView.setKeyboard(myKeypadDataView3);
-                for (Keyboard.Key key3 : keypadDataView.getKeys()) {
-                    int parseInt3 = Integer.parseInt("" + key3.codes[0]);
-                    if (parseInt3 == -978903) {
-                        key3.icon = DrawableShiftOff;
-                    } else if (parseInt3 == -2830) {
-                        key3.label = key3.label;
-                    } else if (parseInt3 == -1) {
-                        key3.icon = DrawableShiftOff;
-                    } else if (parseInt3 == 32) {
-                        key3.icon = DrawableSpace;
-                    } else if (parseInt3 == -6003) {
-                        key3.label = key3.label;
-                    } else if (parseInt3 == -6002) {
-                        key3.label = key3.label;
-                    } else if (parseInt3 == -5) {
-                        key3.icon = DrawableDelete;
-                    } else if (parseInt3 == -4) {
-                        key3.icon = DrawableEnter;
-                    }
-                }
-                customKeyboardView.invalidateAllKeys();
-                try {
-                    if (NewCapital) {
-                        CapsOn();
-                        CapsOnOffFlag = true;
-                        CapsLock = true;
-                    }
-                    char charAt = getCurrentInputConnection().getTextBeforeCursor(1, 0).charAt(0);
-                    if (Character.isLetter(charAt) && Character.isUpperCase(charAt) && !NewCapital && Constants.ChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
-                        CapsOnOffFlag = false;
-                        CapsLock = false;
-                        onKey(-1, new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1});
-                    }
-                } catch (Exception unused) {
-                    if (!NewCapital && Constants.ChangeLanguage == 1) {
-                        CapsLock = true;
-                        CapsOnOffFlag = false;
-                        SelectQuertyShiftOn();
-                    }
-                }
-            } else if (i2 == -5) {
-                CustomKeyboardView customKeyboardView2 = customKeyboardView;
-                if (customKeyboardView2 != null) {
-                    customKeyboardView2.DismissPreviewPopup();
-                }
-                if (LlMainMenu.getVisibility() == View.GONE) {
-                    LlHintWord.setVisibility(View.GONE);
-                    resultList = null;
-                    resultList = new ArrayList<>();
-                    HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.layout_hint_item_view, resultList));
-                    LlMainMenu.setVisibility(View.VISIBLE);
-                }
-                Constants.wordExist = true;
-                try {
-                    char charAt2 = currentInputConnection.getTextBeforeCursor(1, 0).charAt(0);
-                    if (Character.isLetter(charAt2)) {
-                        Log.d("main", "isLetter");
-                    } else if (Character.isISOControl(charAt2)) {
-                        Log.d("main", "isIsoCHar");
-                    } else if (Character.isDigit(charAt2)) {
-                        Log.d("main", "isDigit");
-                    } else if (Character.isHighSurrogate(charAt2)) {
-                        Log.d("main", "isHigh Surrigate");
-                    } else if (Character.isDefined(charAt2)) {
-                        Log.d("main", "isDefined");
-                        if (Character.isHighSurrogate(currentInputConnection.getTextBeforeCursor(2, 0).charAt(0))) {
-                            Log.d("main", "isEmoji");
-                            currentInputConnection.deleteSurroundingText(2, 0);
-                            return;
+                if (i2 == -2831) {
+                    Constants.wordExist = true;
+                    setKeyboardData();
+                } else if (i2 == -2830) {
+                    Constants.wordExist = true;
+                    CheckFlag = false;
+                    MyKeypadDataView myKeypadDataView3 = new MyKeypadDataView(this, DefaultQWERTY[Constants.ChangeLanguage], keyboardHeight, 0);
+                    keypadDataView = myKeypadDataView3;
+                    customKeyboardView.setKeyboard(myKeypadDataView3);
+                    for (Keyboard.Key key3 : keypadDataView.getKeys()) {
+                        int parseInt3 = Integer.parseInt("" + key3.codes[0]);
+                        if (parseInt3 == -978903) {
+                            key3.icon = DrawableShiftOff;
+                        } else if (parseInt3 == -2830) {
+                            key3.label = key3.label;
+                        } else if (parseInt3 == -1) {
+                            key3.icon = DrawableShiftOff;
+                        } else if (parseInt3 == 32) {
+                            key3.icon = DrawableSpace;
+                        } else if (parseInt3 == -6003) {
+                            key3.label = key3.label;
+                        } else if (parseInt3 == -6002) {
+                            key3.label = key3.label;
+                        } else if (parseInt3 == -5) {
+                            key3.icon = DrawableDelete;
+                        } else if (parseInt3 == -4) {
+                            key3.icon = DrawableEnter;
                         }
                     }
-                    currentInputConnection.deleteSurroundingText(1, 0);
-                    int i3 = getCurrentInputEditorInfo().imeOptions & 1073742079;
-                    if (i3 != 2 && i3 != 3 && i3 != 4 && i3 != 5 && i3 != 6 && !NewCapital && !CheckFlag && Constants.ChangeLanguage == 1) {
-                        deleteText(currentInputConnection.getExtractedText(new ExtractedTextRequest(), 0).text.toString(), charAt2);
-                    }
-                    new Handler().postDelayed(new Runnable() {
-                        public void run() {
-                            showSuggestion(currentInputConnection, i2, iArr2);
+                    customKeyboardView.invalidateAllKeys();
+                    try {
+                        if (NewCapital) {
+                            CapsOn();
+                            CapsOnOffFlag = true;
+                            CapsLock = true;
                         }
-                    }, 500);
-                } catch (Exception e) {
-                    Constants.DeleteValFlag = false;
-                    int i4 = getCurrentInputEditorInfo().imeOptions & 1073742079;
-                    if (i4 != 2 && i4 != 3 && i4 != 4 && i4 != 5 && i4 != 6) {
-                        Log.d("main", "Exception deleting no char " + e);
-                        if (Constants.FlagChangeLanguage != 0) {
+                        char charAt = getCurrentInputConnection().getTextBeforeCursor(1, 0).charAt(0);
+                        if (Character.isLetter(charAt) && Character.isUpperCase(charAt) && !NewCapital && Constants.ChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
                             CapsOnOffFlag = false;
-                            customKeyboardView.setShifted(true);
-                            customKeyboardView.invalidate();
-                            customKeyboardView.invalidateAllKeys();
-                            TempShiftOnOff = true;
+                            CapsLock = false;
+                            onKey(-1, new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1});
+                        }
+                    } catch (Exception unused) {
+                        if (!NewCapital && Constants.ChangeLanguage == 1) {
+                            CapsLock = true;
+                            CapsOnOffFlag = false;
+                            SelectQuertyShiftOn();
                         }
                     }
-                }
-
-            } else if (i2 == -4) {
-                Constants.wordExist = true;
-                if (LlMainMenu.getVisibility() == View.GONE) {
-                    LlHintWord.setVisibility(View.GONE);
-                    resultList = null;
-                    resultList = new ArrayList<>();
-                    HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.layout_hint_item_view, resultList));
-                    LlMainMenu.setVisibility(View.VISIBLE);
-                }
-                int i5 = getCurrentInputEditorInfo().imeOptions & 1073742079;
-                if (i5 == 2) {
-                    currentInputConnection.performEditorAction(2);
-                } else if (i5 == 3) {
-                    currentInputConnection.performEditorAction(3);
-                } else if (i5 == 4) {
-                    currentInputConnection.performEditorAction(4);
-                } else if (i5 == 5) {
-                    currentInputConnection.performEditorAction(5);
-                } else if (i5 != 6) {
-                    currentInputConnection.sendKeyEvent(new KeyEvent(0, 66));
-                    if (!NewCapital && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
-                        CapsOnOffFlag = false;
-                        CapsLock = true;
-                        customKeyboardView.setShifted(true);
-                        customKeyboardView.invalidate();
-                        customKeyboardView.invalidateAllKeys();
+                } else if (i2 == -5) {
+                    CustomKeyboardView customKeyboardView2 = customKeyboardView;
+                    if (customKeyboardView2 != null) {
+                        customKeyboardView2.DismissPreviewPopup();
                     }
-                } else {
-                    currentInputConnection.performEditorAction(6);
-                }
-            } else if (i2 != -97886) {
-                char c = (char) i2;
-                if (Constants.ChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
-                    if (Counter == 0 && i2 == 32) {
-                        String str = "" + currentInputConnection.getTextBeforeCursor(Integer.MAX_VALUE, 0);
-                        FinalPatternWord = str;
-                        String substring = str.substring(str.lastIndexOf(" ") + 1);
-                        StrLastWord = substring;
-                        currentInputConnection.deleteSurroundingText(substring.length() + 1, 0);
-                        new AsyncTask<Void, Void, Void>() {
-                            public void onPreExecute() {
+                    if (LlMainMenu.getVisibility() == View.GONE) {
+                        LlHintWord.setVisibility(View.GONE);
+                        resultList = null;
+                        resultList = new ArrayList<>();
+                        HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.layout_hint_item_view, resultList));
+                        LlMainMenu.setVisibility(View.VISIBLE);
+                    }
+                    Constants.wordExist = true;
+                    try {
+                        char charAt2 = currentInputConnection.getTextBeforeCursor(1, 0).charAt(0);
+                        if (Character.isLetter(charAt2)) {
+                            Log.d("main", "isLetter");
+                        } else if (Character.isISOControl(charAt2)) {
+                            Log.d("main", "isIsoCHar");
+                        } else if (Character.isDigit(charAt2)) {
+                            Log.d("main", "isDigit");
+                        } else if (Character.isHighSurrogate(charAt2)) {
+                            Log.d("main", "isHigh Surrigate");
+                        } else if (Character.isDefined(charAt2)) {
+                            Log.d("main", "isDefined");
+                            if (Character.isHighSurrogate(currentInputConnection.getTextBeforeCursor(2, 0).charAt(0))) {
+                                Log.d("main", "isEmoji");
+                                currentInputConnection.deleteSurroundingText(2, 0);
+                                return;
                             }
-
-                            public void onProgressUpdate(Void... voidArr) {
-                            }
-
-                            public Void doInBackground(Void... voidArr) {
-                                try {
-                                    urlConnection = null;
-                                    URL url = new URL("http://www.google.com/inputtools/request");
-                                    UrlString = "text=" + StrLastWord + "&ime=transliteration_en_hi";
-                                    urlConnection = (HttpURLConnection) url.openConnection();
-                                    urlConnection.setRequestMethod("GET");
-                                    urlConnection.setConnectTimeout(5000);
-                                    urlConnection.setReadTimeout(5000);
-                                    urlConnection.setDoOutput(true);
-                                    urlConnection.getOutputStream().write(UrlString.getBytes(StandardCharsets.UTF_8));
-                                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), StandardCharsets.UTF_8));
-                                    builder = new StringBuilder();
-                                    while (true) {
-                                        int read = bufferedReader.read();
-                                        if (read == -1) {
-                                            break;
-                                        }
-                                        builder.append((char) read);
-                                    }
-                                } catch (Exception unused) {
-                                }
-                                return null;
-                            }
-
-                            public void onPostExecute(Void voidR) {
-                                Pattern compile = Pattern.compile("\"([^\"]*)\"");
-                                Matcher matcher = compile.matcher("" + builder);
-                                while (matcher.find()) {
-                                    FinalPatternString.add(matcher.group(1));
-                                }
-                                try {
-                                    Constants.dictionaryword = FinalPatternString.get(2);
-                                    InputConnection inputConnection = currentInputConnection;
-                                    inputConnection.commitText(FinalPatternString.get(2) + " ", 1);
-                                    StrLastWord = "";
-                                    FinalPatternString.clear();
-                                } catch (Exception unused) {
-                                    InputConnection inputConnection2 = currentInputConnection;
-                                    inputConnection2.commitText(StrLastWord + " ", 1);
-                                    StrLastWord = "";
-                                    FinalPatternString.clear();
-                                }
-                            }
-                        }.execute();
-                        Counter++;
+                        }
+                        currentInputConnection.deleteSurroundingText(1, 0);
+                        int i3 = getCurrentInputEditorInfo().imeOptions & 1073742079;
+                        if (i3 != 2 && i3 != 3 && i3 != 4 && i3 != 5 && i3 != 6 && !NewCapital && !CheckFlag && Constants.ChangeLanguage == 1) {
+                            deleteText(currentInputConnection.getExtractedText(new ExtractedTextRequest(), 0).text.toString(), charAt2);
+                        }
                         new Handler().postDelayed(new Runnable() {
                             public void run() {
                                 showSuggestion(currentInputConnection, i2, iArr2);
                             }
                         }, 500);
-                    } else {
-                        Counter = 0;
+                    } catch (Exception e) {
+                        Constants.DeleteValFlag = false;
+                        int i4 = getCurrentInputEditorInfo().imeOptions & 1073742079;
+                        if (i4 != 2 && i4 != 3 && i4 != 4 && i4 != 5 && i4 != 6) {
+                            Log.d("main", "Exception deleting no char " + e);
+                            if (Constants.FlagChangeLanguage != 0) {
+                                CapsOnOffFlag = false;
+                                customKeyboardView.setShifted(true);
+                                customKeyboardView.invalidate();
+                                customKeyboardView.invalidateAllKeys();
+                                TempShiftOnOff = true;
+                            }
+                        }
                     }
-                }
-                if (!Character.isLetter(c) || !CapsLock) {
-                    currentInputConnection.commitText(String.valueOf(c), 1);
-                    if (i2 == 46 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true) && Constants.FlagChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
-                        CapsLock = true;
-                        CapsOnOffFlag = false;
-                        customKeyboardView.setShifted(true);
+
+                } else if (i2 == -4) {
+                    Constants.wordExist = true;
+                    if (LlMainMenu.getVisibility() == View.GONE) {
+                        LlHintWord.setVisibility(View.GONE);
+                        resultList = null;
+                        resultList = new ArrayList<>();
+                        HListView.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.layout_hint_item_view, resultList));
+                        LlMainMenu.setVisibility(View.VISIBLE);
+                    }
+                    int i5 = getCurrentInputEditorInfo().imeOptions & 1073742079;
+                    if (i5 == 2) {
+                        currentInputConnection.performEditorAction(2);
+                    } else if (i5 == 3) {
+                        currentInputConnection.performEditorAction(3);
+                    } else if (i5 == 4) {
+                        currentInputConnection.performEditorAction(4);
+                    } else if (i5 == 5) {
+                        currentInputConnection.performEditorAction(5);
+                    } else if (i5 != 6) {
+                        currentInputConnection.sendKeyEvent(new KeyEvent(0, 66));
+                        if (!NewCapital && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
+                            CapsOnOffFlag = false;
+                            CapsLock = true;
+                            customKeyboardView.setShifted(true);
+                            customKeyboardView.invalidate();
+                            customKeyboardView.invalidateAllKeys();
+                        }
+                    } else {
+                        currentInputConnection.performEditorAction(6);
+                    }
+                } else if (i2 != -97886) {
+                    char c = (char) i2;
+                    if (Constants.ChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.TYPING, true)) {
+                        if (Counter == 0 && i2 == 32) {
+                            String str = "" + currentInputConnection.getTextBeforeCursor(Integer.MAX_VALUE, 0);
+                            FinalPatternWord = str;
+                            String substring = str.substring(str.lastIndexOf(" ") + 1);
+                            StrLastWord = substring;
+                            currentInputConnection.deleteSurroundingText(substring.length() + 1, 0);
+                            new AsyncTask<Void, Void, Void>() {
+                                public void onPreExecute() {
+                                }
+
+                                public void onProgressUpdate(Void... voidArr) {
+                                }
+
+                                public Void doInBackground(Void... voidArr) {
+                                    try {
+                                        urlConnection = null;
+                                        URL url = new URL("http://www.google.com/inputtools/request");
+                                        UrlString = "text=" + StrLastWord + "&ime=transliteration_en_hi";
+                                        urlConnection = (HttpURLConnection) url.openConnection();
+                                        urlConnection.setRequestMethod("GET");
+                                        urlConnection.setConnectTimeout(5000);
+                                        urlConnection.setReadTimeout(5000);
+                                        urlConnection.setDoOutput(true);
+                                        urlConnection.getOutputStream().write(UrlString.getBytes(StandardCharsets.UTF_8));
+                                        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), StandardCharsets.UTF_8));
+                                        builder = new StringBuilder();
+                                        while (true) {
+                                            int read = bufferedReader.read();
+                                            if (read == -1) {
+                                                break;
+                                            }
+                                            builder.append((char) read);
+                                        }
+                                    } catch (Exception unused) {
+                                    }
+                                    return null;
+                                }
+
+                                public void onPostExecute(Void voidR) {
+                                    Pattern compile = Pattern.compile("\"([^\"]*)\"");
+                                    Matcher matcher = compile.matcher("" + builder);
+                                    while (matcher.find()) {
+                                        FinalPatternString.add(matcher.group(1));
+                                    }
+                                    try {
+                                        Constants.dictionaryword = FinalPatternString.get(2);
+                                        InputConnection inputConnection = currentInputConnection;
+                                        inputConnection.commitText(FinalPatternString.get(2) + " ", 1);
+                                        StrLastWord = "";
+                                        FinalPatternString.clear();
+                                    } catch (Exception unused) {
+                                        InputConnection inputConnection2 = currentInputConnection;
+                                        inputConnection2.commitText(StrLastWord + " ", 1);
+                                        StrLastWord = "";
+                                        FinalPatternString.clear();
+                                    }
+                                }
+                            }.execute();
+                            Counter++;
+                            new Handler().postDelayed(new Runnable() {
+                                public void run() {
+                                    showSuggestion(currentInputConnection, i2, iArr2);
+                                }
+                            }, 500);
+                        } else {
+                            Counter = 0;
+                        }
+                    }
+                    if (!Character.isLetter(c) || !CapsLock) {
+                        currentInputConnection.commitText(String.valueOf(c), 1);
+                        if (i2 == 46 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true) && Constants.FlagChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
+                            CapsLock = true;
+                            CapsOnOffFlag = false;
+                            customKeyboardView.setShifted(true);
+                        }
+                        if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.SUGGESTION, true) && !Constants.PreviewViewisOpen && !CheckLanguage) {
+                            showSuggestion(currentInputConnection, i2, iArr2);
+                        }
+                        if (i2 >= 97 && i2 <= 122) {
+                            CapsOnOffFlag = true;
+                            return;
+                        }
+                        return;
+                    }
+                    currentInputConnection.commitText(String.valueOf(Character.toUpperCase(c)), 1);
+                    if (!CapsOnOffFlag && Constants.ChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
+                        CapsOnOffFlag = true;
+                        onKey(-1, new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1});
                     }
                     if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.SUGGESTION, true) && !Constants.PreviewViewisOpen && !CheckLanguage) {
                         showSuggestion(currentInputConnection, i2, iArr2);
                     }
-                    if (i2 >= 97 && i2 <= 122) {
-                        CapsOnOffFlag = true;
-                        return;
-                    }
-                    return;
                 }
-                currentInputConnection.commitText(String.valueOf(Character.toUpperCase(c)), 1);
-                if (!CapsOnOffFlag && Constants.ChangeLanguage == 1 && new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.AUTO_CAPITALIZE, true)) {
-                    CapsOnOffFlag = true;
-                    onKey(-1, new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1});
-                }
-                if (new MySharePref(getApplicationContext()).getPrefBoolean(MySharePref.SUGGESTION, true) && !Constants.PreviewViewisOpen && !CheckLanguage) {
-                    showSuggestion(currentInputConnection, i2, iArr2);
-                }
-            }
+            }*/
         }
     }
-    public void showSuggestion(InputConnection inputConnection, int i, int[] iArr) {
+
+    public void showSuggestion(InputConnection inputConnection) {
         try {
             StrWord = "";
             if (CheckLanguage) {
@@ -2533,6 +3023,12 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
     }
 
     public void getWord(String str) {
+        DictionaryTask dictionaryTask = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
+        if (Constants.isUpHoneycombVersion) {
+            dictionaryTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        } else {
+            dictionaryTask.execute();
+        }
         if (!str.equals("")) {
             ArrayList<String> suggestion = Constants.getSuggestion(str);
             resultList = suggestion;
@@ -3359,12 +3855,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
             ArrayList arrayList = new ArrayList();
             arrayList.add("");
             HListView.setAdapter(Constants.setSuggestionAdapter(getApplicationContext(), arrayList, selectedTheme, HListView.getWidth()));
-            DictionaryTask dictionaryTask = new DictionaryTask(getApplicationContext(), Constants.FlagChangeLanguage);
-            if (Constants.isUpHoneycombVersion) {
-                dictionaryTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-            } else {
-                dictionaryTask.execute();
-            }
+
 
         }
 
@@ -3414,6 +3905,7 @@ public class CustomKeypad extends InputMethodService implements KeyboardView.OnK
                     HListView.setAdapter(Constants.setSuggestionAdapter(getApplicationContext(), arrayList, selectedTheme, HListView.getWidth()));
                 }
             } catch (Exception unused2) {
+                unused2.getMessage();
             }
             super.onPostExecute(r6);
         }

@@ -155,7 +155,42 @@ public class AdsClass {
             }
         });
     }
+    public static void loadInterOne(final Activity activity,String id) {
+        MobileAds.initialize(activity, new OnInitializationCompleteListener() {
 
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        InterstitialAd.load(activity, id, new AdRequest.Builder().build(), new InterstitialAdLoadCallback() {
+
+            public void onAdLoaded(InterstitialAd interstitialAd) {
+                interstitial = interstitialAd;
+                interstitial.setFullScreenContentCallback(new FullScreenContentCallback() {
+                    @Override
+                    public void onAdDismissedFullScreenContent() {
+                        interstitial = null;
+                        loadInterOne(activity,id);
+                        if (myAppCallback != null) {
+                            myAppCallback.AppCallback();
+                            myAppCallback = null;
+                        }
+                    }
+                    @Override
+                    public void onAdFailedToShowFullScreenContent(AdError adError) {
+
+                        interstitial = null;
+                        loadInterOne(activity,id);
+                    }
+                });
+            }
+            @Override
+            public void onAdFailedToLoad(LoadAdError loadAdError) {
+                interstitial = null;
+            }
+        });
+    }
     public static void showInter(Activity activity, MyAppCallback myAppCallback2, String show) {
         myAppCallback = myAppCallback2;
 
@@ -224,6 +259,8 @@ public class AdsClass {
     }
 
     public static void showNative250(Activity activity, String id, FrameLayout FlNative, String show) {
+        LoadNative(activity, id);
+
         if (Ad != null) {
             NativeAdView nativeAdView = (NativeAdView) activity.getLayoutInflater().inflate(R.layout.layout_ads_item_big_native_layout, (ViewGroup) null);
             populateUnifiedNativeAdView(Ad, nativeAdView);
@@ -235,9 +272,7 @@ public class AdsClass {
             } else {
                 FlNative.setVisibility(View.INVISIBLE);
             }
-
         }
-        LoadNative(activity, id);
     }
 
     @SuppressLint("WrongConstant")

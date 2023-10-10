@@ -15,6 +15,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.theme.keyboardthemeapp.AdsClass;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.ModelClass.QuoteModelItem;
 import com.theme.keyboardthemeapp.ModelClass.StatusItem;
@@ -74,6 +75,9 @@ public class ViewQuoteActivity extends AppCompatActivity implements View.OnClick
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void initActions() {
+        if (AdsClass.isInternetOn(context)) {
+            AdsClass.showNative250(this, Constants.NativaAds, findViewById(R.id.FlNative), Constants.Show);
+        }
         ImgBack.setVisibility(View.VISIBLE);
         TxtTitle.setText(QuoteTitle);
         QuotePageAdapter pageAdapter = new QuotePageAdapter(context, getSupportFragmentManager(), statusItemArrayList);

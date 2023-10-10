@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.theme.keyboardthemeapp.AdsClass;
+import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.R;
 
 public class MoreSettingsActivity extends AppCompatActivity implements View.OnClickListener {
@@ -48,6 +50,9 @@ public class MoreSettingsActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void initActions() {
+        if (AdsClass.isInternetOn(context)) {
+            AdsClass.showNative250(this, Constants.NativaAds, findViewById(R.id.FlNative), Constants.Show);
+        }
         ImgBack.setVisibility(View.VISIBLE);
         ImgHome.setVisibility(View.VISIBLE);
     }
@@ -107,7 +112,11 @@ public class MoreSettingsActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void GotoPrivacy() {
-        startActivity(new Intent(context, PrivacyPolicyActivity.class));
+        AdsClass.loadInterOne(MoreSettingsActivity.this,Constants.InterstitialAd);
+        AdsClass.showInter(MoreSettingsActivity.this, () -> {
+            startActivity(new Intent(context, PrivacyPolicyActivity.class));
+            finish();
+        },Constants.Show);
     }
 
     private void GotoMore() {

@@ -8,8 +8,12 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdSize;
+import com.theme.keyboardthemeapp.AdsClass;
+import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.Helper.DatabaseHelper;
 import com.theme.keyboardthemeapp.ModelClass.TranslatorModel;
 import com.theme.keyboardthemeapp.R;
@@ -47,6 +51,9 @@ public class TranslatorHistoryActivity extends AppCompatActivity implements View
     }
 
     private void initActions() {
+        if (AdsClass.isInternetOn(context)) {
+            AdsClass.showBanner(this, AdSize.LARGE_BANNER, (RelativeLayout) findViewById(R.id.RlBannerAdView), (RelativeLayout) findViewById(R.id.RlBannerAd), Constants.BannerAd,Constants.Show);
+        }
         ImgBack.setVisibility(View.VISIBLE);
         TxtTitle.setText(R.string.str_my_translated_words);
         RvTranslatorHistory.setLayoutManager(new LinearLayoutManager(context));

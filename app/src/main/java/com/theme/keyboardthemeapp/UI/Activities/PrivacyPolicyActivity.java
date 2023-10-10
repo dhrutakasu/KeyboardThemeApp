@@ -8,7 +8,11 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
+import com.google.android.gms.ads.AdSize;
+import com.theme.keyboardthemeapp.AdsClass;
+import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.R;
 
 public class PrivacyPolicyActivity extends AppCompatActivity implements View.OnClickListener {
@@ -35,7 +39,9 @@ public class PrivacyPolicyActivity extends AppCompatActivity implements View.OnC
         ImgBack.setOnClickListener(this);
     }
 
-    private void initActions() {
+    private void initActions() {if (AdsClass.isInternetOn(context)) {
+        AdsClass.showBanner(this, AdSize.LARGE_BANNER, (RelativeLayout) findViewById(R.id.RlBannerAdView), (RelativeLayout) findViewById(R.id.RlBannerAd), Constants.BannerAd,Constants.Show);
+    }
         ImgBack.setVisibility(View.VISIBLE);
         WebPrivacy.setInitialScale(100);
         WebSettings webPrivacySettings = WebPrivacy.getSettings();

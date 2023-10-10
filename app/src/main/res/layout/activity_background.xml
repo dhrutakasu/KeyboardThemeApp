@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/_5sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/RlBannerAd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/RlHeaderBar">
@@ -155,12 +155,6 @@
                                         android:layout_weight="1"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttonq"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
-
                                         <TextView
                                             android:id="@+id/TxtQ"
                                             android:layout_width="wrap_content"
@@ -177,12 +171,6 @@
                                         android:layout_marginStart="2dp"
                                         android:layout_weight="1"
                                         android:gravity="center">
-
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttonw"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
                                         <TextView
                                             android:id="@+id/TxtW"
@@ -201,12 +189,6 @@
                                         android:layout_weight="1"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttone"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
-
                                         <TextView
                                             android:id="@+id/TxtE"
                                             android:layout_width="wrap_content"
@@ -223,12 +205,6 @@
                                         android:layout_marginStart="2dp"
                                         android:layout_weight="1"
                                         android:gravity="center">
-
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttonr"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
                                         <TextView
                                             android:id="@+id/TxtR"
@@ -247,12 +223,6 @@
                                         android:layout_weight="1"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttont"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
-
                                         <TextView
                                             android:id="@+id/TxtT"
                                             android:layout_width="wrap_content"
@@ -269,12 +239,6 @@
                                         android:layout_marginStart="2dp"
                                         android:layout_weight="1"
                                         android:gravity="center">
-
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttony"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
                                         <TextView
                                             android:id="@+id/TxtY"
@@ -293,12 +257,6 @@
                                         android:layout_weight="1"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttonu"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
-
                                         <TextView
                                             android:id="@+id/TxtU"
                                             android:layout_width="wrap_content"
@@ -315,12 +273,6 @@
                                         android:layout_marginStart="2dp"
                                         android:layout_weight="1"
                                         android:gravity="center">
-
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttoni"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
                                         <TextView
                                             android:id="@+id/TxtI"
@@ -339,12 +291,6 @@
                                         android:layout_weight="1"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttono"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
-
                                         <TextView
                                             android:id="@+id/TxtO"
                                             android:layout_width="wrap_content"
@@ -361,12 +307,6 @@
                                         android:layout_marginStart="2dp"
                                         android:layout_weight="1"
                                         android:gravity="center">
-
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttonp"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
                                         <TextView
                                             android:id="@+id/TxtP"
@@ -396,12 +336,6 @@
                                         android:layout_weight="1"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttona"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
-
                                         <TextView
                                             android:id="@+id/TxtA"
                                             android:layout_width="wrap_content"
@@ -419,11 +353,6 @@
                                         android:layout_weight="1"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttons"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
                                         <TextView
                                             android:id="@+id/TxtS"
@@ -442,12 +371,6 @@
                                         android:layout_weight="1"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttond"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
-
                                         <TextView
                                             android:id="@+id/TxtD"
                                             android:layout_width="wrap_content"
@@ -464,13 +387,6 @@
                                         android:layout_marginStart="2dp"
                                         android:layout_weight="1"
                                         android:gravity="center">
-
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttonf"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
-
                                         <TextView
                                             android:id="@+id/TxtF"
                                             android:layout_width="wrap_content"
@@ -487,12 +403,6 @@
                                         android:layout_marginStart="2dp"
                                         android:layout_weight="1"
                                         android:gravity="center">
-
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttong"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
                                         <TextView
                                             android:id="@+id/TxtG"
@@ -511,12 +421,6 @@
                                         android:layout_weight="1"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttonh"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
-
                                         <TextView
                                             android:id="@+id/TxtH"
                                             android:layout_width="wrap_content"
@@ -533,12 +437,6 @@
                                         android:layout_marginStart="2dp"
                                         android:layout_weight="1"
                                         android:gravity="center">
-
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttonj"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
                                         <TextView
                                             android:id="@+id/TxtJ"
@@ -557,12 +455,6 @@
                                         android:layout_weight="1"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttonk"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
-
                                         <TextView
                                             android:id="@+id/TxtK"
                                             android:layout_width="wrap_content"
@@ -580,11 +472,6 @@
                                         android:layout_weight="1"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttonl"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
                                         <TextView
                                             android:id="@+id/TxtL"
@@ -613,11 +500,6 @@
                                         android:layout_weight="1.5"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttonshift"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
                                         <ImageView
                                             android:id="@+id/IvShift"
@@ -635,11 +517,6 @@
                                         android:layout_weight="1"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttonz"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
                                         <TextView
                                             android:id="@+id/TxtZ"
@@ -658,11 +535,6 @@
                                         android:layout_weight="1"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttonx"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
                                         <TextView
                                             android:id="@+id/TxtX"
@@ -681,11 +553,6 @@
                                         android:layout_weight="1"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttonc"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
                                         <TextView
                                             android:id="@+id/TxtC"
@@ -704,11 +571,6 @@
                                         android:layout_weight="1"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttonv"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
                                         <TextView
                                             android:id="@+id/TxtV"
@@ -727,11 +589,6 @@
                                         android:layout_weight="1"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttonb"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
                                         <TextView
                                             android:id="@+id/TxtB"
@@ -750,11 +607,6 @@
                                         android:layout_weight="1"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttonn"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
                                         <TextView
                                             android:id="@+id/TxtN"
@@ -773,11 +625,6 @@
                                         android:layout_weight="1"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttonm"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
                                         <TextView
                                             android:id="@+id/TxtM"
@@ -796,12 +643,6 @@
                                         android:layout_weight="1.5"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttonDel"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
-
                                         <ImageView
                                             android:id="@+id/IvDelete"
                                             android:layout_width="wrap_content"
@@ -811,7 +652,7 @@
                                             android:layout_gravity="center"
                                             android:layout_marginTop="13dp"
                                             android:layout_marginEnd="14dp"
-                                            android:src="@drawable/ic_back_arrow"
+                                            android:src="@drawable/btn_back"
                                             app:tint="@color/black" />
                                     </RelativeLayout>
                                 </LinearLayout>
@@ -832,11 +673,6 @@
                                         android:layout_weight="1.5"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttonnum"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
                                         <TextView
                                             android:id="@+id/Txt123"
@@ -855,11 +691,6 @@
                                         android:layout_weight="1"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttondot"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
                                         <TextView
                                             android:id="@+id/TxtDot"
@@ -878,11 +709,6 @@
                                         android:layout_weight="5"
                                         android:gravity="center">
 
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttonSpace1"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
                                         <ImageView
                                             android:id="@+id/IvSpace"
@@ -898,12 +724,6 @@
                                         android:layout_marginStart="1dp"
                                         android:layout_weight="1"
                                         android:gravity="center">
-
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttoncomma"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
                                         <TextView
                                             android:id="@+id/TxtComma"
@@ -921,12 +741,6 @@
                                         android:layout_marginStart="2dp"
                                         android:layout_weight="1.5"
                                         android:gravity="center">
-
-                                        <!--                                                <ImageButton-->
-                                        <!--                                                    android:id="@+id/buttonENter"-->
-                                        <!--                                                    android:layout_width="match_parent"-->
-                                        <!--                                                    android:layout_height="match_parent"-->
-                                        <!--                                                    android:background="@drawable/key_unpresed" />-->
 
                                         <ImageView
                                             android:id="@+id/IvEnter"
@@ -1206,4 +1020,22 @@
             </RelativeLayout>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/RlBannerAd"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|center"
+        android:gravity="bottom|center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/RlBannerAdView"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="0dp"
+            android:gravity="center|bottom" />
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
