@@ -287,7 +287,7 @@ public class EmojiconsPopup extends PopupWindow implements ViewPager.OnPageChang
         mEmojiTabs = new View[8];
 
         mEmojiTabs[0] = view.findViewById(R.id.emojis_tab_0_recents);
-        mEmojiTabs[1] = view.findViewById(R.id.emojis_tab_1_people);
+        mEmojiTabs[1] = view.findViewById(R.id.ImgPeopleEmoji);
         mEmojiTabs[2] = view.findViewById(R.id.emojis_tab_2_nature);
         mEmojiTabs[3] = view.findViewById(R.id.emojis_tab_3_food);
         mEmojiTabs[4] = view.findViewById(R.id.emojis_tab_4_sport);

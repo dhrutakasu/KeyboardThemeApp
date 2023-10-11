@@ -4,15 +4,11 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.NinePatchDrawable;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -39,28 +35,20 @@ public class CustomKeyboardView extends KeyboardView {
     public static int KeyHeight;
     public static int KeyWidth;
     public static List<Keyboard.Key> KeboardKeys;
-    public static PopupWindow LanguagePopup;
     public static CustomKeyboardLanguageAdapter LanguageAdapter;
     public static int[] LetterXInts;
-    public static int[] LetterYInts;
-    public static int[] OffsetInWindowInts;
-    public static int PopupPreviewOffsetXInt;
     public static int PopupPreviewOffsetYInt;
-    public static int PreviewOffsetInt;
+    public static int[] LetterYInts;
+    public static int PopupPreviewOffsetXInt;
     public static int WindowYInt;
     public static Paint NewPaint;
-    public static NinePatchDrawable ninePatchDrawable;
-    public static NinePatchDrawable ninePatchDrawableDelete;
-    public static NinePatchDrawable ninePatchDrawableDone;
-    public static NinePatchDrawable ninePatchDrawableShiftOff;
-    public static NinePatchDrawable ninePatchDrawableShiftOn;
-    public static NinePatchDrawable ninePatchDrawableSpace;
-    public static NinePatchDrawable ninePatchDrawablePresed;
-    public static Drawable PopupDrawable;
     public static int[] PreviewLayoutInts;
+    public static int[] OffsetInWindowInts;
+    public static int TxtColorCodeInt;
+    public static int PreviewOffsetInt;
+    public static Drawable PopupDrawable;
     public static int[] PreviewResInts;
     public static Paint SimplePaint;
-    public static int TxtColorCodeInt;
     public static List<Keyboard.Key> TotalKeyboardKey;
     public static View ViewLanguage;
     public static int XInt;
@@ -77,7 +65,7 @@ public class CustomKeyboardView extends KeyboardView {
         YInt = 0;
         TxtColorCodeInt = -1;
         HintColorCode = -1;
-        PreviewResInts = new int[]{R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg};
+        PreviewResInts = new int[]{R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg};
         fontTypeface = null;
         NewPaint = new Paint();
         SimplePaint = new Paint();
@@ -93,13 +81,7 @@ public class CustomKeyboardView extends KeyboardView {
         this.context = context;
         setPreviewEnabled(false);
         InitActions();
-//        ninePatchDrawable = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_unpresed);
-//        ninePatchDrawablePresed = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_presed);
         PopupDrawable = getResources().getDrawable(PreviewResInts[0]);
-//        ninePatchDrawableShiftOn = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_shift_on);
-//        ninePatchDrawableSpace = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_space);
-//        ninePatchDrawableDelete = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_back);
-//        ninePatchDrawableDone = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_enter);
     }
 
     public CustomKeyboardView(Context context) {
@@ -110,7 +92,7 @@ public class CustomKeyboardView extends KeyboardView {
         YInt = 0;
         TxtColorCodeInt = -1;
         HintColorCode = -1;
-        PreviewResInts = new int[]{R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg};
+        PreviewResInts = new int[]{R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg};
         fontTypeface = null;
         NewPaint = new Paint();
         SimplePaint = new Paint();
@@ -126,13 +108,7 @@ public class CustomKeyboardView extends KeyboardView {
         this.context = context;
         setPreviewEnabled(false);
         InitActions();
-//        ninePatchDrawable = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_unpresed);
-//        ninePatchDrawablePresed = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_presed);
         PopupDrawable = getResources().getDrawable(PreviewResInts[0]);
-//        ninePatchDrawableShiftOn = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_shift_on);
-//        ninePatchDrawableSpace = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_space);
-//        ninePatchDrawableDelete = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_back);
-//        ninePatchDrawableDone = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_enter);
     }
 
     public CustomKeyboardView(Context context, AttributeSet attributeSet) {
@@ -143,7 +119,7 @@ public class CustomKeyboardView extends KeyboardView {
         YInt = 0;
         TxtColorCodeInt = -1;
         HintColorCode = -1;
-        PreviewResInts = new int[]{R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg, R.drawable.preview_bg};
+        PreviewResInts = new int[]{R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg, R.drawable.ic_preview_bg};
         fontTypeface = null;
         NewPaint = new Paint();
         SimplePaint = new Paint();
@@ -159,13 +135,7 @@ public class CustomKeyboardView extends KeyboardView {
         this.context = context;
         setPreviewEnabled(false);
         InitActions();
-//        ninePatchDrawable = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_unpresed);
-//        ninePatchDrawablePresed = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.key_presed);
         PopupDrawable = getResources().getDrawable(PreviewResInts[0]);
-//        ninePatchDrawableShiftOn = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_shift_on);
-//        ninePatchDrawableSpace = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_space);
-//        ninePatchDrawableDelete = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_back);
-//        ninePatchDrawableDone = (NinePatchDrawable) context.getResources().getDrawable(R.drawable.btn_enter);
     }
 
     public void InitActions() {
@@ -380,7 +350,7 @@ public class CustomKeyboardView extends KeyboardView {
     }
 
     private void ShowLongPreviewPopupView(Keyboard.Key key) {
-        LanguageAdapter = new CustomKeyboardLanguageAdapter(context, Constants.languegesArray, this);
+        LanguageAdapter = new CustomKeyboardLanguageAdapter(context, Constants.LangugaeArr, this);
         View view = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.layout_language_list_popup, (ViewGroup) null, false);
         ViewLanguage = view;
         ((ListView) view.findViewById(R.id.keyboardLanguageList)).setAdapter((ListAdapter) LanguageAdapter);
@@ -474,27 +444,11 @@ public class CustomKeyboardView extends KeyboardView {
         invalidateAllKeys();
     }
 
-    public void setOnlineKeyboard(NinePatchDrawable ninePatchDrawable, NinePatchDrawable ninePatchDrawable2, int i, NinePatchDrawable ninePatchDrawable3, NinePatchDrawable ninePatchDrawable4, NinePatchDrawable ninePatchDrawable5, NinePatchDrawable ninePatchDrawable6, NinePatchDrawable ninePatchDrawable7, Drawable PUpdrawable) {
-        CustomKeyboardView.ninePatchDrawable = ninePatchDrawable;
-        ninePatchDrawablePresed = ninePatchDrawable2;
-        ninePatchDrawableDelete = ninePatchDrawable6;
-        ninePatchDrawableDone = ninePatchDrawable7;
-        ninePatchDrawableShiftOff = ninePatchDrawable4;
-        ninePatchDrawableShiftOn = ninePatchDrawable5;
-        ninePatchDrawableSpace = ninePatchDrawable3;
+    public void setOnlineKeyboard(Drawable PUpdrawable) {
         TxtColorCodeInt = new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white));
         PopupDrawable = PUpdrawable;
         NewPaint.setColor(new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)));
         SimplePaint.setColor(new MySharePref(context).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, getResources().getColor(R.color.white)));
-//        try {
-//            ninePatchDrawableShiftOn.setColorFilter(new PorterDuffColorFilter(TxtColorCodeInt, PorterDuff.Mode.SRC_IN));
-//            ninePatchDrawableShiftOff.setColorFilter(new PorterDuffColorFilter(TxtColorCodeInt, PorterDuff.Mode.SRC_IN));
-//            ninePatchDrawableSpace.setColorFilter(new PorterDuffColorFilter(TxtColorCodeInt, PorterDuff.Mode.SRC_IN));
-//            ninePatchDrawableDone.setColorFilter(new PorterDuffColorFilter(TxtColorCodeInt, PorterDuff.Mode.SRC_IN));
-//            ninePatchDrawableDelete.setColorFilter(new PorterDuffColorFilter(TxtColorCodeInt, PorterDuff.Mode.SRC_IN));
-//        } catch (Exception e) {
-//            Log.e("EROOR:", "" + e);
-//        }
         SetPopupVIew();
         invalidate();
     }

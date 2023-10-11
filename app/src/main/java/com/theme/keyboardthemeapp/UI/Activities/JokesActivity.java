@@ -69,7 +69,7 @@ public class JokesActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void GetJokeResponse() {
-        if (Constants.isNetworkAvailable(context)) {
+        if (Constants.isNetworkAvailableoRnOT(context)) {
             LayoutProgress.setVisibility(View.VISIBLE);
             RetrofitInterface downloadService = RetrofitInstance.createService(RetrofitInterface.class, Constants.BASE_URL);
             Call<List<JokeModelItem>> call = downloadService.getJokeData(Constants.JOKE_CATEGORY_URL);

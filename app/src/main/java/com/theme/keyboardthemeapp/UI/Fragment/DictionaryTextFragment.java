@@ -7,10 +7,10 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.StrictMode;
 import android.speech.tts.TextToSpeech;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,7 +81,6 @@ public class DictionaryTextFragment extends Fragment implements View.OnClickList
                 }
             }, 2000);
         }
-
         return DictionaryView;
     }
 
@@ -155,6 +154,9 @@ public class DictionaryTextFragment extends Fragment implements View.OnClickList
         ImgRate.setOnClickListener(this);
         ImgAddFavourite.setOnClickListener(this);
         ImgSpeak.setOnClickListener(this);
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+
     }
 
     @Override
@@ -189,7 +191,7 @@ public class DictionaryTextFragment extends Fragment implements View.OnClickList
         AutoTxtWord.setText("");
         ImgSearch.setVisibility(View.VISIBLE);
         ImgBackDic.setVisibility(View.INVISIBLE);
-        ImgAddFavourite.setImageResource(R.drawable.favourite_unpresed);
+        ImgAddFavourite.setImageResource(R.drawable.ic_favourite_unpresed);
         Constants.RecentWord = null;
     }
 
@@ -203,15 +205,15 @@ public class DictionaryTextFragment extends Fragment implements View.OnClickList
 
     private void GotoShare() {
         if (TxtWordEnglish.getText().length() != 0) {
-            ImgShare.setImageResource(R.drawable.share_presed);
+            ImgShare.setImageResource(R.drawable.ic_share_presed);
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
             intent.putExtra(Intent.EXTRA_SUBJECT, "Share Your Text To");
-            intent.putExtra(Intent.EXTRA_TEXT, TxtWordEnglish.getText().toString());
-            startActivity(intent);
+            intent.putExtra(Intent.EXTRA_TEXT, TxtWordEnglish.getText().toString() + "\n" + TxtWordHindi.getText().toString());
+            startActivity(Intent.createChooser(intent, "Share via"));
             return;
         }
-        ImgShare.setImageResource(R.drawable.share_unpresed);
+        ImgShare.setImageResource(R.drawable.ic_share_unpresed);
         Toast.makeText(getContext(), "Enter any text", Toast.LENGTH_SHORT).show();
     }
 
@@ -224,10 +226,10 @@ public class DictionaryTextFragment extends Fragment implements View.OnClickList
     private void GotoSpeak() {
         String word = AutoTxtWord.getText().toString();
         if (word.length() == 0) {
-            ImgSpeak.setImageResource(R.drawable.voice_unpresed);
+            ImgSpeak.setImageResource(R.drawable.ic_voice_unpresed);
             return;
         }
-        ImgSpeak.setImageResource(R.drawable.voice_presed);
+        ImgSpeak.setImageResource(R.drawable.ic_voice_presed);
         tts.speak(word, TextToSpeech.QUEUE_FLUSH, null);
 
     }
@@ -237,12 +239,12 @@ public class DictionaryTextFragment extends Fragment implements View.OnClickList
             return;
         }
         if (!fav) {
-            ImgAddFavourite.setImageResource(R.drawable.favourite_presed);
+            ImgAddFavourite.setImageResource(R.drawable.ic_favourite_presed);
             helper.AddFavorite(wid);
             fav = true;
             return;
         }
-        ImgAddFavourite.setImageResource(R.drawable.favourite_unpresed);
+        ImgAddFavourite.setImageResource(R.drawable.ic_favourite_unpresed);
         helper.RemoveFavorite(wid);
         fav = false;
     }
@@ -350,9 +352,9 @@ public class DictionaryTextFragment extends Fragment implements View.OnClickList
                 boolean isFavorite = helperWordByEnglish.isFavorite();
                 fav = isFavorite;
                 if (isFavorite) {
-                    ImgAddFavourite.setImageResource(R.drawable.favourite_presed);
+                    ImgAddFavourite.setImageResource(R.drawable.ic_favourite_presed);
                 } else {
-                    ImgAddFavourite.setImageResource(R.drawable.favourite_unpresed);
+                    ImgAddFavourite.setImageResource(R.drawable.ic_favourite_unpresed);
                 }
                 list.add(helperWordByEnglish);
                 helper.checkifIdExist(Integer.toString(wid));
@@ -373,9 +375,9 @@ public class DictionaryTextFragment extends Fragment implements View.OnClickList
                 boolean isFavorite2 = dictionaryModel.isFavorite();
                 fav = isFavorite2;
                 if (isFavorite2) {
-                    ImgAddFavourite.setImageResource(R.drawable.favourite_presed);
+                    ImgAddFavourite.setImageResource(R.drawable.ic_favourite_presed);
                 } else {
-                    ImgAddFavourite.setImageResource(R.drawable.favourite_unpresed);
+                    ImgAddFavourite.setImageResource(R.drawable.ic_favourite_unpresed);
                 }
             } else {
                 wid = -1;
@@ -394,13 +396,15 @@ public class DictionaryTextFragment extends Fragment implements View.OnClickList
             refreshView();
         } else if (Dictionary_Str.equalsIgnoreCase("Favourite")) {
             if (RvDictionaryTxt != null) {
-                ArrayList<DictionaryModel> favoriteWordList = helper.getDictionaryFavorite();
-                RvDictionaryTxt.setAdapter(new FavouriteAdapter(getActivity(), favoriteWordList, Dictionary_Str, this));
+                dictionaryModels = helper.getDictionaryFavorite();
+                System.out.println("----- - - - -list : " + dictionaryModels.size());
+                RvDictionaryTxt.setAdapter(new FavouriteAdapter(getActivity(), dictionaryModels, Dictionary_Str, this));
+                RvDictionaryTxt.getAdapter().notifyDataSetChanged();
             }
         } else if (Dictionary_Str.equalsIgnoreCase("Recent")) {
             if (RvDictionaryTxt != null) {
-                ArrayList<DictionaryModel> recentWordList = helper.getDictionaryRecent();
-                FavouriteAdapter adapter = new FavouriteAdapter(getContext(), recentWordList, Dictionary_Str, this);
+                dictionaryModels = helper.getDictionaryRecent();
+                FavouriteAdapter adapter = new FavouriteAdapter(getContext(), dictionaryModels, Dictionary_Str, this);
                 RvDictionaryTxt.setAdapter(adapter);
             }
         }
@@ -427,6 +431,7 @@ public class DictionaryTextFragment extends Fragment implements View.OnClickList
     @Override
     public void DeleteFav(int FavId, int position, String dictionary_Str) {
         if (dictionary_Str.equalsIgnoreCase("Favorite")) {
+            System.out.println("---- - - - - -");
             helper.deleteFavourite(FavId);
         } else {
             helper.deleteDictionaryRecent(FavId);

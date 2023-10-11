@@ -40,9 +40,9 @@ public class KeyboardPermissionDialog extends Dialog {
         ImageView IvGotIt = (ImageView) findViewById(R.id.IvGotIt);
 
         if (Constants.enableKeyboard){
-            Glide.with(activity).load(Integer.valueOf(R.drawable.enable_keyboard_permission)).into(IvKeyboardScreen);
+            Glide.with(activity).load(Integer.valueOf(R.drawable.ic_enable_keyboard_permission)).into(IvKeyboardScreen);
         }else {
-            IvKeyboardScreen.setImageResource(R.drawable.change_keyboard_permission);
+            IvKeyboardScreen.setImageResource(R.drawable.ic_change_keyboard_permission);
         }
         IvGotIt.setOnClickListener(view -> {
             permissionListener.onPermission(this);

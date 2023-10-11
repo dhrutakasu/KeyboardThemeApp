@@ -94,13 +94,13 @@ public class FancyTextFragment extends Fragment implements View.OnClickListener 
                     EdtFancyStr = charSequence.toString();
                 }
                 if (Fancy_Str.equalsIgnoreCase("Fancy")) {
-                    fancyAdapter = new FancyAdapter(getContext(), Constants.FancyNameStyle, EdtFancyStr);
+                    fancyAdapter = new FancyAdapter(getActivity(),getContext(), Constants.FancyNameStyle, EdtFancyStr);
                     RvFancyTxt.setAdapter(fancyAdapter);
                 } else if (Fancy_Str.equalsIgnoreCase("Decorative")) {
-                    decorativeAdapter = new DecorativeAdapter(getContext(), Constants.FancyDecorative, EdtFancyStr);
+                    decorativeAdapter = new DecorativeAdapter(getActivity(),getContext(), Constants.FancyDecorative, EdtFancyStr);
                     RvFancyTxt.setAdapter(decorativeAdapter);
                 } else if (Fancy_Str.equalsIgnoreCase("ASCII art")) {
-                    asciiArtAdapter = new ASCIIArtAdapter(getContext(), ASCIIArray, EdtFancyStr);
+                    asciiArtAdapter = new ASCIIArtAdapter(getActivity(),getContext(), ASCIIArray, EdtFancyStr);
                     RvFancyTxt.setAdapter(asciiArtAdapter);
                 }
             }
@@ -112,10 +112,10 @@ public class FancyTextFragment extends Fragment implements View.OnClickListener 
         });
 
         if (Fancy_Str.equalsIgnoreCase("Fancy")) {
-            fancyAdapter = new FancyAdapter(getContext(), Constants.FancyNameStyle, EdtFancyStr);
+            fancyAdapter = new FancyAdapter(getActivity(),getContext(), Constants.FancyNameStyle, EdtFancyStr);
             RvFancyTxt.setAdapter(fancyAdapter);
         } else if (Fancy_Str.equalsIgnoreCase("Decorative")) {
-            decorativeAdapter = new DecorativeAdapter(getContext(), Constants.FancyDecorative, EdtFancyStr);
+            decorativeAdapter = new DecorativeAdapter(getActivity(),getContext(), Constants.FancyDecorative, EdtFancyStr);
             RvFancyTxt.setAdapter(decorativeAdapter);
         } else if (Fancy_Str.equalsIgnoreCase("ASCII art")) {
             LayoutProgress.setVisibility(View.VISIBLE);
@@ -136,7 +136,7 @@ public class FancyTextFragment extends Fragment implements View.OnClickListener 
                             ASCIIArray.remove(i);
                         }
                     }
-                    asciiArtAdapter = new ASCIIArtAdapter(getContext(), ASCIIArray, EdtFancyStr);
+                    asciiArtAdapter = new ASCIIArtAdapter(getActivity(),getContext(),  ASCIIArray, EdtFancyStr);
                     RvFancyTxt.setAdapter(asciiArtAdapter);
                 }
             }.execute();
@@ -156,13 +156,13 @@ public class FancyTextFragment extends Fragment implements View.OnClickListener 
         EdtFancyTxt.setText("");
         EdtFancyStr = "Font Style";
         if (Fancy_Str.equalsIgnoreCase("Fancy")) {
-            fancyAdapter = new FancyAdapter(getContext(), Constants.FancyNameStyle, EdtFancyStr);
+            fancyAdapter = new FancyAdapter(getActivity(),getContext(), Constants.FancyNameStyle, EdtFancyStr);
             RvFancyTxt.setAdapter(fancyAdapter);
         } else if (Fancy_Str.equalsIgnoreCase("Decorative")) {
-            decorativeAdapter = new DecorativeAdapter(getContext(), Constants.FancyDecorative, EdtFancyStr);
+            decorativeAdapter = new DecorativeAdapter(getActivity(),getContext(), Constants.FancyDecorative, EdtFancyStr);
             RvFancyTxt.setAdapter(decorativeAdapter);
         } else if (Fancy_Str.equalsIgnoreCase("ASCII art")) {
-            asciiArtAdapter = new ASCIIArtAdapter(getContext(), ASCIIArray, EdtFancyStr);
+            asciiArtAdapter = new ASCIIArtAdapter(getActivity(),getContext(), ASCIIArray, EdtFancyStr);
             RvFancyTxt.setAdapter(asciiArtAdapter);
         }
     }

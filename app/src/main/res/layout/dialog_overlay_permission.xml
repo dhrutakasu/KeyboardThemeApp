@@ -51,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="2dp"
-                    android:background="@drawable/cancel11" />
+                    android:background="@drawable/ic_cancel11" />
 
                 <ImageView
                     android:id="@+id/IvPermissionOk"
@@ -59,7 +59,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="2dp"
-                    android:background="@drawable/ok11"
+                    android:background="@drawable/ic_ok11"
                     android:padding="5dp" />
             </LinearLayout>
 

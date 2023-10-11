@@ -1,5 +1,6 @@
 package com.theme.keyboardthemeapp.Dialogs;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -16,6 +17,7 @@ import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.R;
 
 public class MainExitDialog extends Dialog {
+    private final Activity activity;
     public ExitListener exitListener;
 
     public interface ExitListener {
@@ -23,8 +25,9 @@ public class MainExitDialog extends Dialog {
         void onTryMore(MainExitDialog fancyTextDialog);
     }
 
-    public MainExitDialog(Context context, ExitListener exitListener) {
+    public MainExitDialog(Activity activity,Context context, ExitListener exitListener) {
         super(context);
+        this.activity = activity;
         this.exitListener = exitListener;
         getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
     }
@@ -36,7 +39,7 @@ public class MainExitDialog extends Dialog {
         ImageView IvExit = (ImageView) findViewById(R.id.IvExit);
         ImageView IvTryMore = (ImageView) findViewById(R.id.IvTryMore);
         if (AdsClass.isInternetOn(getContext())) {
-            AdsClass.showBanner(getOwnerActivity(), AdSize.LARGE_BANNER, (RelativeLayout) findViewById(R.id.RlBannerAdView), (RelativeLayout) findViewById(R.id.RlBannerAd), Constants.BannerAd,Constants.Show);
+            AdsClass.showBanner(activity, AdSize.LARGE_BANNER, (RelativeLayout) findViewById(R.id.RlBannerAdView), (RelativeLayout) findViewById(R.id.RlBannerAd), Constants.BannerAd,Constants.Show);
         }
         IvNotNow.setOnClickListener(view -> {
             dismiss();

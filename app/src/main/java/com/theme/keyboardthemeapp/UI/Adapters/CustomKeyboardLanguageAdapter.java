@@ -69,7 +69,7 @@ public class CustomKeyboardLanguageAdapter extends BaseAdapter {
         viewHolder2.Mediumtext.setText(this.list.get(i));
         viewHolder2.Mediumtext.setTypeface(this.fontstyle);
 
-        if (this.list.get(i).toLowerCase().contains(new MySharePref(c.getApplicationContext()).getPrefString(MySharePref.LANGUAGE_NAME, Constants.selectedLanguageName))) {
+        if (this.list.get(i).toLowerCase().contains(new MySharePref(c.getApplicationContext()).getPrefString(MySharePref.LANGUAGE_NAME, Constants.SelectedLanguageName))) {
             viewHolder2.Mediumtext.setTextColor(-16776961);
             TextView textView = viewHolder2.Mediumtext;
             Context context = this.c;
@@ -92,7 +92,7 @@ public class CustomKeyboardLanguageAdapter extends BaseAdapter {
                 new MySharePref(c.getApplicationContext()).putPrefInt(MySharePref.CHANGE_LANGUAGE, i);
                 new MySharePref(c.getApplicationContext()).putPrefString(MySharePref.LANGUAGE_NAME, list.get(i).substring(0, 2));
                 Constants.FlagChangeLanguage = i;
-                Constants.selectedLanguageName = list.get(i);
+                Constants.SelectedLanguageName = list.get(i);
                 try {
                     DictionaryTask dictionaryTask = new DictionaryTask(CustomKeyboardLanguageAdapter.this.c, Constants.ChangeLanguage);
                     if (Constants.isUpHoneycombVersion) {

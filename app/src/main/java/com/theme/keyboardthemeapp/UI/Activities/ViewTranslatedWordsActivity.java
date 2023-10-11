@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -50,11 +51,13 @@ public class ViewTranslatedWordsActivity extends AppCompatActivity implements Vi
 
     private void initListeners() {
         ImgBack.setOnClickListener(this);
+        ImgShare.setOnClickListener(this);
     }
 
-    private void initActions() {if (AdsClass.isInternetOn(context)) {
-        AdsClass.showBanner(this, AdSize.LARGE_BANNER, (RelativeLayout) findViewById(R.id.RlBannerAdView), (RelativeLayout) findViewById(R.id.RlBannerAd),Constants.BannerAd,Constants.Show);
-    }
+    private void initActions() {
+        if (AdsClass.isInternetOn(context)) {
+            AdsClass.showBanner(this, AdSize.LARGE_BANNER, (RelativeLayout) findViewById(R.id.RlBannerAdView), (RelativeLayout) findViewById(R.id.RlBannerAd), Constants.BannerAd, Constants.Show);
+        }
         ImgBack.setVisibility(View.VISIBLE);
         ImgShare.setVisibility(View.VISIBLE);
         TxtTitle.setText(R.string.str_my_saved_data);
@@ -62,6 +65,9 @@ public class ViewTranslatedWordsActivity extends AppCompatActivity implements Vi
         TranslatorModel translatorModel = helper.getTranslatorsHistoryId(DatabseId);
         TxtInputWords.setText(translatorModel.getInputStr());
         TxtOutputWords.setText(translatorModel.getOutputStr());
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+
     }
 
     @Override
@@ -77,10 +83,11 @@ public class ViewTranslatedWordsActivity extends AppCompatActivity implements Vi
     }
 
     private void GotoShare() {
-        Intent intentQuoteShare = new Intent(Intent.ACTION_SEND);
+        Intent intentQuoteShare = new Intent();
+        intentQuoteShare.setAction(Intent.ACTION_SEND);
         intentQuoteShare.setType("text/plain");
-        intentQuoteShare.putExtra(Intent.EXTRA_SUBJECT, "Share with");
+        intentQuoteShare.putExtra(Intent.EXTRA_SUBJECT, "Share Your Text To");
         intentQuoteShare.putExtra(Intent.EXTRA_TEXT, TxtOutputWords.getText().toString());
-        startActivity(intentQuoteShare);
+        startActivity(Intent.createChooser(intentQuoteShare, "Share via"));
     }
 }

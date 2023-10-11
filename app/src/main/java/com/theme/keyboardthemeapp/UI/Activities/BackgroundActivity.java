@@ -9,8 +9,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.MediaStore;
-import android.provider.Settings;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -27,7 +25,6 @@ import com.google.android.gms.ads.AdSize;
 import com.theme.keyboardthemeapp.AdsClass;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.Dialogs.MainExitDialog;
-import com.theme.keyboardthemeapp.Dialogs.OverlayPermissionDialog;
 import com.theme.keyboardthemeapp.Dialogs.SelectPhotoDialog;
 import com.theme.keyboardthemeapp.MySharePref;
 import com.theme.keyboardthemeapp.R;
@@ -37,13 +34,11 @@ import com.theme.keyboardthemeapp.UI.Adapters.FontAdapter;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
-import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 
 public class BackgroundActivity extends AppCompatActivity implements View.OnClickListener, SeekBar.OnSeekBarChangeListener {
     private static final int CAMERA_RESULT = 92;
@@ -155,14 +150,14 @@ public class BackgroundActivity extends AppCompatActivity implements View.OnClic
 
     private void initActions() {
         if (AdsClass.isInternetOn(context)) {
-            AdsClass.showBanner(this, AdSize.LARGE_BANNER, (RelativeLayout) findViewById(R.id.RlBannerAdView), (RelativeLayout) findViewById(R.id.RlBannerAd),Constants.BannerAd,Constants.Show);
+            AdsClass.showBanner(this, AdSize.LARGE_BANNER, (RelativeLayout) findViewById(R.id.RlBannerAdView), (RelativeLayout) findViewById(R.id.RlBannerAd), Constants.BannerAd, Constants.Show);
         }
         ImgBack.setVisibility(View.VISIBLE);
         ImgMore.setVisibility(View.VISIBLE);
         TxtTitle.setText(R.string.app_name);
-        IvBackground.setImageResource(R.drawable.backgroundchage_presed);
-        IvOpacityView.setImageResource(R.drawable.opacity_unpresed);
-        IvClearBackground.setImageResource(R.drawable.clear_unpresed);
+        IvBackground.setImageResource(R.drawable.ic_background_presed);
+        IvOpacityView.setImageResource(R.drawable.ic_opacity_unpresed);
+        IvClearBackground.setImageResource(R.drawable.ic_clear_unpresed);
         GotoFontColor(getResources().getColor(R.color.white));
         RlImage.setVisibility(View.VISIBLE);
         getVisibility(RlBackgroundView);
@@ -182,7 +177,7 @@ public class BackgroundActivity extends AppCompatActivity implements View.OnClic
         ColorAdapter adapter = new ColorAdapter(context, Constants.ColorsList, (position, ints) -> {
             TxtPercentage.setText(((new MySharePref(context).getPrefInt(MySharePref.TRANSPARENT, 0) * 100) / 255) + "%");
             IvBlackCover.setAlpha(((float) new MySharePref(context).getPrefInt(MySharePref.TRANSPARENT_BLACK_BG, 0)) / 255.0f);
-            new MySharePref(context).putPrefBoolean(MySharePref.SAVE_IMAGE,true);
+            new MySharePref(context).putPrefBoolean(MySharePref.SAVE_IMAGE, true);
             if (position == 0) {
                 ColorPickerDialogBuilder
                         .with(context)
@@ -264,7 +259,7 @@ public class BackgroundActivity extends AppCompatActivity implements View.OnClic
             if (new File(getFilesDir().getAbsolutePath() + "/photo_save.jpeg").exists()) {
                 IvBackgroundImg.setImageBitmap(BitmapFactory.decodeFile(new File(getFilesDir().getAbsolutePath() + "/photo_save.jpeg").getAbsolutePath()));
             } else {
-                IvBackgroundImg.setImageBitmap(BitmapFactory.decodeFile(Constants.getBackground(context, new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0)).getAbsolutePath()));
+                IvBackgroundImg.setImageBitmap(BitmapFactory.decodeFile(Constants.getBackgroundSave(context, new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0)).getAbsolutePath()));
             }
         }
     }
@@ -276,57 +271,57 @@ public class BackgroundActivity extends AppCompatActivity implements View.OnClic
                 finish();
                 break;
             case R.id.ImgMore:
-                AdsClass.loadInterOne(BackgroundActivity.this,Constants.InterstitialAd);
+                AdsClass.loadInterOne(BackgroundActivity.this, Constants.InterstitialAd);
                 AdsClass.showInter(BackgroundActivity.this, () -> {
                     startActivity(new Intent(context, MoreSettingsActivity.class));
                     finish();
-                },Constants.Show);
+                }, Constants.Show);
                 break;
             case R.id.IvChangeBg:
-                setPressButton(IvChangeBg, R.drawable.bgcolor_presed);
+                setPressButton(IvChangeBg, R.drawable.ic_bgcolor_presed);
                 RlOptions.setVisibility(View.VISIBLE);
                 getVisibility(RlBackgroundView);
                 break;
             case R.id.IvFontChange:
-                setPressButton(IvFontChange, R.drawable.preview_font_presed);
+                setPressButton(IvFontChange, R.drawable.ic_preview_font_presed);
                 RlOptions.setVisibility(View.GONE);
                 getVisibility(RlFontSelect);
                 break;
             case R.id.IvFontColor:
-                setPressButton(IvFontColor, R.drawable.preview_color_presed);
+                setPressButton(IvFontColor, R.drawable.ic_preview_color_presed);
                 RlOptions.setVisibility(View.GONE);
                 getVisibility(RlFontColor);
                 break;
             case R.id.IvOpacityView:
-                setPressButton(IvChangeBg, R.drawable.bgcolor_presed);
-                setPressSubButton(IvOpacityView, R.drawable.opacity_presed);
-                IvOpacityView.setBackgroundResource(R.drawable.opacity_presed);
-                IvBackground.setBackgroundResource(R.drawable.backgroundchage_unpresed);
-                IvClearBackground.setBackgroundResource(R.drawable.clear_unpresed);
+                setPressButton(IvChangeBg, R.drawable.ic_bgcolor_presed);
+                setPressSubButton(IvOpacityView, R.drawable.ic_opacity_presed);
+                IvOpacityView.setBackgroundResource(R.drawable.ic_opacity_presed);
+                IvBackground.setBackgroundResource(R.drawable.ic_background_unpresed);
+                IvClearBackground.setBackgroundResource(R.drawable.ic_clear_unpresed);
                 RlImage.setVisibility(View.VISIBLE);
                 getVisibility(RlOpacity);
                 break;
             case R.id.IvBackground:
-                setPressButton(IvChangeBg, R.drawable.bgcolor_presed);
-                setPressSubButton(IvBackground, R.drawable.backgroundchage_presed);
-                IvOpacityView.setBackgroundResource(R.drawable.opacity_unpresed);
-                IvBackground.setBackgroundResource(R.drawable.backgroundchage_presed);
-                IvClearBackground.setBackgroundResource(R.drawable.clear_unpresed);
+                setPressButton(IvChangeBg, R.drawable.ic_bgcolor_presed);
+                setPressSubButton(IvBackground, R.drawable.ic_background_presed);
+                IvOpacityView.setBackgroundResource(R.drawable.ic_opacity_unpresed);
+                IvBackground.setBackgroundResource(R.drawable.ic_background_presed);
+                IvClearBackground.setBackgroundResource(R.drawable.ic_clear_unpresed);
                 RlImage.setVisibility(View.VISIBLE);
                 getVisibility(RlBackgroundView);
                 break;
             case R.id.IvClearBackground:
-                setPressButton(IvChangeBg, R.drawable.bgcolor_presed);
-                setPressSubButton(IvClearBackground, R.drawable.clear_presed);
+                setPressButton(IvChangeBg, R.drawable.ic_bgcolor_presed);
+                setPressSubButton(IvClearBackground, R.drawable.ic_clear_presed);
                 if (new File(getFilesDir().getAbsolutePath() + "/photo_save.jpeg").exists()) {
                     new File(getFilesDir().getAbsolutePath() + "/photo_save.jpeg").delete();
                 }
                 new MySharePref(context).putPrefInt(MySharePref.DEFAULT_BG_COLOR, 0);
                 IvBackgroundImg.setBackgroundColor(0);
-                IvBackgroundImg.setImageBitmap(BitmapFactory.decodeFile(Constants.getBackground(context, new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0)).getAbsolutePath()));
-                IvOpacityView.setBackgroundResource(R.drawable.opacity_unpresed);
-                IvBackground.setBackgroundResource(R.drawable.backgroundchage_unpresed);
-                IvClearBackground.setBackgroundResource(R.drawable.clear_presed);
+                IvBackgroundImg.setImageBitmap(BitmapFactory.decodeFile(Constants.getBackgroundSave(context, new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0)).getAbsolutePath()));
+                IvOpacityView.setBackgroundResource(R.drawable.ic_opacity_unpresed);
+                IvBackground.setBackgroundResource(R.drawable.ic_background_unpresed);
+                IvClearBackground.setBackgroundResource(R.drawable.ic_clear_presed);
                 RlImage.setVisibility(View.VISIBLE);
                 IvClearBackground.setVisibility(View.GONE);
                 break;
@@ -337,17 +332,17 @@ public class BackgroundActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void setPressButton(ImageView ivChangeBg, int bgcolor_presed) {
-        IvChangeBg.setImageResource(R.drawable.bgpressxml);
-        IvFontChange.setImageResource(R.drawable.previewfontpressxml);
-        IvFontColor.setImageResource(R.drawable.previewcolorpressxml);
+        IvChangeBg.setImageResource(R.drawable.ic_bgpressxml);
+        IvFontChange.setImageResource(R.drawable.ic_previewfontpressxml);
+        IvFontColor.setImageResource(R.drawable.ic_previewcolorpressxml);
 
         ivChangeBg.setImageResource(bgcolor_presed);
     }
 
     private void setPressSubButton(ImageView ivChangeBg, int bgcolor_presed) {
-        IvOpacityView.setImageResource(R.drawable.opacity_unpresed);
-        IvClearBackground.setImageResource(R.drawable.clear_xml);
-        IvBackground.setImageResource(R.drawable.backgroundchage_unpresed);
+        IvOpacityView.setImageResource(R.drawable.ic_opacity_unpresed);
+        IvClearBackground.setImageResource(R.drawable.ic_clear_xml);
+        IvBackground.setImageResource(R.drawable.ic_background_unpresed);
 
         ivChangeBg.setImageResource(bgcolor_presed);
     }
@@ -521,9 +516,9 @@ public class BackgroundActivity extends AppCompatActivity implements View.OnClic
                             options.inJustDecodeBounds = true;
                             BitmapFactory.decodeFile(file, options);
 
-                            options.inSampleSize = Constants.calculateInSampleSize(options, Constants.width, Constants.height - 100);
+                            options.inSampleSize = Constants.calculateInSize(options, Constants.widths, Constants.heights - 100);
                             options.inJustDecodeBounds = false;
-                            Bitmap adjustImage = Constants.adjustImage(file, BitmapFactory.decodeFile(file, options));
+                            Bitmap adjustImage = Constants.adjustBitmap(file, BitmapFactory.decodeFile(file, options));
                             FileOutputStream outputStream = new FileOutputStream(file);
                             adjustImage.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
                             outputStream.flush();
@@ -531,13 +526,13 @@ public class BackgroundActivity extends AppCompatActivity implements View.OnClic
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        AdsClass.loadInterOne(BackgroundActivity.this,Constants.InterstitialAd);
+                        AdsClass.loadInterOne(BackgroundActivity.this, Constants.InterstitialAd);
                         AdsClass.showInter(BackgroundActivity.this, () -> {
                             Intent intent3 = new Intent(context, PhotoCropActivity.class);
                             intent3.putExtra(Constants.FILE_PATH, file);
                             startActivityForResult(intent3, CAMERA_RESULT);
                             finish();
-                        },Constants.Show);
+                        }, Constants.Show);
                         break;
                     case RESULT_CANCELED:
                         break;
@@ -552,7 +547,7 @@ public class BackgroundActivity extends AppCompatActivity implements View.OnClic
                             try {
                                 path = Constants.getRealPathFromURI(getApplicationContext(), uri);
                             } catch (Exception unused) {
-                                path = Constants.getPathFromUriLolipop(getApplicationContext(), uri);
+                                path = Constants.getPathFromUriLowVersion(getApplicationContext(), uri);
                             }
                         } catch (Exception unused2) {
                             Toast.makeText(getApplicationContext(), "Load Image failed. Try again", Toast.LENGTH_LONG).show();
@@ -562,9 +557,9 @@ public class BackgroundActivity extends AppCompatActivity implements View.OnClic
                             BitmapFactory.Options options = new BitmapFactory.Options();
                             options.inJustDecodeBounds = true;
                             BitmapFactory.decodeFile(path, options);
-                            options.inSampleSize = Constants.calculateInSampleSize(options, Constants.width, Constants.height - 100);
+                            options.inSampleSize = Constants.calculateInSize(options, Constants.widths, Constants.heights - 100);
                             options.inJustDecodeBounds = false;
-                            Bitmap adjustImageOrientation = Constants.adjustImage(path, BitmapFactory.decodeFile(path, options));
+                            Bitmap adjustImageOrientation = Constants.adjustBitmap(path, BitmapFactory.decodeFile(path, options));
                             FileOutputStream fileOutputStream = new FileOutputStream(file);
                             adjustImageOrientation.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
                             fileOutputStream.flush();
@@ -572,13 +567,13 @@ public class BackgroundActivity extends AppCompatActivity implements View.OnClic
                         } catch (Exception unused3) {
                             unused3.printStackTrace();
                         }
-                        AdsClass.loadInterOne(BackgroundActivity.this,Constants.InterstitialAd);
+                        AdsClass.loadInterOne(BackgroundActivity.this, Constants.InterstitialAd);
                         AdsClass.showInter(BackgroundActivity.this, () -> {
                             Intent intent3 = new Intent(context, PhotoCropActivity.class);
                             intent3.putExtra(Constants.FILE_PATH, file);
                             startActivityForResult(intent3, CAMERA_RESULT);
                             finish();
-                        },Constants.Show);
+                        }, Constants.Show);
                         break;
                     case RESULT_CANCELED:
                         break;
@@ -604,7 +599,7 @@ public class BackgroundActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onBackPressed() {
-        MainExitDialog mainExitDialog = new MainExitDialog(context, fancyTextDialog -> {
+        MainExitDialog mainExitDialog = new MainExitDialog(BackgroundActivity.this, context, fancyTextDialog -> {
             finish();
         });
         mainExitDialog.show();

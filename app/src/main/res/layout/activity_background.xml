@@ -79,7 +79,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="0.8"
-                                android:background="@drawable/top_bg10"
+                                android:background="@drawable/ic_top_bg10"
                                 android:gravity="center"
                                 android:orientation="horizontal"
                                 android:weightSum="10">
@@ -94,7 +94,7 @@
                                         android:id="@+id/IvMenuKeyboard"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:src="@drawable/menu_unpresed10" />
+                                        android:src="@drawable/ic_menu_unpresed10" />
                                 </LinearLayout>
 
                                 <LinearLayout
@@ -108,13 +108,13 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_alignParentRight="true"
-                                        android:src="@drawable/emoji_unpresed10" />
+                                        android:src="@drawable/ic_emoji_unpresed10" />
 
                                     <ImageView
                                         android:id="@+id/IvSearchKeyboard"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:src="@drawable/search_unpresed10" />
+                                        android:src="@drawable/ic_search_unpresed10" />
                                 </LinearLayout>
 
                                 <LinearLayout
@@ -127,7 +127,7 @@
                                         android:id="@+id/IvClearText"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:src="@drawable/close_unpresed10" />
+                                        android:src="@drawable/ic_close_unpresed10" />
                                 </LinearLayout>
                             </LinearLayout>
 
@@ -506,7 +506,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
-                                            android:src="@drawable/btn_shift_off"
+                                            android:src="@drawable/ic_btn_shift_off"
                                             app:tint="@color/black" />
                                     </RelativeLayout>
 
@@ -652,7 +652,7 @@
                                             android:layout_gravity="center"
                                             android:layout_marginTop="13dp"
                                             android:layout_marginEnd="14dp"
-                                            android:src="@drawable/btn_back"
+                                            android:src="@drawable/ic_btn_back"
                                             app:tint="@color/black" />
                                     </RelativeLayout>
                                 </LinearLayout>
@@ -715,7 +715,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
-                                            android:src="@drawable/btn_space" />
+                                            android:src="@drawable/ic_btn_space" />
                                     </RelativeLayout>
 
                                     <RelativeLayout
@@ -747,7 +747,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
-                                            android:src="@drawable/btn_enter" />
+                                            android:src="@drawable/ic_btn_enter" />
                                     </RelativeLayout>
                                 </LinearLayout>
                             </LinearLayout>
@@ -804,7 +804,7 @@
                                         android:layout_alignParentTop="true"
                                         android:layout_alignParentBottom="true"
                                         android:padding="2dp"
-                                        android:src="@drawable/choose_myphoto_xml" />
+                                        android:src="@drawable/ic_choose_myphoto_xml" />
                                 </RelativeLayout>
 
                                 <RelativeLayout
@@ -843,8 +843,8 @@
                                     android:max="255"
                                     android:maxHeight="2dp"
                                     android:minHeight="2dp"
-                                    android:progressDrawable="@drawable/seek_progress"
-                                    android:thumb="@drawable/seekbar_point"
+                                    android:progressDrawable="@drawable/ic_seek_progress"
+                                    android:thumb="@drawable/ic_seekbar_point"
                                     android:thumbOffset="1dp" />
 
                                 <TextView
@@ -889,7 +889,7 @@
                                     android:id="@+id/IvClearBackground"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/clear_xml" />
+                                    android:src="@drawable/ic_clear_xml" />
 
                                 <ImageView
                                     android:id="@+id/IvOpacityView"
@@ -897,7 +897,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="5dp"
                                     android:layout_toEndOf="@+id/IvClearBackground"
-                                    android:src="@drawable/opacity_unpresed" />
+                                    android:src="@drawable/ic_opacity_unpresed" />
 
                                 <ImageView
                                     android:id="@+id/IvBackground"
@@ -905,7 +905,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="5dp"
                                     android:layout_toEndOf="@+id/IvOpacityView"
-                                    android:src="@drawable/backgroundchage_presed" />
+                                    android:src="@drawable/ic_background_presed" />
                             </RelativeLayout>
                         </RelativeLayout>
                     </RelativeLayout>
@@ -999,7 +999,7 @@
                         android:id="@+id/IvChangeBg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/bgpressxml" />
+                        android:src="@drawable/ic_bgpressxml" />
 
                     <ImageView
                         android:id="@+id/IvFontChange"
@@ -1008,14 +1008,14 @@
                         android:layout_marginStart="50dp"
                         android:layout_marginEnd="50dp"
                         android:layout_toEndOf="@+id/IvChangeBg"
-                        android:src="@drawable/previewfontpressxml" />
+                        android:src="@drawable/ic_previewfontpressxml" />
 
                     <ImageView
                         android:id="@+id/IvFontColor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@+id/IvFontChange"
-                        android:src="@drawable/previewcolorpressxml" />
+                        android:src="@drawable/ic_previewcolorpressxml" />
                 </RelativeLayout>
             </RelativeLayout>
         </LinearLayout>

@@ -42,28 +42,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/whatsapp_default" />
+                android:src="@drawable/ic_whatsapp_default" />
 
             <ImageView
                 android:id="@+id/ImgFacebook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/facebook_default" />
+                android:src="@drawable/ic_facebook_default" />
 
             <ImageView
                 android:id="@+id/ImgShare"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/share_quotes_selector" />
+                android:src="@drawable/ic_ic_share_quotes_selector" />
 
             <ImageView
                 android:id="@+id/ImgCopy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/copy_quotes_selector" />
+                android:src="@drawable/ic_copy_quotes_selector" />
 
         </LinearLayout>
 

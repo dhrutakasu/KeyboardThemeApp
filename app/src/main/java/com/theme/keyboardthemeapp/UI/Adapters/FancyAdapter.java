@@ -1,12 +1,10 @@
 package com.theme.keyboardthemeapp.UI.Adapters;
 
+import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.provider.Settings;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,10 +16,7 @@ import android.widget.Toast;
 
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.Dialogs.FancyTextDialog;
-import com.theme.keyboardthemeapp.Dialogs.OverlayPermissionDialog;
 import com.theme.keyboardthemeapp.R;
-
-import java.util.Arrays;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,8 +25,10 @@ public class FancyAdapter extends RecyclerView.Adapter<FancyAdapter.MyViewHolder
     private final Context context;
     private final String[][] nameStyle;
     private final String text;
+    private final Activity activity;
 
-    public FancyAdapter(Context context, String[][] nameStyle, String text) {
+    public FancyAdapter(Activity activity,Context context, String[][] nameStyle, String text) {
+        this.activity = activity;
         this.context = context;
         this.nameStyle = nameStyle;
         this.text = text;
@@ -56,7 +53,7 @@ public class FancyAdapter extends RecyclerView.Adapter<FancyAdapter.MyViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FancyTextDialog fancyTextDialog = new FancyTextDialog(context, new FancyTextDialog.FancyTextListener() {
+                FancyTextDialog fancyTextDialog = new FancyTextDialog(activity,context, new FancyTextDialog.FancyTextListener() {
                     @Override
                     public void onCopy(FancyTextDialog fancyTextDialog) {
                         fancyTextDialog.dismiss();
@@ -114,7 +111,11 @@ public class FancyAdapter extends RecyclerView.Adapter<FancyAdapter.MyViewHolder
             if (String.valueOf(c).equalsIgnoreCase(" ")) {
                 charToAppend = " ";
             } else {
-                charToAppend = strArr[Constants.getInputText(c)];
+                if (Constants.getAlphabatesInputText(c)!=-1) {
+                    charToAppend = strArr[Constants.getAlphabatesInputText(c)];
+                }else {
+                    charToAppend="";
+                }
             }
             result.append(charToAppend);
         }

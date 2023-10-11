@@ -53,7 +53,7 @@
                 android:layout_gravity="left|center_vertical|center_horizontal|center"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="8dp"
-                android:src="@drawable/search_selector"
+                android:src="@drawable/ic_search_selector"
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +78,7 @@
                 android:layout_gravity="left|center_vertical|center_horizontal|center"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="8dp"
-                android:src="@drawable/back_selector"
+                android:src="@drawable/ic_back_arrow"
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -121,28 +121,28 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/favorite_selector" />
+                    android:src="@drawable/ic_favorite_selector" />
 
                 <ImageView
                     android:id="@+id/ImgShare"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/share" />
+                    android:src="@drawable/ic_share_selectors" />
 
                 <ImageView
                     android:id="@+id/ImgSpeak"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/speak_selector" />
+                    android:src="@drawable/ic_speak_selector" />
 
                 <ImageView
                     android:id="@+id/ImgRate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/rate_selector" />
+                    android:src="@drawable/ic_rate_selector" />
             </LinearLayout>
 
             <ScrollView

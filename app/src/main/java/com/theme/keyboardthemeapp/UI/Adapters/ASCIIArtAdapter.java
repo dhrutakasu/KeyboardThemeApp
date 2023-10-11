@@ -1,10 +1,10 @@
 package com.theme.keyboardthemeapp.UI.Adapters;
 
+import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,8 +26,10 @@ public class ASCIIArtAdapter extends RecyclerView.Adapter<ASCIIArtAdapter.MyView
     private final Context context;
     private final ArrayList<String> nameStyle;
     private final String text;
+    private final Activity activity;
 
-    public ASCIIArtAdapter(Context context, ArrayList<String> nameStyle, String text) {
+    public ASCIIArtAdapter(Activity activity, Context context, ArrayList<String> nameStyle, String text) {
+        this.activity = activity;
         this.context = context;
         this.nameStyle = nameStyle;
         this.text = text;
@@ -50,7 +52,7 @@ public class ASCIIArtAdapter extends RecyclerView.Adapter<ASCIIArtAdapter.MyView
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FancyTextDialog fancyTextDialog = new FancyTextDialog(context, new FancyTextDialog.FancyTextListener() {
+                FancyTextDialog fancyTextDialog = new FancyTextDialog(activity,context, new FancyTextDialog.FancyTextListener() {
                     @Override
                     public void onCopy(FancyTextDialog fancyTextDialog) {
                         fancyTextDialog.dismiss();

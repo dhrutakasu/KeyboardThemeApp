@@ -46,7 +46,7 @@ public class EmojIconActions implements View.OnFocusChangeListener {
     private View rootView;
     private ImageView emojiButton;
     private int KeyBoardIcon = R.drawable.ic_action_keyboard;
-    private int SmileyIcons = R.drawable.smiley;
+    private int SmileyIcons = R.drawable.ic_smiley;
     private KeyboardListener keyboardListener;
     private List<EmojiconEditText> emojiconEditTextList = new ArrayList<>();
     private EmojiconEditText emojiconEditText;

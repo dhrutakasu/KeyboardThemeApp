@@ -1,5 +1,6 @@
 package com.theme.keyboardthemeapp.UI.Adapters;
 
+import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -27,8 +28,10 @@ public class DecorativeAdapter extends RecyclerView.Adapter<DecorativeAdapter.My
     private final Context context;
     private final String[] nameStyle;
     private final String text;
+    private final Activity activity;
 
-    public DecorativeAdapter(Context context, String[] nameStyle, String text) {
+    public DecorativeAdapter(Activity activity,Context context, String[] nameStyle, String text) {
+        this.activity = activity;
         this.context = context;
         this.nameStyle = nameStyle;
         this.text = text;
@@ -54,7 +57,7 @@ public class DecorativeAdapter extends RecyclerView.Adapter<DecorativeAdapter.My
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FancyTextDialog fancyTextDialog = new FancyTextDialog(context, new FancyTextDialog.FancyTextListener() {
+                FancyTextDialog fancyTextDialog = new FancyTextDialog(activity,context, new FancyTextDialog.FancyTextListener() {
                     @Override
                     public void onCopy(FancyTextDialog fancyTextDialog) {
                         fancyTextDialog.dismiss();

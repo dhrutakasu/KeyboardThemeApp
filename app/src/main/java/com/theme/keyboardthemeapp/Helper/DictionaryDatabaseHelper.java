@@ -119,8 +119,9 @@ public class DictionaryDatabaseHelper extends SQLiteOpenHelper {
             cursor = null;
         }
         cursor.moveToFirst();
+        System.out.println("---- - -- - - www |: "+recentWord);
         if (cursor.getCount() > 0) {
-            UpdateRecent(toString());
+            UpdateRecent(recentWord);
         } else {
             InsertRecent(recentWord);
         }
@@ -138,6 +139,7 @@ public class DictionaryDatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(RECENT_ID, id);
         values.put(RECENT_UPDATE_TIME, getUpdateDateTime());
+        sqLiteDatabase.insert(RECENT_TABLE_NAME, null, values);
     }
 
     private String getUpdateDateTime() {

@@ -12,7 +12,7 @@
         <LinearLayout
             android:layout_width="137dp"
             android:layout_height="160dp"
-            android:background="@drawable/langlist"
+            android:background="@drawable/ic_langlist"
             android:orientation="vertical">
 
             <LinearLayout

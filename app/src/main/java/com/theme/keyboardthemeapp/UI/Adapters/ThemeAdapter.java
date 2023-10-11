@@ -45,7 +45,7 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.MyViewHolder
         holder.IvGif.setScaleType(ImageView.ScaleType.FIT_XY);
         if (gifArray.get(position).getName().contains("android_asset")) {
             Glide.with(context).load(gifArray.get(position).getName())
-                    .placeholder(R.drawable.place_holder).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(holder.IvGif);
+                    .placeholder(R.drawable.ic_place_holder).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(holder.IvGif);
             holder.IvDownloadGif.setVisibility(View.GONE);
             File ThemeFolder = new File(context.getFilesDir(), "Theme/" + gifArray.get(position).getName().substring(gifArray.get(position).getName().lastIndexOf("/") + 1));
             File Theme = new File(context.getFilesDir(), "Theme/" + gifArray.get(position).getName().substring(gifArray.get(position).getName().lastIndexOf("/") + 1));
@@ -57,7 +57,7 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.MyViewHolder
             }
         } else {
             Glide.with(context).load(thumbUrl + gifArray.get(position).getName())
-                    .placeholder(R.drawable.place_holder).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(holder.IvGif);
+                    .placeholder(R.drawable.ic_place_holder).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(holder.IvGif);
             File ThemeFolder = new File(context.getFilesDir(), "Theme/" + gifArray.get(position).getName());
             File Theme = new File(context.getFilesDir(), "Theme/" + gifArray.get(position).getName());
             if (ThemeFolder.exists()){

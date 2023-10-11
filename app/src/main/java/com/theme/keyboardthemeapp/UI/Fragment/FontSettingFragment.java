@@ -48,7 +48,7 @@ public class FontSettingFragment extends Fragment implements View.OnClickListene
     }
 
     private void initActions() {
-        ViewTextColor.setBackgroundResource(R.drawable.roundrect);
+        ViewTextColor.setBackgroundResource(R.drawable.ic_roundrect);
 
         Constants.TextColorCode = new MySharePref(getContext()).getPrefInt(MySharePref.TEXT_IS_COLOR_CODE, -1);
         Constants.PreviewColorCode = new MySharePref(getContext()).getPrefInt(MySharePref.PREVIEW_IS_COLOR_CODE, -1);
@@ -93,7 +93,7 @@ public class FontSettingFragment extends Fragment implements View.OnClickListene
             gradientDrawable.setColor(Color.parseColor(Constants.ThemeTextColor[Constants.SelectTheme]));
         }
 
-        ViewPreviewColor.setBackgroundResource(R.drawable.roundrect);
+        ViewPreviewColor.setBackgroundResource(R.drawable.ic_roundrect);
         GradientDrawable gradientDrawable2 = (GradientDrawable) ViewPreviewColor.getBackground();
         if (Constants.SelectTheme > 9) {
             gradientDrawable2.setColor(Color.parseColor(Constants.ThemePreviewTextColor[0]));

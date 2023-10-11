@@ -49,6 +49,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
 
     private void initListeners() {
         ImgBack.setOnClickListener(this);
+        ImgMore.setOnClickListener(this);
     }
 
     private void initActions() {

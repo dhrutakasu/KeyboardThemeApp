@@ -39,9 +39,9 @@ public class FontAdapter extends RecyclerView.Adapter<FontAdapter.MyViewHolder> 
         holder.TxtFont.setTypeface(fromAsset);
         holder.TxtFont.setTextSize(16.0f);
         if (new MySharePref(context).getPrefInt(MySharePref.BACKGROUND_FONT_STYLE, 0) == position) {
-            holder.FlMainFont.setBackgroundResource(R.drawable.font_box_presed);
+            holder.FlMainFont.setBackgroundResource(R.drawable.ic_font_box_presed);
         } else {
-            holder.FlMainFont.setBackgroundResource(R.drawable.font_box);
+            holder.FlMainFont.setBackgroundResource(R.drawable.ic_font_box);
         }
         holder.itemView.setOnClickListener(view -> {
             if (position != new MySharePref(context).getPrefInt(MySharePref.FONT_STYLE, 0)) {

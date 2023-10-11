@@ -7,6 +7,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.speech.tts.TextToSpeech;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -109,7 +110,7 @@ public class TranslatorActivity extends AppCompatActivity implements View.OnClic
 
     private void initActions() {
         if (AdsClass.isInternetOn(context)) {
-            AdsClass.showBanner(this, AdSize.LARGE_BANNER, (RelativeLayout) findViewById(R.id.RlBannerAdView), (RelativeLayout) findViewById(R.id.RlBannerAd),Constants.BannerAd,Constants.Show);
+            AdsClass.showBanner(this, AdSize.LARGE_BANNER, (RelativeLayout) findViewById(R.id.RlBannerAdView), (RelativeLayout) findViewById(R.id.RlBannerAd), Constants.BannerAd, Constants.Show);
         }
         ImgBack.setVisibility(View.VISIBLE);
         ImgSave.setVisibility(View.VISIBLE);
@@ -122,9 +123,12 @@ public class TranslatorActivity extends AppCompatActivity implements View.OnClic
                 textToSpeech.setLanguage(Locale.ENGLISH);
             }
         });
-        if (!Constants.isNetworkAvailable(context)) {
+        if (!Constants.isNetworkAvailableoRnOT(context)) {
             Constants.NoInternetConnection(TranslatorActivity.this);
         }
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+
     }
 
     @Override
@@ -190,11 +194,12 @@ public class TranslatorActivity extends AppCompatActivity implements View.OnClic
         if (EdtOutputValue.getText().toString().trim().isEmpty()) {
             Toast.makeText(context, "No Text To Share", Toast.LENGTH_SHORT).show();
         } else {
-            Intent intentTranslateShare = new Intent(Intent.ACTION_SEND);
+            Intent intentTranslateShare = new Intent();
+            intentTranslateShare.setAction(Intent.ACTION_SEND);
             intentTranslateShare.setType("text/plain");
             intentTranslateShare.putExtra(Intent.EXTRA_SUBJECT, "Share Your Text To");
             intentTranslateShare.putExtra(Intent.EXTRA_TEXT, EdtOutputValue.getText().toString());
-            startActivity(intentTranslateShare);
+            startActivity(Intent.createChooser(intentTranslateShare, "Share via"));
         }
     }
 
@@ -218,15 +223,15 @@ public class TranslatorActivity extends AppCompatActivity implements View.OnClic
 
     private void GotoTranslator() {
         Constants.hideKeyboard(TranslatorActivity.this);
-        LayoutProgress.setVisibility(View.VISIBLE);
 
         if (EdtInputValue.getText().length() == 0) {
             Toast.makeText(context, "Enter Text To Translate", Toast.LENGTH_SHORT).show();
         } else {
+            LayoutProgress.setVisibility(View.VISIBLE);
             try {
                 if (TxtEnglish.getText().toString().equals("English")) {
                     if (TxtHindi.getText().toString().equals(getResources().getString(R.string.str_hindi))) {
-                        if (Constants.isNetworkAvailable(context)) {
+                        if (Constants.isNetworkAvailableoRnOT(context)) {
                             try {
                                 TranslatorOptions options = new TranslatorOptions.Builder()
                                         .setSourceLanguage(TranslateLanguage.ENGLISH)
@@ -260,7 +265,7 @@ public class TranslatorActivity extends AppCompatActivity implements View.OnClic
                         }
                     }
                 } else if (TxtEnglish.getText().toString().equals(getResources().getString(R.string.str_hindi)) || TxtHindi.getText().toString().equals("English")) {
-                    if (Constants.isNetworkAvailable(context)) {
+                    if (Constants.isNetworkAvailableoRnOT(context)) {
                         try {
                             TranslatorOptions options_2 = new TranslatorOptions.Builder()
                                     .setSourceLanguage(TranslateLanguage.HINDI)
@@ -310,10 +315,10 @@ public class TranslatorActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void GotoHistory() {
-        AdsClass.loadInterOne(TranslatorActivity.this,Constants.InterstitialAd);
+        AdsClass.loadInterOne(TranslatorActivity.this, Constants.InterstitialAd);
         AdsClass.showInter(TranslatorActivity.this, () -> {
             startActivity(new Intent(context, TranslatorHistoryActivity.class));
             finish();
-        },Constants.Show);
+        }, Constants.Show);
     }
 }

@@ -73,7 +73,7 @@ public class ThemeActivity extends AppCompatActivity implements View.OnClickList
         ImgBack.setVisibility(View.VISIBLE);
         ImgMore.setVisibility(View.VISIBLE);
         TxtTitle.setText(R.string.str_Theme_style);
-        if (Constants.isNetworkAvailable(context)) {
+        if (Constants.isNetworkAvailableoRnOT(context)) {
             getThemes();
         } else {
             Constants.NoInternetConnection(ThemeActivity.this);
@@ -88,7 +88,7 @@ public class ThemeActivity extends AppCompatActivity implements View.OnClickList
             for (int i = 0; i < strings.length; i++) {
                 KeyboardItem keyboardItem = new KeyboardItem();
                 keyboardItem.setId(i);
-                keyboardItem.setName("file:///android_asset/ThemesList/" + strings[i]);
+                keyboardItem.setName("file:///android_asset/ThemesLists/" + strings[i]);
                 ThemeArrays.add(keyboardItem);
             }
         } catch (IOException e) {

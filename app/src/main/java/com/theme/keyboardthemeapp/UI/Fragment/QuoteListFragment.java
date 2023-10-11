@@ -8,9 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.theme.keyboardthemeapp.Constants;
-import com.theme.keyboardthemeapp.ModelClass.QuoteModel;
 import com.theme.keyboardthemeapp.ModelClass.QuoteModelItem;
-import com.theme.keyboardthemeapp.ModelClass.StatusItem;
 import com.theme.keyboardthemeapp.R;
 import com.theme.keyboardthemeapp.Retrofit.RetrofitInstance;
 import com.theme.keyboardthemeapp.Retrofit.RetrofitInterface;
@@ -70,7 +68,7 @@ public class QuoteListFragment extends Fragment {
     }
 
     private void GetQuotesList() {
-        if (Constants.isNetworkAvailable(context)) {
+        if (Constants.isNetworkAvailableoRnOT(context)) {
             LayoutProgress.setVisibility(View.VISIBLE);
             RetrofitInterface downloadService = RetrofitInstance.createService(RetrofitInterface.class, Constants.BASE_URL);
             Call<List<QuoteModelItem>> call = downloadService.getQuotesData(Constants.QUOTE_BASE_URL + Status_Id);

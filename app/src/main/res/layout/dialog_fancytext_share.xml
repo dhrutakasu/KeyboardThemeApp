@@ -25,7 +25,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="2dp"
             android:layout_alignParentRight="true"
-            android:background="@drawable/dialog_close" />
+            android:background="@drawable/ic_dialog_close" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:src="@drawable/copy_selector" />
+                android:src="@drawable/ic_copy_selector" />
             <ImageView
                 android:id="@+id/IvFancyTextShare"
                 android:layout_width="0dp"
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:src="@drawable/share_selector" />
+                android:src="@drawable/ic_share_selector" />
             <ImageView
                 android:id="@+id/IvFancyTextWhatsapp"
                 android:layout_width="0dp"
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:src="@drawable/whatsapp_selector" />
+                android:src="@drawable/ic_whatsapp_selector" />
         </LinearLayout>
     </RelativeLayout>
 

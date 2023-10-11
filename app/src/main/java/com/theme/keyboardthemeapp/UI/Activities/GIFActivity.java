@@ -81,7 +81,7 @@ public class GIFActivity extends AppCompatActivity implements View.OnClickListen
         ImgBack.setVisibility(View.VISIBLE);
         ImgMore.setVisibility(View.VISIBLE);
         TxtTitle.setText(R.string.str_Gif_style);
-        if (Constants.isNetworkAvailable(context)) {
+        if (Constants.isNetworkAvailableoRnOT(context)) {
             getGifs();
         } else {
             Constants.NoInternetConnection(GIFActivity.this);

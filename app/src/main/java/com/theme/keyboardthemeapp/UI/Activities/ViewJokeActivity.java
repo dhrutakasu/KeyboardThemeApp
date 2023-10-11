@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -82,6 +83,9 @@ public class ViewJokeActivity extends AppCompatActivity implements View.OnClickL
         PageAdapter pageAdapter = new PageAdapter(context, getSupportFragmentManager(), statusItemArrayList);
         PagerQuote.setAdapter(pageAdapter);
         PagerQuote.setCurrentItem(QuotePos);
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+
     }
 
     @Override
@@ -91,10 +95,10 @@ public class ViewJokeActivity extends AppCompatActivity implements View.OnClickL
                 finish();
                 break;
             case R.id.ImgWhatsapp:
-                GotoSharePackage("com.whatsapp", statusItemArrayList.get(QuotePos).getStatus());
+                GotoSharePackage("com.whatsapp", "", statusItemArrayList.get(QuotePos).getStatus());
                 break;
             case R.id.ImgFacebook:
-                GotoSharePackage("com.facebook.orca", statusItemArrayList.get(QuotePos).getStatus());
+                GotoSharePackage("com.facebook.orca", "com.facebook.katana", statusItemArrayList.get(QuotePos).getStatus());
                 break;
             case R.id.ImgShare:
                 GotoShare();
@@ -105,7 +109,7 @@ public class ViewJokeActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    private void GotoSharePackage(String packageName, String statusTxt) {
+    private void GotoSharePackage(String packageName, String packageName2, String statusTxt) {
         try {
             getPackageManager().getPackageInfo(packageName, 0);
             Intent intent = new Intent(Intent.ACTION_SEND);
@@ -114,16 +118,30 @@ public class ViewJokeActivity extends AppCompatActivity implements View.OnClickL
             intent.putExtra(Intent.EXTRA_TEXT, statusTxt);
             startActivity(Intent.createChooser(intent, "Share with"));
         } catch (Exception e) {
-            Toast.makeText(context, "App not Installed", Toast.LENGTH_SHORT).show();
+            if (packageName2.equalsIgnoreCase("")) {
+                Toast.makeText(context, "App not Installed", Toast.LENGTH_SHORT).show();
+            } else {
+                try {
+                    getPackageManager().getPackageInfo(packageName2, 0);
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.setPackage(packageName);
+                    intent.putExtra(Intent.EXTRA_TEXT, statusTxt);
+                    startActivity(Intent.createChooser(intent, "Share with"));
+                } catch (Exception ex) {
+                    Toast.makeText(context, "App not Installed", Toast.LENGTH_SHORT).show();
+                }
+            }
         }
     }
 
     private void GotoShare() {
-        Intent intentQuoteShare = new Intent(Intent.ACTION_SEND);
+        Intent intentQuoteShare = new Intent();
+        intentQuoteShare.setAction(Intent.ACTION_SEND);
         intentQuoteShare.setType("text/plain");
-        intentQuoteShare.putExtra(Intent.EXTRA_SUBJECT, "Share with");
+        intentQuoteShare.putExtra(Intent.EXTRA_SUBJECT, "Share Your Text To");
         intentQuoteShare.putExtra(Intent.EXTRA_TEXT, statusItemArrayList.get(QuotePos).getStatus());
-        startActivity(intentQuoteShare);
+        startActivity(Intent.createChooser(intentQuoteShare, "Share via"));
     }
 
     private void GotoCopy() {

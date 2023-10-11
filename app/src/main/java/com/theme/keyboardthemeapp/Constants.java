@@ -1,6 +1,5 @@
 package com.theme.keyboardthemeapp;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -18,43 +17,17 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.provider.Settings;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Display;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.PopupWindow;
-import android.widget.RatingBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.gms.ads.AdError;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdLoader;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.FullScreenContentCallback;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.VideoOptions;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
-import com.google.android.gms.ads.nativead.MediaView;
-import com.google.android.gms.ads.nativead.NativeAd;
-import com.google.android.gms.ads.nativead.NativeAdOptions;
-import com.google.android.gms.ads.nativead.NativeAdView;
 import com.karumi.dexter.PermissionToken;
 import com.theme.keyboardthemeapp.KeyboardView.CustomKeypad;
 import com.theme.keyboardthemeapp.ModelClass.JokeModelItem;
@@ -69,6 +42,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -133,15 +107,14 @@ public class Constants {
     public static final int[] ColorsList = {0, -14521120, -1092784, -1294214, -5552196, -12627531, -14575885, -10011977, -14273992, -8825528, -16611119, -16742021, -16757440, -13154481, -10453621, -16728876, -12434878, -10354454, -11922292, -6381922, -8825528, -2937041, -12756226, -12232092, -14983648, -37120, -10011977, -8708190, -16725933, -16540699, -720809, -769226, -16742021, -2818048, -16752540, -14606047, -16728155};
     public static String[] FontList = {"FontStyleList/Font7.ttf", "FontStyleList/Font9.ttf", "FontStyleList/Font10.ttf", "FontStyleList/Font12.ttf", "FontStyleList/Font14.ttf", "FontStyleList/Font15.ttf", "FontStyleList/Font16.ttf", "FontStyleList/Font17.ttf", "FontStyleList/Font18.ttf", "FontStyleList/Font19.otf", "FontStyleList/Font20.ttf", "FontStyleList/Font21.ttf", "FontStyleList/Font23.ttf", "FontStyleList/Font25.ttf", "FontStyleList/Font26.otf", "FontStyleList/Font27.otf", "FontStyleList/Font28.ttf", "FontStyleList/Font29.ttf", "FontStyleList/Font30.ttf", "FontStyleList/Font31.ttf", "FontStyleList/Font32.ttf"};
     public static String[] HindiFontList = {"FontLists/FontStyle1.ttf", "FontLists/FontStyle2.ttf", "FontLists/FontStyle3.ttf", "FontLists/FontStyle4.ttf", "FontLists/FontStyle5.ttf", "FontLists/FontStyle6.ttf", "FontLists/FontStyle7.ttf", "FontLists/FontStyle8.ttf", "FontLists/FontStyle9.ttf", "FontLists/FontStyle10.ttf"};
-    public static boolean wordExist = true;
-    public static boolean previewActivityisOpen = false;
-    public static int width = 0;
-    public static int height = 0;
+    public static boolean WordExistOrNot = true;
+    public static boolean PreviewActivityIsOpenOrNot = false;
+    public static int widths = 0;
+    public static int heights = 0;
     public static int KeyboardHeight = -1;
     public static String dictionaryword = "";
     public static TextView TxtView = null;
     public static TextView TxtLongPressView = null;
-    public static int getWidth;
     public static PopupWindow popupWindow = null;
     public static PopupWindow popupScreen = null;
     public static int ChangeLanguage = 0;
@@ -154,13 +127,12 @@ public class Constants {
     public static boolean DeleteValFlag = false;
     public static boolean PreviewViewisOpen = false;
     public static boolean DictionaryWordLoad = false;
-    public static String selectedStickerCategory = "category0";
-    static String[] packagename = {"com.whatsapp", "com.facebook.orca", "com.snapchat.android", "com.google.android.talk", "jp.naver.line.android", "com.viber.voip", "com.skype.raider", "com.twitter.android", "com.bsb.hike"};
-    public static ArrayList<String> socialPackageNames = new ArrayList<>(Arrays.asList(packagename));
+    static String[] PckgeNames = {"com.whatsapp", "com.facebook.orca", "com.snapchat.android", "com.google.android.talk", "jp.naver.line.android", "com.viber.voip", "com.skype.raider", "com.twitter.android", "com.bsb.hike"};
+    public static ArrayList<String> PackageNamesList = new ArrayList<>(Arrays.asList(PckgeNames));
 
-    static String[] langStrings = {"Hindi", "English"};
-    public static ArrayList<String> languegesArray = new ArrayList<>(Arrays.asList(langStrings));
-    public static String selectedLanguageName = "Hindi";
+    static String[] LanGuagesLists = {"Hindi", "English"};
+    public static ArrayList<String> LangugaeArr = new ArrayList<>(Arrays.asList(LanGuagesLists));
+    public static String SelectedLanguageName = "Hindi";
     public static String SpeakLanguageName = "hi";
     public static int FlagChangeLanguage = 0;
     public static final int CODE_ALPHABETS = -2830;
@@ -189,7 +161,7 @@ public class Constants {
     public static String InterstitialAd = "ca-app-pub-3940256099942544/1033173712";
     public static String NativaAds = "ca-app-pub-3940256099942544/2247696110";
     public static String AppOpenAd = "ca-app-pub-3940256099942544/3419835294";
-    public static String Show = "yes";
+    public static String Show = "no";
 
     static {
         String[][] strArr = new String[24][];
@@ -220,7 +192,7 @@ public class Constants {
         strArr[23] = new String[]{"Ã", "β", "Č", "Ď", "Ẹ", "₣", "Ğ", "Ĥ", "Į", "Ĵ", "Ќ", "Ĺ", "ℳ", "Ň", "Ỗ", "Ҏ", "Q", "Ř", "Ŝ", "Ť", "Ụ", "V", "Ŵ", "Ж", "Ў", "Ż", " "};
     }
 
-    public static int getInputText(char c) {
+    public static int getAlphabatesInputText(char c) {
         String s = String.valueOf(c);
         int InputInt;
         switch (s.toLowerCase()) {
@@ -303,16 +275,15 @@ public class Constants {
                 InputInt = 25;
                 break;
             default:
-                throw new IllegalStateException("Unexpected value: " + s.toLowerCase());
+                InputInt=-1;
         }
         return InputInt;
     }
 
-    public static boolean isNetworkAvailable(Context context) {
-        NetworkInfo info = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
-        return info != null && info.isConnected();
+    public static boolean isNetworkAvailableoRnOT(Context context) {
+        NetworkInfo activeNetworkInfo = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
-
 
     public static boolean IsEnableKeyboard(Context context) {
         return ((InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE)).getEnabledInputMethodList().toString().contains(context.getPackageName());
@@ -336,15 +307,15 @@ public class Constants {
 
     public static void showSettingsDialog(final Activity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setTitle((CharSequence) "Need Permissions");
-        builder.setMessage((CharSequence) "This app needs permissions to use this feature. You can grant them in app settings.");
-        builder.setPositiveButton((CharSequence) "GOTO SETTINGS", (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
+        builder.setTitle("Need Permissions");
+        builder.setMessage("This app needs permissions to use this feature. You can grant them in app settings.");
+        builder.setPositiveButton("GOTO SETTINGS", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.cancel();
                 openSettings(activity);
             }
         });
-        builder.setNegativeButton((CharSequence) "Cancel", (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.cancel();
             }
@@ -355,12 +326,12 @@ public class Constants {
 
     public static void showPermissionDialog(final Activity activity, final PermissionToken permissionToken) {
         new AlertDialog.Builder(activity
-        ).setMessage((int) R.string.MSG_ASK_PERMISSION).setNegativeButton("Cancel", (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
+        ).setMessage(R.string.MSG_ASK_PERMISSION).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
                 permissionToken.cancelPermissionRequest();
             }
-        }).setPositiveButton("Ok", (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
+        }).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
                 permissionToken.continuePermissionRequest();
@@ -374,17 +345,17 @@ public class Constants {
 
     private static void openSettings(Activity activity) {
         Intent intent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-        intent.setData(Uri.fromParts("package", activity.getPackageName(), (String) null));
+        intent.setData(Uri.fromParts("package", activity.getPackageName(), null));
         activity.startActivityForResult(intent, 101);
     }
 
-    public static String loadJSONFromAsset(Context context, String AssetFileName) {
+    public static String JSONFromAsset(Context context, String AssetFileName) {
         try {
             InputStream open = context.getAssets().open(AssetFileName);
             byte[] bArr = new byte[open.available()];
             open.read(bArr);
             open.close();
-            return new String(bArr, "UTF-8");
+            return new String(bArr, StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -406,7 +377,7 @@ public class Constants {
         return (int) (f * context.getResources().getDisplayMetrics().density);
     }
 
-    public static int calculateInSampleSize(BitmapFactory.Options options, int width, int height) {
+    public static int calculateInSize(BitmapFactory.Options options, int width, int height) {
         int outHeight = options.outHeight;
         int outWidth = options.outWidth;
         int val = 1;
@@ -420,7 +391,7 @@ public class Constants {
         return val;
     }
 
-    public static Bitmap adjustImage(String file, Bitmap bitmapAdujust) {
+    public static Bitmap adjustBitmap(String file, Bitmap bitmapAdujust) {
         try {
             int orientation = new ExifInterface(file).getAttributeInt("Orientation", 1);
             int degree = 0;
@@ -451,35 +422,34 @@ public class Constants {
         return LanguageList;
     }
 
-    public static File getBackground(Context context, int pos) {
-        File file2 = new File(context.getFilesDir() + "/photo_save.jpeg");
-        if (!file2.exists()) {
+    public static File getBackgroundSave(Context context, int pos) {
+        File file = new File(context.getFilesDir() + "/photo_save.jpeg");
+        if (!file.exists()) {
             try {
-                AssetManager assets = context.getAssets();
-                assets.open("ThemeBgLists/" + context.getAssets().list("ThemeBgLists")[pos]);
+                AssetManager manager = context.getAssets();
+                manager.open("ThemeBgLists/" + context.getAssets().list("ThemeBgLists")[pos]);
                 BitmapFactory.Options options = new BitmapFactory.Options();
                 options.inJustDecodeBounds = true;
                 AssetManager contextAssets = context.getAssets();
                 BitmapFactory.decodeStream(contextAssets.open("ThemeBgLists/" + context.getAssets().list("ThemeBgLists")[pos]), new Rect(0, 0, 0, 0), options);
-                options.inSampleSize = Constants.calculateInSampleSize(options, Constants.width, (int) context.getResources().getDimension(R.dimen.keyboard_height));
+                options.inSampleSize = Constants.calculateInSize(options, Constants.widths, (int) context.getResources().getDimension(R.dimen.keyboard_height));
                 options.inJustDecodeBounds = false;
-                AssetManager assetManager = context.getAssets();
-                Bitmap.createScaledBitmap(BitmapFactory.decodeStream(assetManager.open("ThemeBgLists/" + context.getAssets().list("ThemeBgLists")[pos]), new Rect(0, 0, 0, 0), options), Constants.width, (int) context.getResources().getDimension(R.dimen.keyboard_height), false).compress(Bitmap.CompressFormat.PNG, 100, new FileOutputStream(file2));
+                Bitmap.createScaledBitmap(BitmapFactory.decodeStream(manager.open("ThemeBgLists/" + context.getAssets().list("ThemeBgLists")[pos]), new Rect(0, 0, 0, 0), options), Constants.widths, (int) context.getResources().getDimension(R.dimen.keyboard_height), false).compress(Bitmap.CompressFormat.PNG, 100, new FileOutputStream(file));
             } catch (IOException unused) {
                 Toast.makeText(context, "Exception", Toast.LENGTH_LONG).show();
             }
         }
-        return file2;
+        return file;
     }
 
     public static String getRealPathFromURI(Context context, Uri uri) {
         Cursor cursor = null;
         try {
-            String[] proj = {MediaStore.Images.Media.DATA};
-            cursor = context.getContentResolver().query(uri, proj, null, null, null);
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            String[] projections = {MediaStore.Images.Media.DATA};
+            cursor = context.getContentResolver().query(uri, projections, null, null, null);
+            int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
             cursor.moveToFirst();
-            return cursor.getString(column_index);
+            return cursor.getString(columnIndex);
         } finally {
             if (cursor != null) {
                 cursor.close();
@@ -487,7 +457,7 @@ public class Constants {
         }
     }
 
-    public static String getPathFromUriLolipop(Context context, Uri uri) {
+    public static String getPathFromUriLowVersion(Context context, Uri uri) {
         Cursor query = context.getContentResolver().query(uri, new String[]{"_data"}, null, null, null);
         int columnIndexOrThrow = query.getColumnIndexOrThrow("_data");
         query.moveToFirst();
@@ -497,26 +467,20 @@ public class Constants {
     }
 
     public static void copyFile(File file2, File file3) {
-
-        InputStream in = null;
-        OutputStream out = null;
+        InputStream inputStream;
+        OutputStream outputStream;
         try {
-
-            in = new FileInputStream(file2);
-            out = new FileOutputStream(file3);
+            inputStream = new FileInputStream(file2);
+            outputStream = new FileOutputStream(file3);
 
             byte[] buffer = new byte[1024];
             int read;
-            while ((read = in.read(buffer)) != -1) {
-                out.write(buffer, 0, read);
+            while ((read = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, read);
             }
-            in.close();
-            in = null;
-
-            out.flush();
-            out.close();
-            out = null;
-
+            inputStream.close();
+            outputStream.flush();
+            outputStream.close();
         } catch (FileNotFoundException fnfe1) {
             Log.e("tag", fnfe1.getMessage());
         } catch (Exception e) {
@@ -524,32 +488,26 @@ public class Constants {
         }
     }
 
-    public static ArrayList<String> getSuggestion(String string) {
+    public static ArrayList<String> getSuggestionWords(String string) {
         ArrayList<String> SuggestionData;
         ArrayList<String> SuggestionWords = new ArrayList<>();
 
         SuggestionWords.addAll(Constants.SuggestionWordsList);
         SuggestionData = new ArrayList<>();
-        System.out.println("----- - - -string : " + string.length());
-        System.out.println("----- - - -Constants.SuggestionWordsList : " + Constants.SuggestionWordsList.size());
         if (string.length() >= 1) {
             if (SuggestionData != null) {
                 for (int i = 0; i < SuggestionWords.size(); i++) {
                     String item = SuggestionWords.get(i).toLowerCase();
                     String lowerR6 = string.toLowerCase();
-                    System.out.println("----- - - -lowerR6 : " + lowerR6);
                     if (item.contains(lowerR6)) {
-                        System.out.println("----- - - -item : " + item);
-                        System.out.println("----- - - -contains(lowerR6) : " + lowerR6);
                         SuggestionData.add(SuggestionWords.get(i));
                     }
-                    if (!wordExist) {
+                    if (!WordExistOrNot) {
                         break;
                     }
                 }
             }
         }
-        System.out.println("----- - - -SuggestionData.size : " + SuggestionData.size());
         if (SuggestionData.size() == 0) {
             for (int i = 0; i < SuggestionWords.size(); i++) {
                 String word = SuggestionWords.get(i).toLowerCase();
@@ -557,23 +515,17 @@ public class Constants {
                 if (word.startsWith(lowerR6)) {
                     SuggestionData.add(SuggestionWords.get(i));
                 }
-                if (!wordExist) {
+                if (!WordExistOrNot) {
                     break;
                 }
             }
         }
 
-        if (SuggestionData.size() > 0) {
-            wordExist = true;
-        } else {
-            wordExist = false;
-        }
-        System.out.println("----- - - -SuggestionData : " + SuggestionData.size());
-
+        WordExistOrNot = SuggestionData.size() > 0;
         return SuggestionData;
     }
 
-    public static HintWordListAdapter setSuggestionAdapter(Context context, ArrayList<String> arrayList2, int SelectedTheme, int i2) {
-        return new HintWordListAdapter(context, arrayList2, SelectedTheme);
+    public static HintWordListAdapter setSuggestionWordsAdapter(Context context, ArrayList<String> stringArrayList, int SelectedTheme) {
+        return new HintWordListAdapter(context, stringArrayList, SelectedTheme);
     }
 }

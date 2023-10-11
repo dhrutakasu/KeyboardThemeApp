@@ -59,15 +59,15 @@ public class EmojiListAdapter extends ArrayAdapter<Emojicon> {
                 if (motionEvent.getAction() != 1) {
                     motionEvent.getAction();
                 } else if (EmojiListAdapter.this.items == 0) {
-                    ((CustomKeypad) CustomKeypad.service).clickevent(i);
+                    ((CustomKeypad) CustomKeypad.service).Clickeventtop(i);
                 } else if (EmojiListAdapter.this.items == 1) {
-                    ((CustomKeypad) CustomKeypad.service).clickeventfl(i);
+                    ((CustomKeypad) CustomKeypad.service).Clickeventflower(i);
                 } else if (EmojiListAdapter.this.items == 2) {
-                    ((CustomKeypad) CustomKeypad.service).clickeventfg(i);
+                    ((CustomKeypad) CustomKeypad.service).Clickeventfood(i);
                 } else if (EmojiListAdapter.this.items == 3) {
-                    ((CustomKeypad) CustomKeypad.service).clickeventcar(i);
+                    ((CustomKeypad) CustomKeypad.service).ClickeventCar(i);
                 } else if (EmojiListAdapter.this.items == 4) {
-                    ((CustomKeypad) CustomKeypad.service).clickeventsymbol(i);
+                    ((CustomKeypad) CustomKeypad.service).ClickeventSymbol(i);
                 } else if (EmojiListAdapter.this.items == 5) {
                     ((CustomKeypad) CustomKeypad.service).clickeventfood(i);
                 } else if (EmojiListAdapter.this.items == 6) {

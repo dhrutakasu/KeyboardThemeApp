@@ -1,5 +1,6 @@
 package com.theme.keyboardthemeapp.Dialogs;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
@@ -12,6 +13,7 @@ import com.theme.keyboardthemeapp.R;
 import com.theme.keyboardthemeapp.UI.Activities.MainActivity;
 
 public class FancyTextDialog extends Dialog {
+    private final Activity activity;
     public FancyTextListener fancyTextListener;
 
     public interface FancyTextListener {
@@ -21,8 +23,9 @@ public class FancyTextDialog extends Dialog {
         void onWhastapp(FancyTextDialog fancyTextDialog);
     }
 
-    public FancyTextDialog(Context context, FancyTextListener fancyTextListener) {
+    public FancyTextDialog(Activity activity,Context context, FancyTextListener fancyTextListener) {
         super(context);
+        this.activity = activity;
         this.fancyTextListener = fancyTextListener;
         getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
     }
@@ -35,7 +38,7 @@ public class FancyTextDialog extends Dialog {
         ImageView IvFancyTextShare = (ImageView) findViewById(R.id.IvFancyTextShare);
         ImageView IvFancyTextWhatsapp = (ImageView) findViewById(R.id.IvFancyTextWhatsapp);
         if (AdsClass.isInternetOn(getContext())) {
-            AdsClass.showNative250(getOwnerActivity(), Constants.NativaAds, findViewById(R.id.FlNative), Constants.Show);
+            AdsClass.showNative250(activity, Constants.NativaAds, findViewById(R.id.FlNative), Constants.Show);
         }
         IvFancyTextCopy.setOnClickListener(view -> {
             fancyTextListener.onCopy(this);

@@ -32,7 +32,7 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         if (position == 0) {
-            holder.ViewColor.setBackgroundResource(R.drawable.custome_selector);
+            holder.ViewColor.setBackgroundResource(R.drawable.ic_custome_selector);
         } else {
             holder.ViewColor.setBackgroundColor(ints[position]);
         }

@@ -72,13 +72,13 @@ public class SetDefaultKeyboardActivity extends AppCompatActivity implements Vie
         if (isEnableKeyboard) {
             TxtEnableKeyboard.setTextColor(Color.parseColor("#CCCCCC"));
             TxtActivateKeyboard.setTextColor(Color.parseColor("#363f46"));
-            IvEnableKeyboard.setImageResource(R.drawable.enable_keyboard_press);
-            IvActivateKeyboard.setImageResource(R.drawable.switch_keyboard_unpress);
+            IvEnableKeyboard.setImageResource(R.drawable.ic_enable_keyboard_press);
+            IvActivateKeyboard.setImageResource(R.drawable.ic_switch_keyboard_unpress);
         } else {
             TxtEnableKeyboard.setTextColor(Color.parseColor("#363f46"));
             TxtActivateKeyboard.setTextColor(Color.parseColor("#CCCCCC"));
-            IvEnableKeyboard.setImageResource(R.drawable.enable_keyboard_unpress);
-            IvActivateKeyboard.setImageResource(R.drawable.switch_keyboard_press);
+            IvEnableKeyboard.setImageResource(R.drawable.ic_enable_keyboard_unpress);
+            IvActivateKeyboard.setImageResource(R.drawable.ic_switch_keyboard_press);
         }
         IvEnableKeyboard.setEnabled(!isEnableKeyboard);
         boolean z = this.isEnableKeyboard;
@@ -157,13 +157,13 @@ public class SetDefaultKeyboardActivity extends AppCompatActivity implements Vie
         if (isEnableKeyboard) {
             TxtEnableKeyboard.setTextColor(Color.parseColor("#CCCCCC"));
             TxtActivateKeyboard.setTextColor(Color.parseColor("#363f46"));
-            IvEnableKeyboard.setImageResource(R.drawable.enable_keyboard_press);
-            IvActivateKeyboard.setImageResource(R.drawable.switch_keyboard_unpress);
+            IvEnableKeyboard.setImageResource(R.drawable.ic_enable_keyboard_press);
+            IvActivateKeyboard.setImageResource(R.drawable.ic_switch_keyboard_unpress);
         } else {
             TxtEnableKeyboard.setTextColor(Color.parseColor("#363f46"));
             TxtActivateKeyboard.setTextColor(Color.parseColor("#CCCCCC"));
-            IvEnableKeyboard.setImageResource(R.drawable.enable_keyboard_unpress);
-            IvActivateKeyboard.setImageResource(R.drawable.switch_keyboard_press);
+            IvEnableKeyboard.setImageResource(R.drawable.ic_enable_keyboard_unpress);
+            IvActivateKeyboard.setImageResource(R.drawable.ic_switch_keyboard_press);
         }
         boolean isSet = Constants.IsActivateKeyboard(context);
         isActivateKeyboard = isSet;

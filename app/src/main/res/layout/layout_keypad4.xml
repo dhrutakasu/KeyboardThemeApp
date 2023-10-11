@@ -6,7 +6,7 @@
     android:layout_alignParentBottom="true">
 
     <RelativeLayout
-        android:id="@+id/contents"
+        android:id="@+id/RlMainContents"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -15,29 +15,29 @@
             android:layout_height="wrap_content">
 
             <RelativeLayout
-                android:id="@+id/bottomlayout"
+                android:id="@+id/RlBottomView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
-                    android:id="@+id/relay_gif_lay"
+                    android:id="@+id/RlGifView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/img_gif"
+                        android:id="@+id/ImgGIf"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="fitXY" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/relay_trans_lay"
+                    android:id="@+id/RlTranslateView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/keyboard_black_trans"
+                        android:id="@+id/ImgBlackView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="#99000000"
@@ -45,7 +45,7 @@
                 </RelativeLayout>
 
                 <LinearLayout
-                    android:id="@+id/rl_top"
+                    android:id="@+id/RlBottomTop"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -58,10 +58,10 @@
                         android:weightSum="10">
 
                         <LinearLayout
-                            android:id="@+id/main_patti"
+                            android:id="@+id/LlTopBar"
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
-                            android:background="@drawable/top_bg4"
+                            android:background="@drawable/ic_top_bg4"
                             android:weightSum="10">
 
                             <RelativeLayout
@@ -70,36 +70,36 @@
                                 android:layout_weight="4">
 
                                 <LinearLayout
-                                    android:id="@+id/btn_emoji"
+                                    android:id="@+id/LlEmojiView"
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"
                                     android:layout_alignParentLeft="true"
                                     android:layout_centerVertical="true"
                                     android:layout_marginLeft="5dp"
-                                    android:background="@drawable/emojipressxmlblack"
+                                    android:background="@drawable/ic_emojipressxmlblack"
                                     android:gravity="center"
                                     android:orientation="horizontal" />
 
                                 <LinearLayout
-                                    android:id="@+id/btnTheme"
+                                    android:id="@+id/LlThemeView"
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"
                                     android:layout_centerVertical="true"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginRight="5dp"
-                                    android:layout_toRightOf="@+id/btn_emoji"
-                                    android:background="@drawable/themepressxmlwhite"
+                                    android:layout_toRightOf="@+id/LlEmojiView"
+                                    android:background="@drawable/ic_themepressxmlwhite"
                                     android:gravity="center"
                                     android:orientation="horizontal" />
 
                                 <LinearLayout
-                                    android:id="@+id/changeLang"
+                                    android:id="@+id/LlLanguageView"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
                                     android:layout_marginLeft="5dp"
-                                    android:layout_toRightOf="@+id/btnTheme"
-                                    android:background="@drawable/enable"
+                                    android:layout_toRightOf="@+id/LlThemeView"
+                                    android:background="@drawable/ic_enable"
                                     android:gravity="center"
                                     android:orientation="horizontal" />
                             </RelativeLayout>
@@ -110,7 +110,7 @@
                                 android:layout_weight="2">
 
                                 <LinearLayout
-                                    android:id="@+id/mainMenuLay"
+                                    android:id="@+id/LlStickerView"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentLeft="true"
@@ -126,71 +126,71 @@
                                 android:gravity="center_vertical">
 
                                 <Button
-                                    android:id="@+id/btn_speaklang"
+                                    android:id="@+id/BtnLanguageType"
                                     android:layout_width="30dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_toLeftOf="@+id/btndropdown"
+                                    android:layout_toLeftOf="@+id/BtnDopDownSpeak"
                                     android:background="@android:color/transparent"
                                     android:text="@string/str_speak_lang_2"
                                     android:textColor="@android:color/white" />
 
                                 <ImageView
-                                    android:id="@+id/btndropdown"
+                                    android:id="@+id/BtnDopDownSpeak"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
                                     android:layout_marginRight="10dp"
-                                    android:layout_toLeftOf="@+id/btnmic"
-                                    android:background="@drawable/drop_down" />
+                                    android:layout_toLeftOf="@+id/LlMicVIew"
+                                    android:background="@drawable/ic_drop_down" />
 
                                 <LinearLayout
-                                    android:id="@+id/btnmic"
+                                    android:id="@+id/LlMicVIew"
                                     android:layout_width="25dp"
                                     android:layout_height="25dp"
                                     android:layout_centerVertical="true"
                                     android:layout_marginRight="5dp"
-                                    android:layout_toLeftOf="@+id/btn_setting"
-                                    android:background="@drawable/mic_selector"
+                                    android:layout_toLeftOf="@+id/LlSettings"
+                                    android:background="@drawable/ic_mic_selector"
                                     android:gravity="center"
                                     android:orientation="horizontal" />
 
                                 <LinearLayout
-                                    android:id="@+id/btn_setting"
+                                    android:id="@+id/LlSettings"
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"
                                     android:layout_alignParentRight="true"
                                     android:layout_centerVertical="true"
                                     android:layout_marginRight="5dp"
-                                    android:background="@drawable/settingpressxmlblack"
+                                    android:background="@drawable/ic_settingpressxmlblack"
                                     android:gravity="center"
                                     android:orientation="horizontal" />
                             </RelativeLayout>
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/hintword"
+                            android:id="@+id/LlHIntView"
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
                             android:layout_alignParentLeft="true"
                             android:layout_centerVertical="true"
-                            android:background="@drawable/top_bg4"
+                            android:background="@drawable/ic_top_bg4"
                             android:gravity="center"
                             android:orientation="horizontal"
                             android:visibility="invisible">
 
                             <com.theme.keyboardthemeapp.APPUtils.HorizontalListView
-                                android:id="@+id/horizontalListView1"
+                                android:id="@+id/HoriHintList"
                                 android:layout_width="match_parent"
                                 android:layout_height="30dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="3dp"
                                 android:layout_marginBottom="3dp"
-                                android:divider="@drawable/divider" />
+                                android:divider="@drawable/ic_divider" />
                         </LinearLayout>
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/rl_headertext"
+                        android:id="@+id/RlHeaderView"
                         android:layout_width="match_parent"
                         android:layout_height="41dp"
                         android:background="@drawable/ic_header_bg0"
@@ -199,63 +199,63 @@
                         android:weightSum="8">
 
                         <ImageButton
-                            android:id="@+id/emojis_tab_1_people"
+                            android:id="@+id/ImgPeopleEmoji"
                             android:layout_width="0dp"
                             android:layout_height="40dp"
                             android:layout_weight="1"
-                            android:background="@drawable/emoji_unpresedtheme0"
+                            android:background="@drawable/ic_emoji_unpresedtheme0"
                             android:tag="0" />
 
                         <ImageButton
-                            android:id="@+id/emojis_tab_1_flower"
+                            android:id="@+id/ImgFlowerEmoji"
                             android:layout_width="0dp"
                             android:layout_height="40dp"
                             android:layout_weight="1"
-                            android:background="@drawable/flower_unpresed0"
+                            android:background="@drawable/ic_flower_unpresed0"
                             android:tag="1" />
 
                         <ImageButton
-                            android:id="@+id/food_tab_1_emoji"
+                            android:id="@+id/ImgFoodEmoji"
                             android:layout_width="0dp"
                             android:layout_height="40dp"
                             android:layout_weight="1"
-                            android:background="@drawable/flower_unpresed0"
+                            android:background="@drawable/ic_flower_unpresed0"
                             android:tag="1" />
 
                         <ImageButton
-                            android:id="@+id/emojis_tab_1_bell"
+                            android:id="@+id/ImgBellEmoji"
                             android:layout_width="0dp"
                             android:layout_height="40dp"
                             android:layout_weight="1"
-                            android:background="@drawable/bell_unpresed0"
+                            android:background="@drawable/ic_bell_unpresed"
                             android:tag="2" />
 
                         <ImageButton
-                            android:id="@+id/emojis_tab_1_car"
+                            android:id="@+id/ImgCarEmoji"
                             android:layout_width="0dp"
                             android:layout_height="40dp"
                             android:layout_weight="1"
-                            android:background="@drawable/car_unpresed0"
+                            android:background="@drawable/ic_car_unpresed0"
                             android:tag="3" />
 
                         <ImageButton
-                            android:id="@+id/emojis_tab_1_electronics"
+                            android:id="@+id/ImgElectrEmoji"
                             android:layout_width="0dp"
                             android:layout_height="40dp"
                             android:layout_weight="1"
-                            android:background="@drawable/car_unpresed0"
+                            android:background="@drawable/ic_car_unpresed0"
                             android:tag="3" />
 
                         <ImageButton
-                            android:id="@+id/emojis_tab_1_symbol"
+                            android:id="@+id/ImgSymbolsEmoji"
                             android:layout_width="0dp"
                             android:layout_height="40dp"
                             android:layout_weight="1"
-                            android:background="@drawable/sign_unpresed0"
+                            android:background="@drawable/ic_sign_unpresed0"
                             android:tag="4" />
 
                         <ImageButton
-                            android:id="@+id/emojis_tab_1_delete"
+                            android:id="@+id/ImgDeleteEmoji"
                             android:layout_width="0dp"
                             android:layout_height="40dp"
                             android:layout_weight="1"
@@ -265,61 +265,61 @@
                 </LinearLayout>
 
                 <RelativeLayout
-                    android:id="@+id/contents1"
+                    android:id="@+id/RlContentsView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/rl_top"
+                    android:layout_below="@+id/RlBottomTop"
                     android:layout_marginTop="-1dp"
                     android:gravity="center">
 
                     <RelativeLayout
-                        android:id="@+id/otherContents"
+                        android:id="@+id/RlOtherCon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:visibility="gone" />
 
                     <RelativeLayout
-                        android:id="@+id/StickerContents"
+                        android:id="@+id/RlStickerViews"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:visibility="gone">
 
                         <RelativeLayout
-                            android:id="@+id/stickerpatti"
+                            android:id="@+id/RlStickerTopBar"
                             android:layout_width="match_parent"
                             android:layout_height="46dp"
-                            android:background="@drawable/top_patti"
+                            android:background="@drawable/ic_top_patti"
                             android:orientation="horizontal"
                             android:visibility="gone">
 
                             <com.theme.keyboardthemeapp.APPUtils.HorizontalListView
-                                android:id="@+id/stickerList"
+                                android:id="@+id/HoriStickeList"
                                 android:layout_width="match_parent"
                                 android:layout_height="45dp"
                                 android:layout_alignParentLeft="true"
                                 android:layout_centerVertical="true"
-                                android:layout_toLeftOf="@+id/moreButton" />
+                                android:layout_toLeftOf="@+id/ImgMoreDown" />
 
                             <ImageButton
-                                android:id="@+id/moreButton"
+                                android:id="@+id/ImgMoreDown"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
-                                android:background="@drawable/download_icon" />
+                                android:background="@drawable/ic_download_icon" />
                         </RelativeLayout>
 
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_below="@+id/stickerpatti"
-                            android:background="@drawable/grid_bg"
+                            android:layout_below="@+id/RlStickerTopBar"
+                            android:background="@drawable/ic_grid_bg"
                             android:orientation="horizontal">
 
                             <GridView
-                                android:id="@+id/StickerGrid"
+                                android:id="@+id/GridStickerViews"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_centerInParent="true"
@@ -329,7 +329,7 @@
                     </RelativeLayout>
 
                     <com.theme.keyboardthemeapp.KeyboardView.CustomKeyboardView
-                        android:id="@+id/keyboard"
+                        android:id="@+id/MainKeyboardVies"
                         style="@style/Widget.KeyboardView4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -339,10 +339,10 @@
             </RelativeLayout>
 
             <LinearLayout
-                android:id="@+id/speaklay"
+                android:id="@+id/LLSpeackToText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/bg"
+                android:background="@drawable/ic_bg"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:visibility="gone"
@@ -363,11 +363,11 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/btn_speaklang1"
+                            android:id="@+id/TextSpeakINLanguage"
                             android:layout_width="70dp"
                             android:layout_height="30dp"
                             android:background="@android:color/transparent"
-                            android:drawableRight="@drawable/drop_down"
+                            android:drawableRight="@drawable/ic_drop_down"
                             android:text="Hindi"
                             android:textColor="#a4a4a4"
                             android:textSize="14sp"
@@ -381,7 +381,7 @@
                         android:gravity="center">
 
                         <TextView
-                            android:id="@+id/txttimer"
+                            android:id="@+id/TxtCounter"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="00:13"
@@ -396,11 +396,11 @@
                         android:gravity="center">
 
                         <ImageButton
-                            android:id="@+id/btn_closedialog"
+                            android:id="@+id/ImgSpeakPopupClose"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="10dp"
-                            android:background="@drawable/dialog_close" />
+                            android:background="@drawable/ic_dialog_close" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -412,7 +412,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/speaktext"
+                        android:id="@+id/TxtSpeakMsg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
@@ -422,34 +422,34 @@
                         android:textSize="19sp" />
 
                     <FrameLayout
-                        android:id="@+id/flvoid"
+                        android:id="@+id/FrameSpeakIcons"
                         android:layout_width="90dp"
                         android:layout_height="90dp">
 
                         <ImageView
-                            android:id="@+id/imgvoidon"
+                            android:id="@+id/ImgSpeeachStart"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:src="@drawable/togglebutton_on" />
+                            android:src="@drawable/ic_togglebutton_on" />
 
                         <ImageView
-                            android:id="@+id/imgvoid"
+                            android:id="@+id/ImgUnSpeech"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:src="@drawable/clip_source" />
+                            android:src="@drawable/ic_clip_source" />
 
                         <ImageButton
-                            android:id="@+id/btnspeech"
+                            android:id="@+id/ImageSpeechIcons"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:background="@drawable/togglebuttonbg"
+                            android:background="@drawable/ic_togglebuttonbg"
                             android:visibility="visible" />
 
                         <ProgressBar
-                            android:id="@+id/progressBarTalk"
+                            android:id="@+id/ProgressTalk"
                             style="?android:attr/progressBarStyleLarge"
                             android:layout_width="80dp"
                             android:layout_height="80dp"

@@ -47,11 +47,11 @@ public class GifAdapter extends RecyclerView.Adapter<GifAdapter.MyViewHolder> {
         holder.IvGif.setScaleType(ImageView.ScaleType.FIT_XY);
         if (GifFolder.exists()){
             Glide.with(context).load(GIF)
-                    .placeholder(R.drawable.place_holder).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(holder.IvGif);
+                    .placeholder(R.drawable.ic_place_holder).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(holder.IvGif);
             holder.IvDownloadGif.setVisibility(View.GONE);
         }else {
             Glide.with(context).load(thumbUrl + gifArray.get(position).getId() + ".png")
-                    .placeholder(R.drawable.place_holder).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(holder.IvGif);
+                    .placeholder(R.drawable.ic_place_holder).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(holder.IvGif);
             holder.IvDownloadGif.setVisibility(View.VISIBLE);
         }
         String PrefThumb = new MySharePref(context).getPrefString(MySharePref.SELECT_GIF_THEME_THUMB, "");

@@ -37,14 +37,11 @@ import com.theme.keyboardthemeapp.ModelClass.QuoteCategoryModelItem;
 import com.theme.keyboardthemeapp.Task.DictionaryTask;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.Dialogs.OverlayPermissionDialog;
-import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
-import com.theme.keyboardthemeapp.ModelClass.QuoteCategoryModel;
 import com.theme.keyboardthemeapp.MySharePref;
 import com.theme.keyboardthemeapp.R;
 import com.theme.keyboardthemeapp.Retrofit.RetrofitInstance;
 import com.theme.keyboardthemeapp.Retrofit.RetrofitInterface;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -107,8 +104,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        Constants.height = displayMetrics.heightPixels;
-        Constants.width = displayMetrics.widthPixels;
+        Constants.heights = displayMetrics.heightPixels;
+        Constants.widths = displayMetrics.widthPixels;
         GetQuoteResponse();
 //        if (new File(getFilesDir().getAbsolutePath() + "/photo_save.jpeg").exists()) {
 //            new File(getFilesDir().getAbsolutePath() + "/photo_save.jpeg").delete();
@@ -125,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
 //        if (new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0) == 0) {
-        Constants.getBackground(context, new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0)).getAbsolutePath();
+        Constants.getBackgroundSave(context, new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0)).getAbsolutePath();
 //        }
     }
 
@@ -245,7 +242,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void GetQuoteResponse() {
-        if (Constants.isNetworkAvailable(context)) {
+        if (Constants.isNetworkAvailableoRnOT(context)) {
             LayoutProgress.setVisibility(View.VISIBLE);
             RetrofitInterface downloadService = RetrofitInstance.createService(RetrofitInterface.class, Constants.BASE_URL);
             Call<List<QuoteCategoryModelItem>> call = downloadService.getQuoteCategoryData(Constants.QUOTES_CATEGORY_URL);
@@ -293,7 +290,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 LoadAd(FontActivity.class);
                 break;
             case R.id.CardSetting:
-                Constants.wordExist = true;
+                Constants.WordExistOrNot = true;
                 LoadAd(SettingActivity.class);
                 break;
             case R.id.CardDictionary:
@@ -321,7 +318,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         AdsClass.loadInterOne(MainActivity.this, Constants.InterstitialAd);
         AdsClass.showInter(MainActivity.this, () -> {
             startActivity(new Intent(context, aClass));
-            finish();
         }, Constants.Show);
     }
 }

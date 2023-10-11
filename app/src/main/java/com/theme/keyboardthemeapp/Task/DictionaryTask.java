@@ -20,14 +20,13 @@ import java.util.HashSet;
 public class DictionaryTask extends AsyncTask<String, String, String> {
     private int ID = 0;
     private Context context;
-    private String loadStr = "load";
+    private String SortStr = "load";
 
     public void onProgressUpdate(String... strArr) {
     }
 
     public DictionaryTask(Context context, int id) {
         this.context = context;
-        System.out.println("----------Constants.ID : "+id);
         ID = id;
     }
 
@@ -50,7 +49,7 @@ public class DictionaryTask extends AsyncTask<String, String, String> {
         } catch (Exception e) {
             e.getMessage();
         }
-        return loadStr;
+        return SortStr;
     }
 
     public void onPostExecute(String str) {
@@ -60,8 +59,6 @@ public class DictionaryTask extends AsyncTask<String, String, String> {
             set.addAll(Constants.SuggestionWordsList);
             Constants.SuggestionWordsList.clear();
             Constants.SuggestionWordsList.addAll(set);
-            System.out.println("-------- Constants.SuggestionWordsList : "+Constants.SuggestionWordsList.size());
-//            Constants.SuggestionWordsList.addAll(Constants.SuggestionWordsList);
         } catch (Exception unused) {
         }
     }

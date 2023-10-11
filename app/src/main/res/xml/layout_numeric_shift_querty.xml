@@ -33,13 +33,13 @@
         <Key android:codes="124" android:keyLabel="|"/>
         <Key android:codes="92" android:keyLabel="\\"/>
         <Key android:codes="191" android:keyLabel="¿"/>
-        <Key android:keyWidth="15%p" android:codes="-5" android:keyEdgeFlags="right" android:isRepeatable="true" android:keyIcon="@drawable/btn_back"/>
+        <Key android:keyWidth="15%p" android:codes="-5" android:keyEdgeFlags="right" android:isRepeatable="true" android:keyIcon="@drawable/ic_btn_back"/>
     </Row>
     <Row android:rowEdgeFlags="bottom">
         <Key android:keyWidth="15%p" android:codes="-2830" android:keyEdgeFlags="left" android:keyLabel="ABC"/>
         <Key android:keyWidth="10%p" android:codes="44" android:keyLabel=","/>
-        <Key android:keyWidth="50%p" android:codes="32" android:isRepeatable="true" android:keyIcon="@drawable/btn_space"/>
+        <Key android:keyWidth="50%p" android:codes="32" android:isRepeatable="true" android:keyIcon="@drawable/ic_btn_space"/>
         <Key android:keyWidth="10%p" android:codes="8230" android:keyLabel="…"/>
-        <Key android:keyWidth="15%p" android:codes="-4" android:keyIcon="@drawable/btn_enter"/>
+        <Key android:keyWidth="15%p" android:codes="-4" android:keyIcon="@drawable/ic_btn_enter"/>
     </Row>
 </Keyboard>

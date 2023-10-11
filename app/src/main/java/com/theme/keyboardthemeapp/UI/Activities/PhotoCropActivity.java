@@ -68,8 +68,8 @@ public class PhotoCropActivity extends AppCompatActivity implements View.OnClick
         DisplayMetrics metrics = new DisplayMetrics();
         window.getMetrics(metrics);
         DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
-        Constants.width = displayMetrics.widthPixels;
-        Constants.height = displayMetrics.heightPixels;
+        Constants.widths = displayMetrics.widthPixels;
+        Constants.heights = displayMetrics.heightPixels;
         int height = metrics.heightPixels / 3;
         int width = metrics.widthPixels / 2;
 
@@ -112,12 +112,12 @@ public class PhotoCropActivity extends AppCompatActivity implements View.OnClick
         @Override
         protected Void doInBackground(Void... voids) {
             DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
-            Constants.width = displayMetrics.widthPixels;
-            Constants.height = displayMetrics.heightPixels;
+            Constants.widths = displayMetrics.widthPixels;
+            Constants.heights = displayMetrics.heightPixels;
             File file2 = new File(getFilesDir().getAbsolutePath() + "/photo_save.jpeg");
 
             try {
-                croppedImage = Bitmap.createScaledBitmap(croppedImage, Constants.height, Constants.KeyboardHeight, false);
+                croppedImage = Bitmap.createScaledBitmap(croppedImage, Constants.heights, Constants.KeyboardHeight, false);
                 croppedImage.compress(Bitmap.CompressFormat.JPEG, 100, new FileOutputStream(file2));
             } catch (Exception unused2) {
             }
