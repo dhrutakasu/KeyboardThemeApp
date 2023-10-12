@@ -119,6 +119,7 @@ public class ViewQuoteActivity extends AppCompatActivity implements View.OnClick
             intent.putExtra(Intent.EXTRA_TEXT, statusTxt);
             startActivity(Intent.createChooser(intent, "Share with"));
         } catch (Exception e) {
+            System.out.println("---- :: "+e.getMessage());
             if (packageName2.equalsIgnoreCase("")) {
                 Toast.makeText(context, "App not Installed", Toast.LENGTH_SHORT).show();
             } else {
@@ -130,6 +131,7 @@ public class ViewQuoteActivity extends AppCompatActivity implements View.OnClick
                     intent.putExtra(Intent.EXTRA_TEXT, statusTxt);
                     startActivity(Intent.createChooser(intent, "Share with"));
                 } catch (Exception ex) {
+                    System.out.println("---- :xx: "+ex.getMessage());
                     Toast.makeText(context, "App not Installed", Toast.LENGTH_SHORT).show();
                 }
             }

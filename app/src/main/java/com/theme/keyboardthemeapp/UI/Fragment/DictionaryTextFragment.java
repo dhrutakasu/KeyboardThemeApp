@@ -139,6 +139,8 @@ public class DictionaryTextFragment extends Fragment implements View.OnClickList
         @Override
         public void onReceive(Context context, Intent intent) {
             Constants.PagerDictionary.setCurrentItem(0);
+            dictionaryModels = helper.getDictionaryFavorite();
+            System.out.println("----- - - - -list rr: " + dictionaryModels.size());
             onResume();
             LayoutProgress.setVisibility(View.GONE);
         }
@@ -242,11 +244,16 @@ public class DictionaryTextFragment extends Fragment implements View.OnClickList
             ImgAddFavourite.setImageResource(R.drawable.ic_favourite_presed);
             helper.AddFavorite(wid);
             fav = true;
+
+            Intent intent = new Intent("custom-dictionary-listener");
+            LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(intent);
             return;
         }
         ImgAddFavourite.setImageResource(R.drawable.ic_favourite_unpresed);
         helper.RemoveFavorite(wid);
         fav = false;
+        Intent intent = new Intent("custom-dictionary-listener");
+        LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(intent);
     }
 
     @Override
@@ -384,7 +391,7 @@ public class DictionaryTextFragment extends Fragment implements View.OnClickList
                 TxtWordHindi.setText("No Word found!");
             }
             EnglishToHindiWordList = helper.getEnglishWordMatching(Word.substring(0, 1));
-            AutoTxtWord.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.layout_item_autotext, EnglishToHindiWordList));
+            AutoTxtWord.setAdapter(new ArrayAdapter<>(getContext(), R.layout.layout_item_autotext, EnglishToHindiWordList));
         }
     }
 
@@ -430,8 +437,7 @@ public class DictionaryTextFragment extends Fragment implements View.OnClickList
 
     @Override
     public void DeleteFav(int FavId, int position, String dictionary_Str) {
-        if (dictionary_Str.equalsIgnoreCase("Favorite")) {
-            System.out.println("---- - - - - -");
+        if (dictionary_Str.equalsIgnoreCase("Favourite")) {
             helper.deleteFavourite(FavId);
         } else {
             helper.deleteDictionaryRecent(FavId);
