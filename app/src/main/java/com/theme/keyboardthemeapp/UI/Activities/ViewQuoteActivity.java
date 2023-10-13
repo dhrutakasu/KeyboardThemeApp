@@ -19,9 +19,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.theme.keyboardthemeapp.AdsClass;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.ModelClass.QuoteModelItem;
-import com.theme.keyboardthemeapp.ModelClass.StatusItem;
 import com.theme.keyboardthemeapp.R;
-import com.theme.keyboardthemeapp.UI.Adapters.PageAdapter;
 import com.theme.keyboardthemeapp.UI.Adapters.QuotePageAdapter;
 
 import java.util.ArrayList;
@@ -33,7 +31,7 @@ public class ViewQuoteActivity extends AppCompatActivity implements View.OnClick
     private ArrayList<QuoteModelItem> statusItemArrayList;
     private int QuotePos;
     private ViewPager PagerQuote;
-    private ImageView ImgWhatsapp, ImgFacebook, ImgShare, ImgCopy;
+    private ImageView ImgWhatsapp, ImgFacebook, ImgShareJoke, ImgCopy;
     private ClipboardManager manager;
     private String QuoteTitle;
 
@@ -55,7 +53,7 @@ public class ViewQuoteActivity extends AppCompatActivity implements View.OnClick
         PagerQuote = (ViewPager) findViewById(R.id.PagerQuote);
         ImgWhatsapp = (ImageView) findViewById(R.id.ImgWhatsapp);
         ImgFacebook = (ImageView) findViewById(R.id.ImgFacebook);
-        ImgShare = (ImageView) findViewById(R.id.ImgShare);
+        ImgShareJoke = (ImageView) findViewById(R.id.ImgShareJoke);
         ImgCopy = (ImageView) findViewById(R.id.ImgCopy);
     }
 
@@ -70,7 +68,7 @@ public class ViewQuoteActivity extends AppCompatActivity implements View.OnClick
         ImgBack.setOnClickListener(this);
         ImgWhatsapp.setOnClickListener(this);
         ImgFacebook.setOnClickListener(this);
-        ImgShare.setOnClickListener(this);
+        ImgShareJoke.setOnClickListener(this);
         ImgCopy.setOnClickListener(this);
     }
 
@@ -101,7 +99,7 @@ public class ViewQuoteActivity extends AppCompatActivity implements View.OnClick
             case R.id.ImgFacebook:
                 GotoSharePackage("com.facebook.orca", "com.facebook.katana", statusItemArrayList.get(QuotePos).getStatus());
                 break;
-            case R.id.ImgShare:
+            case R.id.ImgShareJoke:
                 GotoShare();
                 break;
             case R.id.ImgCopy:

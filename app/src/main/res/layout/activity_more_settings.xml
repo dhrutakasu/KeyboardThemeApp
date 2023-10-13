@@ -28,11 +28,11 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/CardShare"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_margin="@dimen/_5ssp"
+            android:layout_height="@dimen/_58sdp"
+            android:layout_margin="0dp"
             android:orientation="horizontal"
-            app:cardCornerRadius="@dimen/_5ssp"
-            app:cardElevation="@dimen/_3sdp"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -46,13 +46,14 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.15"
+                    android:layout_weight="0.16"
+                    android:layout_marginStart="@dimen/_5sdp"
                     android:src="@drawable/ic_share" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.85"
+                    android:layout_weight="0.86"
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
@@ -77,18 +78,24 @@
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
+        <View
+            android:id="@+id/ViewShare"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:alpha="0.15"
+            android:background="@color/main_text_color"
+            app:layout_constraintTop_toBottomOf="@id/CardShare" />
         <androidx.cardview.widget.CardView
             android:id="@+id/CardMore"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_margin="@dimen/_5ssp"
+            android:layout_height="@dimen/_58sdp"
+            android:layout_margin="0dp"
             android:orientation="horizontal"
-            app:cardCornerRadius="@dimen/_5ssp"
-            app:cardElevation="@dimen/_3sdp"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/CardShare">
+            app:layout_constraintTop_toBottomOf="@id/ViewShare">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -99,13 +106,14 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.15"
+                    android:layout_weight="0.16"
+                    android:layout_marginStart="@dimen/_5sdp"
                     android:src="@drawable/ic_more" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.85"
+                    android:layout_weight="0.86"
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
@@ -130,18 +138,24 @@
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
+        <View
+            android:id="@+id/ViewMore"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:alpha="0.15"
+            android:background="@color/main_text_color"
+            app:layout_constraintTop_toBottomOf="@id/CardMore" />
         <androidx.cardview.widget.CardView
             android:id="@+id/CardPrivacy"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_margin="@dimen/_5ssp"
+            android:layout_height="@dimen/_58sdp"
+            android:layout_margin="0dp"
             android:orientation="horizontal"
-            app:cardCornerRadius="@dimen/_5ssp"
-            app:cardElevation="@dimen/_3sdp"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/CardMore">
+            app:layout_constraintTop_toBottomOf="@id/ViewMore">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -152,13 +166,14 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.15"
+                    android:layout_weight="0.16"
+                    android:layout_marginStart="@dimen/_5sdp"
                     android:src="@drawable/ic_policy" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.85"
+                    android:layout_weight="0.86"
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
@@ -183,18 +198,24 @@
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
+        <View
+            android:id="@+id/ViewPrivacy"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:alpha="0.15"
+            android:background="@color/main_text_color"
+            app:layout_constraintTop_toBottomOf="@id/CardPrivacy" />
         <androidx.cardview.widget.CardView
             android:id="@+id/CardRateUs"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_margin="@dimen/_5ssp"
+            android:layout_height="@dimen/_58sdp"
+            android:layout_margin="0dp"
             android:orientation="horizontal"
-            app:cardCornerRadius="@dimen/_5ssp"
-            app:cardElevation="@dimen/_3sdp"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/CardPrivacy">
+            app:layout_constraintTop_toBottomOf="@id/ViewPrivacy">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -205,13 +226,14 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.15"
+                    android:layout_weight="0.16"
+                    android:layout_marginStart="@dimen/_5sdp"
                     android:src="@drawable/ic_rate" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.85"
+                    android:layout_weight="0.86"
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 

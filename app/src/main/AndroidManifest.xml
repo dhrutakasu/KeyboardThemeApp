@@ -20,7 +20,12 @@
         android:name="android.hardware.camera"
         android:required="true" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <queries>
+        <package android:name="com.whatsapp" />
+        <package android:name="com.facebook.orca" />
+        <package android:name="com.facebook.katana" />
+
         <intent>
             <action android:name="android.speech.RecognitionService" />
         </intent>
@@ -72,6 +77,7 @@
         <activity
             android:name=".UI.Activities.DictionaryActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activities.TranslatorActivity"

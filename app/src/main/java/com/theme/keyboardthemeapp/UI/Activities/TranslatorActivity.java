@@ -78,6 +78,7 @@ public class TranslatorActivity extends AppCompatActivity implements View.OnClic
 
     private void initListeners() {
         ImgBack.setOnClickListener(this);
+        ImgShare.setOnClickListener(this);
         IvClose.setOnClickListener(this);
         IvCopy.setOnClickListener(this);
         IvSpeak.setOnClickListener(this);
@@ -155,6 +156,11 @@ public class TranslatorActivity extends AppCompatActivity implements View.OnClic
                 if (EdtInputValue.getText().toString().trim().isEmpty()) {
                     textToSpeech.speak("Please Enter Some Text", TextToSpeech.QUEUE_FLUSH, null);
                 } else {
+                    if (TxtEnglish.getText().toString().equals("Hindi")) {
+                        textToSpeech.setLanguage(new Locale ("hi_IN"));
+                    }else {
+                        textToSpeech.setLanguage(Locale.ENGLISH);
+                    }
                     textToSpeech.speak(EdtInputValue.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
                 }
                 break;
@@ -172,6 +178,11 @@ public class TranslatorActivity extends AppCompatActivity implements View.OnClic
                 if (EdtOutputValue.getText().toString().trim().isEmpty()) {
                     textToSpeech.speak("Please Enter Some Text", TextToSpeech.QUEUE_FLUSH, null);
                 } else {
+                    if (TxtHindi.getText().toString().equals("Hindi")) {
+                        textToSpeech.setLanguage(new Locale ("hi_IN"));
+                    }else {
+                        textToSpeech.setLanguage(Locale.ENGLISH);
+                    }
                     textToSpeech.speak(EdtOutputValue.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
                 }
                 break;
@@ -192,13 +203,13 @@ public class TranslatorActivity extends AppCompatActivity implements View.OnClic
 
     private void GotoShare() {
         if (EdtOutputValue.getText().toString().trim().isEmpty()) {
-            Toast.makeText(context, "No Text To Share", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "No Translate Text To Share", Toast.LENGTH_SHORT).show();
         } else {
             Intent intentTranslateShare = new Intent();
             intentTranslateShare.setAction(Intent.ACTION_SEND);
             intentTranslateShare.setType("text/plain");
             intentTranslateShare.putExtra(Intent.EXTRA_SUBJECT, "Share Your Text To");
-            intentTranslateShare.putExtra(Intent.EXTRA_TEXT, EdtOutputValue.getText().toString());
+            intentTranslateShare.putExtra(Intent.EXTRA_TEXT, EdtInputValue.getText().toString() + "\n" + EdtOutputValue.getText().toString());
             startActivity(Intent.createChooser(intentTranslateShare, "Share via"));
         }
     }
@@ -218,7 +229,11 @@ public class TranslatorActivity extends AppCompatActivity implements View.OnClic
         String trimSecTxt = Txtstr.trim();
         TxtEnglish.setText(trimTxt);
         TxtHindi.setText(trimSecTxt);
-        TxtTitle.setText(trimTxt + "Translator");
+        TxtTitle.setText(trimTxt + " Translator");
+        String TxtInput=EdtInputValue.getText().toString();
+        String TxtOutput=EdtOutputValue.getText().toString();
+        EdtInputValue.setText(TxtOutput);
+        EdtOutputValue.setText(TxtInput);
     }
 
     private void GotoTranslator() {

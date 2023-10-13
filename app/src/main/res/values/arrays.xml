@@ -1,44 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <array name="ContriesIn">
-        <item>English</item>
-        <item>German</item>
-        <item>Japanese</item>
-        <item>Chinese</item>
-        <item>French</item>
-        <item>Korean</item>
-        <item>Italian</item>
-        <item>Vietnamese</item>
-    </array>
-    <array name="ContriesOut">
-        <item>English</item>
-        <item>German</item>
-        <item>Japanese</item>
-        <item>Chinese</item>
-        <item>French</item>
-        <item>Korean</item>
-        <item>Italian</item>
-        <item>Vietnamese</item>
-    </array>
-    <array name="OCRKeyList">
-        <item>352810f71888957</item>
-        <item>1e6cc9bd0888957</item>
-        <item>7e0b569d7f88957</item>
-        <item>7316d8e23988957</item>
-        <item>06831506db88957</item>
-        <item>756a4a1be088957</item>
-        <item>b4eb39af2288957</item>
-        <item>900b7f058a88957</item>
-        <item>47faf5d02d88957</item>
-        <item>15ae66132b88957</item>
-        <item>1b775aabf388957</item>
-        <item>a0fbda32e588957</item>
-        <item>27c672e8b688957</item>
-        <item>977e78ae4188957</item>
-        <item>bdaf30178588957</item>
-        <item>b9cd95f42588957</item>
-        <item>d08707caa988957</item>
-    </array>
     <array name="Ocr_Code">
         <item>ara</item>
         <item>chs</item>
@@ -76,14 +37,6 @@
         <item>Turkish</item>
         <item>Vietnamese</item>
     </array>
-    <array name="YTranslateKeyList">
-        <item>trnsl.1.1.20160509T091840Z.4c4b2c3ad2bdd7bc.b629f8adb60f7d5f33065cf440412e7e9e35529f</item>
-        <item>trnsl.1.1.20160504T034538Z.03f07ec5381df108.7222a0c7e7a1d29ffe735ee55c61e2aadaa9d672</item>
-        <item>trnsl.1.1.20160509T092604Z.2b8f9fbfb9d7f112.7d9464b5429a48d3b584b36da130872c32aaeefb</item>
-        <item>trnsl.1.1.20170607T064505Z.2a9c571076b90d09.de843dac2eb4b106b0e5440e2a14b7ede716e706</item>
-        <item>trnsl.1.1.20170607T132624Z.d56de8cac8fe8ff2.9d7490991cd77327fb669ea6fb0a0aa9c0f13a61</item>
-        <item>trnsl.1.1.20170607T132837Z.3c4608b7e1d53dcd.00ee8078b82fcb936c626bb03d8d18e6528eacfe</item>
-    </array>
     <array name="cameraOcr">
         <item>Arabic</item>
         <item>Chinese</item>
@@ -106,59 +59,6 @@
         <item>Turkish</item>
         <item>Vietnamese</item>
     </array>
-    <array name="hello_welcome">
-        <item>مرحبا</item>
-        <item>হ্যালো</item>
-        <item>မင်္ဂလာပါ</item>
-        <item>您好！</item>
-        <item>Hej</item>
-        <item>Hallo!</item>
-        <item>Hi! How are you</item>
-        <item>Salut!</item>
-        <item>Kumusta na kayo</item>
-        <item>Hallo!</item>
-        <item>Γεια σου!</item>
-        <item>હેલો</item>
-        <item>שלום!</item>
-        <item>नमस्ते!</item>
-        <item>Helló</item>
-        <item>Halo!</item>
-        <item>Ciao!</item>
-        <item>こんにちは！</item>
-        <item>ಹಲೋ</item>
-        <item>អ្នក​សុខសប្បាយ​ទេ</item>
-        <item>안녕!</item>
-        <item>ສະບາຍດີ</item>
-        <item>Hello!</item>
-        <item>ഹലോ</item>
-        <item>हॅलो</item>
-        <item>नमस्कार</item>
-        <item>سلام!</item>
-        <item>Cześć!</item>
-        <item>Olá!!</item>
-        <item>ਹੈਲੋ</item>
-        <item>Здравствуй!</item>
-        <item>හෙලෝ</item>
-        <item>¡Hola!</item>
-        <item>嗨!</item>
-        <item>வணக்கம்</item>
-        <item>హలో</item>
-        <item>Merhaba!</item>
-        <item>สวัสดี!</item>
-        <item>привіт!</item>
-        <item>خوش آمدید</item>
-        <item>Xin Chào!</item>
-    </array>
-    <array name="ibmtranslate">
-        <item>ar</item>
-        <item>fr</item>
-        <item>de</item>
-        <item>it</item>
-        <item>ja</item>
-        <item>ko</item>
-        <item>pt</item>
-        <item>es</item>
-    </array>
     <array name="noSpeaker">
         <item>Auto Detect</item>
         <item>Arabic</item>
@@ -178,32 +78,6 @@
         <item>Auto Detect</item>
         <item>Punjabi</item>
         <item>Burmese</item>
-    </array>
-    <array name="pref_example_list_titles">
-        <item>Always</item>
-        <item>When possible</item>
-        <item>Never</item>
-    </array>
-    <array name="pref_example_list_values">
-        <item>1</item>
-        <item>@null</item>
-        <item>-1</item>
-    </array>
-    <array name="pref_sync_frequency_titles">
-        <item>15 minutes</item>
-        <item>30 minutes</item>
-        <item>1 hour</item>
-        <item>3 hours</item>
-        <item>6 hours</item>
-        <item>Never</item>
-    </array>
-    <array name="pref_sync_frequency_values">
-        <item>15</item>
-        <item>30</item>
-        <item>60</item>
-        <item>180</item>
-        <item>360</item>
-        <item>-1</item>
     </array>
     <array name="str_code_language_in">
         <item />

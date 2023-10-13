@@ -16,12 +16,10 @@
     <string name="str_text16">Jock</string>
     <string name="str_text17">GIF</string>
     <string name="str_text2">Theme</string>
-    <string name="str_text3">Language</string>
     <string name="str_text4">Font</string>
     <string name="str_text5">Dictionary</string>
     <string name="str_text6">Setting</string>
     <string name="str_text7">Rate Us!</string>
-    <string name="str_text8">Tell Friends</string>
     <string name="str_text9">Translator</string>
     <string name="str_sub_text1">Change your Keyboard Background</string>
     <string name="str_sub_text10">Explore with Art.</string>
@@ -32,7 +30,6 @@
     <string name="str_sub_text16">Explore Funny Jock.</string>
     <string name="str_sub_text17">Set Animated gif background!</string>
     <string name="str_sub_text2">Select Keyboard Theme</string>
-    <string name="str_sub_text3">Enable English,Hindi,Gujarati,Oriya...</string>
     <string name="str_sub_text4">Choose Stylish font</string>
     <string name="str_sub_text5">Download Dictionary</string>
     <string name="str_sub_text6">Your Setting Keyboard</string>
@@ -51,7 +48,6 @@
     <string name="str_my_saved_data">My Saved Data</string>
     <string name="str_font_style">Font Style</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="str_auto_capitalization">Auto-capitalization</string>
     <string name="str_capitalize_the_first_word_of_10each_sentence">Capitalize the first word of each sentence</string>
     <string name="str_popup_on_keypress">Popup on keypress</string>
@@ -91,7 +87,6 @@
     <string name="str_en_error_text7">I Don\'t Understand, Please Try Again</string>
     <string name="str_en_error_text8">Reconizer Busy, Please Try Later</string>
     <string name="str_en_error_text9">Didn\'t understand, please try again.</string>
-    <string name="str_isSupportLang">فارسی</string>
     <string name="str_speak_lang_2">hi</string>
     <string name="str_Theme_style">Keyboard Theme</string>
     <string name="str_crop">Crop</string>
@@ -108,7 +103,6 @@
     <string name="str_crop_image_activity_no_permissions">Cancelling, required permissions are not granted</string>
     <string name="str_dict_name1">DictionaryEnglishWords.txt</string>
     <string name="str_dict_name2">DictionaryHindiWords.txt</string>
-    <string name="str_dictonary_name">Hindi Dictionary</string>
     <string name="str_phonetic_keyboard">Please Connect To Internet for Phonetic Keyboard</string>
     <string name="str_install_voice_translate">Install Google Voice For Voice Translate</string>
     <string name="str_install_now">Install Now!</string>

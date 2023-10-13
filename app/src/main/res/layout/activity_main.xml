@@ -32,11 +32,10 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/CardBackground"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_margin="@dimen/_5ssp"
+                android:layout_height="@dimen/_58sdp"
                 android:orientation="horizontal"
-                app:cardCornerRadius="@dimen/_5ssp"
-                app:cardElevation="@dimen/_3sdp"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -48,15 +47,17 @@
 
                     <ImageView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.15"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.16"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:padding="@dimen/_6sdp"
                         android:src="@drawable/ic_images" />
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.85"
+                        android:layout_weight="0.84"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
 
@@ -82,17 +83,24 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <View
+                android:id="@+id/ViewBackground"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:alpha="0.15"
+                android:background="@color/main_text_color"
+                app:layout_constraintTop_toBottomOf="@id/CardBackground" />
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/CardTheme"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_margin="@dimen/_5ssp"
+                android:layout_height="@dimen/_58sdp"
                 android:orientation="horizontal"
-                app:cardCornerRadius="@dimen/_5ssp"
-                app:cardElevation="@dimen/_3sdp"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/CardBackground">
+                app:layout_constraintTop_toBottomOf="@id/ViewBackground">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -101,15 +109,17 @@
 
                     <ImageView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.15"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.16"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:padding="@dimen/_6sdp"
                         android:src="@drawable/ic_theme" />
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.85"
+                        android:layout_weight="0.84"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
 
@@ -135,17 +145,23 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <View
+                android:id="@+id/ViewTheme"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:alpha="0.15"
+                android:background="@color/main_text_color"
+                app:layout_constraintTop_toBottomOf="@id/CardTheme" />
             <androidx.cardview.widget.CardView
                 android:id="@+id/CardGif"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_margin="@dimen/_5ssp"
+                android:layout_height="@dimen/_58sdp"
                 android:orientation="horizontal"
-                app:cardCornerRadius="@dimen/_5ssp"
-                app:cardElevation="@dimen/_3sdp"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/CardTheme">
+                app:layout_constraintTop_toBottomOf="@id/ViewTheme">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -154,15 +170,17 @@
 
                     <ImageView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.15"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.16"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:padding="@dimen/_6sdp"
                         android:src="@drawable/ic_gif" />
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.85"
+                        android:layout_weight="0.84"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
 
@@ -187,18 +205,24 @@
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+            <View
+                android:id="@+id/ViewGif"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:alpha="0.15"
+                android:background="@color/main_text_color"
+                app:layout_constraintTop_toBottomOf="@id/CardGif" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/CardFont"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_margin="@dimen/_5ssp"
+                android:layout_height="@dimen/_58sdp"
                 android:orientation="horizontal"
-                app:cardCornerRadius="@dimen/_5ssp"
-                app:cardElevation="@dimen/_3sdp"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/CardGif">
+                app:layout_constraintTop_toBottomOf="@id/ViewGif">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -207,15 +231,17 @@
 
                     <ImageView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.16"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:padding="@dimen/_6sdp"
-                        android:layout_weight="0.15"
                         android:src="@drawable/ic_font" />
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.85"
+                        android:layout_weight="0.84"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
 
@@ -240,18 +266,24 @@
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+            <View
+                android:id="@+id/ViewFont"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:alpha="0.15"
+                android:background="@color/main_text_color"
+                app:layout_constraintTop_toBottomOf="@id/CardFont" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/CardSetting"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_margin="@dimen/_5ssp"
+                android:layout_height="@dimen/_58sdp"
                 android:orientation="horizontal"
-                app:cardCornerRadius="@dimen/_5ssp"
-                app:cardElevation="@dimen/_3sdp"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/CardFont">
+                app:layout_constraintTop_toBottomOf="@id/ViewFont">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -260,15 +292,17 @@
 
                     <ImageView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.15"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.16"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:padding="@dimen/_6sdp"
                         android:src="@drawable/ic_setting" />
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.85"
+                        android:layout_weight="0.84"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
 
@@ -293,18 +327,24 @@
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+            <View
+                android:id="@+id/ViewSetting"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:alpha="0.15"
+                android:background="@color/main_text_color"
+                app:layout_constraintTop_toBottomOf="@id/CardSetting" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/CardDictionary"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_margin="@dimen/_5ssp"
+                android:layout_height="@dimen/_58sdp"
                 android:orientation="horizontal"
-                app:cardCornerRadius="@dimen/_5ssp"
-                app:cardElevation="@dimen/_3sdp"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/CardSetting">
+                app:layout_constraintTop_toBottomOf="@id/ViewSetting">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -313,15 +353,17 @@
 
                     <ImageView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.15"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.16"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:padding="@dimen/_6sdp"
                         android:src="@drawable/ic_dictionary" />
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.85"
+                        android:layout_weight="0.84"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
 
@@ -346,18 +388,24 @@
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
+            <View
+                android:id="@+id/ViewDictionary"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:alpha="0.15"
+                android:background="@color/main_text_color"
+                app:layout_constraintTop_toBottomOf="@id/CardDictionary" />
             <androidx.cardview.widget.CardView
                 android:id="@+id/CardTranslator"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_margin="@dimen/_5ssp"
+                android:layout_height="@dimen/_58sdp"
+                android:layout_margin="0dp"
                 android:orientation="horizontal"
-                app:cardCornerRadius="@dimen/_5ssp"
-                app:cardElevation="@dimen/_3sdp"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/CardDictionary">
+                app:layout_constraintTop_toBottomOf="@id/ViewDictionary">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -366,15 +414,17 @@
 
                     <ImageView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.15"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.16"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:padding="@dimen/_6sdp"
                         android:src="@drawable/ic_translator" />
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.85"
+                        android:layout_weight="0.84"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
 
@@ -399,18 +449,24 @@
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
+            <View
+                android:id="@+id/ViewTranslator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:alpha="0.15"
+                android:background="@color/main_text_color"
+                app:layout_constraintTop_toBottomOf="@id/CardTranslator" />
             <androidx.cardview.widget.CardView
                 android:id="@+id/CardArt"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_margin="@dimen/_5ssp"
+                android:layout_height="@dimen/_58sdp"
+                android:layout_margin="0dp"
                 android:orientation="horizontal"
-                app:cardCornerRadius="@dimen/_5ssp"
-                app:cardElevation="@dimen/_3sdp"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/CardTranslator">
+                app:layout_constraintTop_toBottomOf="@id/ViewTranslator">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -419,15 +475,17 @@
 
                     <ImageView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.15"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.16"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:padding="@dimen/_6sdp"
                         android:src="@drawable/ic_art" />
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.85"
+                        android:layout_weight="0.84"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
 
@@ -452,18 +510,24 @@
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
+            <View
+                android:id="@+id/ViewArt"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:alpha="0.15"
+                android:background="@color/main_text_color"
+                app:layout_constraintTop_toBottomOf="@id/CardArt" />
             <androidx.cardview.widget.CardView
                 android:id="@+id/CardQuotes"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_margin="@dimen/_5ssp"
+                android:layout_height="@dimen/_58sdp"
+                android:layout_margin="0dp"
                 android:orientation="horizontal"
-                app:cardCornerRadius="@dimen/_5ssp"
-                app:cardElevation="@dimen/_3sdp"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/CardArt">
+                app:layout_constraintTop_toBottomOf="@id/ViewArt">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -472,15 +536,17 @@
 
                     <ImageView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.15"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.16"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:padding="@dimen/_6sdp"
                         android:src="@drawable/ic_quotes" />
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.85"
+                        android:layout_weight="0.84"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
 
@@ -505,18 +571,24 @@
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
+            <View
+                android:id="@+id/ViewQuotes"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:alpha="0.15"
+                android:background="@color/main_text_color"
+                app:layout_constraintTop_toBottomOf="@id/CardQuotes" />
             <androidx.cardview.widget.CardView
                 android:id="@+id/CardFancyText"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_margin="@dimen/_5ssp"
+                android:layout_height="@dimen/_58sdp"
+                android:layout_margin="0dp"
                 android:orientation="horizontal"
-                app:cardCornerRadius="@dimen/_5ssp"
-                app:cardElevation="@dimen/_3sdp"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/CardQuotes">
+                app:layout_constraintTop_toBottomOf="@id/ViewQuotes">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -525,15 +597,17 @@
 
                     <ImageView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.15"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.16"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:padding="@dimen/_6sdp"
                         android:src="@drawable/ic_fancy" />
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.85"
+                        android:layout_weight="0.84"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
 
@@ -558,19 +632,25 @@
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
+            <View
+                android:id="@+id/ViewFancyText"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:alpha="0.15"
+                android:background="@color/main_text_color"
+                app:layout_constraintTop_toBottomOf="@id/CardFancyText" />
             <androidx.cardview.widget.CardView
                 android:id="@+id/CardJokes"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_margin="@dimen/_5ssp"
+                android:layout_height="@dimen/_58sdp"
+                android:layout_margin="0dp"
                 android:orientation="horizontal"
-                app:cardCornerRadius="@dimen/_5ssp"
-                app:cardElevation="@dimen/_3sdp"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/CardFancyText">
+                app:layout_constraintTop_toBottomOf="@id/ViewFancyText">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -580,15 +660,17 @@
 
                     <ImageView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.15"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.16"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:padding="@dimen/_6sdp"
                         android:src="@drawable/ic_jok" />
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.85"
+                        android:layout_weight="0.84"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
 
@@ -634,8 +716,9 @@
             android:layout_marginBottom="0dp"
             android:gravity="center|bottom" />
     </RelativeLayout>
+
     <include
         android:id="@+id/LayoutProgress"
         layout="@layout/layout_progress"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 </androidx.constraintlayout.widget.ConstraintLayout>

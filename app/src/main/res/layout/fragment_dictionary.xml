@@ -82,7 +82,8 @@
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/black" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -124,7 +125,7 @@
                     android:src="@drawable/ic_favorite_selector" />
 
                 <ImageView
-                    android:id="@+id/ImgShare"
+                    android:id="@+id/ImgShareDictionary"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
