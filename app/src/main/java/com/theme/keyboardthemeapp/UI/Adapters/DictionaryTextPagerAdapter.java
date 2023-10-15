@@ -3,6 +3,7 @@ package com.theme.keyboardthemeapp.UI.Adapters;
 import android.content.Context;
 
 import com.theme.keyboardthemeapp.UI.Activities.DictionaryActivity;
+import com.theme.keyboardthemeapp.UI.Fragment.DictionaryTabFragment;
 import com.theme.keyboardthemeapp.UI.Fragment.DictionaryTextFragment;
 
 import java.util.ArrayList;
@@ -35,7 +36,11 @@ public class DictionaryTextPagerAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        return DictionaryTextFragment.newInstance(items.get(position).toString());
+//        if (position==0){
+            return DictionaryTextFragment.newInstance(items.get(position).toString());
+//        }else {
+//            return DictionaryTabFragment.newInstance(items.get(position).toString());
+//        }
     }
 
     @Override
