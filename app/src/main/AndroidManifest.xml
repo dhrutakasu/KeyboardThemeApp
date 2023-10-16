@@ -41,9 +41,6 @@
         android:theme="@style/Theme.KeyboardThemeApp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".UI.Activities.TestActivity2"
-            android:exported="false" />
-        <activity
             android:name=".UI.Activities.PhotoCropActivity"
             android:exported="false" />
         <activity

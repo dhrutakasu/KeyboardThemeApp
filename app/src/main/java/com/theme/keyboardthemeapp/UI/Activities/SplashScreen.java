@@ -37,7 +37,6 @@ public class SplashScreen extends AppCompatActivity {
 
     private void initActions() {
         context = this;
-        context = this;
         createHandler(TIME_OUT);
     }
 

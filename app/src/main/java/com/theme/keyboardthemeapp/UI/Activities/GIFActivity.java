@@ -90,11 +90,12 @@ public class GIFActivity extends AppCompatActivity implements View.OnClickListen
 
     private void getGifs() {
         LayoutProgress.setVisibility(View.VISIBLE);
-        RetrofitInterface downloadService = RetrofitInstance.createService(RetrofitInterface.class, Constants.BASE_URL);
+        RetrofitInterface downloadService = RetrofitInstance.createService(RetrofitInterface.class, Constants.BASE_URL1);
         Call<GifModel> call = downloadService.getGifsData(Constants.GIF_URL);
         call.enqueue(new Callback<GifModel>() {
             @Override
             public void onResponse(Call<GifModel> call, Response<GifModel> response) {
+                System.out.println("------ - - - call : ");
                 if (response.isSuccessful()) {
                     GifArrays = new ArrayList<>();
                     GifArrays.addAll((ArrayList<CategoriesItem>) response.body().getCategories());

@@ -55,7 +55,8 @@ public class Constants {
     public static final String BASE_URL1 = "http://technoappsolution.com/app/";
     public static final String BASE_URL = "https://hpqrzfjgciltygmpyjss.supabase.co/rest/v1/";
     public static final String QUOTE_BASE_URL = "QuotesList?parent_id=eq.";
-    public static final String GIF_URL = "keybord_fileparth?select=*,hindithemekeyboard(id,name)";
+    public static final String GIF_URL_1 = "keybord_fileparth?select=*,hindithemekeyboard(id,name)";
+    public static final String GIF_URL = "assets/android/hindikeyboard/hindithemekeyboard.json";
     public static final String THEME_URL1 = "assets/android/keyboard/keyboard.json";
     public static final String THEME_URL = "keybord_fileparth?select=*,keyboard(id,name)";
     public static final String QUOTES_CATEGORY_URL = "QuoteCategories?select=*";
