@@ -119,7 +119,6 @@ public class DictionaryDatabaseHelper extends SQLiteOpenHelper {
             cursor = null;
         }
         cursor.moveToFirst();
-        System.out.println("---- - -- - - www |: "+recentWord);
         if (cursor.getCount() > 0) {
             UpdateRecent(recentWord);
         } else {

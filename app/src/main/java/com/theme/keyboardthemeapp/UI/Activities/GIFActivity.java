@@ -15,10 +15,10 @@ import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.google.android.gms.ads.AdSize;
 import com.theme.keyboardthemeapp.AdsClass;
+import com.theme.keyboardthemeapp.ModelClass.GifModelItem;
+import com.theme.keyboardthemeapp.ModelClass.HindithemekeyboardItem;
 import com.theme.keyboardthemeapp.Task.GifThemeDownloader;
 import com.theme.keyboardthemeapp.Constants;
-import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
-import com.theme.keyboardthemeapp.ModelClass.GifModel;
 import com.theme.keyboardthemeapp.MySharePref;
 import com.theme.keyboardthemeapp.R;
 import com.theme.keyboardthemeapp.Retrofit.RetrofitInstance;
@@ -30,6 +30,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -47,7 +48,7 @@ public class GIFActivity extends AppCompatActivity implements View.OnClickListen
     private ImageView ImgBack, ImgMore;
     private TextView TxtTitle;
     private RecyclerView RvGifList;
-    private ArrayList<CategoriesItem> GifArrays = new ArrayList<>();
+    private ArrayList<HindithemekeyboardItem> GifArrays = new ArrayList<>();
     private GifAdapter adapter;
     private View LayoutProgress;
 
@@ -90,23 +91,23 @@ public class GIFActivity extends AppCompatActivity implements View.OnClickListen
 
     private void getGifs() {
         LayoutProgress.setVisibility(View.VISIBLE);
-        RetrofitInterface downloadService = RetrofitInstance.createService(RetrofitInterface.class, Constants.BASE_URL1);
-        Call<GifModel> call = downloadService.getGifsData(Constants.GIF_URL);
-        call.enqueue(new Callback<GifModel>() {
+        RetrofitInterface downloadService = RetrofitInstance.createService(RetrofitInterface.class, Constants.BASE_URL);
+        Call<List<GifModelItem>> call = downloadService.getGifsData(Constants.GIF_URL);
+        call.enqueue(new Callback<List<GifModelItem>>() {
             @Override
-            public void onResponse(Call<GifModel> call, Response<GifModel> response) {
-                System.out.println("------ - - - call : ");
+            public void onResponse(Call<List<GifModelItem>> call, Response<List<GifModelItem>> response) {
                 if (response.isSuccessful()) {
                     GifArrays = new ArrayList<>();
-                    GifArrays.addAll((ArrayList<CategoriesItem>) response.body().getCategories());
+                    GifArrays.addAll((List<HindithemekeyboardItem>) response.body().get(0).getHindithemekeyboard());
                     LayoutProgress.setVisibility(View.GONE);
                     RvGifList.setLayoutManager(new GridLayoutManager(context, 2));
-                    adapter = new GifAdapter(context, response.body().getThumburl() + "/", response.body().getUrl() + "/", GifArrays, (pos, gifArray, ivGif, ivDownloadGif, ivCheckGif) -> {
+                    adapter = new GifAdapter(context, response.body().get(0).getThumburl() + "/", response.body().get(0).getUrl() + "/", GifArrays, (pos, gifArray, ivGif, ivDownloadGif, ivCheckGif) -> {
                         File THUMB = new File(context.getFilesDir(), "Gif/" + gifArray.get(pos).getId() + ".png");
                         File GIF = new File(context.getFilesDir(), "Gif/" + gifArray.get(pos).getId() + ".gif");
                         if (THUMB.exists()) {
                             new MySharePref(context).putPrefString(MySharePref.SELECT_GIF_THEME_GIF, GIF.getAbsolutePath());
                             new MySharePref(context).putPrefString(MySharePref.SELECT_GIF_THEME_THUMB, THUMB.getAbsolutePath());
+                            new MySharePref(context).putPrefString(MySharePref.SELECT_THEME_THUMB, "");
                             new MySharePref(context).putPrefBoolean(MySharePref.SAVE_IMAGE,false);
                             Glide.with(context).asFile().load(GIF).into(new CustomTarget<File>() {
                                 @Override
@@ -132,7 +133,7 @@ public class GIFActivity extends AppCompatActivity implements View.OnClickListen
                             builder.setMessage(R.string.str_Alert_gif_string)
                                     .setPositiveButton("Yes", (dialogInterface, i) -> {
                                         dialogInterface.dismiss();
-                                        new GifThemeDownloader(context, LayoutProgress, gifArray, pos, ivDownloadGif, ivCheckGif, adapter).execute(response.body().getThumburl() + "/" + gifArray.get(pos).getId() + ".png", response.body().getUrl() + "/");
+                                        new GifThemeDownloader(context, LayoutProgress, gifArray, pos, ivDownloadGif, ivCheckGif, adapter).execute(response.body().get(0).getThumburl() + "/" + gifArray.get(pos).getId() + ".png", response.body().get(0).getUrl() + "/");
                                     })
                                     .setNegativeButton("No", (dialog, which) -> dialog.dismiss()).show();
                         }
@@ -153,7 +154,7 @@ public class GIFActivity extends AppCompatActivity implements View.OnClickListen
                 fos.close();
             }
             @Override
-            public void onFailure(Call<GifModel> call, Throwable t) {
+            public void onFailure(Call<List<GifModelItem>> call, Throwable t) {
                 LayoutProgress.setVisibility(View.GONE);
             }
         });

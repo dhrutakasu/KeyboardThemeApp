@@ -300,7 +300,6 @@ public class CustomKeyboardView extends KeyboardView {
             }
             ShowLongPreviewPopupView(key);
         } catch (Exception unused) {
-            System.out.println("----- - - -unused : " + unused.getMessage());
             unused.printStackTrace();
         }
     }

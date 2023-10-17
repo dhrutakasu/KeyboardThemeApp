@@ -28,6 +28,7 @@ import com.theme.keyboardthemeapp.UI.Adapters.ThemeAdapter;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
@@ -116,6 +117,7 @@ public class ThemeActivity extends AppCompatActivity implements View.OnClickList
                             new MySharePref(context).putPrefInt(MySharePref.DEFAULT_THEME, pos);
                             new MySharePref(context).putPrefBoolean(MySharePref.DEFAULT_GIF, false);
                             new MySharePref(context).putPrefBoolean(MySharePref.SAVE_IMAGE,false);
+                            new MySharePref(context).putPrefString(MySharePref.SELECT_GIF_THEME_THUMB, "");
                             onBackPressed();
                         } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -125,7 +127,6 @@ public class ThemeActivity extends AppCompatActivity implements View.OnClickList
                                             dialogInterface.dismiss();
                                             new ThemeDownloader(context, LayoutProgress, ThemeArray, pos, ivDownloadTheme, ivCheckTheme, adapter, ThemeActivity.this).execute(response.body().get(0).getThumburl() + "/" + ThemeArray.get(pos).getName(), response.body().get(0).getUrl() + "/");
                                         }).setNegativeButton("No", (dialog, which) -> dialog.dismiss()).show();
-//                            }
                         }
                     });
                     RvThemeList.setAdapter(adapter);

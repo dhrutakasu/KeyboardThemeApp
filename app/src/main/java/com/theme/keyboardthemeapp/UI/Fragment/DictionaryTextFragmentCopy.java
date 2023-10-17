@@ -151,7 +151,6 @@ public class DictionaryTextFragmentCopy extends Fragment implements View.OnClick
         public void onReceive(Context context, Intent intent) {
             Constants.PagerDictionary.setCurrentItem(0);
             dictionaryModels = helper.getDictionaryFavorite();
-            System.out.println("----- - - - -list rr: " + dictionaryModels.size());
             onResume();
             LayoutProgress.setVisibility(View.GONE);
         }
@@ -471,11 +470,9 @@ public class DictionaryTextFragmentCopy extends Fragment implements View.OnClick
         } else if (Dictionary_Str.equalsIgnoreCase("Favourite")) {
             if (RvDictionaryTxt != null) {
                 dictionaryModels = helper.getDictionaryFavorite();
-                System.out.println("----- - - - -list : " + dictionaryModels.size());
                 if (getActivity() != null) {
                     RvDictionaryTxt.setAdapter(new FavouriteAdapter(getActivity(), dictionaryModels, Dictionary_Str, this));
                 }
-//                RvDictionaryTxt.getAdapter().notifyDataSetChanged();
             }
         } else if (Dictionary_Str.equalsIgnoreCase("Recent")) {
             if (RvDictionaryTxt != null) {

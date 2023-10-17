@@ -60,17 +60,34 @@ public class QuotesActivity extends AppCompatActivity implements View.OnClickLis
         ImgBack.setOnClickListener(this);
     }
 
-    private void initActions() {if (AdsClass.isInternetOn(context)) {
-        AdsClass.showBanner(this, AdSize.LARGE_BANNER, (RelativeLayout) findViewById(R.id.RlBannerAdView), (RelativeLayout) findViewById(R.id.RlBannerAd),Constants.BannerAd,Constants.Show);
-    }
+    private void initActions() {
+        if (AdsClass.isInternetOn(context)) {
+            AdsClass.showBanner(this, AdSize.LARGE_BANNER, (RelativeLayout) findViewById(R.id.RlBannerAdView), (RelativeLayout) findViewById(R.id.RlBannerAd), Constants.BannerAd, Constants.Show);
+        }
         ImgBack.setVisibility(View.VISIBLE);
         TxtTitle.setText(getString(R.string.str_Quote_text));
         if (Constants.categoriesItems.size() > 0) {
             for (int i = 0; i < Constants.categoriesItems.size(); i++) {
                 TabQuote.addTab(TabQuote.newTab().setText(Constants.categoriesItems.get(i).getCatName()));
             }
+            Constants.PosQuoteStatus = (PagerQuote.getCurrentItem() + 1);
             QuotePagerAdapter quotePagerAdapter = new QuotePagerAdapter(context, getSupportFragmentManager(), Constants.categoriesItems);
             PagerQuote.setAdapter(quotePagerAdapter);
+            PagerQuote.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+                    Constants.PosQuoteStatus = (position + 1);
+                }
+
+                @Override
+                public void onPageScrollStateChanged(int state) {
+
+                }
+            });
             TabQuote.setupWithViewPager(PagerQuote);
         }
     }

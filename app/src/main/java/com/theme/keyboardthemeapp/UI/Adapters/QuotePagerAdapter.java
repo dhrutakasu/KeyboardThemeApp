@@ -2,7 +2,6 @@ package com.theme.keyboardthemeapp.UI.Adapters;
 
 import android.content.Context;
 
-import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
 import com.theme.keyboardthemeapp.ModelClass.QuoteCategoryModelItem;
 import com.theme.keyboardthemeapp.UI.Fragment.QuoteListFragment;
 

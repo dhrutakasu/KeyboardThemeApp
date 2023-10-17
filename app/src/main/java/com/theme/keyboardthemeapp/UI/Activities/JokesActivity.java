@@ -71,9 +71,8 @@ public class JokesActivity extends AppCompatActivity implements View.OnClickList
     private void GetJokeResponse() {
         if (Constants.isNetworkAvailableoRnOT(context)) {
             LayoutProgress.setVisibility(View.VISIBLE);
-//http://technoappsolution.com/app/assets/android/hindikeyboard/hindijokes.json
-            RetrofitInterface downloadService = RetrofitInstance.createService(RetrofitInterface.class, Constants.BASE_URL1);
-            Call<List<JokeModelItem>> call = downloadService.getJokeData(Constants.JOKE_CATEGORY_URL1);
+            RetrofitInterface downloadService = RetrofitInstance.createService(RetrofitInterface.class, Constants.BASE_URL);
+            Call<List<JokeModelItem>> call = downloadService.getJokeData(Constants.JOKE_CATEGORY_URL);
             call.enqueue(new Callback<List<JokeModelItem>>() {
                 @Override
                 public void onResponse(Call<List<JokeModelItem>> call, Response<List<JokeModelItem>> response) {
@@ -81,7 +80,6 @@ public class JokesActivity extends AppCompatActivity implements View.OnClickList
                         LayoutProgress.setVisibility(View.GONE);
                         Constants.jokeModelItems = new ArrayList<>();
                         Constants.jokeModelItems = (ArrayList<JokeModelItem>) response.body();
-                        System.out.println("---- -- -- ttt UUL " + Constants.jokeModelItems.size());
                         jokesAdapter = new JokesAdapter(context, Constants.jokeModelItems, pos -> {
                             Intent intent = new Intent(context, ViewJokeActivity.class);
                             intent.putExtra(Constants.QUOTE_POS, pos);
@@ -94,7 +92,6 @@ public class JokesActivity extends AppCompatActivity implements View.OnClickList
 
                 @Override
                 public void onFailure(Call<List<JokeModelItem>> call, Throwable t) {
-                    System.out.println("---- -- -- ttt L " + t.getMessage());
                     LayoutProgress.setVisibility(View.GONE);
                 }
             });

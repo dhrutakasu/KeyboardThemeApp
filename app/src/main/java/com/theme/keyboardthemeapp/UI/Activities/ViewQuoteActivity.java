@@ -14,15 +14,25 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 
 import com.theme.keyboardthemeapp.AdsClass;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.ModelClass.QuoteModelItem;
 import com.theme.keyboardthemeapp.R;
+import com.theme.keyboardthemeapp.Retrofit.RetrofitInstance;
+import com.theme.keyboardthemeapp.Retrofit.RetrofitInterface;
+import com.theme.keyboardthemeapp.UI.Adapters.QuoteAdapter;
 import com.theme.keyboardthemeapp.UI.Adapters.QuotePageAdapter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ViewQuoteActivity extends AppCompatActivity implements View.OnClickListener {
     private Context context;
@@ -34,6 +44,7 @@ public class ViewQuoteActivity extends AppCompatActivity implements View.OnClick
     private ImageView ImgWhatsapp, ImgFacebook, ImgShareJoke, ImgCopy;
     private ClipboardManager manager;
     private String QuoteTitle;
+    private View LayoutProgress;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -55,6 +66,7 @@ public class ViewQuoteActivity extends AppCompatActivity implements View.OnClick
         ImgFacebook = (ImageView) findViewById(R.id.ImgFacebook);
         ImgShareJoke = (ImageView) findViewById(R.id.ImgShareJoke);
         ImgCopy = (ImageView) findViewById(R.id.ImgCopy);
+        LayoutProgress = (View) findViewById(R.id.LayoutProgress);
     }
 
     private void initIntents() {
@@ -79,14 +91,39 @@ public class ViewQuoteActivity extends AppCompatActivity implements View.OnClick
         }
         ImgBack.setVisibility(View.VISIBLE);
         TxtTitle.setText(QuoteTitle);
-        QuotePageAdapter pageAdapter = new QuotePageAdapter(context, getSupportFragmentManager(), statusItemArrayList);
-        PagerQuote.setAdapter(pageAdapter);
-        PagerQuote.setCurrentItem(QuotePos);
+        GetQuotesList();
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
 
     }
 
+    private void GetQuotesList() {
+        if (Constants.isNetworkAvailableoRnOT(context)) {
+            LayoutProgress.setVisibility(View.VISIBLE);
+            RetrofitInterface downloadService = RetrofitInstance.createService(RetrofitInterface.class, Constants.BASE_URL);
+            Call<List<QuoteModelItem>> call = downloadService.getQuotesData(Constants.QUOTE_BASE_URL + Constants.PosQuoteStatus);
+            call.enqueue(new Callback<List<QuoteModelItem>>() {
+                @Override
+                public void onResponse(Call<List<QuoteModelItem>> call, Response<List<QuoteModelItem>> response) {
+                    if (response.isSuccessful()) {
+                        LayoutProgress.setVisibility(View.GONE);
+                        Constants.statusItems = new ArrayList<>();
+                        Constants.statusItems.addAll((ArrayList<QuoteModelItem>) response.body());
+                        QuotePageAdapter pageAdapter = new QuotePageAdapter(context, getSupportFragmentManager(), (ArrayList<QuoteModelItem>) response.body());
+                        PagerQuote.setAdapter(pageAdapter);
+                        PagerQuote.setCurrentItem(QuotePos);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<QuoteModelItem>> call, Throwable t) {
+                    LayoutProgress.setVisibility(View.GONE);
+                }
+            });
+        } else {
+            Constants.NoInternetConnection(ViewQuoteActivity.this);
+        }
+    }
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -117,7 +154,6 @@ public class ViewQuoteActivity extends AppCompatActivity implements View.OnClick
             intent.putExtra(Intent.EXTRA_TEXT, statusTxt);
             startActivity(Intent.createChooser(intent, "Share with"));
         } catch (Exception e) {
-            System.out.println("---- :: "+e.getMessage());
             if (packageName2.equalsIgnoreCase("")) {
                 Toast.makeText(context, "App not Installed", Toast.LENGTH_SHORT).show();
             } else {
@@ -129,7 +165,6 @@ public class ViewQuoteActivity extends AppCompatActivity implements View.OnClick
                     intent.putExtra(Intent.EXTRA_TEXT, statusTxt);
                     startActivity(Intent.createChooser(intent, "Share with"));
                 } catch (Exception ex) {
-                    System.out.println("---- :xx: "+ex.getMessage());
                     Toast.makeText(context, "App not Installed", Toast.LENGTH_SHORT).show();
                 }
             }

@@ -107,10 +107,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Constants.heights = displayMetrics.heightPixels;
         Constants.widths = displayMetrics.widthPixels;
         GetQuoteResponse();
-//        if (new File(getFilesDir().getAbsolutePath() + "/photo_save.jpeg").exists()) {
-//            new File(getFilesDir().getAbsolutePath() + "/photo_save.jpeg").delete();
-//        }
-        System.out.println("--- -- - -Constants.DictionaryWordLoad : " + Constants.DictionaryWordLoad);
         if (!Constants.DictionaryWordLoad) {
             DictionaryTask dictionaryTask = new DictionaryTask(this, 0);
             if (Constants.isUpHoneycombVersion) {
@@ -121,9 +117,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Constants.DictionaryWordLoad = true;
         }
 
-//        if (new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0) == 0) {
         Constants.getBackgroundSave(context, new MySharePref(context).getPrefInt(MySharePref.DEFAULT_THEME, 0)).getAbsolutePath();
-//        }
     }
 
     private void GotoPermission() {
@@ -152,7 +146,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
 
                         public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken permissionToken) {
-                            System.out.println("---- -- - - permi :: " + Arrays.toString(permissions.toArray()));
                             Constants.showPermissionDialog(MainActivity.this, permissionToken);
                         }
                     })
@@ -250,10 +243,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 @Override
                 public void onResponse(Call<List<QuoteCategoryModelItem>> call, Response<List<QuoteCategoryModelItem>> response) {
                     LayoutProgress.setVisibility(View.GONE);
-                    System.out.println("---- - - -qqqq sss: " + response.body().size());
-                    for (int i = 0; i < response.body().size(); i++) {
-                        System.out.println("---- - - -qqqq : " + response.body().get(i).getCatName());
-                    }
                     if (response.isSuccessful()) {
                         Constants.categoriesItems = new ArrayList<>();
                         Constants.categoriesItems.addAll((ArrayList<QuoteCategoryModelItem>) response.body());

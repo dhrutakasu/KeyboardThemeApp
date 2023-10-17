@@ -55,15 +55,16 @@ public class Constants {
     public static final String BASE_URL1 = "http://technoappsolution.com/app/";
     public static final String BASE_URL = "https://hpqrzfjgciltygmpyjss.supabase.co/rest/v1/";
     public static final String QUOTE_BASE_URL = "QuotesList?parent_id=eq.";
-    public static final String GIF_URL_1 = "keybord_fileparth?select=*,hindithemekeyboard(id,name)";
-    public static final String GIF_URL = "assets/android/hindikeyboard/hindithemekeyboard.json";
-    public static final String THEME_URL1 = "assets/android/keyboard/keyboard.json";
+    public static final String GIF_URL = "keybord_fileparth?select=*,hindithemekeyboard(id,name)";
     public static final String THEME_URL = "keybord_fileparth?select=*,keyboard(id,name)";
+    public static final String GIF_URL_1 = "assets/android/hindikeyboard/hindithemekeyboard.json";
+    public static final String THEME_URL1 = "assets/android/keyboard/keyboard.json";
     public static final String QUOTES_CATEGORY_URL = "QuoteCategories?select=*";
+    public static final String JOKE_CATEGORY_URL = "HindiJokesList?select=*";
     public static final String JOKE_CATEGORY_URL1 = "assets/android/hindikeyboard/hindijokes.json";
-    public static final String JOKE_CATEGORY_URL = "HindiJokes?select=*";
     public static final String FILE_PATH = "FILE_PATH";
     public static ArrayList<QuoteModelItem> statusItems = new ArrayList<>();
+    public static ArrayList<QuoteModelItem> QuoteStatusItems = new ArrayList<>();
     public static ArrayList<JokeModelItem> jokeModelItems = new ArrayList<>();
     public static ArrayList<QuoteCategoryModelItem> categoriesItems = new ArrayList<>();
     public static boolean enableKeyboard = true;
@@ -128,6 +129,7 @@ public class Constants {
     public static boolean DeleteValFlag = false;
     public static boolean PreviewViewisOpen = false;
     public static boolean DictionaryWordLoad = false;
+    public static int PosQuoteStatus = 0;
     static String[] PckgeNames = {"com.whatsapp", "com.facebook.orca", "com.snapchat.android", "com.google.android.talk", "jp.naver.line.android", "com.viber.voip", "com.skype.raider", "com.twitter.android", "com.bsb.hike"};
     public static ArrayList<String> PackageNamesList = new ArrayList<>(Arrays.asList(PckgeNames));
 
@@ -276,7 +278,7 @@ public class Constants {
                 InputInt = 25;
                 break;
             default:
-                InputInt=-1;
+                InputInt = -1;
         }
         return InputInt;
     }

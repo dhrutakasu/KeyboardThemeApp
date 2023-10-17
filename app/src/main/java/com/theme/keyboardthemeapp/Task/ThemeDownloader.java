@@ -87,7 +87,6 @@ public class ThemeDownloader extends AsyncTask<String, Void, Void> {
                 outputStream.close();
             } else {
                 String path = params[0];
-                System.out.println("-- - - -- - - -thumbbb PATH: " + path);
                 int fileLength = 0;
                 fileName = ThemeArray.get(Pos).getName();
                 url = new URL(path);
@@ -144,8 +143,6 @@ public class ThemeDownloader extends AsyncTask<String, Void, Void> {
                 });
             }
         } catch (IOException e) {
-            System.out.println("-- - ---- mmm:: " + e.getMessage());
-            System.out.println("-- - ---- eee:: " + e.toString());
             e.printStackTrace();
         }
         return null;
@@ -170,10 +167,12 @@ public class ThemeDownloader extends AsyncTask<String, Void, Void> {
             File Theme = new File(context.getFilesDir(), "Theme/" + "bg_" + ThemeArray.get(Pos).getName().substring(ThemeArray.get(Pos).getName().lastIndexOf("/") + 1));
             new MySharePref(context).putPrefString(MySharePref.SELECT_THEME_THUMB, THUMB.getAbsolutePath());
             new MySharePref(context).putPrefString(MySharePref.SELECT_THEME, Theme.getAbsolutePath());
-            Constants.copyFile(Theme,new File(context.getFilesDir().getAbsolutePath() + "/photo_save.jpeg"));
+            Constants.copyFile(Theme, new File(context.getFilesDir().getAbsolutePath() + "/photo_save.jpeg"));
             //todo check
             new MySharePref(context).putPrefInt(MySharePref.DEFAULT_THEME, Pos);
             new MySharePref(context).putPrefBoolean(MySharePref.DEFAULT_GIF, false);
+            new MySharePref(context).putPrefString(MySharePref.SELECT_GIF_THEME_THUMB, "");
+
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -190,10 +189,10 @@ public class ThemeDownloader extends AsyncTask<String, Void, Void> {
             new MySharePref(context).putPrefString(MySharePref.SELECT_THEME, Theme.getAbsolutePath());
             new MySharePref(context).putPrefString(MySharePref.SELECT_THEME_THUMB, THUMB.getAbsolutePath());
             //todo check 
-            Constants.copyFile(Theme,new File(context.getFilesDir().getAbsolutePath() + "/photo_save.jpeg"));
+            Constants.copyFile(Theme, new File(context.getFilesDir().getAbsolutePath() + "/photo_save.jpeg"));
             new MySharePref(context).putPrefInt(MySharePref.DEFAULT_THEME, Pos);
             new MySharePref(context).putPrefBoolean(MySharePref.DEFAULT_GIF, false);
-            new MySharePref(context).putPrefBoolean(MySharePref.SAVE_IMAGE,false);
+            new MySharePref(context).putPrefBoolean(MySharePref.SAVE_IMAGE, false);
             new Handler().postDelayed(() -> {
                 ivDownloadTheme.setVisibility(View.GONE);
                 ivCheckTheme.setVisibility(View.VISIBLE);

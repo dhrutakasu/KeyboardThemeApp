@@ -151,7 +151,6 @@ public class DictionaryTabFragment extends Fragment implements View.OnClickListe
         public void onReceive(Context context, Intent intent) {
             Constants.PagerDictionary.setCurrentItem(0);
             dictionaryModels = helper.getDictionaryFavorite();
-            System.out.println("----- - - - -list rr: " + dictionaryModels.size());
             onResume();
             LayoutProgress.setVisibility(View.GONE);
         }
@@ -466,11 +465,9 @@ public class DictionaryTabFragment extends Fragment implements View.OnClickListe
             AutoTxtWord.setText("");
             refreshView();
             AutoTxtWord.setCursorVisible(false);
-//            AutoTxtWord.dismissDropDown();
         } else if (Dictionary_Str.equalsIgnoreCase("Favourite")) {
             if (RvDictionaryTxt != null) {
                 dictionaryModels = helper.getDictionaryFavorite();
-                System.out.println("----- - - - -list : " + dictionaryModels.size());
                 if (getActivity() != null) {
                     RvDictionaryTxt.setAdapter(new FavouriteAdapter(getActivity(), dictionaryModels, Dictionary_Str, this));
                 }

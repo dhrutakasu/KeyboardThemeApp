@@ -3,10 +3,13 @@ package com.theme.keyboardthemeapp.ModelClass;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class GifModel{
+public class GifModelItem{
 
-	@SerializedName("categories")
-	private List<CategoriesItem> categories;
+	@SerializedName("hindithemekeyboard")
+	private List<HindithemekeyboardItem> hindithemekeyboard;
+
+	@SerializedName("id")
+	private int id;
 
 	@SerializedName("thumburl")
 	private String thumburl;
@@ -14,12 +17,20 @@ public class GifModel{
 	@SerializedName("url")
 	private String url;
 
-	public void setCategories(List<CategoriesItem> categories){
-		this.categories = categories;
+	public void setHindithemekeyboard(List<HindithemekeyboardItem> hindithemekeyboard){
+		this.hindithemekeyboard = hindithemekeyboard;
 	}
 
-	public List<CategoriesItem> getCategories(){
-		return categories;
+	public List<HindithemekeyboardItem> getHindithemekeyboard(){
+		return hindithemekeyboard;
+	}
+
+	public void setId(int id){
+		this.id = id;
+	}
+
+	public int getId(){
+		return id;
 	}
 
 	public void setThumburl(String thumburl){
@@ -41,8 +52,9 @@ public class GifModel{
 	@Override
  	public String toString(){
 		return 
-			"GifModel{" + 
-			"categories = '" + categories + '\'' + 
+			"GifModelItem{" + 
+			"hindithemekeyboard = '" + hindithemekeyboard + '\'' + 
+			",id = '" + id + '\'' + 
 			",thumburl = '" + thumburl + '\'' + 
 			",url = '" + url + '\'' + 
 			"}";

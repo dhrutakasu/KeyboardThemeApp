@@ -1,10 +1,8 @@
 package com.theme.keyboardthemeapp.Retrofit;
 
-import com.theme.keyboardthemeapp.ModelClass.GifModel;
+import com.theme.keyboardthemeapp.ModelClass.GifModelItem;
 import com.theme.keyboardthemeapp.ModelClass.JokeModelItem;
-import com.theme.keyboardthemeapp.ModelClass.QuoteCategoryModel;
 import com.theme.keyboardthemeapp.ModelClass.QuoteCategoryModelItem;
-import com.theme.keyboardthemeapp.ModelClass.QuoteModel;
 import com.theme.keyboardthemeapp.ModelClass.QuoteModelItem;
 import com.theme.keyboardthemeapp.ModelClass.ThemeModelItem;
 
@@ -53,5 +51,5 @@ public interface RetrofitInterface {
             "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhwcXJ6ZmpnY2lsdHlnbXB5anNzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5NTc0MTkxNCwiZXhwIjoyMDExMzE3OTE0fQ.DCJOX18WZTsqTz2dq23iBFqpTWTgg5-9f7VsAtLROmY",
             "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhwcXJ6ZmpnY2lsdHlnbXB5anNzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5NTc0MTkxNCwiZXhwIjoyMDExMzE3OTE0fQ.DCJOX18WZTsqTz2dq23iBFqpTWTgg5-9f7VsAtLROmY"
     })
-    Call<GifModel> getGifsData(@Url String Url);
+    Call<List<GifModelItem>> getGifsData(@Url String Url);
 }

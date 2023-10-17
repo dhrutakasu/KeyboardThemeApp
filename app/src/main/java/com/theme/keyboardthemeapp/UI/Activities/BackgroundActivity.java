@@ -482,7 +482,6 @@ public class BackgroundActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-        System.out.println("--- -- - -  progress :: " + i);
         new MySharePref(context).putPrefInt(MySharePref.TRANSPARENT, i);
         new MySharePref(context).putPrefInt(MySharePref.TRANSPARENT_BLACK_BG, i);
         TxtPercentage.setText(((new MySharePref(context).getPrefInt(MySharePref.TRANSPARENT, 0) * 100) / 255) + "%");

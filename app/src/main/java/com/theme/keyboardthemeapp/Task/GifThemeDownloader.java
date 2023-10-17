@@ -18,6 +18,7 @@ import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.theme.keyboardthemeapp.Constants;
 import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
+import com.theme.keyboardthemeapp.ModelClass.HindithemekeyboardItem;
 import com.theme.keyboardthemeapp.MySharePref;
 import com.theme.keyboardthemeapp.UI.Adapters.GifAdapter;
 
@@ -34,7 +35,7 @@ import java.util.ArrayList;
 
 public class GifThemeDownloader extends AsyncTask<String, Void, Void> {
 
-    private final ArrayList<CategoriesItem> gifArray;
+    private final ArrayList<HindithemekeyboardItem> gifArray;
     private final int Pos;
     private final ImageView ivDownloadGif, ivCheckGif;
     private final GifAdapter adapter;
@@ -43,7 +44,7 @@ public class GifThemeDownloader extends AsyncTask<String, Void, Void> {
     private Context context;
 
 
-    public GifThemeDownloader(Context context, View layoutProgress, ArrayList<CategoriesItem> gifArray, int pos, ImageView ivDownloadGif, ImageView ivCheckGif, GifAdapter adapter) {
+    public GifThemeDownloader(Context context, View layoutProgress, ArrayList<HindithemekeyboardItem> gifArray, int pos, ImageView ivDownloadGif, ImageView ivCheckGif, GifAdapter adapter) {
         this.context = context;
         this.layoutProgress = layoutProgress;
         this.gifArray = gifArray;
@@ -135,6 +136,7 @@ public class GifThemeDownloader extends AsyncTask<String, Void, Void> {
         new MySharePref(context).putPrefBoolean(MySharePref.DEFAULT_GIF, true);
         new MySharePref(context).putPrefInt(MySharePref.DEFAULT_THEME, Pos);
         new MySharePref(context).putPrefBoolean(MySharePref.SAVE_IMAGE,false);
+        new MySharePref(context).putPrefString(MySharePref.SELECT_THEME_THUMB, "");
         MediaScannerConnection.scanFile(context, new String[]{Environment.getExternalStorageDirectory().getAbsolutePath()}, null, (path, uri) -> {
             // TODO Auto-generated method stub
 

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.theme.keyboardthemeapp.ModelClass.CategoriesItem;
+import com.theme.keyboardthemeapp.ModelClass.HindithemekeyboardItem;
 import com.theme.keyboardthemeapp.MySharePref;
 import com.theme.keyboardthemeapp.R;
 
@@ -21,11 +22,11 @@ import java.util.ArrayList;
 
 public class GifAdapter extends RecyclerView.Adapter<GifAdapter.MyViewHolder> {
     private final Context context;
-    private final ArrayList<CategoriesItem> gifArray;
+    private final ArrayList<HindithemekeyboardItem> gifArray;
     private final GifClick gifClick;
     private final String thumbUrl,gifUrl;
 
-    public GifAdapter(Context context,String thumbUrl,String gifUrl, ArrayList<CategoriesItem> gifArray,GifClick gifClick) {
+    public GifAdapter(Context context, String thumbUrl, String gifUrl, ArrayList<HindithemekeyboardItem> gifArray, GifClick gifClick) {
         this.context = context;
         this.gifArray = gifArray;
         this.thumbUrl = thumbUrl;
@@ -46,7 +47,7 @@ public class GifAdapter extends RecyclerView.Adapter<GifAdapter.MyViewHolder> {
         File GIF = new File(context.getFilesDir(), "Gif/" + gifArray.get(position).getId() + ".gif");
         holder.IvGif.setScaleType(ImageView.ScaleType.FIT_XY);
         if (GifFolder.exists()){
-            Glide.with(context).load(GIF)
+            Glide.with(context).asGif().load(GIF)
                     .placeholder(R.drawable.ic_place_holder).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(holder.IvGif);
             holder.IvDownloadGif.setVisibility(View.GONE);
         }else {
@@ -71,7 +72,7 @@ public class GifAdapter extends RecyclerView.Adapter<GifAdapter.MyViewHolder> {
     }
 
     public interface GifClick{
-        void GifListeners(int pos, ArrayList<CategoriesItem> gifArray, ImageView ivGif, ImageView ivDownloadGif, ImageView ivCheckGif);
+        void GifListeners(int pos, ArrayList<HindithemekeyboardItem> gifArray, ImageView ivGif, ImageView ivDownloadGif, ImageView ivCheckGif);
     }
     @Override
     public int getItemCount() {

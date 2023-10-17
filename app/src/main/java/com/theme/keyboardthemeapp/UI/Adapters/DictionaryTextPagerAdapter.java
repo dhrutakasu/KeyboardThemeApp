@@ -36,11 +36,7 @@ public class DictionaryTextPagerAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-//        if (position==0){
             return DictionaryTextFragment.newInstance(items.get(position).toString());
-//        }else {
-//            return DictionaryTabFragment.newInstance(items.get(position).toString());
-//        }
     }
 
     @Override
